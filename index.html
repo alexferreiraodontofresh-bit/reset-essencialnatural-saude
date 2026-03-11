@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Reset Essencial — Suplementação com propósito</title>
+<meta name="description" content="Kits de suplementação organizados por objetivo. Simples, natural e eficaz. Guia informativo completo em cada kit.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%234A3728'/><text y='.9em' font-size='72' x='50%25' text-anchor='middle' dominant-baseline='hanging'>🌿</text></svg>">
+<meta name="theme-color" content="#4A3728">
+<meta property="og:title" content="Reset Essencial — Suplementação com propósito">
+<meta property="og:description" content="7 kits organizados por objetivo. Guia informativo completo incluso.">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+
+<style>
+/* ── RESET & VARS ── */
+:root {
+  --cream: #F8F4ED;
+  --white: #FDFCFA;
+  --bark:  #3D2B1A;
+  --earth: #6B4C30;
+  --clay:  #A8704A;
+  --sand:  #C9A87A;
+  --sage:  #697D5E;
+  --sage-l:#8FA882;
+  --muted: #9B8B7A;
+  --deep:  #1A1209;
+  --line:  rgba(61,43,26,.1);
+  --wa:    #25D366;
+
+  --f-display: 'Cormorant Garamond', Georgia, serif;
+  --f-body:    'DM Sans', sans-serif;
+
+  --ease: cubic-bezier(.16,1,.3,1);
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  background: var(--white);
+  color: var(--deep);
+  font-family: var(--f-body);
+  font-weight: 300;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ── UTILITY ── */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+.sr-only { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0); }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top:0; left:0; right:0; z-index:900;
+  height: 72px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 52px;
+  background: rgba(253,252,250,.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--line);
+  transition: height .3s var(--ease), box-shadow .3s;
+}
+nav.scrolled { height:60px; box-shadow:0 2px 30px rgba(26,18,9,.06); }
+.logo {
+  font-family: var(--f-display);
+  font-size: 22px; font-weight: 600;
+  color: var(--bark); text-decoration:none;
+  letter-spacing: .3px;
+  display: flex; align-items: center; gap: 10px;
+}
+.logo em { font-weight:300; font-style:italic; color:var(--clay); }
+.nav-links {
+  display:flex; align-items:center; gap:36px;
+  list-style:none;
+}
+.nav-links a {
+  text-decoration:none; color:var(--muted);
+  font-size:11px; letter-spacing:2.5px; text-transform:uppercase;
+  transition: color .25s;
+}
+.nav-links a:hover { color:var(--bark); }
+.nav-btn {
+  background: var(--bark); color: var(--cream) !important;
+  padding: 10px 22px !important;
+  border-radius: 2px;
+  letter-spacing:1.5px !important;
+  transition: background .25s !important;
+}
+.nav-btn:hover { background: var(--deep) !important; }
+
+.nav-mobile-btn {
+  display:none; background:none; border:none;
+  cursor:pointer; padding:8px; color:var(--bark);
+}
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding-top: 72px;
+  overflow: hidden;
+  position: relative;
+}
+.hero-left {
+  padding: 80px 60px 80px 80px;
+  position:relative; z-index:2;
+}
+.hero-eyebrow {
+  display: inline-flex; align-items:center; gap:10px;
+  font-size:10px; letter-spacing:4px; text-transform:uppercase;
+  color: var(--sage); margin-bottom:32px;
+}
+.hero-eyebrow::before {
+  content:''; display:block; width:32px; height:1px; background:var(--sage);
+}
+.hero-title {
+  font-family: var(--f-display);
+  font-size: clamp(48px, 5.5vw, 80px);
+  font-weight: 300; line-height: 1.1;
+  color: var(--bark); margin-bottom:8px;
+}
+.hero-title em {
+  font-style:italic; color:var(--clay);
+  display:block;
+}
+.hero-subtitle {
+  font-size:16px; color:var(--muted);
+  margin: 28px 0 48px;
+  max-width:400px; line-height:1.8;
+}
+.hero-actions { display:flex; gap:16px; flex-wrap:wrap; }
+
+.btn-primary {
+  display:inline-flex; align-items:center; gap:10px;
+  background: var(--bark); color: var(--cream);
+  padding: 16px 32px;
+  font-family: var(--f-body); font-size:12px;
+  letter-spacing:2px; text-transform:uppercase;
+  text-decoration:none; border:none; cursor:pointer;
+  border-radius:2px;
+  transition: background .25s var(--ease), transform .2s;
+}
+.btn-primary:hover { background:var(--deep); transform:translateY(-1px); }
+
+.btn-outline {
+  display:inline-flex; align-items:center; gap:10px;
+  background: transparent; color: var(--bark);
+  padding: 16px 32px;
+  font-family: var(--f-body); font-size:12px;
+  letter-spacing:2px; text-transform:uppercase;
+  text-decoration:none; border:1.5px solid var(--bark);
+  cursor:pointer; border-radius:2px;
+  transition: all .25s var(--ease);
+}
+.btn-outline:hover { background:var(--bark); color:var(--cream); }
+
+.hero-right {
+  height:100vh; position:relative;
+  background: linear-gradient(135deg, #3D2B1A 0%, #6B4C30 40%, #8A6540 70%, #A8704A 100%);
+  display:flex; align-items:center; justify-content:center;
+  overflow:hidden;
+}
+.hero-right::before {
+  content:'';
+  position:absolute; inset:0;
+  background: radial-gradient(circle at 30% 70%, rgba(255,255,255,.05) 0%, transparent 60%),
+              radial-gradient(circle at 80% 20%, rgba(201,168,122,.15) 0%, transparent 50%);
+}
+.hero-visual {
+  position:relative; z-index:2;
+  text-align:center; padding:40px;
+}
+.hero-badge {
+  font-family: var(--f-display);
+  font-size: clamp(100px, 12vw, 160px);
+  line-height:1; color:rgba(255,255,255,.08);
+  position:absolute; top:50%; left:50%;
+  transform:translate(-50%,-50%);
+  white-space:nowrap; pointer-events:none;
+  font-weight:600;
+}
+.hero-cards {
+  display:grid; grid-template-columns:1fr 1fr; gap:12px;
+  position:relative; z-index:3;
+}
+.hero-card {
+  background: rgba(255,255,255,.08);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius:4px; padding:20px;
+  text-align:center;
+  animation: float 6s ease-in-out infinite;
+}
+.hero-card:nth-child(2) { animation-delay:-2s; }
+.hero-card:nth-child(3) { animation-delay:-4s; }
+.hero-card:nth-child(4) { animation-delay:-1s; }
+@keyframes float {
+  0%,100% { transform:translateY(0); }
+  50%      { transform:translateY(-8px); }
+}
+.hero-card-icon { font-size:28px; margin-bottom:8px; }
+.hero-card-name {
+  font-family: var(--f-display); font-size:13px;
+  color:rgba(255,255,255,.9); font-weight:400;
+  letter-spacing:.5px;
+}
+.hero-card-price {
+  font-size:11px; color:rgba(255,255,255,.5);
+  margin-top:4px; letter-spacing:1px;
+}
+
+/* ── SECTION BASE ── */
+section { position:relative; }
+.section-eyebrow {
+  font-size:10px; letter-spacing:4px; text-transform:uppercase;
+  color:var(--sage); margin-bottom:20px;
+  display:flex; align-items:center; gap:12px;
+}
+.section-eyebrow::after {
+  content:''; flex:1; max-width:48px; height:1px; background:var(--sage);
+}
+.section-title {
+  font-family: var(--f-display);
+  font-size: clamp(36px, 4vw, 58px);
+  font-weight:300; line-height:1.15;
+  color: var(--bark);
+}
+.section-title em { font-style:italic; color:var(--clay); }
+
+/* ── INTRO STRIP ── */
+.intro-strip {
+  background: var(--bark); color: var(--cream);
+  padding: 40px 0; overflow:hidden;
+}
+.intro-strip-inner {
+  display:flex; align-items:center; gap:60px;
+  animation: marquee 30s linear infinite;
+  white-space:nowrap;
+}
+@keyframes marquee {
+  from { transform:translateX(0); }
+  to   { transform:translateX(-50%); }
+}
+.intro-strip-item {
+  display:flex; align-items:center; gap:16px;
+  flex-shrink:0;
+}
+.intro-strip-item span {
+  font-family: var(--f-display); font-size:22px; font-weight:300;
+  font-style:italic; color:var(--sand);
+}
+.intro-strip-dot { width:6px; height:6px; border-radius:50%; background:var(--clay); flex-shrink:0; }
+
+/* ── FILOSOFIA ── */
+.filosofia { padding: 120px 0; }
+.filosofia-grid {
+  display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center;
+}
+.filosofia-text { }
+.filosofia-lead {
+  font-family: var(--f-display);
+  font-size: clamp(22px, 2.5vw, 32px);
+  font-weight:300; line-height:1.5;
+  color: var(--earth); margin:28px 0 24px;
+}
+.filosofia-body { color:var(--muted); font-size:15px; line-height:1.9; }
+.filosofia-stats {
+  display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+  background: var(--line); border:1px solid var(--line);
+  margin-top:60px; border-radius:2px; overflow:hidden;
+}
+.stat-box {
+  background:var(--white); padding:32px 24px; text-align:center;
+}
+.stat-num {
+  font-family: var(--f-display);
+  font-size:48px; font-weight:300; color:var(--bark);
+  line-height:1;
+}
+.stat-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin-top:8px; }
+
+.filosofia-visual {
+  position:relative;
+}
+.filo-bg-box {
+  position:absolute; inset:0;
+  background: linear-gradient(135deg, var(--cream) 0%, #EAD9C4 100%);
+  border-radius:4px; transform:rotate(2deg);
+}
+.filo-main-box {
+  position:relative; z-index:2;
+  background: var(--bark); border-radius:4px;
+  padding: 60px 48px;
+  color: var(--cream);
+}
+.filo-list { list-style:none; }
+.filo-list li {
+  display:flex; align-items:flex-start; gap:20px;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  font-size:15px; line-height:1.6; color:rgba(255,255,255,.75);
+}
+.filo-list li:last-child { border-bottom:none; padding-bottom:0; }
+.filo-num {
+  font-family: var(--f-display); font-size:32px;
+  font-weight:300; color:var(--sand); opacity:.4;
+  line-height:1; flex-shrink:0;
+}
+
+/* ── KITS ── */
+.kits-section { padding:120px 0; background:var(--cream); }
+.kits-header { text-align:center; margin-bottom:72px; }
+.kits-header .section-eyebrow { justify-content:center; }
+.kits-header .section-eyebrow::after { display:none; }
+.kits-header .section-eyebrow::before {
+  content:''; width:48px; height:1px; background:var(--sage);
+}
+
+.kits-grid {
+  display:grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap:2px;
+  background: var(--line);
+  border:1px solid var(--line);
+  border-radius:4px; overflow:hidden;
+}
+
+.kit-card {
+  background: var(--white);
+  padding: 40px 36px;
+  transition: background .3s var(--ease);
+  cursor:pointer; position:relative;
+  text-decoration:none; color:inherit; display:block;
+}
+.kit-card::after {
+  content:''; position:absolute; bottom:0; left:36px; right:36px;
+  height:2px; background:var(--clay); transform:scaleX(0); transform-origin:left;
+  transition: transform .4s var(--ease);
+}
+.kit-card:hover { background:var(--cream); }
+.kit-card:hover::after { transform:scaleX(1); }
+
+.kit-num {
+  font-size:10px; letter-spacing:3px; text-transform:uppercase;
+  color:var(--muted); margin-bottom:16px;
+}
+.kit-icon { font-size:36px; margin-bottom:20px; display:block; }
+.kit-name {
+  font-family: var(--f-display); font-size:26px;
+  font-weight:400; color:var(--bark); line-height:1.2;
+  margin-bottom:8px;
+}
+.kit-desc { font-size:13px; color:var(--muted); line-height:1.7; margin-bottom:24px; }
+.kit-tags { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:28px; }
+.kit-tag {
+  background:var(--cream); color:var(--earth);
+  font-size:10px; letter-spacing:1.5px; text-transform:uppercase;
+  padding:5px 10px; border-radius:2px;
+}
+.kit-footer {
+  display:flex; align-items:center; justify-content:space-between;
+  padding-top:20px; border-top:1px solid var(--line);
+}
+.kit-price {
+  font-family: var(--f-display); font-size:24px;
+  font-weight:300; color:var(--bark);
+}
+.kit-price small { font-size:12px; color:var(--muted); display:block; font-family:var(--f-body); }
+.kit-arrow {
+  width:36px; height:36px; border-radius:50%;
+  border:1px solid var(--line);
+  display:flex; align-items:center; justify-content:center;
+  color:var(--clay); font-size:14px;
+  transition: all .25s var(--ease);
+}
+.kit-card:hover .kit-arrow {
+  background:var(--clay); color:var(--white); border-color:var(--clay);
+}
+
+/* ── COMO FUNCIONA ── */
+.como { padding:120px 0; }
+.como-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start; }
+.como-steps { margin-top:48px; }
+.step {
+  display:flex; gap:28px; padding:28px 0;
+  border-bottom:1px solid var(--line);
+}
+.step:first-child { padding-top:0; }
+.step:last-child  { border-bottom:none; }
+.step-num {
+  font-family: var(--f-display); font-size:48px;
+  font-weight:300; color:var(--sand); line-height:1;
+  flex-shrink:0; width:56px;
+}
+.step-content {}
+.step-title { font-size:17px; font-weight:500; color:var(--bark); margin-bottom:8px; }
+.step-desc { font-size:14px; color:var(--muted); line-height:1.8; }
+
+.como-right { padding-top:80px; }
+.como-highlight {
+  background: linear-gradient(135deg, var(--bark) 0%, var(--earth) 100%);
+  border-radius:4px; padding:56px 48px; color:var(--cream);
+  position:relative; overflow:hidden;
+}
+.como-highlight::before {
+  content:'🌿';
+  font-size:180px; position:absolute;
+  right:-20px; bottom:-30px; opacity:.06;
+  line-height:1;
+}
+.como-highlight-title {
+  font-family: var(--f-display); font-size:32px;
+  font-weight:300; line-height:1.3; margin-bottom:20px;
+  color:var(--cream);
+}
+.como-highlight-title em { color:var(--sand); font-style:italic; }
+.como-highlight-body { font-size:14px; color:rgba(255,255,255,.65); line-height:1.9; margin-bottom:32px; }
+.como-highlight-list { list-style:none; }
+.como-highlight-list li {
+  display:flex; gap:12px; align-items:flex-start;
+  font-size:14px; color:rgba(255,255,255,.75);
+  padding:8px 0;
+}
+.como-highlight-list li::before {
+  content:'✓'; color:var(--sage-l); font-weight:600; flex-shrink:0;
+}
+
+/* ── IA SECTION ── */
+.ia-section {
+  padding:120px 0;
+  background: var(--cream);
+  position:relative; overflow:hidden;
+}
+.ia-section::before {
+  content:'';
+  position:absolute; top:-100px; right:-100px;
+  width:600px; height:600px;
+  background: radial-gradient(circle, rgba(105,125,94,.08) 0%, transparent 70%);
+  border-radius:50%;
+}
+.ia-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+.ia-visual {
+  background: var(--white);
+  border:1px solid var(--line);
+  border-radius:4px; padding:40px; position:relative;
+}
+.ia-chat-bubble {
+  border-radius:12px 12px 12px 2px;
+  padding:16px 20px; margin-bottom:12px;
+  font-size:14px; line-height:1.7;
+  max-width:85%;
+}
+.ia-chat-bubble.user {
+  background: var(--bark); color:var(--cream);
+  border-radius:12px 12px 2px 12px;
+  margin-left:auto;
+}
+.ia-chat-bubble.bot {
+  background: var(--cream); color:var(--bark);
+  border:1px solid var(--line);
+}
+.ia-chat-label {
+  font-size:10px; letter-spacing:2px; text-transform:uppercase;
+  color:var(--muted); margin-bottom:6px;
+}
+.ia-cta-area { margin-top:28px; padding-top:28px; border-top:1px solid var(--line); }
+.ia-badge {
+  display:inline-flex; align-items:center; gap:8px;
+  background:var(--sage); color:var(--white);
+  font-size:10px; letter-spacing:2px; text-transform:uppercase;
+  padding:6px 14px; border-radius:2px; margin-bottom:16px;
+}
+.ia-badge::before { content:'●'; font-size:7px; animation:blink 1.5s infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
+
+/* ── DEPOIMENTOS ── */
+.depo-section { padding:120px 0; }
+.depo-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:64px; }
+.depo-card {
+  padding:40px 36px;
+  border:1px solid var(--line); border-radius:4px;
+  position:relative;
+}
+.depo-card::before {
+  content:'"';
+  font-family: var(--f-display); font-size:80px;
+  color:var(--sand); opacity:.3;
+  position:absolute; top:20px; left:28px;
+  line-height:1;
+}
+.depo-text { font-size:15px; color:var(--muted); line-height:1.8; margin-bottom:24px; font-style:italic; }
+.depo-author { font-size:12px; font-weight:500; color:var(--bark); letter-spacing:1px; }
+.depo-kit { font-size:11px; color:var(--clay); letter-spacing:1.5px; text-transform:uppercase; margin-top:4px; }
+
+/* ── CTA FINAL ── */
+.cta-section {
+  padding:140px 0;
+  background:var(--bark);
+  text-align:center; position:relative; overflow:hidden;
+}
+.cta-section::before {
+  content:'Reset Essencial';
+  font-family: var(--f-display); font-size:clamp(60px,12vw,160px);
+  font-weight:600; color:rgba(255,255,255,.03);
+  position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+  white-space:nowrap; pointer-events:none; user-select:none;
+}
+.cta-eyebrow {
+  font-size:10px; letter-spacing:4px; text-transform:uppercase;
+  color:var(--sand); margin-bottom:24px; opacity:.7;
+}
+.cta-title {
+  font-family: var(--f-display);
+  font-size: clamp(40px, 5vw, 72px);
+  font-weight:300; color:var(--cream); line-height:1.15;
+  margin-bottom:20px;
+}
+.cta-title em { font-style:italic; color:var(--sand); }
+.cta-sub { font-size:16px; color:rgba(255,255,255,.5); margin-bottom:48px; }
+.cta-btns { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+.btn-wa {
+  display:inline-flex; align-items:center; gap:12px;
+  background:var(--wa); color:var(--white);
+  padding:18px 36px; border-radius:2px;
+  font-size:12px; letter-spacing:2px; text-transform:uppercase;
+  text-decoration:none; transition:all .25s var(--ease);
+}
+.btn-wa:hover { background:#1fbd59; transform:translateY(-2px); }
+.btn-wa-outline {
+  display:inline-flex; align-items:center; gap:12px;
+  background:transparent; color:var(--cream);
+  padding:18px 36px; border-radius:2px;
+  font-size:12px; letter-spacing:2px; text-transform:uppercase;
+  text-decoration:none; border:1px solid rgba(255,255,255,.25);
+  transition:all .25s var(--ease);
+}
+.btn-wa-outline:hover { border-color:rgba(255,255,255,.6); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--deep); color:rgba(255,255,255,.4);
+  padding:60px 0; text-align:center;
+}
+.footer-logo {
+  font-family: var(--f-display); font-size:28px;
+  font-weight:300; color:rgba(255,255,255,.7); margin-bottom:16px;
+}
+.footer-logo em { font-style:italic; color:var(--clay); }
+.footer-links {
+  display:flex; gap:32px; justify-content:center; list-style:none;
+  margin:24px 0; flex-wrap:wrap;
+}
+.footer-links a { color:rgba(255,255,255,.35); text-decoration:none; font-size:11px; letter-spacing:2px; text-transform:uppercase; transition:color .2s; }
+.footer-links a:hover { color:rgba(255,255,255,.7); }
+.footer-copy { font-size:12px; }
+
+/* ── WHATSAPP FLOAT ── */
+.wa-float {
+  position:fixed; bottom:32px; right:32px; z-index:800;
+  width:60px; height:60px; border-radius:50%;
+  background:var(--wa);
+  display:flex; align-items:center; justify-content:center;
+  text-decoration:none; box-shadow:0 8px 32px rgba(37,211,102,.4);
+  transition: all .3s var(--ease);
+}
+.wa-float:hover { transform:scale(1.1); box-shadow:0 12px 40px rgba(37,211,102,.55); }
+.wa-float svg { width:28px; height:28px; fill:white; }
+.wa-float-pulse {
+  position:absolute; inset:-4px; border-radius:50%;
+  border:2px solid var(--wa); opacity:.5;
+  animation:wa-pulse 2.5s ease-out infinite;
+}
+@keyframes wa-pulse {
+  0% { transform:scale(1); opacity:.5; }
+  100% { transform:scale(1.6); opacity:0; }
+}
+
+/* ── MOBILE NAV ── */
+.mobile-menu {
+  display:none; position:fixed; inset:0; z-index:800;
+  background:var(--white); flex-direction:column;
+  align-items:center; justify-content:center; gap:32px;
+}
+.mobile-menu.open { display:flex; }
+.mobile-menu a {
+  font-family: var(--f-display); font-size:32px;
+  font-weight:300; color:var(--bark); text-decoration:none;
+}
+.mobile-menu a:hover { color:var(--clay); }
+.mobile-close {
+  position:absolute; top:24px; right:24px;
+  background:none; border:none; cursor:pointer;
+  font-size:28px; color:var(--muted);
+}
+
+/* ── REVEAL ANIM ── */
+.reveal {
+  opacity:0; transform:translateY(32px);
+  transition: opacity .8s var(--ease), transform .8s var(--ease);
+}
+.reveal.visible { opacity:1; transform:none; }
+.reveal-d1 { transition-delay:.1s; }
+.reveal-d2 { transition-delay:.2s; }
+.reveal-d3 { transition-delay:.3s; }
+.reveal-d4 { transition-delay:.4s; }
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .hero { grid-template-columns:1fr; }
+  .hero-left { padding:100px 28px 60px; }
+  .hero-right { height:60vw; min-height:320px; }
+  .filosofia-grid,.como-grid,.ia-grid,.kits-grid { grid-template-columns:1fr; gap:40px; }
+  .depo-grid { grid-template-columns:1fr; }
+  .container { padding:0 24px; }
+  nav { padding:0 24px; }
+  .nav-links { display:none; }
+  .nav-mobile-btn { display:flex; }
+  .filosofia-stats { grid-template-columns:1fr 1fr; }
+}
+@media(max-width:600px){
+  .hero-cards { grid-template-columns:1fr 1fr; }
+  .filosofia-stats { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav id="nav">
+  <a href="#" class="logo">Reset <em>Essencial</em></a>
+  <ul class="nav-links">
+    <li><a href="#kits">Kits</a></li>
+    <li><a href="#como">Como funciona</a></li>
+    <li><a href="ia.html">Consultora IA</a></li>
+    <li><a href="#kits" class="nav-btn">Ver kits</a></li>
+  </ul>
+  <button class="nav-mobile-btn" onclick="document.getElementById('mobile-menu').classList.add('open')" aria-label="Menu">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobile-menu">
+  <button class="mobile-close" onclick="document.getElementById('mobile-menu').classList.remove('open')">✕</button>
+  <a href="#kits" onclick="document.getElementById('mobile-menu').classList.remove('open')">Kits</a>
+  <a href="#como" onclick="document.getElementById('mobile-menu').classList.remove('open')">Como funciona</a>
+  <a href="ia.html">Consultora IA</a>
+  <a href="https://wa.me/5511987206421?text=Olá!+Vim+pelo+site+e+quero+saber+mais+sobre+os+kits" target="_blank">WhatsApp</a>
+</div>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow reveal">Suplementação com propósito</div>
+    <h1 class="hero-title reveal reveal-d1">
+      Cuide do seu corpo
+      <em>com o essencial</em>
+    </h1>
+    <p class="hero-subtitle reveal reveal-d2">
+      7 kits organizados por objetivo — energia, sono, imunidade, equilíbrio e mais. Cada kit vem com guia informativo completo, elaborado por profissional de saúde.
+    </p>
+    <div class="hero-actions reveal reveal-d3">
+      <a href="#kits" class="btn-primary">Explorar kits</a>
+      <a href="ia.html" class="btn-outline">Consultora IA 🤖</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-badge">7</div>
+    <div class="hero-visual">
+      <div class="hero-cards">
+        <div class="hero-card">
+          <div class="hero-card-icon">🌱</div>
+          <div class="hero-card-name">Começo Organizado</div>
+          <div class="hero-card-price">R$ 151,08</div>
+        </div>
+        <div class="hero-card">
+          <div class="hero-card-icon">⚡</div>
+          <div class="hero-card-name">Corpo & Energia</div>
+          <div class="hero-card-price">R$ 175,57</div>
+        </div>
+        <div class="hero-card">
+          <div class="hero-card-icon">🌙</div>
+          <div class="hero-card-name">Corpo & Sono</div>
+          <div class="hero-card-price">R$ 164,57</div>
+        </div>
+        <div class="hero-card">
+          <div class="hero-card-icon">🧒</div>
+          <div class="hero-card-name">Reset Kids</div>
+          <div class="hero-card-price">R$ 159,67</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── STRIP ── -->
+<div class="intro-strip">
+  <div class="intro-strip-inner">
+    <div class="intro-strip-item"><span>Guia informativo completo</span></div>
+    <div class="intro-strip-dot"></div>
+    <div class="intro-strip-item"><span>7% de desconto incluído</span></div>
+    <div class="intro-strip-dot"></div>
+    <div class="intro-strip-item"><span>Profissional de saúde</span></div>
+    <div class="intro-strip-dot"></div>
+    <div class="intro-strip-item"><span>Pague via PIX</span></div>
+    <div class="intro-strip-dot"></div>
+    <div class="intro-strip-item"><span>Atendimento via WhatsApp</span></div>
+    <div class="intro-strip-dot"></div>
+    <div class="intro-strip-item"><span>Consultora IA disponível</span></div>
+    <div class="intro-strip-dot"></div>
+    <!-- duplicado para loop contínuo -->
+    <div class="intro-strip-item"><span>Guia informativo completo</span></div>
+    <div class="intro-strip-dot"></div>
+    <div class="intro-strip-item"><span>7% de desconto incluído</span></div>
+    <div class="intro-strip-dot"></div>
+    <div class="intro-strip-item"><span>Profissional de saúde</span></div>
+    <div class="intro-strip-dot"></div>
+    <div class="intro-strip-item"><span>Pague via PIX</span></div>
+    <div class="intro-strip-dot"></div>
+    <div class="intro-strip-item"><span>Atendimento via WhatsApp</span></div>
+    <div class="intro-strip-dot"></div>
+    <div class="intro-strip-item"><span>Consultora IA disponível</span></div>
+    <div class="intro-strip-dot"></div>
+  </div>
+</div>
+
+<!-- ── FILOSOFIA ── -->
+<section class="filosofia">
+  <div class="container">
+    <div class="filosofia-grid">
+      <div class="filosofia-text">
+        <div class="section-eyebrow reveal">Nossa filosofia</div>
+        <h2 class="section-title reveal reveal-d1">Simples. <em>Natural.</em> Eficaz.</h2>
+        <p class="filosofia-lead reveal reveal-d2">
+          Suplementação não precisa ser complicada. Cada kit foi pensado para um objetivo claro — sem exagero, sem promessas vazias.
+        </p>
+        <p class="filosofia-body reveal reveal-d3">
+          Cada produto que integra os kits da Reset Essencial foi selecionado com base em evidências científicas e no conhecimento de profissionais de saúde. Receba junto ao seu kit um guia completo explicando cada suplemento, como age no seu corpo, horário ideal e cuidados importantes.
+        </p>
+        <div class="filosofia-stats reveal reveal-d4">
+          <div class="stat-box">
+            <div class="stat-num">7</div>
+            <div class="stat-label">Kits disponíveis</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">4+</div>
+            <div class="stat-label">Suplementos por kit</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">7%</div>
+            <div class="stat-label">Desconto incluído</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="filosofia-visual reveal reveal-d2">
+        <div class="filo-bg-box"></div>
+        <div class="filo-main-box">
+          <ul class="filo-list">
+            <li>
+              <span class="filo-num">01</span>
+              <div>
+                <strong style="color:#F8F4ED;display:block;margin-bottom:4px">Guia informativo completo</strong>
+                Cada kit inclui um guia digital detalhado com informações sobre cada suplemento, benefícios e modo de uso correto.
+              </div>
+            </li>
+            <li>
+              <span class="filo-num">02</span>
+              <div>
+                <strong style="color:#F8F4ED;display:block;margin-bottom:4px">Seleção com critério</strong>
+                Suplementos escolhidos com base em evidências científicas e experiência clínica de profissional de saúde.
+              </div>
+            </li>
+            <li>
+              <span class="filo-num">03</span>
+              <div>
+                <strong style="color:#F8F4ED;display:block;margin-bottom:4px">Atendimento personalizado</strong>
+                Nossa IA e nossa equipe estão disponíveis para tirar dúvidas e ajudar a encontrar o kit ideal para você.
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── KITS ── -->
+<section class="kits-section" id="kits">
+  <div class="container">
+    <div class="kits-header">
+      <div class="section-eyebrow reveal">Nossos kits</div>
+      <h2 class="section-title reveal reveal-d1">Encontre o seu <em>objetivo</em></h2>
+      <p class="reveal reveal-d2" style="color:var(--muted);margin-top:16px;font-size:15px">Cada kit foi desenvolvido para uma necessidade específica. Com 7% de desconto já incluído.</p>
+    </div>
+
+    <div class="kits-grid">
+
+      <a href="guia-01-comeco-organizado.html" class="kit-card reveal">
+        <div class="kit-num">Kit 01</div>
+        <span class="kit-icon">🌱</span>
+        <div class="kit-name">Começo Organizado</div>
+        <p class="kit-desc">A base essencial para adultos que querem começar com saúde e equilíbrio.</p>
+        <div class="kit-tags">
+          <span class="kit-tag">Polivitamínico</span>
+          <span class="kit-tag">Magnésio</span>
+          <span class="kit-tag">Vitamina D3</span>
+          <span class="kit-tag">Ômega 3</span>
+        </div>
+        <div class="kit-footer">
+          <div class="kit-price">R$ 151,08 <small>7% de desc. incluído</small></div>
+          <div class="kit-arrow">→</div>
+        </div>
+      </a>
+
+      <a href="guia-02-energia.html" class="kit-card reveal reveal-d1">
+        <div class="kit-num">Kit 02</div>
+        <span class="kit-icon">⚡</span>
+        <div class="kit-name">Corpo & Energia</div>
+        <p class="kit-desc">Disposição e vitalidade de verdade para quem se sente constantemente cansado.</p>
+        <div class="kit-tags">
+          <span class="kit-tag">Complexo B</span>
+          <span class="kit-tag">CoQ10</span>
+          <span class="kit-tag">Vitamina C</span>
+          <span class="kit-tag">Ômega 3</span>
+        </div>
+        <div class="kit-footer">
+          <div class="kit-price">R$ 175,57 <small>7% de desc. incluído</small></div>
+          <div class="kit-arrow">→</div>
+        </div>
+      </a>
+
+      <a href="guia-03-sono.html" class="kit-card reveal reveal-d2">
+        <div class="kit-num">Kit 03</div>
+        <span class="kit-icon">🌙</span>
+        <div class="kit-name">Corpo & Sono</div>
+        <p class="kit-desc">Durma melhor naturalmente e acorde realmente descansado.</p>
+        <div class="kit-tags">
+          <span class="kit-tag">Melatonina</span>
+          <span class="kit-tag">AnsioZEN</span>
+          <span class="kit-tag">Magnésio</span>
+          <span class="kit-tag">Vitamina D3</span>
+        </div>
+        <div class="kit-footer">
+          <div class="kit-price">R$ 164,57 <small>7% de desc. incluído</small></div>
+          <div class="kit-arrow">→</div>
+        </div>
+      </a>
+
+      <a href="guia-04-imunidade.html" class="kit-card reveal">
+        <div class="kit-num">Kit 04</div>
+        <span class="kit-icon">🛡️</span>
+        <div class="kit-name">Corpo & Imunidade</div>
+        <p class="kit-desc">Fortaleça suas defesas naturais e reduza a frequência de infecções.</p>
+        <div class="kit-tags">
+          <span class="kit-tag">Vitamina C</span>
+          <span class="kit-tag">Vitamina D3</span>
+          <span class="kit-tag">Zinco</span>
+          <span class="kit-tag">Própolis</span>
+        </div>
+        <div class="kit-footer">
+          <div class="kit-price">R$ 146,65 <small>7% de desc. incluído</small></div>
+          <div class="kit-arrow">→</div>
+        </div>
+      </a>
+
+      <a href="guia-05-equilibrio.html" class="kit-card reveal reveal-d1">
+        <div class="kit-num">Kit 05</div>
+        <span class="kit-icon">🧠</span>
+        <div class="kit-name">Corpo & Equilíbrio</div>
+        <p class="kit-desc">Foco, memória e equilíbrio emocional para quem vive sob estresse.</p>
+        <div class="kit-tags">
+          <span class="kit-tag">Ginkgo Biloba</span>
+          <span class="kit-tag">Ashwagandha</span>
+          <span class="kit-tag">Magnésio</span>
+          <span class="kit-tag">Vitamina D3</span>
+        </div>
+        <div class="kit-footer">
+          <div class="kit-price">R$ 155,78 <small>7% de desc. incluído</small></div>
+          <div class="kit-arrow">→</div>
+        </div>
+      </a>
+
+      <a href="guia-06-performance.html" class="kit-card reveal reveal-d2">
+        <div class="kit-num">Kit 06</div>
+        <span class="kit-icon">💪</span>
+        <div class="kit-name">Corpo & Performance</div>
+        <p class="kit-desc">Potencialize seus treinos, ganho muscular e recuperação.</p>
+        <div class="kit-tags">
+          <span class="kit-tag">Creatina</span>
+          <span class="kit-tag">CoQ10</span>
+          <span class="kit-tag">Ômega 3</span>
+          <span class="kit-tag">Vitamina D3</span>
+        </div>
+        <div class="kit-footer">
+          <div class="kit-price">R$ 166,54 <small>7% de desc. incluído</small></div>
+          <div class="kit-arrow">→</div>
+        </div>
+      </a>
+
+      <a href="guia-07-kids.html" class="kit-card reveal" style="grid-column:span 3">
+        <div class="kit-num">Kit 07 · Especial</div>
+        <span class="kit-icon">🧒</span>
+        <div class="kit-name">Reset Kids</div>
+        <p class="kit-desc">Nutrição completa para crianças de 4 a 12 anos — formulações específicas para cada faixa etária.</p>
+        <div class="kit-tags">
+          <span class="kit-tag">Polivitamínico Kids</span>
+          <span class="kit-tag">Vitamina D3 gotas</span>
+          <span class="kit-tag">Cálcio + Magnésio + Zinco</span>
+          <span class="kit-tag">Ferro Quelato + Vit. C</span>
+        </div>
+        <div class="kit-footer">
+          <div class="kit-price">R$ 159,67 <small>7% de desc. incluído</small></div>
+          <div class="kit-arrow">→</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── COMO FUNCIONA ── -->
+<section class="como" id="como">
+  <div class="container">
+    <div class="como-grid">
+      <div>
+        <div class="section-eyebrow reveal">Como funciona</div>
+        <h2 class="section-title reveal reveal-d1">Simples como <em>deveria ser</em></h2>
+        <div class="como-steps">
+          <div class="step reveal reveal-d1">
+            <div class="step-num">01</div>
+            <div class="step-content">
+              <div class="step-title">Escolha seu objetivo</div>
+              <p class="step-desc">Explore os 7 kits ou converse com nossa Consultora IA para encontrar o ideal para você.</p>
+            </div>
+          </div>
+          <div class="step reveal reveal-d2">
+            <div class="step-num">02</div>
+            <div class="step-content">
+              <div class="step-title">Fale com a gente no WhatsApp</div>
+              <p class="step-desc">Nosso atendimento personalizado esclarece dúvidas e confirma o pedido.</p>
+            </div>
+          </div>
+          <div class="step reveal reveal-d3">
+            <div class="step-num">03</div>
+            <div class="step-content">
+              <div class="step-title">Pague via PIX</div>
+              <p class="step-desc">Pagamento simples e seguro via PIX. Parcelamento disponível pelo WhatsApp.</p>
+            </div>
+          </div>
+          <div class="step reveal reveal-d4">
+            <div class="step-num">04</div>
+            <div class="step-content">
+              <div class="step-title">Receba seu kit + guia</div>
+              <p class="step-desc">Seu kit chega com o guia informativo completo em formato digital — leia quando quiser, de qualquer dispositivo.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="como-right reveal reveal-d2">
+        <div class="como-highlight">
+          <div class="como-highlight-title">
+            Cada kit inclui um <em>Guia Informativo</em> completo
+          </div>
+          <p class="como-highlight-body">
+            Elaborado por profissional de saúde, o guia traz tudo que você precisa saber sobre cada suplemento do seu kit — de forma clara, científica e acessível.
+          </p>
+          <ul class="como-highlight-list">
+            <li>Benefícios de cada suplemento</li>
+            <li>Como age no organismo</li>
+            <li>Horário ideal para tomar</li>
+            <li>Combinações e cuidados</li>
+            <li>Dicas para melhores resultados</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── IA SECTION ── -->
+<section class="ia-section">
+  <div class="container">
+    <div class="ia-grid">
+      <div class="ia-visual reveal">
+        <div class="ia-chat-label">Consultora Reset IA</div>
+        <div class="ia-badge">IA online</div>
+        <div class="ia-chat-bubble bot">
+          Olá! Sou a consultora da Reset Essencial 🌿 Me conta um pouco — você sente mais cansaço, dificuldade para dormir ou quer melhorar a imunidade?
+        </div>
+        <div class="ia-chat-bubble user">
+          Me sinto cansado o tempo todo, mesmo dormindo bem.
+        </div>
+        <div class="ia-chat-bubble bot">
+          Entendi! Isso pode ser falta de vitaminas do complexo B, CoQ10 ou Magnésio. Para você, o <strong>Kit Corpo & Energia</strong> seria perfeito — ele foi exatamente criado para isso. Quer saber mais?
+        </div>
+        <div class="ia-cta-area">
+          <a href="ia.html" class="btn-primary" style="width:100%;justify-content:center">
+            Conversar com a IA →
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <div class="section-eyebrow reveal">Consultora IA</div>
+        <h2 class="section-title reveal reveal-d1">Descubra seu kit <em>ideal</em></h2>
+        <p class="reveal reveal-d2" style="color:var(--muted);font-size:15px;line-height:1.9;margin:24px 0">
+          Nossa Consultora IA foi treinada com o conhecimento completo de todos os nossos kits e suplementos. Faça perguntas, descreva seus objetivos — ela vai te indicar o caminho certo.
+        </p>
+        <ul class="como-highlight-list reveal reveal-d3" style="list-style:none">
+          <li style="display:flex;gap:12px;padding:10px 0;font-size:15px;color:var(--muted);border-bottom:1px solid var(--line)">
+            <span style="color:var(--sage);font-weight:600">✓</span>
+            Disponível 24 horas por dia
+          </li>
+          <li style="display:flex;gap:12px;padding:10px 0;font-size:15px;color:var(--muted);border-bottom:1px solid var(--line)">
+            <span style="color:var(--sage);font-weight:600">✓</span>
+            Baseada nos PDFs técnicos dos kits
+          </li>
+          <li style="display:flex;gap:12px;padding:10px 0;font-size:15px;color:var(--muted);border-bottom:1px solid var(--line)">
+            <span style="color:var(--sage);font-weight:600">✓</span>
+            Recomendações personalizadas
+          </li>
+          <li style="display:flex;gap:12px;padding:10px 0;font-size:15px;color:var(--muted)">
+            <span style="color:var(--sage);font-weight:600">✓</span>
+            Sem julgamentos, sem pressão
+          </li>
+        </ul>
+        <div style="margin-top:32px" class="reveal reveal-d4">
+          <a href="ia.html" class="btn-primary">Falar com a Consultora →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── DEPOIMENTOS ── -->
+<section class="depo-section">
+  <div class="container">
+    <div class="section-eyebrow reveal">Resultados reais</div>
+    <h2 class="section-title reveal reveal-d1">O que dizem <em>nossos clientes</em></h2>
+    <div class="depo-grid">
+      <div class="depo-card reveal reveal-d1">
+        <p class="depo-text">Depois de 3 semanas com o Kit Corpo & Energia sinto uma diferença enorme na disposição. Não precisava de café para funcionar de manhã.</p>
+        <div class="depo-author">Mariana F.</div>
+        <div class="depo-kit">Kit 02 · Corpo & Energia</div>
+      </div>
+      <div class="depo-card reveal reveal-d2">
+        <p class="depo-text">O guia foi o que me convenceu. Finalmente entendi o que cada suplemento faz — não tomei nada às cegas. Recomendo muito!</p>
+        <div class="depo-author">Ricardo A.</div>
+        <div class="depo-kit">Kit 01 · Começo Organizado</div>
+      </div>
+      <div class="depo-card reveal reveal-d3">
+        <p class="depo-text">Comprei o Reset Kids para minha filha de 7 anos. O pediatra aprovou os suplementos e ela ama a vitamina D3 em gotas.</p>
+        <div class="depo-author">Fernanda C.</div>
+        <div class="depo-kit">Kit 07 · Reset Kids</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-eyebrow reveal">Pronto para começar?</div>
+    <h2 class="cta-title reveal reveal-d1">
+      Seu corpo merece
+      <em>o melhor</em>
+    </h2>
+    <p class="cta-sub reveal reveal-d2">Escolha seu kit, tire suas dúvidas e comece hoje.</p>
+    <div class="cta-btns reveal reveal-d3">
+      <a href="https://wa.me/5511987206421?text=Olá!+Vim+pelo+site+e+quero+saber+mais+sobre+os+kits+Reset+Essencial" target="_blank" class="btn-wa">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Falar no WhatsApp
+      </a>
+      <a href="#kits" class="btn-wa-outline">Ver todos os kits</a>
+      <a href="ia.html" class="btn-wa-outline">Consultora IA</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="container">
+    <div class="footer-logo">Reset <em>Essencial</em></div>
+    <ul class="footer-links">
+      <li><a href="#kits">Kits</a></li>
+      <li><a href="#como">Como funciona</a></li>
+      <li><a href="ia.html">Consultora IA</a></li>
+      <li><a href="https://wa.me/5511987206421" target="_blank">WhatsApp</a></li>
+    </ul>
+    <p class="footer-copy">© 2025 Reset Essencial — Suplementação com propósito · PIX: alexferreira.odontofresh@gmail.com</p>
+  </div>
+</footer>
+
+<!-- ── WA FLOAT ── -->
+<a href="https://wa.me/5511987206421?text=Olá!+Vim+pelo+site+Reset+Essencial" target="_blank" class="wa-float" aria-label="WhatsApp">
+  <div class="wa-float-pulse"></div>
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+// Nav scroll
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// Reveal on scroll
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+  });
+}, { threshold: 0.1 });
+reveals.forEach(r => observer.observe(r));
+
+// Trigger hero reveals immediately
+document.querySelectorAll('.hero .reveal').forEach(el => {
+  setTimeout(() => el.classList.add('visible'), 100);
+});
+</script>
+</body>
+</html>
