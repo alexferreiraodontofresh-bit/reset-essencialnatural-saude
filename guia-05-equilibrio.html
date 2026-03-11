@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mini Guia 05 — Corpo & Equilíbrio | Reset Essencial</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+
+:root{--cream:#F5F0E8;--warm:#FAF7F2;--bark:#5C4A32;--earth:#8B6E4E;--clay:#B8956A;--sage:#7A8C6E;--sand:#D4B896;--deep:#2E2418;--muted:#9B8B7A;--ls:#EDE4D6}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{background:var(--warm);color:var(--deep);font-family:'DM Sans',sans-serif;font-weight:300;overflow-x:hidden;line-height:1.7}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:16px 52px;display:flex;align-items:center;justify-content:space-between;background:rgba(250,247,242,.95);backdrop-filter:blur(14px);border-bottom:1px solid rgba(92,74,50,.09)}
+.logo{font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:600;color:var(--bark);text-decoration:none;letter-spacing:.3px}.logo span{font-weight:300;font-style:italic;color:var(--clay)}
+.nav-r{display:flex;align-items:center;gap:24px}
+.nav-l{list-style:none;display:flex;gap:30px}
+.nav-l a{text-decoration:none;color:var(--muted);font-size:11px;letter-spacing:2px;text-transform:uppercase;transition:color .3s}.nav-l a:hover{color:var(--bark)}
+.fwa{position:fixed;bottom:24px;right:24px;z-index:300;background:#25D366;width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 20px rgba(37,211,102,.4);transition:all .3s;animation:pulse 2.5s ease-in-out infinite}
+.fwa:hover{transform:scale(1.1);animation:none}
+.fwa svg{width:24px;height:24px;fill:white}
+@keyframes pulse{0%,100%{box-shadow:0 4px 20px rgba(37,211,102,.4)}50%{box-shadow:0 4px 36px rgba(37,211,102,.7)}}
+footer{background:var(--deep);padding:30px 52px;display:flex;align-items:center;justify-content:space-between}
+footer .logo{color:var(--sand)}footer .logo span{color:var(--clay)}
+.fp{font-size:12px;color:rgba(255,255,255,.28)}
+.wa-svg{width:20px;height:20px;fill:white}
+
+
+
+
+.pod-btn svg{width:18px;height:18px;fill:white}
+
+
+.pod-status{font-size:13px;color:rgba(245,240,232,.7);font-family:'Cormorant Garamond',serif;font-style:italic;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+.pod-prog{width:100%;height:4px;background:rgba(255,255,255,.12);border-radius:2px;cursor:pointer;margin-bottom:5px}
+.pod-fill{height:100%;background:var(--clay);border-radius:2px;width:0%;transition:width .1s}
+.pod-times{display:flex;justify-content:space-between;font-size:10px;color:rgba(245,240,232,.35)}
+.pod-speeds{display:flex;gap:6px}
+.spd{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);color:rgba(245,240,232,.6);font-size:11px;padding:5px 11px;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif}
+.spd.on,.spd:hover{background:rgba(184,149,106,.3);color:var(--sand);border-color:var(--clay)}
+.hero{min-height:56vh;background:linear-gradient(135deg,var(--bark),var(--earth));display:flex;align-items:center;justify-content:center;text-align:center;padding:110px 40px 70px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;border-radius:50%;border:1px solid rgba(255,255,255,.05)}
+.hero-in{position:relative;z-index:1;max-width:680px}
+.kit-badge{display:inline-block;background:rgba(184,149,106,.25);color:var(--sand);font-size:11px;letter-spacing:3px;text-transform:uppercase;padding:8px 20px;margin-bottom:24px;border:1px solid rgba(212,184,150,.3)}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(38px,6vw,68px);font-weight:300;color:var(--cream);line-height:1.06;margin-bottom:10px}
+.hero h1 em{font-style:italic;color:var(--sand)}
+.hero-sub{font-size:15px;color:rgba(245,240,232,.6);max-width:460px;margin:0 auto 32px;line-height:1.8}
+.hero-pills{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:36px}
+.pill{background:rgba(255,255,255,.08);color:rgba(245,240,232,.8);font-size:11px;padding:5px 14px;border-radius:20px;border:1px solid rgba(255,255,255,.12)}
+.btn-play{display:inline-flex;align-items:center;gap:11px;background:var(--clay);color:white;padding:14px 26px;border:none;cursor:pointer;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;transition:all .3s;font-family:'DM Sans',sans-serif}
+.btn-play:hover{background:var(--sand)}
+.content{max-width:760px;margin:0 auto;padding:72px 48px 100px}
+.ch{margin-bottom:68px}
+.ch-hdr{display:flex;align-items:center;gap:16px;margin-bottom:28px}
+.ch-num{font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:300;color:rgba(184,149,106,.18);line-height:1;flex-shrink:0}
+.ch-meta span{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--sage);margin-bottom:4px;display:block}
+.ch-title{font-family:'Cormorant Garamond',serif;font-size:clamp(22px,3vw,32px);font-weight:400;color:var(--bark);line-height:1.2}
+.ch-title em{font-style:italic;color:var(--clay)}
+.txt p{font-size:15px;line-height:1.9;color:var(--muted);margin-bottom:14px}
+.txt p strong{color:var(--bark);font-weight:500}
+.hbox{background:var(--ls);border-left:3px solid var(--clay);padding:18px 22px;margin:20px 0;font-size:14px;line-height:1.8;color:var(--earth)}
+.hbox strong{color:var(--bark);font-weight:500}
+.supps{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin:20px 0}
+.sc{background:var(--cream);padding:26px 24px;border-left:3px solid transparent;transition:all .3s}
+.sc:hover{border-left-color:var(--clay);background:var(--ls)}
+.sc-tag{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--sage);margin-bottom:8px;display:block}
+.sc h3{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--bark);margin-bottom:10px}
+.sc p{font-size:13px;color:var(--muted);line-height:1.7}
+.proto{background:var(--bark);padding:40px;position:relative;overflow:hidden;margin:20px 0}
+.proto::before{content:'';position:absolute;top:-80px;right:-80px;width:280px;height:280px;border-radius:50%;border:1px solid rgba(255,255,255,.05)}
+.proto h3{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:300;color:var(--cream);margin-bottom:4px}
+.proto h3 em{font-style:italic;color:var(--sand)}
+.proto-sub{font-size:12px;color:rgba(245,240,232,.4);margin-bottom:24px}
+.pl{display:flex;flex-direction:column;gap:2px;position:relative;z-index:1}
+.pi{background:rgba(255,255,255,.05);padding:18px 20px;display:flex;gap:16px;align-items:flex-start;border-left:2px solid transparent;transition:all .3s}
+.pi:hover{background:rgba(255,255,255,.08);border-left-color:var(--clay)}
+.pi-time{font-size:11px;letter-spacing:1px;color:var(--sand);text-transform:uppercase;flex-shrink:0;width:82px;padding-top:2px}
+.pi-body h4{font-size:14px;font-weight:500;color:var(--cream);margin-bottom:4px}
+.pi-body p{font-size:13px;color:rgba(245,240,232,.55);line-height:1.6}
+.proto-tip{background:rgba(184,149,106,.12);border:1px solid rgba(212,184,150,.18);padding:16px 20px;margin-top:12px;display:flex;gap:11px;position:relative;z-index:1}
+.proto-tip p{font-size:13px;color:rgba(245,240,232,.7);line-height:1.6}
+.proto-tip strong{color:var(--sand)}
+.hg{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;margin:20px 0}
+.hc{background:var(--cream);padding:24px 26px;transition:all .3s}
+.hc:hover{background:var(--ls);transform:translateY(-2px)}
+.hc-i{font-size:26px;margin-bottom:10px;display:block}
+.hc h4{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--bark);margin-bottom:6px}
+.hc p{font-size:13px;color:var(--muted);line-height:1.6}
+.fi{border-bottom:1px solid rgba(212,184,150,.28)}
+.fq{padding:18px 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:14px;font-size:14px;font-weight:400;color:var(--bark)}
+.ft{width:24px;height:24px;border-radius:50%;background:var(--ls);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .3s;font-size:15px;color:var(--clay)}
+.fi.op .ft{background:var(--clay);color:white;transform:rotate(45deg)}
+.fa{max-height:0;overflow:hidden;transition:max-height .4s ease;font-size:14px;color:var(--muted);line-height:1.8}
+.fai{padding-bottom:18px}
+.fi.op .fa{max-height:250px}
+.resumo{background:linear-gradient(135deg,var(--ls),var(--cream));padding:40px;border-left:4px solid var(--clay);margin:48px 0 0}
+.resumo h3{font-family:'Cormorant Garamond',serif;font-size:24px;color:var(--bark);margin-bottom:16px}
+.resumo h3 em{font-style:italic;color:var(--clay)}
+.ri{display:flex;align-items:center;gap:11px;font-size:14px;color:var(--earth);margin-bottom:10px}
+.ri::before{content:'✓';width:20px;height:20px;background:rgba(92,74,50,.12);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--bark);flex-shrink:0}
+
+/* PRICE CTA */
+.price-cta{background:var(--cream);padding:60px 48px;border-top:1px solid rgba(212,184,150,.4)}
+.price-cta-inner{max-width:760px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.pcta-l h2{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:300;color:var(--bark);margin-bottom:6px}
+.pcta-l h2 em{font-style:italic;color:var(--clay)}
+.pcta-l p{font-size:14px;color:var(--muted);margin-bottom:18px;line-height:1.7}
+.pcta-price{display:flex;align-items:baseline;gap:12px;margin-bottom:6px}
+.pcta-orig{font-size:15px;color:var(--muted);text-decoration:line-through}
+.pcta-kit{font-family:'Cormorant Garamond',serif;font-size:40px;color:var(--bark);font-weight:400}
+.pcta-save{font-size:13px;color:var(--sage);margin-bottom:24px}
+.pcta-btns{display:flex;flex-direction:column;gap:10px}
+.btn-pix-lg{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--bark);color:var(--cream);padding:15px 22px;text-decoration:none;font-size:12px;letter-spacing:1.2px;text-transform:uppercase;font-weight:500;transition:all .3s}
+.btn-pix-lg:hover{background:var(--deep);transform:translateY(-1px)}
+.btn-wa-lg{display:flex;align-items:center;justify-content:center;gap:10px;background:transparent;color:var(--bark);padding:13px 22px;text-decoration:none;font-size:12px;letter-spacing:1px;text-transform:uppercase;transition:all .3s;border:1.5px solid var(--clay)}
+.btn-wa-lg:hover{background:var(--ls);transform:translateY(-1px)}
+.btn-wa-lg svg{width:16px;height:16px;fill:#25D366;flex-shrink:0}
+.badge-sm{display:inline-block;background:var(--clay);color:white;font-size:10px;font-weight:500;letter-spacing:1.5px;padding:3px 10px;margin-bottom:10px}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@media(max-width:768px){
+  nav{padding:13px 18px}
+  .hero{padding:95px 20px 55px}.content{padding:44px 20px 70px}
+  .supps{grid-template-columns:1fr}.hg{grid-template-columns:1fr}.proto{padding:28px 18px}
+  .price-cta{padding:44px 18px}.price-cta-inner{grid-template-columns:1fr}
+  footer{padding:22px 18px;flex-direction:column;gap:8px;text-align:center}
+}
+
+
+
+
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="reset-essencial.html" class="logo">Reset <span>Essencial</span></a>
+  <div class="nav-r"><span style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)">Kit 05 · Corpo & Equilíbrio</span></div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-in">
+    <div class="kit-badge">🧠 Kit 05 · Adulto · Corpo & Equilíbrio</div>
+    <h1>Mini Guia<br><em>Corpo &amp; Equilíbrio</em></h1>
+    <p class="hero-sub">Estabilidade como constância, não intensidade</p>
+    <div class="hero-pills"><span class="pill">Ginkgo</span><span class="pill">Hipertana</span><span class="pill">Magnésio Quelato</span><span class="pill">Vitamina D3</span></div>
+    
+  </div>
+</section>
+
+<main class="content">
+
+  <div class="ch reveal">
+    <div class="ch-hdr"><span class="ch-num">01</span><div class="ch-meta"><span>Introdução</span><h2 class="ch-title">Por que este <em>kit?</em></h2></div></div>
+    <div class="txt"><p>Para quem busca mais clareza mental, equilíbrio emocional e circulação eficiente. Um kit que atua no sistema nervoso e cardiovascular com compostos de alta evidência.</p>
+    <div class="hbox"><strong>O que está incluso:</strong><ul style="list-style:none;margin-top:8px"><li>Ginkgo Biloba em gotas – Bios7</li><li>CircuAliv (Pinus Pinaster + Resveratrol)</li><li>Magnésio</li><li>Vitamina D3 – Flora Nativa</li></ul></div></div>
+  </div>
+
+  <div class="ch reveal">
+    <div class="ch-hdr"><span class="ch-num">02</span><div class="ch-meta"><span>Suplementos</span><h2 class="ch-title">O que você vai <em>receber</em></h2></div></div>
+    <div class="supps"><div class="sc"><span class="sc-tag">Suplemento 01</span><h3>Ginkgo Biloba em gotas</h3><p>O suplemento principal deste kit — acesse o podcast para o guia completo de uso, benefícios e o que esperar.</p></div><div class="sc"><span class="sc-tag">Suplemento 02</span><h3>CircuAliv (Pinus Pinaster + Resveratrol)</h3><p>Acesse o podcast completo para entender como este suplemento atua no seu organismo, suas funções, formas e o que a ciência diz sobre ele.</p></div><div class="sc"><span class="sc-tag">Suplemento 03</span><h3>Magnésio</h3><p>Acesse o podcast completo para entender como este suplemento atua no seu organismo, suas funções, formas e o que a ciência diz sobre ele.</p></div><div class="sc"><span class="sc-tag">Suplemento 04</span><h3>Vitamina D3</h3><p>Acesse o podcast completo para entender como este suplemento atua no seu organismo, suas funções, formas e o que a ciência diz sobre ele.</p></div>
+    </div>
+    <div class="hbox">🎙️ <strong>Quer saber mais sobre cada suplemento?</strong> O podcast completo deste guia explica cada um em detalhes — com linguagem clara e direta. Aperte play na barra acima.</div>
+  </div>
+
+  <div class="ch reveal">
+    <div class="ch-hdr"><span class="ch-num">03</span><div class="ch-meta"><span>Protocolo diário</span><h2 class="ch-title">Como e quando <em>tomar</em></h2></div></div>
+    <div class="proto">
+      <h3>Sua rotina <em>diária</em></h3>
+      <p class="proto-sub">Simples, prático, sustentável.</p>
+      <div class="pl"><div class="pi"><span class="pi-time">☀️ Manhã</span><div class="pi-body"><h4>Ginkgo Biloba em gotas + D3</h4><p>Ginkgo atua na microcirculação cerebral — ideal tomar cedo para apoiar o dia de trabalho e foco.</p></div></div><div class="pi"><span class="pi-time">🌞 Almoço</span><div class="pi-body"><h4>CircuAliv (Pinus Pinaster + Resveratrol)</h4><p>Antioxidante potente para circulação e saúde vascular. Melhor absorção com refeição.</p></div></div><div class="pi"><span class="pi-time">🌙 Noite</span><div class="pi-body"><h4>Magnésio</h4><p>Relaxamento muscular e nervoso. Apoia a recuperação e o equilíbrio do sistema nervoso durante o sono.</p></div></div></div>
+      <div class="proto-tip"><span style="font-size:18px;flex-shrink:0">💡</span><p><strong>Consistência é o segredo:</strong> Deixe os suplementos em lugar visível. O que você vê, você lembra. Dê 30 dias e avalie a diferença.</p></div>
+    </div>
+  </div>
+
+  <div class="ch reveal">
+    <div class="ch-hdr"><span class="ch-num">04</span><div class="ch-meta"><span>Hábitos</span><h2 class="ch-title">Potencialize os <em>resultados</em></h2></div></div>
+    <div class="hg"><div class="hc"><span class="hc-i">🚶</span><h4>Caminhada diária</h4><p>30 min de caminhada potencializa a circulação — efeito sinérgico com o CircuAliv.</p></div><div class="hc"><span class="hc-i">🧘</span><h4>Momentos de silêncio</h4><p>5–10 min de respiração ou meditação amplificam o efeito do Ginkgo no equilíbrio neurológico.</p></div><div class="hc"><span class="hc-i">💧</span><h4>Hidratação adequada</h4><p>Sangue viscoso circula mal. 2 litros de água é parte do protocolo vascular.</p></div><div class="hc"><span class="hc-i">🚫</span><h4>Evitar álcool em excesso</h4><p>Álcool e Ginkgo não combinam bem — pode amplificar efeitos anticoagulantes.</p></div></div>
+  </div>
+
+  <div class="ch reveal">
+    <div class="ch-hdr"><span class="ch-num">05</span><div class="ch-meta"><span>Dúvidas frequentes</span><h2 class="ch-title">Perguntas <em>e respostas</em></h2></div></div>
+    <div class="fi" onclick="tfaq(this)"><div class="fq"><span>O Ginkgo Biloba realmente funciona?</span><span class="ft">+</span></div><div class="fa"><div class="fai">Sim — tem uma das bases científicas mais robustas entre fitoterápicos. Estudos mostram melhora na microcirculação cerebral e periférica, memória e concentração.</div></div></div><div class="fi" onclick="tfaq(this)"><div class="fq"><span>O que é Pinus Pinaster?</span><span class="ft">+</span></div><div class="fa"><div class="fai">Extrato da casca de pinheiro marítimo, rico em OPC (oligômeros proantocianidólicos). Potente antioxidante vascular com evidências em saúde circulatória.</div></div></div><div class="fi" onclick="tfaq(this)"><div class="fq"><span>Resveratrol é o mesmo do vinho tinto?</span><span class="ft">+</span></div><div class="fa"><div class="fai">Sim — é o composto ativo do vinho tinto, mas em concentração muito maior. O kit entrega o benefício sem o álcool.</div></div></div><div class="fi" onclick="tfaq(this)"><div class="fq"><span>Posso tomar junto com anticoagulantes?</span><span class="ft">+</span></div><div class="fa"><div class="fai">O Ginkgo tem leve ação anticoagulante. Se você usa warfarina ou similares, consulte seu médico antes de iniciar.</div></div></div>
+  </div>
+
+  <div class="resumo reveal">
+    <h3>Resumo do <em>Kit 05</em></h3>
+    <div class="ri">Ginkgo em gotas + D3 pela manhã</div><div class="ri">CircuAliv com o almoço para absorção máxima</div><div class="ri">Magnésio à noite para equilíbrio e descanso</div><div class="ri">Caminhada diária potencializa a circulação</div><div class="ri">Consulte médico se usar anticoagulantes</div>
+  </div>
+
+</main>
+
+<div class="price-cta">
+  <div class="price-cta-inner">
+    <div class="pcta-l">
+      <h2>Adquira o <em>Corpo & Equilíbrio</em></h2>
+      <p>Mini Guia digital + podcast exclusivo incluso. Pague via PIX com confirmação imediata ou parcele no cartão via WhatsApp.</p>
+      <div class="badge-sm">7% OFF</div>
+      <div class="pcta-price">
+        <span class="pcta-orig">R$ 167,51</span>
+        <span class="pcta-kit">R$ 155,78</span>
+      </div>
+      <div class="pcta-save">Economize R$ 11,73</div>
+    </div>
+    <div class="pcta-btns">
+      <a href="https://wa.me/5511987206421?text=Ol%C3%A1%21%20Quero%20comprar%20o%20Kit%2005%20%E2%80%94%20Corpo%20%26%20Equil%C3%ADbrio%20%28R%24%20155%2C78%29.%20Pode%20me%20ajudar%3F" class="btn-pix-lg" target="_blank" style="background:#1a7e3a">
+        <svg viewBox="0 0 24 24" style="width:16px;height:16px;fill:white;flex-shrink:0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.025.507 3.933 1.395 5.61L.057 23.994l6.538-1.714A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.788 9.788 0 01-4.99-1.368l-.358-.213-3.881 1.018 1.037-3.786-.234-.389A9.789 9.789 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+        Comprar pelo WhatsApp
+      </a>
+      <p style="font-size:12px;color:var(--muted);text-align:center;margin-top:8px">PIX · Cartão parcelado · Código de desconto<br>Tudo pelo WhatsApp — rápido e seguro</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <a href="reset-essencial.html" class="logo">Reset <span>Essencial</span></a>
+  <p class="fp">Kit 05 · Corpo & Equilíbrio · Suplementação com propósito</p>
+</footer>
+
+<a href="https://wa.me/5511987206421?text=Ol%C3%A1%21%20Quero%20comprar%20o%20Kit%2005%20%E2%80%94%20Corpo%20%26%20Equil%C3%ADbrio.%20Pode%20me%20ajudar%3F" class="fwa" target="_blank">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.025.507 3.933 1.395 5.61L.057 23.994l6.538-1.714A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.788 9.788 0 01-4.99-1.368l-.358-.213-3.881 1.018 1.037-3.786-.234-.389A9.789 9.789 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+</a>
+
+<script>
+// Reveal animation
+const obs = new IntersectionObserver(es => {
+  es.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); } });
+}, { threshold: .08 });
+document.querySelectorAll('.reveal').forEach((el, i) => {
+  el.style.transitionDelay = (i * .05) + 's';
+  obs.observe(el);
+});
+// FAQ
+function tfaq(el){ const o=el.classList.contains('op'); document.querySelectorAll('.fi').forEach(i=>i.classList.remove('op')); if(!o)el.classList.add('op'); }
+  setTimeout(() => { document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible')); }, 300);
+</script>
+</body>
+</html>
