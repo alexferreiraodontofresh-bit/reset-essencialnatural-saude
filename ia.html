@@ -1,185 +1,165 @@
 <script>
 
-// ── CONTROLE ─────────────────────────────
 let conversationHistory = [];
 let isLoading = false;
 
-
-// ── ADICIONAR MENSAGEM ───────────────────
+// ── FUNÇÕES ──────────────────────────────────────────────
 
 function addMessage(role, content, isHTML = false) {
 
-  const msgs = document.getElementById('messages');
+const msgs = document.getElementById('messages');
 
-  const div = document.createElement('div');
-  div.className = `msg ${role}`;
+const div = document.createElement('div');
+div.className = `msg ${role}`;
 
-  const avatar = document.createElement('div');
-  avatar.className = 'msg-avatar';
-  avatar.textContent = role === 'bot' ? '🌿' : '👤';
+const avatar = document.createElement('div');
+avatar.className = 'msg-avatar';
+avatar.textContent = role === 'bot' ? '🌿' : '👤';
 
-  const bubble = document.createElement('div');
-  bubble.className = 'msg-bubble';
+const bubble = document.createElement('div');
+bubble.className = 'msg-bubble';
 
-  if (isHTML) {
-    bubble.innerHTML = content;
-  } else {
-    bubble.textContent = content;
-  }
-
-  div.appendChild(avatar);
-  div.appendChild(bubble);
-
-  msgs.appendChild(div);
-  msgs.scrollTop = msgs.scrollHeight;
+if(isHTML){
+bubble.innerHTML = content;
+}else{
+bubble.textContent = content;
 }
 
+div.appendChild(avatar);
+div.appendChild(bubble);
 
-// ── DIGITANDO ────────────────────────────
+msgs.appendChild(div);
 
-function showTyping() {
+msgs.scrollTop = msgs.scrollHeight;
 
-  const msgs = document.getElementById('messages');
-
-  const div = document.createElement('div');
-  div.className = 'msg bot';
-  div.id = 'typing-indicator';
-
-  div.innerHTML = `
-  <div class="msg-avatar">🌿</div>
-  <div class="msg-bubble typing">
-    <div class="typing-dot"></div>
-    <div class="typing-dot"></div>
-    <div class="typing-dot"></div>
-  </div>`;
-
-  msgs.appendChild(div);
-  msgs.scrollTop = msgs.scrollHeight;
+return div;
 
 }
 
-function removeTyping() {
+function showTyping(){
 
-  const t = document.getElementById('typing-indicator');
+const msgs = document.getElementById('messages');
 
-  if (t) t.remove();
+const div = document.createElement('div');
 
-}
+div.className = 'msg bot';
+div.id = 'typing-indicator';
 
+div.innerHTML = `
+<div class="msg-avatar">🌿</div>
+<div class="msg-bubble typing">
+<div class="typing-dot"></div>
+<div class="typing-dot"></div>
+<div class="typing-dot"></div>
+</div>
+`;
 
-// ── IA LOCAL (SEM API) ───────────────────
+msgs.appendChild(div);
 
-function callAI(userMessage) {
-
-  if (typeof responderIA === "function") {
-
-    const resposta = responderIA(userMessage);
-
-    return Promise.resolve(resposta);
-
-  }
-
-  return Promise.resolve("A IA ainda está carregando...");
-
-}
-
-
-// ── FORMATAR RESPOSTA ────────────────────
-
-function formatReply(text) {
-
-  return text
-    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-    .replace(/\n\n/g, '<br><br>')
-    .replace(/\n/g, '<br>');
+msgs.scrollTop = msgs.scrollHeight;
 
 }
 
+function removeTyping(){
 
-// ── ENVIAR MENSAGEM ──────────────────────
+const t = document.getElementById('typing-indicator');
 
-async function sendMessage() {
-
-  const input = document.getElementById('chat-input');
-  const text = input.value.trim();
-
-  if (!text || isLoading) return;
-
-  isLoading = true;
-
-  input.value = '';
-  input.style.height = 'auto';
-
-  document.getElementById('send-btn').disabled = true;
-
-  addMessage('user', text);
-
-  showTyping();
-
-  try {
-
-    const reply = await callAI(text);
-
-    removeTyping();
-
-    addMessage('bot', formatReply(reply), true);
-
-  } catch (err) {
-
-    removeTyping();
-
-    addMessage(
-      'bot',
-      'Ops! Houve um problema. Tente novamente ou fale conosco pelo WhatsApp.'
-    );
-
-  }
-
-  isLoading = false;
-
-  document.getElementById('send-btn').disabled = false;
-
-  input.focus();
+if(t) t.remove();
 
 }
 
+function callAI(userMessage){
 
-// ── BOTÕES RÁPIDOS ───────────────────────
+const resposta = responderIA(userMessage);
 
-function sendQuick(text) {
-
-  document.getElementById('chat-input').value = text;
-
-  sendMessage();
+return Promise.resolve(resposta);
 
 }
 
-function askKit(kitName) {
+function formatReply(text){
 
-  sendQuick(`Me fale mais sobre o kit ${kitName}.`);
-
-}
-
-
-// ── TECLADO ──────────────────────────────
-
-function handleKey(e) {
-
-  if (e.key === 'Enter' && !e.shiftKey) {
-
-    e.preventDefault();
-
-    sendMessage();
-
-  }
+return text
+.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>')
+.replace(/\n\n/g,'<br><br>')
+.replace(/\n/g,'<br>');
 
 }
 
-function autoResize(el) {
+async function sendMessage(){
 
-  el.style.height = 'auto';
+const input = document.getElementById('chat-input');
 
-  el.style.height = Math.min(el.scrollHeight, 120) + 'px';
+const text = input.value.trim();
+
+if(!text || isLoading) return;
+
+isLoading = true;
+
+input.value = '';
+
+input.style.height = 'auto';
+
+document.getElementById('send-btn').disabled = true;
+
+addMessage('user', text);
+
+showTyping();
+
+try{
+
+const reply = await callAI(text);
+
+removeTyping();
+
+addMessage('bot', formatReply(reply), true);
+
+}catch(err){
+
+removeTyping();
+
+addMessage('bot','Ops! Houve um problema. Tente novamente.');
+
+}
+
+isLoading = false;
+
+document.getElementById('send-btn').disabled = false;
+
+input.focus();
+
+}
+
+function sendQuick(text){
+
+document.getElementById('chat-input').value = text;
+
+sendMessage();
+
+}
+
+function askKit(kitName){
+
+sendQuick(`Me fale mais sobre o kit ${kitName}. O que está incluído e para quem é indicado?`);
+
+}
+
+function handleKey(e){
+
+if(e.key === 'Enter' && !e.shiftKey){
+
+e.preventDefault();
+
+sendMessage();
+
+}
+
+}
+
+function autoResize(el){
+
+el.style.height = 'auto';
+
+el.style.height = Math.min(el.scrollHeight,120) + 'px';
 
 }
 
