@@ -788,6 +788,38 @@ function removeTyping() {
 }
 
 async function callAI(userMessage) {
+
+  // IA LOCAL baseada no conhecimento do SYSTEM_PROMPT
+  const pergunta = userMessage.toLowerCase();
+
+  // respostas básicas
+  if(pergunta.includes("vitamina d")){
+    return "A **Vitamina D3** é essencial para imunidade, força muscular, saúde óssea e produção de serotonina. A dose comum para adultos é entre **2000 e 5000 UI por dia**, sempre junto com uma refeição que contenha gordura.";
+  }
+
+  if(pergunta.includes("omega 3")){
+    return "O **Ômega 3 (EPA + DHA)** é anti-inflamatório, protege o coração e melhora função cerebral. A dose comum é **1 a 2g por dia** junto com refeições.";
+  }
+
+  if(pergunta.includes("cansaço")){
+    return "Para **cansaço crônico**, o kit mais indicado costuma ser o **Corpo & Energia**, pois contém Complexo B, Magnésio + CoQ10, Vitamina C e Ômega 3 que ajudam na produção de energia celular.";
+  }
+
+  if(pergunta.includes("sono") || pergunta.includes("insônia")){
+    return "Para melhorar o sono recomendamos o **Kit Corpo & Sono**, que possui Melatonina, Magnésio Treonato e L-Teanina para relaxamento e regulação do ciclo circadiano.";
+  }
+
+  if(pergunta.includes("imunidade")){
+    return "Para fortalecer o sistema imunológico o mais indicado é o **Kit Corpo & Imunidade**, com Vitamina C, D3, Zinco e Própolis.";
+  }
+
+  if(pergunta.includes("academia") || pergunta.includes("treino")){
+    return "Para quem treina, o **Kit Corpo & Performance** ajuda na força muscular e recuperação pois contém Creatina, Ômega 3, Magnésio + CoQ10 e Vitamina D3.";
+  }
+
+  // resposta padrão
+  return "Posso te ajudar com informações sobre **vitaminas, minerais, suplementos ou os kits Reset Essencial**. O que você gostaria de saber?";
+}
   conversationHistory.push({ role: 'user', content: userMessage });
 
   const response = await fetch('https://api.anthropic.com/v1/messages', {
