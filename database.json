@@ -1,0 +1,36 @@
+{
+"vitamina d":{
+"nome":"Vitamina D3",
+"serve":"Saúde óssea, imunidade e força muscular.",
+"tomar":"2000–5000 UI por dia com refeição gordurosa.",
+"fontes":"sol, sardinha, salmão, gema de ovo"
+},
+
+"vitamina c":{
+"nome":"Vitamina C",
+"serve":"Imunidade, colágeno e cicatrização.",
+"tomar":"500 mg a 1 g por dia.",
+"fontes":"acerola, goiaba, kiwi"
+},
+
+"magnesio":{
+"nome":"Magnésio",
+"serve":"Energia, relaxamento muscular e melhora do sono.",
+"tomar":"300–400 mg por dia.",
+"fontes":"banana, espinafre, sementes"
+},
+
+"zinco":{
+"nome":"Zinco",
+"serve":"Imunidade, cicatrização e produção hormonal.",
+"tomar":"8–15 mg por dia.",
+"fontes":"ostras, carne vermelha"
+},
+
+"omega 3":{
+"nome":"Ômega 3",
+"serve":"Saúde do coração, cérebro e ação anti-inflamatória.",
+"tomar":"1–2 g por dia.",
+"fontes":"salmão, sardinha, chia"
+}
+}
