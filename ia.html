@@ -313,444 +313,376 @@ nav {
 </a>
 
 <script>
-// ── BASE DE CONHECIMENTO DOS KITS ──────────────────────────
-const SYSTEM_PROMPT = `Você é a Consultora da Reset Essencial, especialista em nutrição, suplementação e saúde natural. Você é calorosa, científica e extremamente bem informada. Responda sempre em português brasileiro de forma clara e acessível.
-
-══════════════════════════════════════════
-KITS RESET ESSENCIAL
-══════════════════════════════════════════
-
-KIT 01 - COMEÇO ORGANIZADO (R$ 151,08)
-Suplementos: Polivitamínico Adulto, Magnésio Treonato, Vitamina D3, Ômega 3
-Indicado para: adultos iniciando suplementação, carências gerais, cansaço leve
-Benefícios: energia, imunidade, saúde geral, pele, cabelo e unhas
-
-KIT 02 - CORPO & ENERGIA (R$ 175,57)
-Suplementos: Complexo B, Magnésio + CoQ10, Vitamina C, Ômega 3
-Indicado para: cansaço crônico, fadiga física e mental, falta de disposição
-Benefícios: produção de energia celular (ATP), metabolismo, combate ao cansaço
-
-KIT 03 - CORPO & SONO (R$ 164,57)
-Suplementos: Melatonina, AnsioZEN (L-Teanina + Passiflora + Magnésio), Magnésio Treonato, Vitamina D3
-Indicado para: insônia, dificuldade para adormecer, ansiedade noturna, sono não reparador
-Benefícios: adormecer com facilidade, sono profundo, relaxamento, regulação do ciclo circadiano
-
-KIT 04 - CORPO & IMUNIDADE (R$ 146,65)
-Suplementos: Vitamina C + D3 + Zinco, Própolis, Zinco, Vitamina D3
-Indicado para: baixa imunidade, infecções frequentes, recuperação lenta
-Benefícios: defesas naturais, antiviral, antibacteriano, resistência a doenças
-
-KIT 05 - CORPO & EQUILÍBRIO (R$ 155,78)
-Suplementos: Ginkgo Biloba, Ashwagandha (Hipertana), Magnésio Quelato, Vitamina D3
-Indicado para: estresse crônico, ansiedade, dificuldade de foco e memória
-Benefícios: cognição, redução de cortisol, equilíbrio emocional, memória
-
-KIT 06 - CORPO & PERFORMANCE (R$ 166,54)
-Suplementos: Creatina Monohidratada, Magnésio + CoQ10, Ômega 3, Vitamina D3
-Indicado para: praticantes de atividade física, atletas, academia
-Benefícios: força muscular, ganho de massa, recuperação, performance
-
-KIT 07 - RESET KIDS (R$ 159,67)
-Suplementos: Polivitamínico Kids, Vitamina D3 gotas, Multrix (Cálcio+Magnésio+Zinco), Ferrix (Ferro+Vit.C)
-Indicado para: crianças de 4 a 12 anos
-Benefícios: crescimento, imunidade infantil, desenvolvimento cerebral, prevenção de anemia
-
-══════════════════════════════════════════
-VITAMINAS LIPOSSOLÚVEIS (A, D, E, K)
-══════════════════════════════════════════
-
-VITAMINA A (Retinol / Beta-caroteno)
-- Funções: visão noturna, saúde da pele e mucosas, imunidade, crescimento celular, reprodução
-- Fontes naturais: fígado, gema de ovo, cenoura, batata-doce, manga, espinafre
-- Deficiência: cegueira noturna, pele seca, infecções frequentes
-- Como tomar: junto a refeição com gordura; doses altas são tóxicas — cuidado
-- Dose usual: 700–900 mcg/dia
-- Bariatria: absorção muito prejudicada — suplementação obrigatória
-
-VITAMINA D3 (Colecalciferol)
-- Funções: saúde óssea, imunidade, produção de serotonina, força muscular, regulação hormonal, proteção cardiovascular; regula mais de 1.000 genes
-- Fontes naturais: exposição solar (principal), salmão, sardinha, gema de ovo, cogumelos
-- Deficiência: cansaço, depressão, dores ósseas, imunidade baixa, fraqueza muscular
-- Como tomar: com refeição gordurosa (almoço ou jantar) para melhor absorção
-- Dose usual adultos: 2.000–5.000 UI/dia; crianças: 1.000–2.000 UI/dia
-- Sinergia: SEMPRE associar com Vitamina K2-MK7 para direcionar cálcio aos ossos
-- Bariatria: absorção gravemente prejudicada — doses até 50.000 UI semanais podem ser necessárias
-- Coração: reduz inflamação vascular e hipertensão
-- Mente: essencial para produção de serotonina e dopamina; deficiência associada à depressão
-- Ossos: fundamental para mineralização óssea — sem D3 o cálcio não é absorvido
-
-VITAMINA E (Tocoferol)
-- Funções: antioxidante potente, proteção das membranas celulares, saúde cardiovascular, pele, imunidade, fertilidade
-- Fontes naturais: amendoim, sementes de girassol, azeite, amêndoas, abacate, espinafre
-- Deficiência: dano oxidativo, fraqueza muscular, problemas neurológicos
-- Como tomar: com refeição gordurosa; preferir forma natural (d-alfa-tocoferol)
-- Dose usual: 15 mg/dia; terapêutica: 200–400 UI/dia
-- Coração: protege o LDL da oxidação, reduz risco cardiovascular
-
-VITAMINA K2 (Menaquinona MK-7)
-- Funções: direciona cálcio para ossos e dentes (longe das artérias), coagulação sanguínea, saúde cardiovascular, prevenção de calcificação arterial
-- Fontes naturais: natto (soja fermentada), queijo gouda, gema de ovo, fígado
-- Deficiência: calcificação arterial, osteoporose, coagulação prejudicada
-- Como tomar: com refeição gordurosa; SEMPRE junto com vitamina D3
-- Dose usual: 90–200 mcg/dia de MK-7
-- Coração: previne depósito de cálcio nas artérias — crucial para quem toma D3
-- Ossos: sinaliza osteocalcina a incorporar cálcio na matriz óssea
-
-VITAMINA K1 (Filoquinona)
-- Funções: coagulação sanguínea, saúde óssea básica
-- Fontes naturais: couve, espinafre, brócolis, alface
-- Atenção: pode interagir com anticoagulantes (warfarina) — consultar médico
-
-══════════════════════════════════════════
-VITAMINAS HIDROSSOLÚVEIS (C e Complexo B)
-══════════════════════════════════════════
-
-VITAMINA C (Ácido Ascórbico)
-- Funções: antioxidante, síntese de colágeno, absorção de ferro, imunidade, cicatrização, regeneração da vitamina E
-- Fontes naturais: acerola, caju, goiaba, kiwi, morango, laranja, pimentão
-- Deficiência: escorbuto, cansaço, pele ruim, imunidade baixa, cicatrização lenta
-- Como tomar: a qualquer hora; dividir em 2 doses melhora absorção; tomar com refeições reduz desconforto
-- Dose usual: 500 mg–1 g/dia; terapêutica: até 2 g/dia
-- Mente: cofator na síntese de neurotransmissores (serotonina, dopamina)
-- Coração: reduz oxidação do LDL e inflamação vascular
-- Bariatria: absorção reduzida — suplementação importante
-
-VITAMINA B1 (Tiamina)
-- Funções: metabolismo de carboidratos, função nervosa, produção de energia
-- Fontes: cereais integrais, carne suína, leguminosas, nozes
-- Deficiência: beribéri, fadiga, disfunção neurológica
-- Bariatria: deficiência grave pode causar encefalopatia de Wernicke — suplementação urgente
-
-VITAMINA B2 (Riboflavina)
-- Funções: metabolismo energético, saúde da pele e mucosas, visão
-- Fontes: leite, ovos, carnes, cogumelos, amêndoas
-- Deficiência: lesões na boca, fotossensibilidade, anemia
-
-VITAMINA B3 (Niacina)
-- Funções: metabolismo energético, reparo do DNA, saúde da pele, redução de colesterol
-- Fontes: carnes, atum, amendoim, cogumelos
-- Deficiência: pelagra (dermatite, diarreia, demência)
-- Terapêutica: doses altas reduzem triglicerídeos e aumentam HDL — uso médico
-
-VITAMINA B5 (Ácido Pantotênico)
-- Funções: síntese de CoA (central no metabolismo), produção de hormônios, metabolismo de gorduras
-- Fontes: fígado, cogumelos, abacate, ovos, carnes
-
-VITAMINA B6 (Piridoxina)
-- Funções: metabolismo de proteínas e aminoácidos, síntese de neurotransmissores (serotonina, dopamina, GABA), imunidade, formação de hemácias
-- Fontes: frango, batata, banana, espinafre, atum
-- Deficiência: depressão, irritabilidade, síndrome pré-menstrual, anemia
-- Mente: essencial para serotonina e dopamina — impacta humor diretamente
-
-VITAMINA B7 (Biotina)
-- Funções: metabolismo de gorduras e carboidratos, saúde de cabelo, pele e unhas, síntese de queratina
-- Fontes: gema de ovo, fígado, nozes, sementes, abacate
-- Deficiência: queda de cabelo, pele seca, unhas fracas
-- Dose cosmética: 2.500–5.000 mcg/dia
-
-VITAMINA B9 (Folato / Ácido Fólico)
-- Funções: síntese de DNA, formação de hemácias, desenvolvimento fetal (prevenção de defeitos do tubo neural), saúde cardiovascular
-- Fontes: folhas verdes escuras, feijão, lentilha, aspargos, fígado
-- Deficiência: anemia megaloblástica, risco cardiovascular, defeitos fetais
-- Gestação: obrigatório 400–800 mcg/dia antes e durante a gravidez
-- Bariatria: suplementação essencial
-
-VITAMINA B12 (Cobalamina)
-- Funções: formação de hemácias, saúde do sistema nervoso, síntese de DNA, metabolismo de homocisteína
-- Fontes: exclusivamente animais — carnes, fígado, ovos, laticínios
-- Deficiência: anemia perniciosa, neuropatia, depressão, perda de memória, formigamentos
-- Grupos de risco: veganos, vegetarianos, idosos, usuários de metformina e omeprazol
-- Como tomar: sublingual ou intramuscular tem melhor absorção; preferir metilcobalamina
-- Bariatria: absorção gravemente prejudicada — injeções mensais frequentemente necessárias
-- Mente: essencial para mielina (bainha dos nervos) e síntese de neurotransmissores
-
-══════════════════════════════════════════
-MINERAIS ESSENCIAIS
-══════════════════════════════════════════
-
-MAGNÉSIO
-- Funções: cofator em mais de 300 reações enzimáticas, produção de ATP, contração e relaxamento muscular, regulação do sistema nervoso, síntese de serotonina e GABA, saúde óssea, controle glicêmico
-- Fontes naturais: sementes de abóbora, espinafre, amêndoas, banana, abacate, feijão preto, chocolate amargo
-- Deficiência: câimbras, insônia, ansiedade, enxaqueca, hipertensão, constipação
-- Tipos e absorção:
-  * Treonato: atravessa barreira hematoencefálica — melhor para cérebro, memória, ansiedade
-  * Bisglicinato/Quelato: alta absorção, melhor tolerância gástrica — uso geral
-  * Citrato: boa absorção, efeito levemente laxante — constipação
-  * Óxido: absorção de apenas 4% — evitar
-  * Malato: bom para dores musculares e fibromialgia
-- Dose usual: 300–400 mg/dia; dividir em 2 doses
-- Coração: reduz hipertensão, arritmias e espasmos vasculares
-- Mente: regula cortisol, melhora sono, reduz ansiedade e depressão
-- Ossos: essencial para ativação da vitamina D e incorporação de cálcio
-
-ZINCO
-- Funções: mais de 300 enzimas dependem do zinco; imunidade, cicatrização, síntese de proteínas, crescimento, olfato e paladar, fertilidade e testosterona, saúde da pele
-- Fontes naturais: ostras (maior fonte), carne vermelha, sementes de abóbora, castanha de caju, grão-de-bico
-- Deficiência: imunidade baixa, queda de cabelo, pele ruim, perda de olfato e paladar, infertilidade
-- Como tomar: longe das refeições para melhor absorção; não combinar com ferro ou cálcio
-- Dose usual: 8–11 mg/dia; terapêutica: 15–30 mg/dia
-- Limite superior: 40 mg/dia — excesso prejudica absorção de cobre
-- Bariatria: deficiência muito comum — suplementação essencial
-
-FERRO
-- Funções: componente da hemoglobina (transporte de oxigênio), mioglobina muscular, produção de energia, desenvolvimento cerebral, imunidade
-- Fontes: heme (melhor absorção): carnes vermelhas, fígado, frango; não-heme: feijão, lentilha, espinafre, tofu
-- Deficiência: anemia ferropriva — cansaço, palidez, falta de ar, foco ruim, queda de cabelo
-- Como tomar: em jejum com vitamina C para triplicar absorção; separar 2h de cálcio e chá
-- Tipos: quelato (melhor tolerância), bisglicinato (menos constipação), sulfato (mais barato)
-- Dose: conforme orientação médica e exames; crianças: calculada por peso pelo pediatra
-- Bariatria: absorção muito prejudicada — suplementação obrigatória com monitoramento
-
-CÁLCIO
-- Funções: estrutura óssea e dentária, contração muscular, coagulação, transmissão nervosa, ritmo cardíaco
-- Fontes: laticínios, sardinha, brócolis, tofu, sementes de gergelim, couve
-- Deficiência: osteoporose, câimbras, tetania, arritmias
-- Como tomar: dividir em doses de até 500 mg (melhor absorção); não tomar com ferro
-- Tipos: citrato (melhor absorção, pode tomar em jejum), carbonato (mais barato, precisa de ácido gástrico)
-- Dose usual: 1.000–1.200 mg/dia (total dieta + suplemento)
-- IMPORTANTE: sempre associar com Vitamina D3 e K2 para eficácia real
-- Bariatria: carbonato contraindicado — usar citrato de cálcio obrigatoriamente
-- Ossos: base da estrutura óssea, mas sozinho não basta — precisa de D3, K2 e magnésio
-
-POTÁSSIO
-- Funções: equilíbrio hídrico, pressão arterial, função cardíaca, contração muscular, transmissão nervosa
-- Fontes: banana, abacate, batata, espinafre, feijão, iogurte, salmão
-- Deficiência: câimbras graves, fraqueza, arritmias, hipertensão
-- Coração: fundamental para ritmo cardíaco normal e controle da pressão
-
-SELÊNIO
-- Funções: antioxidante (glutationa peroxidase), saúde da tireoide, imunidade, fertilidade masculina, prevenção do câncer
-- Fontes: castanha-do-pará (1–3 unidades/dia supre a necessidade), frutos do mar, carnes
-- Dose: 55–200 mcg/dia; excesso é tóxico — cuidado com megadoses
-- Tireoide: essencial para conversão de T4 em T3 ativo
-
-IODO
-- Funções: produção de hormônios tireoidianos (T3 e T4), metabolismo, desenvolvimento cerebral fetal
-- Fontes: frutos do mar, sal iodado, algas marinhas, laticínios
-- Deficiência: hipotireoidismo, bócio, cretinismo fetal
-- Gestação: necessidade aumenta 50% — suplementação geralmente necessária
-
-COBRE
-- Funções: síntese de colágeno e elastina, metabolismo do ferro, função neurológica, antioxidante
-- Fontes: fígado, frutos do mar, nozes, sementes, cogumelos
-- Atenção: zinco em excesso compete com cobre — monitorar
-- Bariatria: deficiência causa anemia e neuropatia
-
-FÓSFORO
-- Funções: estrutura óssea e dentária (junto ao cálcio), ATP (energia), membranas celulares
-- Fontes: proteínas animais, laticínios, nozes, leguminosas
-- Deficiência rara mas ocorre em bariatria e desnutrição grave
-
-CROMO
-- Funções: potencializa ação da insulina, controle glicêmico, metabolismo de carboidratos
-- Fontes: brócolis, carnes, cereais integrais, nozes
-- Terapêutica: útil para resistência à insulina e diabetes tipo 2
-
-MANGANÊS
-- Funções: metabolismo energético, formação óssea, antioxidante, síntese de colágeno
-- Fontes: aveia, nozes, leguminosas, chá verde, abacaxi
-
-══════════════════════════════════════════
-ÔMEGA 3 E ÓLEOS ESSENCIAIS
-══════════════════════════════════════════
-
-ÔMEGA 3 (EPA e DHA)
-- Funções: anti-inflamatório sistêmico, saúde cardiovascular, desenvolvimento e função cerebral, saúde da pele e articulações, redução de triglicerídeos, suporte à saúde mental
-- EPA (ácido eicosapentaenoico): anti-inflamatório, humor, depressão, coração
-- DHA (ácido docosaexaenoico): estrutural do cérebro e retina, memória, cognição
-- Fontes naturais: salmão, sardinha, atum, cavala, arenque, sementes de chia e linhaça (ALA — conversão limitada)
-- Como tomar: com refeições para reduzir gosto residual e melhorar absorção
-- Dose usual: 1–2 g EPA+DHA/dia; terapêutica: 2–4 g/dia
-- Qualidade: verificar concentração de EPA+DHA no rótulo (não apenas óleo total); certificação IFOS
-- Coração: reduz triglicerídeos, pressão arterial e inflamação vascular
-- Mente: melhora depressão, ansiedade, TDAH e cognição; DHA é 60% do cérebro
-- Bariatria: absorção reduzida — suplementação importante
-- Gestação: DHA essencial para desenvolvimento cerebral do bebê
-
-ÔMEGA 6 (Ácido Linoleico)
-- Funções: saúde da pele, resposta inflamatória (pró-inflamatório em excesso)
-- Fontes: óleos vegetais (soja, milho, girassol), nozes
-- Atenção: excesso (dieta ocidental) desequilibra relação ômega 6/ômega 3 — inflamação crônica
-
-ÔMEGA 9 (Ácido Oleico)
-- Funções: saúde cardiovascular, anti-inflamatório, saúde cerebral
-- Fontes: azeite de oliva extra-virgem, abacate, amêndoas, castanha de caju
-- Não essencial (o corpo produz), mas muito benéfico
-
-GLA (Ácido Gama-Linolênico — Ômega 6 especial)
-- Fontes: óleo de prímula, óleo de borragem
-- Benefícios: síndrome pré-menstrual, pele, artrite reumatoide, eczema
-
-ÓLEO DE COCO (TCM)
-- Funções: energia rápida via cetonas, saúde intestinal, antimicrobiano
-- Triglicerídeos de cadeia média (TCM): absorção direta pelo fígado, produção de energia
-- Uso: culinária, suplementação cognitiva (cetose leve)
-
-AZEITE DE OLIVA EXTRA-VIRGEM
-- Rico em oleocantal (anti-inflamatório natural similar ao ibuprofeno), polifenóis
-- Funções: saúde cardiovascular, anti-inflamatório, antioxidante, proteção neurológica
-- Usar a frio ou em temperaturas baixas para preservar benefícios
-
-══════════════════════════════════════════
-COENZIMAS E COENZIMA Q10
-══════════════════════════════════════════
-
-COENZIMA Q10 (Ubiquinona / Ubiquinol)
-- Funções: componente central da cadeia respiratória mitocondrial (produção de ATP), antioxidante, saúde cardiovascular, energia celular
-- Fontes naturais: coração bovino, sardinha, espinafre, brócolis, nozes
-- Deficiência: cansaço, fraqueza muscular, problemas cardíacos; statinas bloqueiam sua síntese
-- Tipos: Ubiquinol (forma ativa, melhor absorção) vs Ubiquinona (forma oxidada, mais barata)
-- Dose usual: 100–200 mg/dia; cardíacos: 200–400 mg/dia
-- Como tomar: com refeição gordurosa
-- Coração: melhora função cardíaca, insuficiência cardíaca, hipertensão
-- Usuários de statinas: OBRIGATÓRIO suplementar CoQ10 — statinas bloqueiam sua produção
-- Bariatria: absorção comprometida — suplementar ubiquinol
-
-COENZIMA A (CoA)
-- Papel no metabolismo energético e síntese de ácidos graxos; precursor: ácido pantotênico (B5)
-
-NAD+ (Nicotinamida Adenina Dinucleotídeo)
-- Funções: produção de energia, reparo do DNA, longevidade, função mitocondrial
-- Precursores: niacina (B3), NMN (nicotinamida mononucleotídeo), NR (nicotinamida ribosídeo)
-- Declina com a idade — área de pesquisa ativa em longevidade
-
-GLUTATIONA
-- "Antioxidante mestre" do organismo; desintoxicação hepática; imunidade; regeneração de vitaminas C e E
-- Precursores: NAC (N-acetilcisteína), glicina, selênio
-- Suplementação direta: glutationa lipossomial tem melhor absorção
-
-══════════════════════════════════════════
-MACRONUTRIENTES
-══════════════════════════════════════════
-
-PROTEÍNAS
-- Funções: construção e reparo de tecidos, enzimas, hormônios, anticorpos, transporte de nutrientes, saciedade
-- Aminoácidos essenciais (não produzidos pelo corpo): leucina, isoleucina, valina (BCAAs), lisina, metionina, fenilalanina, treonina, triptofano, histidina
-- Fontes completas: carnes, ovos, laticínios, whey protein, proteína de soja
-- Fontes incompletas (vegetais): arroz + feijão juntos formam proteína completa
-- Necessidade: 1,2–2 g por kg/peso/dia; atletas: até 2,5 g/kg
-- Suplementos: Whey Protein (rápida absorção), Caseína (lenta — noturna), Albumina, Proteína vegetal
-
-CARBOIDRATOS
-- Funções: principal fonte de energia (glicose), reserva (glicogênio), fibras para intestino
-- Simples: glicose, frutose, sacarose — absorção rápida, pico de insulina
-- Complexos: amido, fibras — absorção lenta, saciedade
-- Fibras: prebióticos, saúde intestinal, controle glicêmico, redução de colesterol
-- Intolerância à glicose / resistência à insulina: reduzir carboidratos refinados
-
-LIPÍDIOS (GORDURAS)
-- Funções: absorção de vitaminas lipossolúveis (A,D,E,K), hormônios esteroides, membranas celulares, energia, proteção neurológica
-- Saturadas: carnes gordas, óleo de coco — consumo moderado
-- Insaturadas: azeite, abacate, nozes, peixes — anti-inflamatórias e protetoras
-- Trans: industrializadas — inflamatórias, prejudicam o coração — EVITAR
-- Colesterol: precursor de vitamina D, hormônios sexuais e cortisol — essencial (LDL oxidado é o problema, não o colesterol total)
-
-══════════════════════════════════════════
-SUPLEMENTAÇÃO ESPECÍFICA POR CONDIÇÃO
-══════════════════════════════════════════
-
-🫀 SAÚDE DO CORAÇÃO
-Essenciais: Ômega 3 (EPA+DHA), CoQ10, Vitamina D3 + K2, Magnésio, Vitamina C, Vitamina E
-Outros: NAC, Resveratrol, Berberina, Coenzima Q10 ubiquinol
-Kit indicado: Kit 01 (base) + conversar sobre suplementos específicos via WhatsApp
-Dieta: mediterrânea, rica em peixes, azeite, vegetais folhosos, nozes
-
-🧠 SAÚDE DA MENTE / COGNIÇÃO / FOCO
-Essenciais: Ômega 3 DHA, Vitamina D3, Magnésio Treonato, Vitaminas B (especialmente B6, B9, B12), Ginkgo Biloba, Ashwagandha
-Outros: Lion's Mane (cogumelo), Bacopa Monnieri, Fosfatidilserina, L-Teanina
-Kits indicados: Kit 05 (Corpo & Equilíbrio) — mais foco, memória e equilíbrio
-
-😰 ANSIEDADE E ESTRESSE
-Essenciais: Magnésio, Ashwagandha, L-Teanina, Vitaminas do Complexo B, Vitamina D3
-Outros: Passiflora, Valeriana, GABA, Rhodiola Rosea
-Kit indicado: Kit 03 (sono + ansiedade) ou Kit 05 (equilíbrio emocional)
-
-😴 SONO
-Essenciais: Melatonina (0,5–3 mg), Magnésio Treonato, L-Teanina, Vitamina D3
-Outros: Ashwagandha, Valeriana, 5-HTP (precursor de serotonina)
-Kit indicado: Kit 03 (Corpo & Sono)
-
-🦴 SAÚDE ÓSSEA
-Essenciais: Cálcio (citrato), Vitamina D3, Vitamina K2-MK7, Magnésio, Zinco, Vitamina C (colágeno)
-Outros: Colágeno tipo I e II, Silício, Boro
-Bariatria: cálcio citrato obrigatório; D3 em doses altas; K2 essencial
-Kit indicado: Kit 01 + adicionar K2 separado; conversar pelo WhatsApp
-
-🏋️ PERFORMANCE E ACADEMIA
-Essenciais: Creatina Monohidratada, Whey Protein, Vitamina D3, Ômega 3, Magnésio, CoQ10
-Outros: Beta-Alanina, Cafeína, BCAAs, Glutamina, HMB
-Kit indicado: Kit 06 (Corpo & Performance)
-
-🧒 SAÚDE INFANTIL (4–12 anos)
-Essenciais: Vitamina D3, Ferro, Vitamina A, Zinco, Iodo, Vitaminas do complexo B
-Kit indicado: Kit 07 (Reset Kids) — formulado especificamente para esta faixa etária
-
-🔪 PÓS-CIRURGIA BARIÁTRICA
-Deficiências mais comuns: B12 (crítico), D3, Ferro, Cálcio, B1 (urgente), Zinco, Cobre, Folato, A, E, K
-Cálcio: APENAS citrato (carbonato é contraindicado)
-B12: injeção intramuscular ou sublingual (absorção oral comprometida)
-Ferro: quelato ou bisglicinato + vitamina C; separado do cálcio
-Vitamina D3: doses altas (10.000–50.000 UI semanais) conforme exames
-Zinco: suplementação regular e monitoramento
-Monitoramento: exames laboratoriais a cada 3–6 meses para sempre
-Kit indicado: conversar via WhatsApp para protocolo personalizado
-
-🩸 ANEMIA FERROPRIVA
-Ferro + Vitamina C (absorção 3x maior), B12 (se anemia perniciosa), Folato
-Evitar: café, chá, cálcio próximo ao ferro
-
-🦷 SAÚDE BUCAL (área do profissional da Reset Essencial)
-Cálcio + Vitamina D3 + K2: estrutura dentária; Vitamina C: gengivas; Zinco: cicatrização; CoQ10: periodontite
-
-══════════════════════════════════════════
-PROBIÓTICOS E SAÚDE INTESTINAL
-══════════════════════════════════════════
-- Lacticaseibacillus rhamnosus GG, Lactobacillus acidophilus, Bifidobacterium: imunidade, digestão
-- Prebióticos: alimentam as bactérias boas (inulina, FOS, alho, banana verde, aveia)
-- Glutamina: repara mucosa intestinal (leaky gut / intestino permeável)
-- Zinco: barreira intestinal
-- "Intestino = segundo cérebro": 90% da serotonina é produzida no intestino
-
-══════════════════════════════════════════
-ADAPTÓGENOS E FITOTERÁPICOS
-══════════════════════════════════════════
-- Ashwagandha (Withania somnifera): reduz cortisol 30%, equilíbrio hormonal, sono, energia
-- Rhodiola Rosea: fadiga mental, performance cognitiva
-- Ginseng: energia, imunidade, libido
-- Ginkgo Biloba: circulação cerebral, memória, tinnitus
-- Cúrcuma (Curcumina): anti-inflamatório potente — absorção melhora com piperina e gordura
-- Berberina: controle glicêmico, colesterol (similar à metformina em alguns estudos)
-- Lion's Mane: neuroproteção, NGF (fator de crescimento nervoso), memória
-- Bacopa Monnieri: memória de longo prazo, ansiedade
-
-══════════════════════════════════════════
-AMINOÁCIDOS ESPECIAIS
-══════════════════════════════════════════
-- L-Triptofano / 5-HTP: precursor de serotonina e melatonina — humor, sono
-- L-Tirosina: precursor de dopamina e noradrenalina — foco, motivação
-- L-Teanina: relaxamento sem sedação, ondas alfa cerebrais, sinergia com cafeína
-- L-Glutamina: intestino, imunidade, recuperação muscular
-- L-Carnitina: transporte de gordura para mitocôndria, energia, saúde cardíaca
-- Creatina: força, massa muscular, memória de curto prazo
-- Glicina: sono, colágeno, desintoxicação hepática
-
-══════════════════════════════════════════
-REGRAS DA CONSULTORA
-══════════════════════════════════════════
-- Responda sempre em português brasileiro, de forma calorosa e científica
-- Seja concisa: máximo 250 palavras por resposta
-- Sempre que adequado, recomende o kit mais indicado
-- Para comprar: WhatsApp (11) 98720-6421
-- Não faça diagnósticos médicos — oriente sobre suplementação
-- Em casos de condições sérias (cardiopatia, bariatria, câncer), sempre recomende acompanhamento médico
-- Seja honesta: diga quando não tem informação suficiente
-- Preços com 7% de desconto já incluídos`;
-
-
-let conversationHistory = [];
+// ═══════════════════════════════════════════════════════════════════════
+// CONSULTORA LOCAL — MOTOR DE CONHECIMENTO 100% GRATUITO
+// Sem API, sem custo, funciona offline, toda a base embutida no site
+// ═══════════════════════════════════════════════════════════════════════
+
+const KB = {
+  kits: {
+    'comeco': {
+      nome: 'Começo Organizado', num: '01', preco: 'R$ 151,08', emoji: '🌱',
+      suplementos: ['Polivitamínico Adulto', 'Magnésio Treonato', 'Vitamina D3', 'Ômega 3'],
+      para: 'adultos iniciando suplementação, carências gerais, cansaço leve, quem quer uma base nutricional sólida',
+      beneficios: 'energia, imunidade, saúde geral, pele, cabelo e unhas',
+      detalhe: 'É o ponto de partida perfeito para quem nunca suplementou. O polivitamínico cobre as deficiências mais comuns, o magnésio regula o sistema nervoso, a vitamina D3 fortalece a imunidade e o ômega 3 cuida do coração e do cérebro.',
+      tags: ['começo', 'inicio', 'iniciante', 'começar', 'primeiro', 'base', 'geral', 'adulto', 'basico']
+    },
+    'energia': {
+      nome: 'Corpo & Energia', num: '02', preco: 'R$ 175,57', emoji: '⚡',
+      suplementos: ['Super Complexo B', 'Magnésio Treonato + CoQ10', 'Vitamina C', 'Ômega 3'],
+      para: 'cansaço crônico, fadiga física e mental, falta de disposição, acordar cansado',
+      beneficios: 'produção de energia celular (ATP), metabolismo ativo, combate ao cansaço',
+      detalhe: 'O Complexo B alimenta o sistema nervoso, o Magnésio com CoQ10 turbina as mitocôndrias (usina de energia das células), a Vitamina C protege contra estresse oxidativo e o Ômega 3 mantém o corpo anti-inflamatório.',
+      tags: ['cansado', 'cansaço', 'energia', 'fadiga', 'disposição', 'disposicao', 'disposto', 'animo', 'ânimo', 'acordar', 'exausto', 'exaustão', 'sono ruim', 'sonolento', 'lerdo', 'lento']
+    },
+    'sono': {
+      nome: 'Corpo & Sono', num: '03', preco: 'R$ 164,57', emoji: '🌙',
+      suplementos: ['Melatonina', 'AnsioZEN (L-Teanina + Passiflora + Magnésio)', 'Magnésio Treonato', 'Vitamina D3'],
+      para: 'insônia, dificuldade para adormecer, ansiedade noturna, sono superficial, acordar várias vezes',
+      beneficios: 'adormecer com facilidade, sono profundo, relaxamento, regulação do ciclo circadiano',
+      detalhe: 'A Melatonina ajusta o relógio biológico, o AnsioZEN acalma o sistema nervoso sem deixar sonolento, o Magnésio Treonato chega até o cérebro e induz relaxamento profundo, e a Vitamina D3 regula o ciclo do sono.',
+      tags: ['sono', 'insônia', 'insonia', 'dormir', 'adormecer', 'ansiedade', 'ansioso', 'relaxar', 'nervoso', 'melatonina', 'noite', 'acordar', 'cama', 'descanso', 'reparador']
+    },
+    'imunidade': {
+      nome: 'Corpo & Imunidade', num: '04', preco: 'R$ 146,65', emoji: '🛡️',
+      suplementos: ['Vitamina C + D3 + Zinco', 'Própolis', 'Zinco', 'Vitamina D3'],
+      para: 'baixa imunidade, infecções frequentes, resfriados constantes, recuperação lenta',
+      beneficios: 'defesas naturais fortalecidas, ação antiviral, antibacteriana, resistência a doenças',
+      detalhe: 'Vitamina C ativa leucócitos, a D3 regula o sistema imune (80% dos brasileiros têm deficiência), o Zinco matura as células de defesa e o Própolis cria uma barreira antiviral natural. É o kit mais barato e um dos mais eficazes.',
+      tags: ['imunidade', 'gripar', 'gripe', 'resfriado', 'infecção', 'infeccao', 'doente', 'doença', 'virus', 'vírus', 'defesa', 'proteger', 'imune', 'imunológico', 'zinco', 'vitamina c', 'propolis', 'própolis']
+    },
+    'equilibrio': {
+      nome: 'Corpo & Equilíbrio', num: '05', preco: 'R$ 155,78', emoji: '🧠',
+      suplementos: ['Ginkgo Biloba', 'Ashwagandha (Hipertana)', 'Magnésio Quelato', 'Vitamina D3'],
+      para: 'estresse crônico, ansiedade, dificuldade de foco e memória, desequilíbrio emocional',
+      beneficios: 'cognição aprimorada, redução de cortisol, equilíbrio emocional, memória e foco',
+      detalhe: 'Ginkgo Biloba melhora circulação cerebral e memória, Ashwagandha reduz cortisol em até 30%, Magnésio Quelato regula o sistema nervoso e a Vitamina D3 apoia a produção de serotonina. Perfeito para quem vive sob pressão.',
+      tags: ['foco', 'memória', 'memoria', 'concentração', 'concentracao', 'estresse', 'stress', 'ansiedade', 'ansioso', 'equilíbrio', 'equilibrio', 'cortisol', 'ashwagandha', 'ginkgo', 'humor', 'emocional', 'cognitivo', 'cognição', 'cognição']
+    },
+    'performance': {
+      nome: 'Corpo & Performance', num: '06', preco: 'R$ 166,54', emoji: '💪',
+      suplementos: ['Creatina Monohidratada', 'Magnésio + CoQ10', 'Ômega 3', 'Vitamina D3'],
+      para: 'praticantes de atividade física, atletas, academia, musculação',
+      beneficios: 'força muscular, ganho de massa, recuperação pós-treino, performance física',
+      detalhe: 'Creatina é o suplemento mais estudado do mundo para performance — aumenta força e massa muscular. CoQ10 otimiza energia mitocondrial, Magnésio evita câimbras e o Ômega 3 reduz inflamação pós-treino.',
+      tags: ['academia', 'treino', 'musculação', 'musculacao', 'atleta', 'esporte', 'performance', 'força', 'forca', 'musculo', 'músculo', 'creatina', 'proteína', 'proteina', 'atividade fisica', 'malhar', 'exercício', 'exercicio', 'gym']
+    },
+    'kids': {
+      nome: 'Reset Kids', num: '07', preco: 'R$ 159,67', emoji: '🧒',
+      suplementos: ['Polivitamínico Kids', 'Vitamina D3 gotas', 'Multrix (Cálcio+Magnésio+Zinco)', 'Ferrix (Ferro+Vit.C)'],
+      para: 'crianças de 4 a 12 anos, crescimento, imunidade infantil, queda de rendimento escolar',
+      beneficios: 'crescimento saudável, imunidade forte, desenvolvimento cerebral, prevenção de anemia',
+      detalhe: 'A Vitamina D3 em gotas é segura para crianças, o Ferrix com Vitamina C combate anemia infantil (causa #1 de cansaço e falta de foco), o Multrix suporta ossos e dentes em formação e o polivitamínico kids cobre tudo mais.',
+      tags: ['filho', 'criança', 'criança', 'kids', 'infantil', 'crianca', 'filha', 'menino', 'menina', 'bebe', 'bebê', 'escola', 'crescimento', 'anemia', 'pediatra', 'pediatrico', 'anos', 'ano de idade']
+    }
+  },
+
+  sintomas: {
+    'cansaco': { kits: ['energia', 'comeco'], msg: 'Cansaço é um dos sinais mais comuns de deficiências nutricionais. As causas mais frequentes são falta de vitaminas do Complexo B, Magnésio, Vitamina D3 ou Ferro.' },
+    'insonia': { kits: ['sono'], msg: 'A insônia muitas vezes é causada por deficiência de Magnésio (que regula o GABA, neurotransmissor do relaxamento) e Vitamina D3 (que regula o ciclo circadiano).' },
+    'ansiedade': { kits: ['sono', 'equilibrio'], msg: 'Ansiedade está frequentemente ligada à deficiência de Magnésio, Vitamina D3 e vitaminas do Complexo B. O Ashwagandha é um dos adaptógenos mais estudados para redução do cortisol.' },
+    'imunidade': { kits: ['imunidade', 'comeco'], msg: 'Para fortalecer a imunidade de forma consistente, a combinação de Vitamina C + D3 + Zinco é considerada o protocolo padrão pela ciência.' },
+    'foco': { kits: ['equilibrio', 'energia'], msg: 'Dificuldade de foco pode indicar deficiência de Magnésio Treonato (que chega ao cérebro), Ômega 3 DHA, Vitamina D3 ou Complexo B.' },
+    'estresse': { kits: ['equilibrio', 'sono'], msg: 'Estresse crônico eleva o cortisol, que por sua vez depleta Magnésio, Vitamina C e vitaminas do Complexo B — criando um ciclo vicioso.' }
+  },
+
+  nutrientes: {
+    'vitamina d': {
+      nome: 'Vitamina D3',
+      info: `A Vitamina D3 é uma das mais importantes e também a mais deficiente — <strong>80% dos brasileiros têm níveis insuficientes</strong>. Ela regula mais de 1.000 genes no seu corpo.<br><br>
+✦ <strong>Para que serve:</strong> imunidade, saúde óssea, produção de serotonina, força muscular, equilíbrio hormonal<br>
+✦ <strong>Como tomar corretamente:</strong> sempre com uma refeição que tenha gordura (ovo, azeite, abacate). Em jejum, praticamente não absorve<br>
+✦ <strong>Combo essencial:</strong> sempre combine com Vitamina K2-MK7 — ela direciona o cálcio para os ossos e longe das artérias<br>
+✦ <strong>Dose adulto:</strong> 2.000–5.000 UI/dia<br>
+✦ <strong>Presente em:</strong> todos os 7 kits Reset Essencial`,
+      kits: ['comeco', 'imunidade']
+    },
+    'magnesio': {
+      nome: 'Magnésio',
+      info: `O Magnésio participa de <strong>mais de 300 reações enzimáticas</strong> no corpo. É provável que você tenha algum grau de deficiência, já que o solo brasileiro é pobre nesse mineral.<br><br>
+✦ <strong>Para que serve:</strong> sono, ansiedade, câimbras, energia, sistema nervoso, pressão arterial<br>
+✦ <strong>Os tipos importam muito:</strong><br>
+&nbsp;&nbsp;• Treonato → chega ao cérebro (memória, foco, ansiedade)<br>
+&nbsp;&nbsp;• Quelato/Bisglicinato → absorção geral, sem irritar o estômago<br>
+&nbsp;&nbsp;• Citrato → boa absorção, leve efeito laxante<br>
+&nbsp;&nbsp;• Óxido → apenas 4% de absorção — evite<br>
+✦ <strong>Dose:</strong> 300–400 mg/dia`,
+      kits: ['comeco', 'sono', 'energia']
+    },
+    'omega': {
+      nome: 'Ômega 3',
+      info: `O Ômega 3 é um anti-inflamatório natural e essencial para cérebro, coração e articulações. O que importa não é o total de óleo, mas a quantidade de <strong>EPA + DHA</strong>.<br><br>
+✦ <strong>EPA:</strong> anti-inflamatório, humor, coração<br>
+✦ <strong>DHA:</strong> estrutura cerebral, memória, visão<br>
+✦ <strong>Como tomar:</strong> com refeição que tenha gordura<br>
+✦ <strong>Dose eficaz:</strong> 1–2g de EPA+DHA por dia<br>
+✦ <strong>Verifique no rótulo:</strong> a concentração de EPA+DHA, não apenas o total de óleo`,
+      kits: ['comeco', 'energia', 'performance']
+    },
+    'vitamina c': {
+      nome: 'Vitamina C',
+      info: `Muito além de combater gripe — a Vitamina C é essencial para <strong>colágeno, absorção de ferro, imunidade e antioxidação</strong>.<br><br>
+✦ <strong>Para que serve:</strong> imunidade, síntese de colágeno, absorção de ferro (triplica a absorção), cicatrização<br>
+✦ <strong>Como tomar:</strong> a qualquer hora, dividir em 2 doses melhora aproveitamento<br>
+✦ <strong>Dose:</strong> 500mg–1g/dia<br>
+✦ <strong>Dica:</strong> tome sempre junto com Ferro para triplicar a absorção`,
+      kits: ['imunidade', 'energia']
+    },
+    'zinco': {
+      nome: 'Zinco',
+      info: `O Zinco é fundamental para mais de 300 enzimas e é o mineral da <strong>imunidade, cicatrização e fertilidade</strong>.<br><br>
+✦ <strong>Para que serve:</strong> imunidade, cicatrização, pele, queda de cabelo, olfato e paladar, testosterona<br>
+✦ <strong>Como tomar:</strong> longe das refeições para melhor absorção; não combinar com ferro<br>
+✦ <strong>Dose:</strong> 15–30 mg/dia; não exceder 40 mg`,
+      kits: ['imunidade']
+    },
+    'ferro': {
+      nome: 'Ferro',
+      info: `O Ferro é essencial para levar oxigênio às células. Sua deficiência é a <strong>carência nutricional mais comum no mundo</strong>.<br><br>
+✦ <strong>Para que serve:</strong> transporte de oxigênio, energia, foco, imunidade<br>
+✦ <strong>Sinais de deficiência:</strong> cansaço, palidez, queda de cabelo, falta de foco, falta de ar<br>
+✦ <strong>Como tomar:</strong> em jejum com Vitamina C para triplicar a absorção; separar 2h de cálcio e chá<br>
+✦ <strong>Tipos:</strong> Quelato (melhor tolerância), Bisglicinato (menos constipação)<br>
+✦ <strong>Atenção:</strong> sempre solicitar exame antes de suplementar — excesso de ferro é prejudicial`,
+      kits: ['kids']
+    },
+    'coq10': {
+      nome: 'CoQ10 (Coenzima Q10)',
+      info: `A CoQ10 é essencial para a <strong>produção de energia dentro das células</strong>. Quem toma estatinas (remédio para colesterol) precisa suplementar obrigatoriamente.<br><br>
+✦ <strong>Para que serve:</strong> energia celular, performance, saúde cardiovascular, antioxidante<br>
+✦ <strong>Tipos:</strong> Ubiquinol (ativa, melhor absorção) vs Ubiquinona (mais barata)<br>
+✦ <strong>Dose:</strong> 100–200 mg/dia; cardíacos: 200–400 mg/dia<br>
+✦ <strong>Como tomar:</strong> com refeição gordurosa`,
+      kits: ['energia', 'performance']
+    },
+    'creatina': {
+      nome: 'Creatina',
+      info: `A creatina é o suplemento <strong>mais estudado do mundo</strong> para performance física, com evidência científica sólida.<br><br>
+✦ <strong>Para que serve:</strong> força, ganho de massa muscular, recuperação, energia rápida<br>
+✦ <strong>Bônus:</strong> estudos recentes mostram melhora na memória de curto prazo<br>
+✦ <strong>Como tomar:</strong> 3–5g/dia, qualquer hora, sem necessidade de fase de carga<br>
+✦ <strong>Hidratação:</strong> beba mais água ao suplementar creatina`,
+      kits: ['performance']
+    },
+    'ashwagandha': {
+      nome: 'Ashwagandha',
+      info: `Um dos adaptógenos mais estudados da medicina moderna. Reduz <strong>cortisol em até 30%</strong> comprovado em estudos clínicos.<br><br>
+✦ <strong>Para que serve:</strong> redução de estresse, equilíbrio hormonal, sono, energia, ansiedade<br>
+✦ <strong>Como tomar:</strong> à noite, com refeição; efeitos aparecem após 4–8 semanas de uso consistente<br>
+✦ <strong>Dose:</strong> 300–600 mg/dia de extrato padronizado`,
+      kits: ['equilibrio', 'sono']
+    },
+    'melatonina': {
+      nome: 'Melatonina',
+      info: `A Melatonina é o hormônio natural do sono — não deixa dependente e não causa ressaca.<br><br>
+✦ <strong>Para que serve:</strong> regular o ciclo circadiano, adormecer mais rápido, jet lag<br>
+✦ <strong>Dose:</strong> 0,5–3 mg é suficiente — mais não é melhor<br>
+✦ <strong>Como tomar:</strong> 30–60 minutos antes de dormir, no escuro<br>
+✦ <strong>Dica:</strong> evite telas após tomar — a luz azul bloqueia o efeito`,
+      kits: ['sono']
+    }
+  },
+
+  condicoes: {
+    'bariatrica': `Após cirurgia bariátrica, a absorção de nutrientes fica <strong>gravemente comprometida</strong>. Suplementação vitalícia é obrigatória.<br><br>
+✦ <strong>Deficiências críticas:</strong> B12, B1 (tiamina), Ferro, Cálcio, Vitamina D3, Zinco, Cobre, Folato<br>
+✦ <strong>Atenção ao Cálcio:</strong> use apenas <strong>Citrato de Cálcio</strong> — o carbonato é contraindicado (precisa de ácido gástrico)<br>
+✦ <strong>B12:</strong> preferir sublingual ou injetável (absorção oral é mínima)<br>
+✦ <strong>Vitamina D3:</strong> doses altas, conforme exames (até 50.000 UI/semana)<br>
+✦ <strong>Monitoramento:</strong> exames laboratoriais a cada 3–6 meses<br><br>
+Para protocolo personalizado, entre em contato pelo <strong>WhatsApp (11) 98720-6421</strong>`,
+    'cardiaco': `Para saúde cardiovascular, os suplementos com mais evidência científica são:<br><br>
+✦ <strong>Ômega 3 (EPA+DHA):</strong> reduz triglicerídeos, pressão arterial e inflamação<br>
+✦ <strong>CoQ10:</strong> essencial para energia cardíaca; obrigatório se toma estatinas<br>
+✦ <strong>Vitamina D3 + K2:</strong> previne calcificação arterial<br>
+✦ <strong>Magnésio:</strong> reduz hipertensão e arritmias<br>
+✦ <strong>Vitamina C + E:</strong> proteção antioxidante vascular<br><br>
+Sempre mantenha acompanhamento cardiológico ao suplementar.`,
+    'anemia': `Para anemia ferropriva (a mais comum):<br><br>
+✦ <strong>Ferro Quelato ou Bisglicinato</strong> — melhor tolerância gástrica<br>
+✦ <strong>Sempre com Vitamina C</strong> — triplica a absorção<br>
+✦ <strong>Em jejum</strong> para máxima absorção<br>
+✦ <strong>Separar 2h</strong> de cálcio, leite, chá e café<br>
+✦ <strong>Solicitar exame</strong> para monitorar (ferritina, hemoglobina, ferro sérico)<br><br>
+Se a anemia for por deficiência de B12 ou Folato, o tratamento é diferente — por isso o diagnóstico médico é essencial.`
+  }
+};
+
+// Motor de resposta local
+const chatHistory = [];
 let isLoading = false;
 
-// ── FUNÇÕES ──────────────────────────────────────────────
+function detectIntent(msg) {
+  const m = msg.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+
+  // Kit específico por nome/número
+  const kitMap = [
+    { keys: ['kit 1','kit 01','comeco','organizado','primeiro kit'], kit: 'comeco' },
+    { keys: ['kit 2','kit 02','energia','cansaço','fadiga','disposicao','animo'], kit: 'energia' },
+    { keys: ['kit 3','kit 03','sono','insonia','dormir','melatonina','ansiedade noturna'], kit: 'sono' },
+    { keys: ['kit 4','kit 04','imunidade','imune','gripe','resfriado','zinco','propolis'], kit: 'imunidade' },
+    { keys: ['kit 5','kit 05','equilibrio','foco','memoria','estresse','ashwagandha','ginkgo'], kit: 'equilibrio' },
+    { keys: ['kit 6','kit 06','performance','academia','treino','creatina','musculo','atleta'], kit: 'performance' },
+    { keys: ['kit 7','kit 07','kids','crianca','filho','infantil','filha','menino','menina'], kit: 'kids' },
+  ];
+  for (const k of kitMap) {
+    if (k.keys.some(key => m.includes(key))) return { type: 'kit', id: k.kit };
+  }
+
+  // Nutrientes
+  if (m.includes('vitamina d') || m.includes('vitamina d3') || m.includes('colecalciferol')) return { type: 'nutriente', id: 'vitamina d' };
+  if (m.includes('magnesio') || m.includes('magnesio') || m.includes('magnésio')) return { type: 'nutriente', id: 'magnesio' };
+  if (m.includes('omega') || m.includes('ômega') || m.includes('epa') || m.includes('dha')) return { type: 'nutriente', id: 'omega' };
+  if ((m.includes('vitamina c') || m.includes('acido ascorbico')) && !m.includes('vitamina d')) return { type: 'nutriente', id: 'vitamina c' };
+  if (m.includes('zinco') && !m.includes('magnesio')) return { type: 'nutriente', id: 'zinco' };
+  if (m.includes('ferro') && !m.includes('magnesio')) return { type: 'nutriente', id: 'ferro' };
+  if (m.includes('coq10') || m.includes('coenzima') || m.includes('ubiquinol')) return { type: 'nutriente', id: 'coq10' };
+  if (m.includes('creatina')) return { type: 'nutriente', id: 'creatina' };
+  if (m.includes('ashwagandha') || m.includes('adaptogeno') || m.includes('adaptógeno')) return { type: 'nutriente', id: 'ashwagandha' };
+  if (m.includes('melatonina')) return { type: 'nutriente', id: 'melatonina' };
+
+  // Condições
+  if (m.includes('bariatrica') || m.includes('bariátrica') || m.includes('bariat') || m.includes('cirurgia')) return { type: 'condicao', id: 'bariatrica' };
+  if (m.includes('cardiaco') || m.includes('cardíaco') || m.includes('coracao') || m.includes('coração') || m.includes('cardiovascular') || m.includes('pressao') || m.includes('pressão') || m.includes('hipertensao')) return { type: 'condicao', id: 'cardiaco' };
+  if (m.includes('anemia') || m.includes('hemoglobina') || m.includes('ferritina')) return { type: 'condicao', id: 'anemia' };
+
+  // Sintomas comuns
+  if (m.match(/cansa[dr]|fadiga|exaust|sem energia|sem disposicao|sem disposição|disposto/)) return { type: 'sintoma', id: 'cansaco' };
+  if (m.match(/insoni|dormir|sono|acordar de madrugada|nao consigo dormir/)) return { type: 'sintoma', id: 'insonia' };
+  if (m.match(/ansio|nervos|estress|agitad|cortisol/)) return { type: 'sintoma', id: 'ansiedade' };
+  if (m.match(/gripe|resfriado|doente|imunidade|imune|defensas|defesas/)) return { type: 'sintoma', id: 'imunidade' };
+  if (m.match(/foco|concentra|memoria|memória|atencao|atenção/)) return { type: 'sintoma', id: 'foco' };
+  if (m.match(/estress|pressao no trabalho|work|sobrecarga/)) return { type: 'sintoma', id: 'estresse' };
+
+  // Todos os kits / comparação
+  if (m.match(/todos|quais kits|quantos kits|lista|opções|opcoes|diferenca|diferença|comparar|comparacao/)) return { type: 'todos_kits' };
+
+  // Preço
+  if (m.match(/preco|preço|custo|valor|quanto custa|quanto é|pagar/)) return { type: 'preco' };
+
+  // Como comprar
+  if (m.match(/comprar|compro|pedido|pedir|pix|whatsapp|como adquirir|onde comprar/)) return { type: 'compra' };
+
+  // Saudação
+  if (m.match(/^(oi|olá|ola|boa tarde|bom dia|boa noite|hey|hi|hello|tudo bem|tudo bom|como vai)/)) return { type: 'saudacao' };
+
+  return { type: 'geral' };
+}
+
+function buildResponse(msg, intent) {
+  const wa = '<a href="https://wa.me/5511987206421" target="_blank" style="color:var(--clay);font-weight:500">WhatsApp (11) 98720-6421</a>';
+
+  switch (intent.type) {
+    case 'saudacao':
+      return `Olá! Que ótimo ter você aqui 🌿<br><br>
+Sou a Consultora da <strong>Reset Essencial</strong>. Posso te ajudar a encontrar o kit ideal para você, explicar como cada suplemento funciona no seu corpo, ou tirar dúvidas sobre vitaminas e minerais.<br><br>
+<strong>Me conta — como você está se sentindo? O que quer melhorar na sua saúde?</strong>`;
+
+    case 'kit': {
+      const kit = KB.kits[intent.id];
+      return `${kit.emoji} <strong>Kit ${kit.num} — ${kit.nome}</strong> · ${kit.preco}<br><br>
+${kit.detalhe}<br><br>
+✦ <strong>Suplementos incluídos:</strong><br>
+${kit.suplementos.map(s => `&nbsp;&nbsp;• ${s}`).join('<br>')}<br><br>
+✦ <strong>Para quem é:</strong> ${kit.para}<br>
+✦ <strong>Benefícios:</strong> ${kit.beneficios}<br><br>
+Cada kit vem com um <strong>guia informativo completo</strong> explicando como tomar cada suplemento, o horário ideal e o que esperar.<br><br>
+Para adquirir, acesse o ${wa} 💚`;
+    }
+
+    case 'nutriente': {
+      const n = KB.nutrientes[intent.id];
+      const kitsRec = n.kits.map(k => `Kit ${KB.kits[k].num} — ${KB.kits[k].nome}`).join(' e ');
+      return `<strong>${n.nome}</strong><br><br>
+${n.info}<br><br>
+💡 <strong>Kits que incluem ${n.nome.split(' ')[0]}:</strong> ${kitsRec}<br><br>
+Tem mais alguma dúvida sobre esse nutriente?`;
+    }
+
+    case 'condicao':
+      return KB.condicoes[intent.id] + `<br><br>Mais dúvidas? Estou aqui 🌿`;
+
+    case 'sintoma': {
+      const s = KB.sintomas[intent.id];
+      const kitsRec = s.kits.map(k => {
+        const kit = KB.kits[k];
+        return `✦ <strong>${kit.emoji} Kit ${kit.num} — ${kit.nome}</strong> (${kit.preco}): ${kit.beneficios}`;
+      }).join('<br>');
+      return `${s.msg}<br><br>
+<strong>Kits que podem te ajudar:</strong><br>
+${kitsRec}<br><br>
+Me conta mais sobre o que você sente — assim consigo indicar com mais precisão qual é o ideal para você. E para comprar, é só chamar no ${wa} 💚`;
+    }
+
+    case 'todos_kits': {
+      const lista = Object.values(KB.kits).map(k =>
+        `${k.emoji} <strong>Kit ${k.num} — ${k.nome}</strong> · ${k.preco}<br>&nbsp;&nbsp;&nbsp;→ ${k.beneficios}`
+      ).join('<br><br>');
+      return `Temos <strong>7 kits</strong>, cada um com objetivo específico:<br><br>
+${lista}<br><br>
+Qual dos seus objetivos de saúde é mais urgente agora? Posso indicar o ideal para você 🌿`;
+    }
+
+    case 'preco': {
+      const lista = Object.values(KB.kits).map(k =>
+        `${k.emoji} <strong>${k.nome}:</strong> ${k.preco}`
+      ).join('<br>');
+      return `Nossos preços <strong>(com 7% de desconto já incluído)</strong>:<br><br>
+${lista}<br><br>
+Todos os kits incluem guia informativo completo. Pagamento via PIX ou parcelado no cartão pelo WhatsApp.<br><br>
+Para comprar, chame no ${wa} 💚`;
+    }
+
+    case 'compra':
+      return `Para adquirir seu kit é simples! 🌿<br><br>
+✦ <strong>PIX:</strong> confirmação imediata<br>
+✦ <strong>Cartão:</strong> parcelamento via WhatsApp<br><br>
+É só chamar no ${wa} — a gente te atende, confirma o pedido e envia o guia digital já com a confirmação do pagamento.<br><br>
+Já sabe qual kit te interessa, ou quer ajuda para escolher?`;
+
+    default:
+      return gerarRespostaGeral(msg);
+  }
+}
+
+function gerarRespostaGeral(msg) {
+  const wa = '<a href="https://wa.me/5511987206421" target="_blank" style="color:var(--clay);font-weight:500">WhatsApp (11) 98720-6421</a>';
+  const m = msg.toLowerCase();
+
+  // Tenta identificar algum tema
+  const temas = [
+    { chave: ['vitamina', 'mineral', 'suplemento', 'nutri'], resp: 'Pode me dizer qual vitamina, mineral ou suplemento específico você quer entender melhor? Tenho uma base completa sobre vitaminas A, C, D, E, K, todo o Complexo B, Magnésio, Zinco, Ferro, Ômega 3, CoQ10 e muito mais.' },
+    { chave: ['dieta', 'alimenta', 'comer', 'comida'], resp: 'Sobre alimentação, posso ajudar com informações sobre como os alimentos complementam a suplementação. Me conta qual é seu objetivo — emagrecer, ganhar massa, ter mais energia ou melhorar a saúde geral?' },
+    { chave: ['medico', 'médico', 'exame', 'consulta', 'prescri'], resp: 'Para questões médicas específicas, sempre recomendo consultar um profissional de saúde. O que posso fazer é orientar sobre suplementação de forma geral e ajudar você a entender o que cada nutriente faz no corpo.' },
+    { chave: ['efeito colateral', 'contraindicacao', 'contraindicação', 'seguro', 'segura'], resp: 'Boa pergunta! Os suplementos dos nossos kits são seguros quando tomados nas doses corretas. O guia que acompanha cada kit traz as orientações completas de uso e cuidados. Tem algum específico que quer saber?' },
+  ];
+
+  for (const t of temas) {
+    if (t.chave.some(c => m.includes(c))) {
+      return t.resp + `<br><br>Mais alguma dúvida? 🌿`;
+    }
+  }
+
+  return `Entendi sua mensagem! 🌿 Para te ajudar melhor, me conta uma dessas coisas:<br><br>
+✦ <strong>Como você está se sentindo?</strong> (cansaço, sono ruim, ansiedade, foco, etc.)<br>
+✦ <strong>Qual kit te interessa?</strong> (posso explicar em detalhes)<br>
+✦ <strong>Qual nutriente quer entender?</strong> (vitaminas, minerais, ômega 3...)<br><br>
+Ou, se preferir atendimento personalizado, chame direto no ${wa} 💚`;
+}
+
+async function callAI(userMessage) {
+  // Simula tempo de "digitação" para parecer natural (400–900ms)
+  await new Promise(r => setTimeout(r, 400 + Math.random() * 500));
+  const intent = detectIntent(userMessage);
+  return buildResponse(userMessage, intent);
+}
+
+function formatReply(text) {
+  return text; // já vem em HTML
+}
+
+// ── FUNÇÕES DE UI ──────────────────────────────────────────────
 
 function addMessage(role, content, isHTML = false) {
   const msgs = document.getElementById('messages');
@@ -787,63 +719,6 @@ function removeTyping() {
   if(t) t.remove();
 }
 
-async function callAI(userMessage) {
-
-  // IA LOCAL baseada no conhecimento do SYSTEM_PROMPT
-  const pergunta = userMessage.toLowerCase();
-
-  // respostas básicas
-  if(pergunta.includes("vitamina d")){
-    return "A **Vitamina D3** é essencial para imunidade, força muscular, saúde óssea e produção de serotonina. A dose comum para adultos é entre **2000 e 5000 UI por dia**, sempre junto com uma refeição que contenha gordura.";
-  }
-
-  if(pergunta.includes("omega 3")){
-    return "O **Ômega 3 (EPA + DHA)** é anti-inflamatório, protege o coração e melhora função cerebral. A dose comum é **1 a 2g por dia** junto com refeições.";
-  }
-
-  if(pergunta.includes("cansaço")){
-    return "Para **cansaço crônico**, o kit mais indicado costuma ser o **Corpo & Energia**, pois contém Complexo B, Magnésio + CoQ10, Vitamina C e Ômega 3 que ajudam na produção de energia celular.";
-  }
-
- if(pergunta.includes("sono") || pergunta.includes("insônia")){
-  if(pergunta.includes("imunidade")){
-    return "Para fortalecer o sistema imunológico o mais indicado é o **Kit Corpo & Imunidade**, com Vitamina C, D3, Zinco e Própolis.";
-  }
-
-  if(pergunta.includes("academia") || pergunta.includes("treino")){
-    return "Para quem treina, o **Kit Corpo & Performance** ajuda na força muscular e recuperação pois contém Creatina, Ômega 3, Magnésio + CoQ10 e Vitamina D3.";
-  }
-
-  // resposta padrão
-  return "Posso te ajudar com informações sobre **vitaminas, minerais, suplementos ou os kits Reset Essencial**. O que você gostaria de saber?";
-}
-  conversationHistory.push({ role: 'user', content: userMessage });
-
-  const response = await fetch('https://api.anthropic.com/v1/messages', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      model: 'claude-sonnet-4-20250514',
-      max_tokens: 1000,
-      system: SYSTEM_PROMPT,
-      messages: conversationHistory
-    })
-  });
-
-  const data = await response.json();
-  const reply = data.content?.[0]?.text || 'Desculpe, não consegui processar sua pergunta. Tente novamente!';
-  conversationHistory.push({ role: 'assistant', content: reply });
-  return reply;
-}
-
-function formatReply(text) {
-  // Converte **negrito** e quebras de linha
-  return text
-    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-    .replace(/\n\n/g, '<br><br>')
-    .replace(/\n/g, '<br>');
-}
-
 async function sendMessage() {
   const input = document.getElementById('chat-input');
   const text = input.value.trim();
@@ -863,7 +738,7 @@ async function sendMessage() {
     addMessage('bot', formatReply(reply), true);
   } catch(err) {
     removeTyping();
-    addMessage('bot', 'Ops! Houve um problema de conexão. Por favor, tente novamente ou fale com a gente pelo WhatsApp 💚');
+    addMessage('bot', 'Ops, algo deu errado. Tente novamente ou chame no WhatsApp 💚', true);
   }
 
   isLoading = false;
