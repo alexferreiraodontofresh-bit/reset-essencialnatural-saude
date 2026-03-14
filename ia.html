@@ -253,6 +253,14 @@ nav {
         <span class="ki-icon">🧒</span>
         <div><div class="ki-name">Reset Kids</div><div class="ki-price">R$ 159,67</div></div>
       </li>
+      <li class="kit-item" onclick="askKit('Equilíbrio Feminino')">
+        <span class="ki-icon">🌷</span>
+        <div><div class="ki-name">Equilíbrio Feminino</div><div class="ki-price">R$ 169,90</div></div>
+      </li>
+      <li class="kit-item" onclick="askKit('Metabolismo Feminino')">
+        <span class="ki-icon">🔥</span>
+        <div><div class="ki-name">Metabolismo Feminino</div><div class="ki-price">R$ 129,90</div></div>
+      </li>
     </ul>
 
     <div class="sidebar-divider"></div>
@@ -263,7 +271,8 @@ nav {
     <button class="quick-btn" onclick="sendQuick('Quero melhorar minha imunidade naturalmente')">Melhorar imunidade</button>
     <button class="quick-btn" onclick="sendQuick('Quero um kit para meu filho de 8 anos')">Kit para crianças</button>
     <button class="quick-btn" onclick="sendQuick('Faço academia. Qual kit potencializa meus treinos?')">Academia e performance</button>
-    <button class="quick-btn" onclick="sendQuick('Tenho ansiedade e falta de foco. O que me recomendam?')">Ansiedade e foco</button>
+    <button class="quick-btn" onclick="sendQuick('Tenho TPM e queda de cabelo. O que me ajuda?')">TPM e cabelo</button>
+    <button class="quick-btn" onclick="sendQuick('Quero controlar meu apetite e metabolismo')">Apetite e metabolismo</button>
   </aside>
 
   <!-- CHAT -->
@@ -375,6 +384,22 @@ const KB = {
       beneficios: 'crescimento saudável, imunidade forte, desenvolvimento cerebral, prevenção de anemia',
       detalhe: 'A Vitamina D3 em gotas é segura para crianças, o Ferrix com Vitamina C combate anemia infantil (causa #1 de cansaço e falta de foco), o Multrix suporta ossos e dentes em formação e o polivitamínico kids cobre tudo mais.',
       tags: ['filho', 'criança', 'criança', 'kids', 'infantil', 'crianca', 'filha', 'menino', 'menina', 'bebe', 'bebê', 'escola', 'crescimento', 'anemia', 'pediatra', 'pediatrico', 'anos', 'ano de idade']
+    },
+    'feminino': {
+      nome: 'Equilíbrio Feminino', num: '08', preco: 'R$ 169,90', emoji: '🌷',
+      suplementos: ['TPM-C (Triptofano+Curcumina)', 'Ômega 3', 'Hair Skin Supreme', 'Vitamina D3'],
+      para: 'mulheres com TPM, variação de humor, queda de cabelo, pele e unhas fracas, desequilíbrio hormonal',
+      beneficios: 'equilíbrio do humor, redução de sintomas da TPM, cabelo mais forte, pele mais saudável, suporte hormonal',
+      detalhe: 'O TPM-C combina Triptofano (precursor da serotonina) com Curcumina anti-inflamatória para aliviar a TPM. O Hair Skin Supreme fortalece cabelo, pele e unhas. O Ômega 3 reduz inflamação e o Vitamina D3 regula hormônios.',
+      tags: ['tpm', 'humor', 'menstrual', 'ciclo', 'hormônio', 'hormonio', 'cabelo', 'pele', 'unha', 'queda de cabelo', 'feminino', 'mulher', 'feminina', 'menopausa', 'tensão pré-menstrual', 'cólica', 'colica', 'serotonina']
+    },
+    'metabolismo': {
+      nome: 'Metabolismo Feminino', num: '09', preco: 'R$ 129,90', emoji: '🔥',
+      suplementos: ['Morovit (Laranja Moro+Cromo+Vit.C)', 'Reduxx Noite', 'Psyllium 500mg', 'Magnésio'],
+      para: 'mulheres que querem apoio metabólico, controle de apetite, saciedade e bem-estar',
+      beneficios: 'suporte ao metabolismo, controle de apetite, saciedade, redução de desejo por doces, controle glicêmico',
+      detalhe: 'O Morovit com Laranja Moro e Cromo apoia o metabolismo e controla o desejo por doces. O Reduxx Noite e Psyllium fornecem fibras que aumentam a saciedade. O Magnésio regula o estresse, que é uma das principais causas de comer em excesso.',
+      tags: ['metabolismo', 'emagrecer', 'emagrecimento', 'apetite', 'saciedade', 'peso', 'barriga', 'gordura', 'dieta', 'laranja moro', 'fibra', 'psyllium', 'glicose', 'açúcar', 'acucar', 'doce', 'compulsão', 'compulsao']
     }
   },
 
@@ -384,7 +409,11 @@ const KB = {
     'ansiedade': { kits: ['sono', 'equilibrio'], msg: 'Ansiedade está frequentemente ligada à deficiência de Magnésio, Vitamina D3 e vitaminas do Complexo B. O Ashwagandha é um dos adaptógenos mais estudados para redução do cortisol.' },
     'imunidade': { kits: ['imunidade', 'comeco'], msg: 'Para fortalecer a imunidade de forma consistente, a combinação de Vitamina C + D3 + Zinco é considerada o protocolo padrão pela ciência.' },
     'foco': { kits: ['equilibrio', 'energia'], msg: 'Dificuldade de foco pode indicar deficiência de Magnésio Treonato (que chega ao cérebro), Ômega 3 DHA, Vitamina D3 ou Complexo B.' },
-    'estresse': { kits: ['equilibrio', 'sono'], msg: 'Estresse crônico eleva o cortisol, que por sua vez depleta Magnésio, Vitamina C e vitaminas do Complexo B — criando um ciclo vicioso.' }
+    'estresse': { kits: ['equilibrio', 'sono'], msg: 'Estresse crônico eleva o cortisol, que por sua vez depleta Magnésio, Vitamina C e vitaminas do Complexo B — criando um ciclo vicioso.' },
+    'tpm': { kits: ['feminino'], msg: 'A TPM tem forte relação com inflamação e desequilíbrio de serotonina. O Triptofano apoia a produção de serotonina, enquanto a Curcumina reduz a inflamação associada ao ciclo.' },
+    'cabelo': { kits: ['feminino'], msg: 'A queda de cabelo em mulheres costuma estar ligada à deficiência de Biotina, Ferro, Zinco e Vitamina D3. O Hair Skin Supreme foi formulado especificamente para esse suporte.' },
+    'apetite': { kits: ['metabolismo'], msg: 'O controle do apetite envolve regulação glicêmica e saciedade. O Cromo reduz o desejo por doces, e as fibras do Psyllium aumentam a sensação de saciedade naturalmente.' },
+    'metabolismo': { kits: ['metabolismo'], msg: 'O metabolismo feminino responde bem à combinação de fibras solúveis para controle glicêmico, Magnésio para redução do estresse (que eleva o cortisol e dificulta o emagrecimento) e ativos como a Laranja Moro.' }
   },
 
   nutrientes: {
@@ -525,6 +554,8 @@ function detectIntent(msg) {
     { keys: ['kit 5','kit 05','equilibrio','foco','memoria','estresse','ashwagandha','ginkgo'], kit: 'equilibrio' },
     { keys: ['kit 6','kit 06','performance','academia','treino','creatina','musculo','atleta'], kit: 'performance' },
     { keys: ['kit 7','kit 07','kids','crianca','filho','infantil','filha','menino','menina'], kit: 'kids' },
+    { keys: ['kit 8','kit 08','feminino','tpm','cabelo','pele','unha','hormonio','hormônio','ciclo menstrual','menstrual','equilíbrio feminino','equilibrio feminino'], kit: 'feminino' },
+    { keys: ['kit 9','kit 09','metabolismo','emagrecer','emagrecimento','apetite','saciedade','peso','laranja moro','psyllium','reduxx','morovit','metabolismo feminino'], kit: 'metabolismo' },
   ];
   for (const k of kitMap) {
     if (k.keys.some(key => m.includes(key))) return { type: 'kit', id: k.kit };
@@ -554,6 +585,10 @@ function detectIntent(msg) {
   if (m.match(/gripe|resfriado|doente|imunidade|imune|defensas|defesas/)) return { type: 'sintoma', id: 'imunidade' };
   if (m.match(/foco|concentra|memoria|memória|atencao|atenção/)) return { type: 'sintoma', id: 'foco' };
   if (m.match(/estress|pressao no trabalho|work|sobrecarga/)) return { type: 'sintoma', id: 'estresse' };
+  if (m.match(/tpm|tensao pre|menstrua|ciclo|colica|cólica|hormônio|hormonio|desequilibrio hormonal/)) return { type: 'sintoma', id: 'tpm' };
+  if (m.match(/cabelo caindo|queda de cabelo|cabelo fraco|unhas fracas|pele ressecada|pele opaca|skin|hair/)) return { type: 'sintoma', id: 'cabelo' };
+  if (m.match(/apetite|fome|comer demais|compulsao|compulsão|doce|vontade de comer|saciedade/)) return { type: 'sintoma', id: 'apetite' };
+  if (m.match(/metabolismo|emagrecer|emagrecimento|peso|gordura|barriga|dieta|laranja moro/)) return { type: 'sintoma', id: 'metabolismo' };
 
   // Todos os kits / comparação
   if (m.match(/todos|quais kits|quantos kits|lista|opções|opcoes|diferenca|diferença|comparar|comparacao/)) return { type: 'todos_kits' };
@@ -619,7 +654,7 @@ Me conta mais sobre o que você sente — assim consigo indicar com mais precis�
       const lista = Object.values(KB.kits).map(k =>
         `${k.emoji} <strong>Kit ${k.num} — ${k.nome}</strong> · ${k.preco}<br>&nbsp;&nbsp;&nbsp;→ ${k.beneficios}`
       ).join('<br><br>');
-      return `Temos <strong>7 kits</strong>, cada um com objetivo específico:<br><br>
+      return `Temos <strong>9 kits</strong>, cada um com objetivo específico:<br><br>
 ${lista}<br><br>
 Qual dos seus objetivos de saúde é mais urgente agora? Posso indicar o ideal para você 🌿`;
     }
