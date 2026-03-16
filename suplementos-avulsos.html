@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Suplementos Avulsos — Reset Essencial</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: #f9f8f5; color: #1a1a1a; min-height: 100vh; }
+
+    header { background: #fff; border-bottom: 1px solid #e8e6e0; padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; }
+    header .logo { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; color: #1a1a1a; text-decoration: none; }
+    header nav a { font-size: 13px; color: #666; text-decoration: none; margin-left: 1.5rem; }
+    header nav a:hover { color: #1d9e75; }
+
+    .page { max-width: 980px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+    .hero { text-align: center; margin-bottom: 2.5rem; }
+    .badge { display: inline-block; background: #e1f5ee; color: #0f6e56; font-size: 11px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; padding: 4px 14px; border-radius: 20px; margin-bottom: 12px; }
+    .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: 38px; font-weight: 600; color: #1a1a1a; margin-bottom: 8px; }
+    .hero p { font-size: 14px; color: #777; }
+
+    .filters { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 2.5rem; }
+    .filter-btn { font-size: 12px; font-weight: 500; padding: 7px 18px; border-radius: 20px; border: 1px solid #ddd; background: #fff; color: #666; cursor: pointer; transition: all .15s; }
+    .filter-btn:hover, .filter-btn.active { background: #1d9e75; color: #fff; border-color: #1d9e75; }
+
+    .cat-section { margin-bottom: 2.5rem; }
+    .cat-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; color: #1a1a1a; margin-bottom: 1rem; padding-bottom: 8px; border-bottom: 1px solid #e8e6e0; }
+
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+
+    .card { background: #fff; border: 1px solid #e8e6e0; border-radius: 14px; padding: 1.2rem; display: flex; flex-direction: column; gap: 8px; transition: border-color .2s, box-shadow .2s; }
+    .card:hover { border-color: #1d9e75; box-shadow: 0 4px 16px rgba(29,158,117,.08); }
+
+    .icon { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
+    .ic-imun { background: #e1f5ee; }
+    .ic-fit  { background: #e6f1fb; }
+    .ic-bel  { background: #fbeaf0; }
+    .ic-cer  { background: #eeedfe; }
+    .ic-ener { background: #faeeda; }
+    .ic-card { background: #fcebeb; }
+
+    .pname { font-size: 13px; font-weight: 500; color: #1a1a1a; line-height: 1.4; }
+    .pdesc { font-size: 12px; color: #777; line-height: 1.55; flex: 1; }
+    .ptag  { display: inline-block; font-size: 10px; background: #f2f1ed; color: #888; padding: 2px 10px; border-radius: 20px; width: fit-content; }
+
+    .btn { display: block; text-align: center; background: #1d9e75; color: #fff; font-size: 13px; font-weight: 500; padding: 10px; border-radius: 8px; text-decoration: none; transition: background .2s; margin-top: auto; }
+    .btn:hover { background: #0f6e56; }
+
+    .hidden { display: none; }
+
+    footer { text-align: center; padding: 2rem; font-size: 12px; color: #aaa; border-top: 1px solid #e8e6e0; }
+
+    @media (max-width: 600px) {
+      .grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
+      .hero h1 { font-size: 28px; }
+      header nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="index.html">Reset Essencial</a>
+  <nav>
+    <a href="index.html">Início</a>
+    <a href="suplementos-avulsos.html">Suplementos Avulsos</a>
+    <a href="ia.html">Consultora IA</a>
+  </nav>
+</header>
+
+<div class="page">
+
+  <div class="hero">
+    <div class="badge">Reset Essencial</div>
+    <h1>Suplementos Avulsos</h1>
+    <p>Escolha seu suplemento — entrega direto na sua casa pela Amazon</p>
+  </div>
+
+  <div class="filters">
+    <button class="filter-btn active" onclick="filter('all',this)">Todos</button>
+    <button class="filter-btn" onclick="filter('imun',this)">Imunidade</button>
+    <button class="filter-btn" onclick="filter('fit',this)">Fitness</button>
+    <button class="filter-btn" onclick="filter('bel',this)">Beleza</button>
+    <button class="filter-btn" onclick="filter('cer',this)">Cérebro</button>
+    <button class="filter-btn" onclick="filter('ener',this)">Energia</button>
+    <button class="filter-btn" onclick="filter('card',this)">Coração</button>
+  </div>
+
+  <!-- IMUNIDADE -->
+  <div class="cat-section" data-cat="imun">
+    <h2 class="cat-title">Imunidade & Saúde Geral</h2>
+    <div class="grid">
+      <div class="card"><div class="icon ic-imun">🌞</div><p class="pname">Vitamina D3 2000UI — Bigens</p><p class="pdesc">Em óleo TCM para máxima absorção. Imunidade, humor, ossos e energia.</p><span class="ptag">Imunidade</span><a class="btn" href="https://amzn.to/4bcsC3X" target="_blank">Ver preço e comprar</a></div>
+      <div class="card"><div class="icon ic-imun">🌞</div><p class="pname">Vitamina D3 + K2 MK-7 — Fortalvit</p><p class="pdesc">4 meses de uso. D3 + K2 para ossos e coração. Alta duração.</p><span class="ptag">Imunidade</span><a class="btn" href="https://amzn.to/4lyfXvK" target="_blank">Ver preço e comprar</a></div>
+      <div class="card"><div class="icon ic-imun">🍋</div><p class="pname">Vitamina C</p><p class="pdesc">Antioxidante essencial. Imunidade, pele e absorção de ferro.</p><span class="ptag">Imunidade</span><a class="btn" href="https://amzn.to/4sbWV0F" target="_blank">Ver preço e comprar</a></div>
+      <div class="card"><div class="icon ic-imun">💊</div><p class="pname">Complexo B Vegano — Bigens</p><p class="pdesc">MetilFolato, Metil B12, B1 ao B7, Vitamina C e Zinco. Energia e sistema nervoso.</p><span class="ptag">Imunidade</span><a class="btn" href="https://amzn.to/3P2sM5s" target="_blank">Ver preço e comprar</a></div>
+      <div class="card"><div class="icon ic-imun">🛡️</div><p class="pname">Selênio Quelato 100mcg</p><p class="pdesc">Tireoide, antioxidante e proteção celular. Alta biodisponibilidade.</p><span class="ptag">Imunidade</span><a class="btn" href="https://amzn.to/4uB7xbe" target="_blank">Ver preço e comprar</a></div>
+      <div class="card"><div class="icon ic-imun">✨</div><p class="pname">Coenzima Q10 + Selênio + Vit E C B</p><p class="pdesc">Energia celular, proteção antioxidante e suporte cardiovascular completo.</p><span class="ptag">Imunidade</span><a class="btn" href="https://amzn.to/4sgljOO" target="_blank">Ver preço e comprar</a></div>
+      <div class="card"><div class="icon ic-imun">🌿</div><p class="pname">Cúrcuma + B12 + Selênio + Vit E — Axgard</p><p class="pdesc">95% curcuminoides. Anti-inflamatório natural e proteção celular.</p><span class="ptag">Imunidade</span><a class="btn" href="https://amzn.to/4uxcjWU" target="_blank">Ver preço e comprar</a></div>
+    </div>
+  </div>
+
+  <!-- FITNESS -->
+  <div class="cat-section" data-cat="fit">
+    <h2 class="cat-title">Fitness & Performance</h2>
+    <div class="grid">
+      <div class="card"><div class="icon ic-fit">🥛</div><p class="pname">Whey + Creatina + Glutamina — G7</p><p class="pdesc">Refil 1kg sabor baunilha. Tudo em um para recuperação e ganho muscular.</p><span class="ptag">Fitness</span><a class="btn" href="https://amzn.to/4bsZog0" target="_blank">Ver preço e comprar</a></div>
+      <div class="card"><div class="icon ic-fit">🌱</div><p class="pname">Vegan Protein Chocolate 2kg — BRN Foods</p><p class="pdesc">Proteína vegana de alta qualidade. Ideal para veganos e intolerantes.</p><span class="ptag">Fitness</span><a class="btn" href="https://amzn.to/4182UaS" target="_blank">Ver preço e comprar</a></div>
+      <div class="card"><div class="icon ic-fit">⚡</div><p class="pname">Creatina + Pré Treino Prohibido — 3VS</p><p class="pdesc">Combo creatina pura 300g + pré-treino 360g. Força e explosão.</p><span class="ptag">Fitness</span><a class="btn" href="https://amzn.to/4umvdjg" target="_blank">Ver preço e comprar</a></div>
+      <div class="card"><div class="icon ic-fit">🔥</div><p class="pname">Dila Pump Pré Treino Sem Cafeína</p><p class="pdesc">318g sabor Manga e Laranja. Performance sem estimulante.</p><span class="ptag">Fitness</span><a class="btn" href="https://amzn.to/4bwRJO1" target="_blank">Ver preço e comprar</a></div>
+      <div class="card"><div class="icon ic-fit">💥</div><p class="pname">Panic Pré Workout Morango 300g</p><p class="pdesc">Pré-treino intenso para máxima energia e performance.</p><span class="ptag">Fitness</span><a class="btn" href="https://amzn.to/4sKBunh" target="_blank">Ver preço e comprar</a></div>
+      <div class="card"><div class="icon ic-fit">📈</div><p class="pname">Captain Gainer Hipercalórico 3kg</p><p class="pdesc">Alto teor calórico, proteínas e carboidratos complexos. Ganho de massa.</p><span class="ptag">Fitness</span><a class="btn" href="https://amzn.to/3NHhbs1" target="_blank">Ver preço e comprar</a></div>
+      <div class="card"><div class="icon ic-fit">🏋️</div><p class="pname">Mass 25500 3kg Chocolate</p><p class="pdesc">34g proteínas, 26 vitaminas, 3g creatina. Anticatabólico completo.</p><span class="ptag">Fitness</span><a class="btn" href="https://amzn.to/4lwiSFi" target="_blank">Ver preço e comprar</a></div>
+      <div class="card"><div class="icon ic-fit">🍓</div><p class="pname">Mass 25500 3kg Morango</p><p class="pdesc">34g proteínas, 26 vitaminas, 3g creatina. Sabor Milk Shake Morango.</p><span class="ptag">Fitness</span><a class="btn" href="https://amzn.to/4lsEp1o" target="_blank">Ver preço e comprar</a></div>
+    </div>
+  </div>
+
+  <!-- BELEZA -->
+  <div class="cat-section" data-cat="bel">
+    <h2 class="cat-title">Beleza & Pele</h2>
+    <div class="grid">
+      <div class="card"><div class="icon ic-bel">💅</div><p class="pname">Colágeno Verisol 120 cáps — Profit</p><p class="pdesc">Colágeno certificado para pele, firmeza, cabelo e unhas.</p><span class="ptag">Beleza</span><a class="btn" href="https://amzn.to/3NhLzZZ" target="_blank">Ver preço e comprar</a></div>
+      <div class="card"><div class="icon ic-bel">✨</div><p class="pname">Biotina + Vitaminas B — Puro Nutrition</p><p class="pdesc">Pele, cabelo e unhas. Biotina + B1 ao B12. Beleza de dentro pra fora.</p><span class="ptag">Beleza</span><a class="btn" href="https://amzn.to/3P6CFix" target="_blank">Ver preço e comprar</a></div>
+    </div>
+  </div>
+
+  <!-- CÉREBRO -->
+  <div class="cat-section" data-cat="cer">
+    <h2 class="cat-title">Cérebro & Memória</h2>
+    <div class="grid">
+      <div class="card"><div class="icon ic-cer">🧠</div><p class="pname">Ginkgo Biloba</p><p class="pdesc">Memória, concentração e circulação cerebral. Muito pesquisado.</p><span class="ptag">Cérebro</span><a class="btn" href="https://amzn.to/47OWrW3" target="_blank">Ver preço e comprar</a></div>
+      <div class="card"><div class="icon ic-cer">🔮</div><p class="pname">Magnésio Treonato — Flora Nativa</p><p class="pdesc">Atravessa a barreira hematoencefálica. Sono e cognição.</p><span class="ptag">Cérebro</span><a class="btn" href="https://amzn.to/4bLfGSM" target="_blank">Ver preço e comprar</a></div>
+      <div class="card"><div class="icon ic-cer">💊</div><p class="pname">Magnésio Quelato 500mg — Ecomev</p><p class="pdesc">Máxima absorção. 2 meses de uso. Relaxamento e qualidade do sono.</p><span class="ptag">Cérebro</span><a class="btn" href="https://amzn.to/4bh2ofi" target="_blank">Ver preço e comprar</a></div>
+      <div class="card"><div class="icon ic-cer">🌙</div><p class="pname">Valeriana 500mg — Vital Gold</p><p class="pdesc">Relaxante natural para ansiedade e sono sem dependência.</p><span class="ptag">Cérebro</span><a class="btn" href="https://amzn.to/4sd6a0v" target="_blank">Ver preço e comprar</a></div>
+    </div>
+  </div>
+
+  <!-- ENERGIA -->
+  <div class="cat-section" data-cat="ener">
+    <h2 class="cat-title">Energia & Hormônios</h2>
+    <div class="grid">
+      <div class="card"><div class="icon ic-ener">🌑</div><p class="pname">Maca Peruana Negra 2000mg — 120 caps</p><p class="pdesc">Premium importada. Energia, libido e equilíbrio hormonal.</p><span class="ptag">Energia</span><a class="btn" href="https://amzn.to/4uwPym8" target="_blank">Ver preço e comprar</a></div>
+      <div class="card"><div class="icon ic-ener">🧪</div><p class="pname">Lugol 5% Iodo — 30mL</p><p class="pdesc">Iodo inorgânico concentrado. Tireoide, imunidade e metabolismo.</p><span class="ptag">Energia</span><a class="btn" href="https://amzn.to/47xnDbM" target="_blank">Ver preço e comprar</a></div>
+      <div class="card"><div class="icon ic-ener">🧪</div><p class="pname">Lugol 2% Iodo — 30mL</p><p class="pdesc">Versão mais suave do Lugol. Tireoide e suporte metabólico.</p><span class="ptag">Energia</span><a class="btn" href="https://amzn.to/4uxrLSX" target="_blank">Ver preço e comprar</a></div>
+      <div class="card"><div class="icon ic-ener">🍬</div><p class="pname">Cromo Picolinato 250mcg — Lauton</p><p class="pdesc">Controle do açúcar, compulsão alimentar e metabolismo de carboidratos.</p><span class="ptag">Energia</span><a class="btn" href="https://amzn.to/4rwveP6" target="_blank">Ver preço e comprar</a></div>
+    </div>
+  </div>
+
+  <!-- CORAÇÃO -->
+  <div class="cat-section" data-cat="card">
+    <h2 class="cat-title">Coração & Anti-inflamatório</h2>
+    <div class="grid">
+      <div class="card"><div class="icon ic-card">🐟</div><p class="pname">Mega DHA 120 cáps — Vitafor</p><p class="pdesc">DHA concentrado para cérebro, visão e coração.</p><span class="ptag">Coração</span><a class="btn" href="https://amzn.to/4uwfdLI" target="_blank">Ver preço e comprar</a></div>
+      <div class="card"><div class="icon ic-card">🐟</div><p class="pname">Mega Ômega 3 EPA 1000mg + DHA 400mg — Bigens</p><p class="pdesc">Certificado Meg-3. Coração, cérebro e redução de inflamação.</p><span class="ptag">Coração</span><a class="btn" href="https://amzn.to/3PanWTE" target="_blank">Ver preço e comprar</a></div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  © 2025 Reset Essencial — Todos os links são de afiliado Amazon Associates
+</footer>
+
+<script>
+  function filter(cat, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.cat-section').forEach(s => {
+      s.classList.toggle('hidden', cat !== 'all' && s.dataset.cat !== cat);
+    });
+  }
+</script>
+
+</body>
+</html>
