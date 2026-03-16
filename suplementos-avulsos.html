@@ -1,177 +1,573 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Suplementos Avulsos — Reset Essencial</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet"/>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'DM Sans', sans-serif; background: #f9f8f5; color: #1a1a1a; min-height: 100vh; }
-
-    header { background: #fff; border-bottom: 1px solid #e8e6e0; padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; }
-    header .logo { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; color: #1a1a1a; text-decoration: none; }
-    header nav a { font-size: 13px; color: #666; text-decoration: none; margin-left: 1.5rem; }
-    header nav a:hover { color: #1d9e75; }
-
-    .page { max-width: 980px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
-
-    .hero { text-align: center; margin-bottom: 2.5rem; }
-    .badge { display: inline-block; background: #e1f5ee; color: #0f6e56; font-size: 11px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; padding: 4px 14px; border-radius: 20px; margin-bottom: 12px; }
-    .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: 38px; font-weight: 600; color: #1a1a1a; margin-bottom: 8px; }
-    .hero p { font-size: 14px; color: #777; }
-
-    .filters { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 2.5rem; }
-    .filter-btn { font-size: 12px; font-weight: 500; padding: 7px 18px; border-radius: 20px; border: 1px solid #ddd; background: #fff; color: #666; cursor: pointer; transition: all .15s; }
-    .filter-btn:hover, .filter-btn.active { background: #1d9e75; color: #fff; border-color: #1d9e75; }
-
-    .cat-section { margin-bottom: 2.5rem; }
-    .cat-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; color: #1a1a1a; margin-bottom: 1rem; padding-bottom: 8px; border-bottom: 1px solid #e8e6e0; }
-
-    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
-
-    .card { background: #fff; border: 1px solid #e8e6e0; border-radius: 14px; padding: 1.2rem; display: flex; flex-direction: column; gap: 8px; transition: border-color .2s, box-shadow .2s; }
-    .card:hover { border-color: #1d9e75; box-shadow: 0 4px 16px rgba(29,158,117,.08); }
-
-    .icon { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
-    .ic-imun { background: #e1f5ee; }
-    .ic-fit  { background: #e6f1fb; }
-    .ic-bel  { background: #fbeaf0; }
-    .ic-cer  { background: #eeedfe; }
-    .ic-ener { background: #faeeda; }
-    .ic-card { background: #fcebeb; }
-
-    .pname { font-size: 13px; font-weight: 500; color: #1a1a1a; line-height: 1.4; }
-    .pdesc { font-size: 12px; color: #777; line-height: 1.55; flex: 1; }
-    .ptag  { display: inline-block; font-size: 10px; background: #f2f1ed; color: #888; padding: 2px 10px; border-radius: 20px; width: fit-content; }
-
-    .btn { display: block; text-align: center; background: #1d9e75; color: #fff; font-size: 13px; font-weight: 500; padding: 10px; border-radius: 8px; text-decoration: none; transition: background .2s; margin-top: auto; }
-    .btn:hover { background: #0f6e56; }
-
-    .hidden { display: none; }
-
-    footer { text-align: center; padding: 2rem; font-size: 12px; color: #aaa; border-top: 1px solid #e8e6e0; }
-
-    @media (max-width: 600px) {
-      .grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
-      .hero h1 { font-size: 28px; }
-      header nav { display: none; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Suplementos Avulsos — Reset Essencial</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#F5F0E8;--warm:#FAF7F2;--bark:#5C4A32;--earth:#8B6E4E;--clay:#B8956A;--sage:#7A8C6E;--sand:#D4B896;--deep:#2E2418;--muted:#9B8B7A;--ls:#EDE4D6;--wa:#25D366}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{background:var(--warm);color:var(--deep);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.7;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:0 52px;height:68px;display:flex;align-items:center;justify-content:space-between;background:rgba(250,247,242,.96);backdrop-filter:blur(16px);border-bottom:1px solid rgba(92,74,50,.09)}
+.logo{font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:600;color:var(--bark);text-decoration:none;letter-spacing:.3px}
+.logo span{font-weight:300;font-style:italic;color:var(--clay)}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{text-decoration:none;color:var(--muted);font-size:11px;letter-spacing:2px;text-transform:uppercase;transition:color .3s}
+.nav-links a:hover,.nav-links a.active{color:var(--bark);font-weight:500}
+.hero{background:var(--bark);padding:110px 40px 60px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-150px;left:50%;transform:translateX(-50%);width:600px;height:600px;border-radius:50%;border:1px solid rgba(255,255,255,.05)}
+.hero::after{content:'';position:absolute;bottom:-100px;right:-100px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(184,149,106,.15),transparent 70%)}
+.hero-inner{position:relative;z-index:1;max-width:700px;margin:0 auto}
+.hero-eyebrow{font-size:9px;letter-spacing:3.5px;text-transform:uppercase;color:rgba(212,184,150,.6);margin-bottom:20px}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(42px,6vw,72px);font-weight:300;color:var(--cream);line-height:1.05;margin-bottom:14px}
+.hero h1 em{font-style:italic;color:var(--sand)}
+.hero-sub{font-size:14px;color:rgba(245,240,232,.5);line-height:1.8;max-width:500px;margin:0 auto 32px}
+.amazon-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);padding:8px 20px;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(245,240,232,.55)}
+.amazon-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--sage)}
+.filters-wrap{background:var(--cream);border-bottom:1px solid rgba(184,149,106,.2);position:sticky;top:68px;z-index:100}
+.filters{max-width:1160px;margin:0 auto;padding:0 40px;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+.filters::-webkit-scrollbar{display:none}
+.filter-btn{padding:16px 20px;font-size:10px;letter-spacing:2px;text-transform:uppercase;border:none;background:none;cursor:pointer;color:var(--muted);white-space:nowrap;border-bottom:2px solid transparent;transition:all .25s;font-family:'DM Sans',sans-serif}
+.filter-btn:hover{color:var(--bark)}.filter-btn.active{color:var(--bark);border-bottom-color:var(--clay);font-weight:500}
+.main{max-width:1160px;margin:0 auto;padding:56px 40px 100px}
+.cat-section{margin-bottom:64px}.cat-section.hidden{display:none}
+.cat-title{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:var(--bark);margin-bottom:6px}
+.cat-title em{font-style:italic;color:var(--clay)}
+.cat-sub{font-size:12px;color:var(--muted);letter-spacing:1px;margin-bottom:28px}
+.products{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.card{background:var(--cream);border:1px solid rgba(184,149,106,.15);border-radius:2px;padding:24px;display:flex;flex-direction:column;gap:12px;transition:all .3s;position:relative}
+.card:hover{border-color:var(--clay);transform:translateY(-3px);box-shadow:0 12px 40px rgba(92,74,50,.08)}
+.new-badge{position:absolute;top:14px;right:14px;font-size:8px;letter-spacing:1.5px;text-transform:uppercase;background:var(--sage);color:white;padding:3px 8px}
+.card-icon{font-size:26px;margin-bottom:2px}
+.card-name{font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--bark);font-weight:400;line-height:1.3}
+.card-brand{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-top:-6px}
+.card-desc{font-size:12px;color:var(--muted);line-height:1.7;flex:1}
+.card-tags{display:flex;flex-wrap:wrap;gap:5px}
+.card-tag{font-size:9px;letter-spacing:1px;text-transform:uppercase;background:var(--ls);color:var(--earth);padding:3px 8px}
+.card-btn{display:flex;align-items:center;justify-content:center;gap:8px;background:var(--bark);color:var(--cream);padding:11px;font-size:9px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:all .25s;font-family:'DM Sans',sans-serif;margin-top:4px}
+.card-btn:hover{background:var(--deep)}
+.card-btn svg{width:12px;height:12px;flex-shrink:0}
+footer{background:var(--deep);padding:28px 52px;display:flex;align-items:center;justify-content:space-between}
+footer .logo{color:var(--sand)}footer .logo span{color:var(--clay)}
+.fp{font-size:11px;color:rgba(255,255,255,.22)}
+.fwa{position:fixed;bottom:24px;right:24px;z-index:300;background:var(--wa);width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 20px rgba(37,211,102,.4);transition:all .3s;animation:pulse 2.5s ease-in-out infinite}
+.fwa:hover{transform:scale(1.1);animation:none}.fwa svg{width:24px;height:24px;fill:white}
+@keyframes pulse{0%,100%{box-shadow:0 4px 20px rgba(37,211,102,.4)}50%{box-shadow:0 4px 36px rgba(37,211,102,.7)}}
+@media(max-width:768px){nav{padding:0 18px}.hero{padding:95px 20px 50px}.filters{padding:0 18px}.main{padding:40px 18px 80px}footer{padding:22px 18px;flex-direction:column;gap:8px;text-align:center}}
+</style>
 </head>
 <body>
 
-<header>
-  <a class="logo" href="index.html">Reset Essencial</a>
-  <nav>
-    <a href="index.html">Início</a>
-    <a href="suplementos-avulsos.html">Suplementos Avulsos</a>
-    <a href="ia.html">Consultora IA</a>
-  </nav>
-</header>
+<nav>
+  <a href="index.html" class="logo">Reset <span>Essencial</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Início</a></li>
+    <li><a href="suplementos-avulsos.html" class="active">Suplementos Avulsos</a></li>
+    <li><a href="ia.html">Consultora IA</a></li>
+  </ul>
+</nav>
 
-<div class="page">
-
-  <div class="hero">
-    <div class="badge">Reset Essencial</div>
-    <h1>Suplementos Avulsos</h1>
-    <p>Escolha seu suplemento — entrega direto na sua casa pela Amazon</p>
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Reset Essencial · Catálogo Completo</div>
+    <h1>Suplementos <em>Avulsos</em></h1>
+    <p class="hero-sub">Escolha seu suplemento — entrega direto na sua casa pela Amazon</p>
+    <div class="amazon-badge">Links de afiliado Amazon Associates</div>
   </div>
-
-  <div class="filters">
-    <button class="filter-btn active" onclick="filter('all',this)">Todos</button>
-    <button class="filter-btn" onclick="filter('imun',this)">Imunidade</button>
-    <button class="filter-btn" onclick="filter('fit',this)">Fitness</button>
-    <button class="filter-btn" onclick="filter('bel',this)">Beleza</button>
-    <button class="filter-btn" onclick="filter('cer',this)">Cérebro</button>
-    <button class="filter-btn" onclick="filter('ener',this)">Energia</button>
-    <button class="filter-btn" onclick="filter('card',this)">Coração</button>
-  </div>
-
-  <!-- IMUNIDADE -->
-  <div class="cat-section" data-cat="imun">
-    <h2 class="cat-title">Imunidade & Saúde Geral</h2>
-    <div class="grid">
-      <div class="card"><div class="icon ic-imun">🌞</div><p class="pname">Vitamina D3 2000UI — Bigens</p><p class="pdesc">Em óleo TCM para máxima absorção. Imunidade, humor, ossos e energia.</p><span class="ptag">Imunidade</span><a class="btn" href="https://amzn.to/4bcsC3X" target="_blank">Ver preço e comprar</a></div>
-      <div class="card"><div class="icon ic-imun">🌞</div><p class="pname">Vitamina D3 + K2 MK-7 — Fortalvit</p><p class="pdesc">4 meses de uso. D3 + K2 para ossos e coração. Alta duração.</p><span class="ptag">Imunidade</span><a class="btn" href="https://amzn.to/4lyfXvK" target="_blank">Ver preço e comprar</a></div>
-      <div class="card"><div class="icon ic-imun">🍋</div><p class="pname">Vitamina C</p><p class="pdesc">Antioxidante essencial. Imunidade, pele e absorção de ferro.</p><span class="ptag">Imunidade</span><a class="btn" href="https://amzn.to/4sbWV0F" target="_blank">Ver preço e comprar</a></div>
-      <div class="card"><div class="icon ic-imun">💊</div><p class="pname">Complexo B Vegano — Bigens</p><p class="pdesc">MetilFolato, Metil B12, B1 ao B7, Vitamina C e Zinco. Energia e sistema nervoso.</p><span class="ptag">Imunidade</span><a class="btn" href="https://amzn.to/3P2sM5s" target="_blank">Ver preço e comprar</a></div>
-      <div class="card"><div class="icon ic-imun">🛡️</div><p class="pname">Selênio Quelato 100mcg</p><p class="pdesc">Tireoide, antioxidante e proteção celular. Alta biodisponibilidade.</p><span class="ptag">Imunidade</span><a class="btn" href="https://amzn.to/4uB7xbe" target="_blank">Ver preço e comprar</a></div>
-      <div class="card"><div class="icon ic-imun">✨</div><p class="pname">Coenzima Q10 + Selênio + Vit E C B</p><p class="pdesc">Energia celular, proteção antioxidante e suporte cardiovascular completo.</p><span class="ptag">Imunidade</span><a class="btn" href="https://amzn.to/4sgljOO" target="_blank">Ver preço e comprar</a></div>
-      <div class="card"><div class="icon ic-imun">🌿</div><p class="pname">Cúrcuma + B12 + Selênio + Vit E — Axgard</p><p class="pdesc">95% curcuminoides. Anti-inflamatório natural e proteção celular.</p><span class="ptag">Imunidade</span><a class="btn" href="https://amzn.to/4uxcjWU" target="_blank">Ver preço e comprar</a></div>
-    </div>
-  </div>
-
-  <!-- FITNESS -->
-  <div class="cat-section" data-cat="fit">
-    <h2 class="cat-title">Fitness & Performance</h2>
-    <div class="grid">
-      <div class="card"><div class="icon ic-fit">🥛</div><p class="pname">Whey + Creatina + Glutamina — G7</p><p class="pdesc">Refil 1kg sabor baunilha. Tudo em um para recuperação e ganho muscular.</p><span class="ptag">Fitness</span><a class="btn" href="https://amzn.to/4bsZog0" target="_blank">Ver preço e comprar</a></div>
-      <div class="card"><div class="icon ic-fit">🌱</div><p class="pname">Vegan Protein Chocolate 2kg — BRN Foods</p><p class="pdesc">Proteína vegana de alta qualidade. Ideal para veganos e intolerantes.</p><span class="ptag">Fitness</span><a class="btn" href="https://amzn.to/4182UaS" target="_blank">Ver preço e comprar</a></div>
-      <div class="card"><div class="icon ic-fit">⚡</div><p class="pname">Creatina + Pré Treino Prohibido — 3VS</p><p class="pdesc">Combo creatina pura 300g + pré-treino 360g. Força e explosão.</p><span class="ptag">Fitness</span><a class="btn" href="https://amzn.to/4umvdjg" target="_blank">Ver preço e comprar</a></div>
-      <div class="card"><div class="icon ic-fit">🔥</div><p class="pname">Dila Pump Pré Treino Sem Cafeína</p><p class="pdesc">318g sabor Manga e Laranja. Performance sem estimulante.</p><span class="ptag">Fitness</span><a class="btn" href="https://amzn.to/4bwRJO1" target="_blank">Ver preço e comprar</a></div>
-      <div class="card"><div class="icon ic-fit">💥</div><p class="pname">Panic Pré Workout Morango 300g</p><p class="pdesc">Pré-treino intenso para máxima energia e performance.</p><span class="ptag">Fitness</span><a class="btn" href="https://amzn.to/4sKBunh" target="_blank">Ver preço e comprar</a></div>
-      <div class="card"><div class="icon ic-fit">📈</div><p class="pname">Captain Gainer Hipercalórico 3kg</p><p class="pdesc">Alto teor calórico, proteínas e carboidratos complexos. Ganho de massa.</p><span class="ptag">Fitness</span><a class="btn" href="https://amzn.to/3NHhbs1" target="_blank">Ver preço e comprar</a></div>
-      <div class="card"><div class="icon ic-fit">🏋️</div><p class="pname">Mass 25500 3kg Chocolate</p><p class="pdesc">34g proteínas, 26 vitaminas, 3g creatina. Anticatabólico completo.</p><span class="ptag">Fitness</span><a class="btn" href="https://amzn.to/4lwiSFi" target="_blank">Ver preço e comprar</a></div>
-      <div class="card"><div class="icon ic-fit">🍓</div><p class="pname">Mass 25500 3kg Morango</p><p class="pdesc">34g proteínas, 26 vitaminas, 3g creatina. Sabor Milk Shake Morango.</p><span class="ptag">Fitness</span><a class="btn" href="https://amzn.to/4lsEp1o" target="_blank">Ver preço e comprar</a></div>
-    </div>
-  </div>
-
-  <!-- BELEZA -->
-  <div class="cat-section" data-cat="bel">
-    <h2 class="cat-title">Beleza & Pele</h2>
-    <div class="grid">
-      <div class="card"><div class="icon ic-bel">💅</div><p class="pname">Colágeno Verisol 120 cáps — Profit</p><p class="pdesc">Colágeno certificado para pele, firmeza, cabelo e unhas.</p><span class="ptag">Beleza</span><a class="btn" href="https://amzn.to/3NhLzZZ" target="_blank">Ver preço e comprar</a></div>
-      <div class="card"><div class="icon ic-bel">✨</div><p class="pname">Biotina + Vitaminas B — Puro Nutrition</p><p class="pdesc">Pele, cabelo e unhas. Biotina + B1 ao B12. Beleza de dentro pra fora.</p><span class="ptag">Beleza</span><a class="btn" href="https://amzn.to/3P6CFix" target="_blank">Ver preço e comprar</a></div>
-    </div>
-  </div>
-
-  <!-- CÉREBRO -->
-  <div class="cat-section" data-cat="cer">
-    <h2 class="cat-title">Cérebro & Memória</h2>
-    <div class="grid">
-      <div class="card"><div class="icon ic-cer">🧠</div><p class="pname">Ginkgo Biloba</p><p class="pdesc">Memória, concentração e circulação cerebral. Muito pesquisado.</p><span class="ptag">Cérebro</span><a class="btn" href="https://amzn.to/47OWrW3" target="_blank">Ver preço e comprar</a></div>
-      <div class="card"><div class="icon ic-cer">🔮</div><p class="pname">Magnésio Treonato — Flora Nativa</p><p class="pdesc">Atravessa a barreira hematoencefálica. Sono e cognição.</p><span class="ptag">Cérebro</span><a class="btn" href="https://amzn.to/4bLfGSM" target="_blank">Ver preço e comprar</a></div>
-      <div class="card"><div class="icon ic-cer">💊</div><p class="pname">Magnésio Quelato 500mg — Ecomev</p><p class="pdesc">Máxima absorção. 2 meses de uso. Relaxamento e qualidade do sono.</p><span class="ptag">Cérebro</span><a class="btn" href="https://amzn.to/4bh2ofi" target="_blank">Ver preço e comprar</a></div>
-      <div class="card"><div class="icon ic-cer">🌙</div><p class="pname">Valeriana 500mg — Vital Gold</p><p class="pdesc">Relaxante natural para ansiedade e sono sem dependência.</p><span class="ptag">Cérebro</span><a class="btn" href="https://amzn.to/4sd6a0v" target="_blank">Ver preço e comprar</a></div>
-    </div>
-  </div>
-
-  <!-- ENERGIA -->
-  <div class="cat-section" data-cat="ener">
-    <h2 class="cat-title">Energia & Hormônios</h2>
-    <div class="grid">
-      <div class="card"><div class="icon ic-ener">🌑</div><p class="pname">Maca Peruana Negra 2000mg — 120 caps</p><p class="pdesc">Premium importada. Energia, libido e equilíbrio hormonal.</p><span class="ptag">Energia</span><a class="btn" href="https://amzn.to/4uwPym8" target="_blank">Ver preço e comprar</a></div>
-      <div class="card"><div class="icon ic-ener">🧪</div><p class="pname">Lugol 5% Iodo — 30mL</p><p class="pdesc">Iodo inorgânico concentrado. Tireoide, imunidade e metabolismo.</p><span class="ptag">Energia</span><a class="btn" href="https://amzn.to/47xnDbM" target="_blank">Ver preço e comprar</a></div>
-      <div class="card"><div class="icon ic-ener">🧪</div><p class="pname">Lugol 2% Iodo — 30mL</p><p class="pdesc">Versão mais suave do Lugol. Tireoide e suporte metabólico.</p><span class="ptag">Energia</span><a class="btn" href="https://amzn.to/4uxrLSX" target="_blank">Ver preço e comprar</a></div>
-      <div class="card"><div class="icon ic-ener">🍬</div><p class="pname">Cromo Picolinato 250mcg — Lauton</p><p class="pdesc">Controle do açúcar, compulsão alimentar e metabolismo de carboidratos.</p><span class="ptag">Energia</span><a class="btn" href="https://amzn.to/4rwveP6" target="_blank">Ver preço e comprar</a></div>
-    </div>
-  </div>
-
-  <!-- CORAÇÃO -->
-  <div class="cat-section" data-cat="card">
-    <h2 class="cat-title">Coração & Anti-inflamatório</h2>
-    <div class="grid">
-      <div class="card"><div class="icon ic-card">🐟</div><p class="pname">Mega DHA 120 cáps — Vitafor</p><p class="pdesc">DHA concentrado para cérebro, visão e coração.</p><span class="ptag">Coração</span><a class="btn" href="https://amzn.to/4uwfdLI" target="_blank">Ver preço e comprar</a></div>
-      <div class="card"><div class="icon ic-card">🐟</div><p class="pname">Mega Ômega 3 EPA 1000mg + DHA 400mg — Bigens</p><p class="pdesc">Certificado Meg-3. Coração, cérebro e redução de inflamação.</p><span class="ptag">Coração</span><a class="btn" href="https://amzn.to/3PanWTE" target="_blank">Ver preço e comprar</a></div>
-    </div>
-  </div>
-
 </div>
 
+<div class="filters-wrap">
+  <div class="filters">
+    <button class="filter-btn active" onclick="filter('all',this)">Todos</button>
+    <button class="filter-btn" onclick="filter('imunidade',this)">Imunidade</button>
+    <button class="filter-btn" onclick="filter('fitness',this)">Fitness</button>
+    <button class="filter-btn" onclick="filter('beleza',this)">Beleza</button>
+    <button class="filter-btn" onclick="filter('cerebro',this)">Cérebro</button>
+    <button class="filter-btn" onclick="filter('energia',this)">Energia</button>
+    <button class="filter-btn" onclick="filter('coracao',this)">Coração</button>
+    <button class="filter-btn" onclick="filter('feminino',this)">Feminino</button>
+    <button class="filter-btn" onclick="filter('digestao',this)">Digestão</button>
+    <button class="filter-btn" onclick="filter('articulacoes',this)">Articulações</button>
+  </div>
+</div>
+
+<main class="main">
+
+  <!-- ══ IMUNIDADE ══ -->
+  <div class="cat-section" data-cat="imunidade">
+    <div class="cat-title">Imunidade & <em>Saúde Geral</em></div>
+    <div class="cat-sub">Proteção celular, defesas naturais e bem-estar diário</div>
+    <div class="products">
+
+      <div class="card">
+        <div class="card-icon">🌞</div>
+        <div class="card-name">Vitamina D3 2000UI</div>
+        <div class="card-brand">Bigens</div>
+        <p class="card-desc">Em óleo TCM para máxima absorção. Imunidade, humor, ossos e energia. Um dos suplementos mais importantes para brasileiros — 80% têm deficiência.</p>
+        <div class="card-tags"><span class="card-tag">Imunidade</span><span class="card-tag">Ossos</span></div>
+        <a href="https://amzn.to/4lyfXvK" target="_blank" class="card-btn">Ver preço e comprar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🌞</div>
+        <div class="card-name">Vitamina D3 + K2 MK-7</div>
+        <div class="card-brand">Fortalvit</div>
+        <p class="card-desc">4 meses de uso. 2000UI D3 + 149mcg K2 MK-7. A K2 direciona o cálcio para os ossos e longe das artérias — combinação ideal para saúde óssea e cardiovascular.</p>
+        <div class="card-tags"><span class="card-tag">Imunidade</span><span class="card-tag">Ossos</span><span class="card-tag">Coração</span></div>
+        <a href="https://amzn.to/4lyfXvK" target="_blank" class="card-btn">Ver preço e comprar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🍋</div>
+        <div class="card-name">Vitamina C</div>
+        <div class="card-brand">Avulso</div>
+        <p class="card-desc">Antioxidante essencial. Fortalece o sistema imunológico, melhora a pele e potencializa a absorção de ferro. Uso diário recomendado.</p>
+        <div class="card-tags"><span class="card-tag">Imunidade</span><span class="card-tag">Antioxidante</span></div>
+        <a href="https://amzn.to/4sbWV0F" target="_blank" class="card-btn">Ver preço e comprar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">💊</div>
+        <div class="card-name">Complexo B Vegano</div>
+        <div class="card-brand">Bigens</div>
+        <p class="card-desc">MetilFolato, Metil B12, B1 ao B7, Vitamina C e Zinco em 60 cápsulas. Fórmula vegana com as formas ativas das vitaminas B para máxima absorção. Energia e sistema nervoso.</p>
+        <div class="card-tags"><span class="card-tag">Imunidade</span><span class="card-tag">Energia</span></div>
+        <a href="https://amzn.to/3P2sM5s" target="_blank" class="card-btn">Ver preço e comprar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🛡️</div>
+        <div class="card-name">Selênio Quelato 100mcg</div>
+        <div class="card-brand">Avulso</div>
+        <p class="card-desc">60 cápsulas. Mineral essencial para a tireoide, antioxidante e proteção celular. Alta biodisponibilidade na forma quelato.</p>
+        <div class="card-tags"><span class="card-tag">Imunidade</span><span class="card-tag">Tireoide</span></div>
+        <a href="https://amzn.to/4uB7xbe" target="_blank" class="card-btn">Ver preço e comprar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">✨</div>
+        <div class="card-name">CoQ10 + Selênio + Vit E C B2 B6</div>
+        <div class="card-brand">Avulso</div>
+        <p class="card-desc">600mg por dose. Energia celular, proteção antioxidante completa e suporte cardiovascular. Combinação poderosa para vitalidade e longevidade celular.</p>
+        <div class="card-tags"><span class="card-tag">Imunidade</span><span class="card-tag">Energia</span></div>
+        <a href="https://amzn.to/4sgljOO" target="_blank" class="card-btn">Ver preço e comprar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🌿</div>
+        <div class="card-name">Cúrcuma + B12 + Selênio + Vit E</div>
+        <div class="card-brand">Axgard Supplements</div>
+        <p class="card-desc">60 softcaps. 95% curcuminoides, 130mg de curcumina. Anti-inflamatório natural de alta potência com proteção celular completa. Sem lactose.</p>
+        <div class="card-tags"><span class="card-tag">Imunidade</span><span class="card-tag">Anti-inflamatório</span></div>
+        <a href="https://amzn.to/4uxcjWU" target="_blank" class="card-btn">Ver preço e comprar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+
+      <div class="card">
+        <span class="new-badge">Novo</span>
+        <div class="card-icon">🟢</div>
+        <div class="card-name">Própolis Verde 500mg</div>
+        <div class="card-brand">Flora Nativa</div>
+        <p class="card-desc">60 cápsulas. Extrato seco padronizado de própolis verde brasileiro. Antibacteriano natural, antifúngico, imunidade e potente ação antioxidante.</p>
+        <div class="card-tags"><span class="card-tag">Imunidade</span><span class="card-tag">Natural</span></div>
+        <a href="https://amzn.to/4ux3egZ" target="_blank" class="card-btn">Ver preço e comprar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+
+      <div class="card">
+        <span class="new-badge">Novo</span>
+        <div class="card-icon">🌱</div>
+        <div class="card-name">Óleo de Orégano 150mg</div>
+        <div class="card-brand">Swanson</div>
+        <p class="card-desc">120 softgels. Antimicrobiano e antifúngico natural. Rico em carvacrol e timol. Excelente para imunidade, saúde intestinal e combate a infecções.</p>
+        <div class="card-tags"><span class="card-tag">Imunidade</span><span class="card-tag">Intestinal</span></div>
+        <a href="https://amzn.to/4s92BbP" target="_blank" class="card-btn">Ver preço e comprar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══ FITNESS ══ -->
+  <div class="cat-section" data-cat="fitness">
+    <div class="cat-title">Fitness & <em>Performance</em></div>
+    <div class="cat-sub">Força, recuperação, ganho muscular e energia nos treinos</div>
+    <div class="products">
+
+      <div class="card">
+        <div class="card-icon">🥛</div>
+        <div class="card-name">Whey + Creatina + Glutamina</div>
+        <div class="card-brand">G7 Nutrição Esportiva Legacy</div>
+        <p class="card-desc">Refil 1kg sabor Baunilha. Whey concentrado + 3g creatina + 5g glutamina. Tudo em um para recuperação muscular completa.</p>
+        <div class="card-tags"><span class="card-tag">Proteína</span><span class="card-tag">Recuperação</span></div>
+        <a href="https://amzn.to/4bsZog0" target="_blank" class="card-btn">Ver preço e comprar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🌱</div>
+        <div class="card-name">Vegan Protein Chocolate 2kg</div>
+        <div class="card-brand">BRN Foods</div>
+        <p class="card-desc">2kg sabor chocolate. Proteína vegana de alta qualidade. Ideal para veganos, vegetarianos e intolerantes à lactose. Sem glúten.</p>
+        <div class="card-tags"><span class="card-tag">Proteína</span><span class="card-tag">Vegano</span></div>
+        <a href="https://amzn.to/4182UaS" target="_blank" class="card-btn">Ver preço e comprar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">⚡</div>
+        <div class="card-name">Combo Creatina + Pré Treino Prohibido</div>
+        <div class="card-brand">3VS Nutrition</div>
+        <p class="card-desc">Creatina pura 300g + Pré-treino 360g sabor Maçã Verde. Combo completo para força, explosão e performance máxima.</p>
+        <div class="card-tags"><span class="card-tag">Creatina</span><span class="card-tag">Pré-treino</span></div>
+        <a href="https://amzn.to/4umvdjg" target="_blank" class="card-btn">Ver preço e comprar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🔥</div>
+        <div class="card-name">Dila Pump Pré Treino Sem Cafeína</div>
+        <div class="card-brand">Adaptogen Science</div>
+        <p class="card-desc">318g sabor Manga e Laranja. Pré-treino sem estimulante para quem é sensível à cafeína. Foco, pump e resistência sem agitação.</p>
+        <div class="card-tags"><span class="card-tag">Pré-treino</span><span class="card-tag">Sem cafeína</span></div>
+        <a href="https://amzn.to/4bwRJO1" target="_blank" class="card-btn">Ver preço e comprar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">💥</div>
+        <div class="card-name">Panic Pré Workout Morango 300g</div>
+        <div class="card-brand">Panic</div>
+        <p class="card-desc">300g sabor Morango. Pré-treino intenso para máxima energia, foco e performance. Para quem busca resultados sérios na academia.</p>
+        <div class="card-tags"><span class="card-tag">Pré-treino</span><span class="card-tag">Energia</span></div>
+        <a href="https://amzn.to/4sKBunh" target="_blank" class="card-btn">Ver preço e comprar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">📈</div>
+        <div class="card-name">Captain Gainer Hipercalórico 3kg</div>
+        <div class="card-brand">Under Labz</div>
+        <p class="card-desc">3kg sabor Chocobear. Alto teor calórico com proteínas de qualidade e carboidratos complexos. Energia e força para treinos intensos e ganho de peso.</p>
+        <div class="card-tags"><span class="card-tag">Hipercalórico</span><span class="card-tag">Massa</span></div>
+        <a href="https://amzn.to/3NHhbs1" target="_blank" class="card-btn">Ver preço e comprar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🏋️</div>
+        <div class="card-name">Mass 25500 3kg — Chocolate Suíço</div>
+        <div class="card-brand">Mass</div>
+        <p class="card-desc">34g de proteínas, 26 vitaminas e minerais, 3g de creatina por dose. Anticatabólico completo para ganho de massa muscular de qualidade.</p>
+        <div class="card-tags"><span class="card-tag">Hipercalórico</span><span class="card-tag">Creatina</span></div>
+        <a href="https://amzn.to/4lwiSFi" target="_blank" class="card-btn">Ver preço e comprar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🍓</div>
+        <div class="card-name">Mass 25500 3kg — Milk Shake Morango</div>
+        <div class="card-brand">Mass</div>
+        <p class="card-desc">Mesma fórmula completa: 34g proteínas, 26 vitaminas e minerais, 3g creatina. Anticatabólico no sabor Milk Shake de Morango.</p>
+        <div class="card-tags"><span class="card-tag">Hipercalórico</span><span class="card-tag">Creatina</span></div>
+        <a href="https://amzn.to/4lsEp1o" target="_blank" class="card-btn">Ver preço e comprar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══ BELEZA ══ -->
+  <div class="cat-section" data-cat="beleza">
+    <div class="cat-title">Beleza & <em>Pele</em></div>
+    <div class="cat-sub">Cabelo, unhas e pele saudáveis de dentro para fora</div>
+    <div class="products">
+
+      <div class="card">
+        <div class="card-icon">💅</div>
+        <div class="card-name">Colágeno Verisol 120 cáps</div>
+        <div class="card-brand">Profit Laboratórios</div>
+        <p class="card-desc">Colágeno tipo I e III certificado Verisol. Melhora a firmeza da pele, reduz rugas, fortalece cabelo e unhas. A forma mais estudada e eficaz de colágeno.</p>
+        <div class="card-tags"><span class="card-tag">Pele</span><span class="card-tag">Cabelo</span><span class="card-tag">Unhas</span></div>
+        <a href="https://amzn.to/3NhLzZZ" target="_blank" class="card-btn">Ver preço e comprar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">✨</div>
+        <div class="card-name">Biotina + Vitaminas B</div>
+        <div class="card-brand">Puro Nutrition</div>
+        <p class="card-desc">60 cápsulas. 45mcg de Biotina + B1, B2, B3, B5, B6, B9 e B12. Fórmula completa para pele mais luminosa, cabelo mais forte e unhas que não quebram.</p>
+        <div class="card-tags"><span class="card-tag">Cabelo</span><span class="card-tag">Unhas</span><span class="card-tag">Pele</span></div>
+        <a href="https://amzn.to/3P6CFix" target="_blank" class="card-btn">Ver preço e comprar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══ CEREBRO ══ -->
+  <div class="cat-section" data-cat="cerebro">
+    <div class="cat-title">Cérebro & <em>Memória</em></div>
+    <div class="cat-sub">Foco, concentração, sono e equilíbrio mental</div>
+    <div class="products">
+
+      <div class="card">
+        <div class="card-icon">🧠</div>
+        <div class="card-name">Ginkgo Biloba</div>
+        <div class="card-brand">Avulso</div>
+        <p class="card-desc">Extrato padronizado. Melhora memória, concentração e circulação cerebral. Um dos suplementos mais pesquisados para saúde cognitiva.</p>
+        <div class="card-tags"><span class="card-tag">Memória</span><span class="card-tag">Foco</span></div>
+        <a href="https://amzn.to/47OWrW3" target="_blank" class="card-btn">Ver preço e comprar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🔮</div>
+        <div class="card-name">Magnésio Treonato</div>
+        <div class="card-brand">Flora Nativa</div>
+        <p class="card-desc">60 cápsulas. Única forma de magnésio que atravessa a barreira hematoencefálica. Melhora o sono, memória, foco e cognição com eficiência comprovada.</p>
+        <div class="card-tags"><span class="card-tag">Sono</span><span class="card-tag">Cognição</span></div>
+        <a href="https://amzn.to/4bLfGSM" target="_blank" class="card-btn">Ver preço e comprar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">💊</div>
+        <div class="card-name">Magnésio Quelato 500mg</div>
+        <div class="card-brand">Ecomev</div>
+        <p class="card-desc">120 cápsulas — 2 meses de uso. 100% puro, máxima absorção. Relaxamento muscular, qualidade do sono, redução de tensão e equilíbrio do sistema nervoso.</p>
+        <div class="card-tags"><span class="card-tag">Sono</span><span class="card-tag">Relaxamento</span></div>
+        <a href="https://amzn.to/4bh2ofi" target="_blank" class="card-btn">Ver preço e comprar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🌙</div>
+        <div class="card-name">Valeriana 500mg</div>
+        <div class="card-brand">Vital Gold</div>
+        <p class="card-desc">60 cápsulas. Relaxante natural para ansiedade e melhora do sono sem causar dependência. Ideal para quem tem dificuldade para dormir ou acorda agitado.</p>
+        <div class="card-tags"><span class="card-tag">Sono</span><span class="card-tag">Ansiedade</span></div>
+        <a href="https://amzn.to/4sd6a0v" target="_blank" class="card-btn">Ver preço e comprar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══ ENERGIA ══ -->
+  <div class="cat-section" data-cat="energia">
+    <div class="cat-title">Energia & <em>Hormônios</em></div>
+    <div class="cat-sub">Vitalidade, metabolismo, tireoide e equilíbrio hormonal</div>
+    <div class="products">
+
+      <div class="card">
+        <div class="card-icon">🌑</div>
+        <div class="card-name">Maca Peruana Negra 2000mg</div>
+        <div class="card-brand">Avulso</div>
+        <p class="card-desc">120 cápsulas. 2g por dose. Premium importada, pura e original. Energia natural, libido, fertilidade e equilíbrio hormonal para homens e mulheres.</p>
+        <div class="card-tags"><span class="card-tag">Energia</span><span class="card-tag">Hormônios</span></div>
+        <a href="https://amzn.to/4uwPym8" target="_blank" class="card-btn">Ver preço e comprar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🧪</div>
+        <div class="card-name">Lugol 5% Iodo — 30mL</div>
+        <div class="card-brand">Avulso</div>
+        <p class="card-desc">Iodo inorgânico concentrado 5%. Suporte para tireoide, imunidade e metabolismo. Frasco conta-gotas de 30mL. Versão mais concentrada.</p>
+        <div class="card-tags"><span class="card-tag">Tireoide</span><span class="card-tag">Metabolismo</span></div>
+        <a href="https://amzn.to/47xnDbM" target="_blank" class="card-btn">Ver preço e comprar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🧪</div>
+        <div class="card-name">Lugol 2% Iodo — 30mL</div>
+        <div class="card-brand">Avulso</div>
+        <p class="card-desc">Iodo inorgânico 2%. Versão mais suave para uso cotidiano. Suporte à tireoide, imunidade e metabolismo. Frasco conta-gotas de 30mL.</p>
+        <div class="card-tags"><span class="card-tag">Tireoide</span><span class="card-tag">Metabolismo</span></div>
+        <a href="https://amzn.to/4uxrLSX" target="_blank" class="card-btn">Ver preço e comprar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🍬</div>
+        <div class="card-name">Cromo Picolinato 250mcg</div>
+        <div class="card-brand">Lauton</div>
+        <p class="card-desc">60 cápsulas. Mineral que melhora a sensibilidade à insulina, reduz o desejo por doces e apoia o metabolismo de carboidratos. Essencial no controle glicêmico.</p>
+        <div class="card-tags"><span class="card-tag">Glicose</span><span class="card-tag">Metabolismo</span></div>
+        <a href="https://amzn.to/4rwveP6" target="_blank" class="card-btn">Ver preço e comprar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+
+      <div class="card">
+        <span class="new-badge">Novo</span>
+        <div class="card-icon">🌿</div>
+        <div class="card-name">Berberina + TCM 500mg</div>
+        <div class="card-brand">VitaGenus · Fitonatus</div>
+        <p class="card-desc">60 cápsulas. Extrato padronizado de Berberis Vulgaris com TCM. Regula a glicose, apoia a saúde intestinal e o controle do colesterol. Sem lactose e sem glúten.</p>
+        <div class="card-tags"><span class="card-tag">Glicose</span><span class="card-tag">Colesterol</span></div>
+        <a href="https://amzn.to/4rAjJpW" target="_blank" class="card-btn">Ver preço e comprar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+
+      <div class="card">
+        <span class="new-badge">Novo</span>
+        <div class="card-icon">🌿</div>
+        <div class="card-name">Berberina HCL + Óleo TCM 750mg</div>
+        <div class="card-brand">Nutrivitalle</div>
+        <p class="card-desc">60 cápsulas softgel. Versão 750mg com TCM para máxima biodisponibilidade. Glicose, colesterol, microbiota intestinal e ação metabólica ampla.</p>
+        <div class="card-tags"><span class="card-tag">Glicose</span><span class="card-tag">Colesterol</span></div>
+        <a href="https://amzn.to/3PeTaZM" target="_blank" class="card-btn">Ver preço e comprar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══ CORACAO ══ -->
+  <div class="cat-section" data-cat="coracao">
+    <div class="cat-title">Coração & <em>Anti-inflamatório</em></div>
+    <div class="cat-sub">Saúde cardiovascular, circulação e longevidade celular</div>
+    <div class="products">
+
+      <div class="card">
+        <div class="card-icon">🐟</div>
+        <div class="card-name">Mega DHA 120 cáps</div>
+        <div class="card-brand">Vitafor</div>
+        <p class="card-desc">DHA altamente concentrado. Fundamental para saúde cerebral, visual e cardiovascular. Dose ideal para quem precisa focar especificamente no DHA.</p>
+        <div class="card-tags"><span class="card-tag">Coração</span><span class="card-tag">Cérebro</span></div>
+        <a href="https://amzn.to/4uwfdLI" target="_blank" class="card-btn">Ver preço e comprar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🐟</div>
+        <div class="card-name">Mega Ômega 3 EPA 1000mg + DHA 400mg</div>
+        <div class="card-brand">Bigens</div>
+        <p class="card-desc">60 cápsulas. Certificado Meg-3. EPA + DHA em concentração ideal. Saúde cardiovascular, cerebral e redução de inflamação sistêmica. Sem vitamina E.</p>
+        <div class="card-tags"><span class="card-tag">Coração</span><span class="card-tag">Anti-inflamatório</span></div>
+        <a href="https://amzn.to/3PanWTE" target="_blank" class="card-btn">Ver preço e comprar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+
+      <div class="card">
+        <span class="new-badge">Novo</span>
+        <div class="card-icon">🍇</div>
+        <div class="card-name">Hipertana</div>
+        <div class="card-brand">Nutrivale</div>
+        <p class="card-desc">60 cápsulas. Resveratrol + Pinus Pinaster + Semente de Uva + Magnésio + Vitaminas. Suporte cardiovascular completo, melhora da circulação e potente ação antioxidante.</p>
+        <div class="card-tags"><span class="card-tag">Circulação</span><span class="card-tag">Antioxidante</span></div>
+        <a href="https://amzn.to/4rTUZct" target="_blank" class="card-btn">Ver preço e comprar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+
+      <div class="card">
+        <span class="new-badge">Novo</span>
+        <div class="card-icon">🍇</div>
+        <div class="card-name">Trans Resveratrol 500mg</div>
+        <div class="card-brand">Life One</div>
+        <p class="card-desc">120 cápsulas. Alta concentração de resveratrol trans. Longevidade celular, poderoso antioxidante e proteção cardiovascular. Ativa sirtuínas — proteínas da longevidade.</p>
+        <div class="card-tags"><span class="card-tag">Longevidade</span><span class="card-tag">Antioxidante</span></div>
+        <a href="https://amzn.to/3PoDOlr" target="_blank" class="card-btn">Ver preço e comprar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══ FEMININO ══ -->
+  <div class="cat-section" data-cat="feminino">
+    <div class="cat-title">Saúde <em>Feminina</em></div>
+    <div class="cat-sub">TPM, hormônios, humor e bem-estar da mulher</div>
+    <div class="products">
+
+      <div class="card">
+        <span class="new-badge">Novo</span>
+        <div class="card-icon">🌷</div>
+        <div class="card-name">TPM-C 60 cápsulas</div>
+        <div class="card-brand">Nutrivale</div>
+        <p class="card-desc">Triptofano + Curcumina + Vitaminas. Triptofano é precursor da serotonina — equilibra o humor. Curcumina reduz a inflamação do ciclo. O mesmo suplemento do Kit 08 Equilíbrio Feminino.</p>
+        <div class="card-tags"><span class="card-tag">TPM</span><span class="card-tag">Humor</span><span class="card-tag">Ciclo</span></div>
+        <a href="https://amzn.to/41d2pfC" target="_blank" class="card-btn">Ver preço e comprar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══ DIGESTAO ══ -->
+  <div class="cat-section" data-cat="digestao">
+    <div class="cat-title">Digestão & <em>Saciedade</em></div>
+    <div class="cat-sub">Fibras solúveis, controle de apetite e saúde intestinal</div>
+    <div class="products">
+
+      <div class="card">
+        <span class="new-badge">Novo</span>
+        <div class="card-icon">🌾</div>
+        <div class="card-name">Psyllium Husk 100% Natural 250g</div>
+        <div class="card-brand">Psillium</div>
+        <p class="card-desc">Fibra solúvel pura 100% natural em pó. Forma gel no estômago, aumentando a saciedade, auxiliando no controle glicêmico e no funcionamento intestinal. Embalagem 250g.</p>
+        <div class="card-tags"><span class="card-tag">Fibra</span><span class="card-tag">Saciedade</span></div>
+        <a href="https://amzn.to/3PemJuz" target="_blank" class="card-btn">Ver preço e comprar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+
+      <div class="card">
+        <span class="new-badge">Novo</span>
+        <div class="card-icon">🌾</div>
+        <div class="card-name">Psyllium Husk 100% Natural 1kg</div>
+        <div class="card-brand">Psillium</div>
+        <p class="card-desc">Embalagem econômica de 1kg. Mesma fibra pura 100% natural, melhor custo-benefício para uso contínuo. Ideal para quem já usa e quer estoque.</p>
+        <div class="card-tags"><span class="card-tag">Fibra</span><span class="card-tag">Saciedade</span></div>
+        <a href="https://amzn.to/3NwycVE" target="_blank" class="card-btn">Ver preço e comprar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+
+      <div class="card">
+        <span class="new-badge">Novo</span>
+        <div class="card-icon">💊</div>
+        <div class="card-name">Psylliumax 120 cápsulas</div>
+        <div class="card-brand">Unilife</div>
+        <p class="card-desc">120 cápsulas práticas. Para quem prefere cápsulas ao pó. Mesma eficácia do Psyllium em pó com mais comodidade no dia a dia.</p>
+        <div class="card-tags"><span class="card-tag">Fibra</span><span class="card-tag">Saciedade</span></div>
+        <a href="https://amzn.to/4sQlFeV" target="_blank" class="card-btn">Ver preço e comprar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══ ARTICULAÇÕES ══ -->
+  <div class="cat-section" data-cat="articulacoes">
+    <div class="cat-title">Articulações & <em>Anti-inflamatório Natural</em></div>
+    <div class="cat-sub">Alívio de dores, mobilidade e proteção das articulações</div>
+    <div class="products">
+
+      <div class="card">
+        <span class="new-badge">Novo</span>
+        <div class="card-icon">🌵</div>
+        <div class="card-name">Garra do Diabo 400mg — 120 cápsulas</div>
+        <div class="card-brand">Avulso</div>
+        <p class="card-desc">Harpagophytum Procumbens 400mg. 120 cápsulas — 4 meses de uso. Anti-inflamatório natural amplamente estudado para dores articulares, lombar e muscular. Sem efeitos colaterais dos anti-inflamatórios químicos.</p>
+        <div class="card-tags"><span class="card-tag">Articulações</span><span class="card-tag">Dor</span><span class="card-tag">Anti-inflamatório</span></div>
+        <a href="https://amzn.to/3NnwzK4" target="_blank" class="card-btn">Ver preço e comprar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+
+      <div class="card">
+        <span class="new-badge">Novo</span>
+        <div class="card-icon">🌵</div>
+        <div class="card-name">Garra do Diabo 400mg — 60 cápsulas</div>
+        <div class="card-brand">Avulso</div>
+        <p class="card-desc">Harpagophytum Procumbens 400mg. 60 cápsulas — 2 meses de uso. Opção econômica para iniciar o uso. Alívio natural de dores articulares, lombar e inflamação crônica.</p>
+        <div class="card-tags"><span class="card-tag">Articulações</span><span class="card-tag">Dor</span><span class="card-tag">Anti-inflamatório</span></div>
+        <a href="https://amzn.to/4uv4Rvy" target="_blank" class="card-btn">Ver preço e comprar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+
+      <div class="card">
+        <span class="new-badge">Novo</span>
+        <div class="card-icon">🌿</div>
+        <div class="card-name">Canela de Velho + Sucupira + Garra do Diabo + Unha de Gato</div>
+        <div class="card-brand">Avulso</div>
+        <p class="card-desc">240 cápsulas, 500mg. Combo poderoso de 4 plantas medicinais anti-inflamatórias. Canela de Velho e Sucupira para articulações, Garra do Diabo para dor e Unha de Gato para imunidade e inflamação.</p>
+        <div class="card-tags"><span class="card-tag">Articulações</span><span class="card-tag">Natural</span><span class="card-tag">Combo</span></div>
+        <a href="https://amzn.to/4bsQpvr" target="_blank" class="card-btn">Ver preço e comprar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+
+    </div>
+  </div>
+
+</main>
+
 <footer>
-  © 2025 Reset Essencial — Todos os links são de afiliado Amazon Associates
+  <a href="index.html" class="logo">Reset <span>Essencial</span></a>
+  <p class="fp">© 2025 Reset Essencial — Todos os links são de afiliado Amazon Associates</p>
 </footer>
 
-<script>
-  function filter(cat, btn) {
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    document.querySelectorAll('.cat-section').forEach(s => {
-      s.classList.toggle('hidden', cat !== 'all' && s.dataset.cat !== cat);
-    });
-  }
-</script>
+<a href="https://wa.me/5511987206421?text=Olá!%20Vim%20pela%20página%20de%20suplementos%20avulsos%20e%20tenho%20uma%20dúvida." class="fwa" target="_blank">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.025.507 3.933 1.395 5.61L.057 23.994l6.538-1.714A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.788 9.788 0 01-4.99-1.368l-.358-.213-3.881 1.018 1.037-3.786-.234-.389A9.789 9.789 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+</a>
 
+<script>
+function filter(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.cat-section').forEach(s => {
+    s.classList.toggle('hidden', cat !== 'all' && s.dataset.cat !== cat);
+  });
+  window.scrollTo({top: document.querySelector('.main').offsetTop - 120, behavior: 'smooth'});
+}
+</script>
 </body>
 </html>
