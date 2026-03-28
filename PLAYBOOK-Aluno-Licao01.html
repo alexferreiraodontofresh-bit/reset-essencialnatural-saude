@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Playbook do Aluno — Lição 1: Abraão</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,700;1,400&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Nunito',sans-serif;background:#F8F6F0;color:#1a1a1a;line-height:1.6}
+.page{max-width:680px;margin:0 auto;padding:20px 16px 40px}
+
+/* HEADER */
+.header{background:linear-gradient(135deg,#1B3A6B 0%,#2E5FA3 100%);border-radius:20px;padding:32px 28px;margin-bottom:24px;position:relative;overflow:hidden}
+.header::after{content:'';position:absolute;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,0.05);top:-60px;right:-60px}
+.header-badge{display:inline-block;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);color:rgba(255,255,255,0.9);font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:14px}
+.header h1{font-family:'Playfair Display',serif;font-size:30px;color:#fff;line-height:1.2;margin-bottom:8px}
+.header h1 span{color:#C9A84C}
+.header-sub{font-size:13px;color:rgba(255,255,255,0.65);margin-bottom:16px}
+.header-meta{display:flex;gap:20px}
+.meta-item{display:flex;flex-direction:column}
+.meta-label{font-size:10px;font-weight:700;color:rgba(255,255,255,0.4);letter-spacing:1.5px;text-transform:uppercase}
+.meta-val{font-size:13px;color:rgba(255,255,255,0.8);font-weight:600}
+
+/* CARDS */
+.card{background:#fff;border-radius:16px;padding:22px 22px;margin-bottom:16px;box-shadow:0 2px 12px rgba(0,0,0,0.06)}
+.card.azul{border-left:5px solid #1B3A6B}
+.card.dourado{border-left:5px solid #C9A84C}
+.card.verde{border-left:5px solid #2E7D32}
+.card.vermelho{border-left:5px solid #C62828}
+.card.roxo{border-left:5px solid #6A1B9A}
+.card-label{display:flex;align-items:center;gap:8px;margin-bottom:12px}
+.card-label-text{font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#888}
+.card h2{font-family:'Playfair Display',serif;font-size:20px;color:#1B3A6B;margin-bottom:10px}
+.card h3{font-size:16px;font-weight:800;color:#1B3A6B;margin-bottom:6px;margin-top:14px}
+.card p{font-size:14px;color:#444;line-height:1.6}
+.card .verse{background:#EBF3FB;border-radius:10px;padding:14px 16px;margin:12px 0;font-style:italic;font-size:14px;color:#333;line-height:1.6}
+.card .verse strong{font-style:normal;font-size:12px;font-weight:800;color:#1B3A6B;display:block;margin-top:6px}
+
+/* PROMESSAS */
+.promises{display:flex;flex-direction:column;gap:10px;margin-top:12px}
+.promise{display:flex;align-items:flex-start;gap:12px;background:#F8F6F0;border-radius:10px;padding:12px 14px}
+.promise-num{width:28px;height:28px;border-radius:50%;background:#C9A84C;color:#fff;font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.promise-text{font-size:13px;color:#333;line-height:1.45}
+.promise-ref{font-size:11px;color:#888;margin-top:3px}
+
+/* TÓPICOS */
+.topic-header{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.topic-num{width:38px;height:38px;border-radius:50%;background:#1B3A6B;color:#fff;font-weight:800;font-size:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Playfair Display',serif}
+.topic-title{font-size:16px;font-weight:800;color:#1B3A6B}
+
+.subtopic{margin-bottom:14px}
+.sub-badge{display:inline-block;background:#EBF3FB;color:#1B3A6B;font-size:11px;font-weight:700;padding:2px 8px;border-radius:6px;margin-bottom:5px}
+.sub-title{font-size:14px;font-weight:800;color:#333;margin-bottom:4px}
+.sub-text{font-size:13px;color:#555;line-height:1.55}
+
+.sinopse{background:linear-gradient(135deg,#EBF3FB,#F0F8FF);border-radius:10px;padding:14px 16px;text-align:center;margin-top:12px;border:1px solid #D0E4F7}
+.sinopse-label{font-size:10px;font-weight:800;color:#1B3A6B;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px}
+.sinopse-text{font-style:italic;font-size:13px;color:#444}
+
+/* LEITURA */
+.reading-list{display:flex;flex-direction:column;gap:8px}
+.reading-item{display:flex;align-items:center;gap:12px;background:#F8F6F0;border-radius:10px;padding:10px 14px}
+.r-dia{font-size:11px;font-weight:800;color:#888;text-transform:uppercase;letter-spacing:1px;width:60px;flex-shrink:0}
+.r-ref{background:#1B3A6B;color:#fff;font-size:11px;font-weight:700;padding:3px 9px;border-radius:6px;white-space:nowrap;flex-shrink:0}
+.r-desc{font-size:12px;color:#555}
+
+/* APLICAÇÃO */
+.aplic-item{display:flex;align-items:flex-start;gap:10px;padding:12px 0;border-bottom:1px solid #EEE}
+.aplic-dot{width:8px;height:8px;border-radius:50%;background:#C9A84C;margin-top:5px;flex-shrink:0}
+.aplic-text{font-size:14px;color:#333;line-height:1.5}
+
+/* QUIZ */
+.quiz-item{background:#fff;border:1px solid #EEE;border-radius:10px;padding:14px 16px;margin-bottom:10px}
+.quiz-q{font-size:13px;font-weight:700;color:#1B3A6B;margin-bottom:8px}
+.quiz-options{display:flex;flex-direction:column;gap:6px}
+.option{background:#F8F6F0;border:1px solid #EEE;border-radius:8px;padding:8px 12px;font-size:13px;color:#555;cursor:pointer;transition:all 0.2s}
+.option:hover{background:#EBF3FB;border-color:#1B3A6B;color:#1B3A6B}
+.option.correct{background:#E8F5E9;border-color:#2E7D32;color:#2E7D32;font-weight:700}
+.quiz-feedback{font-size:12px;margin-top:6px;display:none}
+
+/* FOOTER */
+.footer{text-align:center;padding:20px;background:#1B3A6B;border-radius:16px;margin-top:24px}
+.footer p{color:rgba(255,255,255,0.7);font-size:12px}
+.footer strong{color:#C9A84C}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-badge">📖 Lições Bíblicas CPAD · 2º Tri 2026</div>
+  <h1>Abraão: seu chamado<br>e sua jornada de <span>fé</span></h1>
+  <p class="header-sub">Série: Homens dos quais o mundo não era digno</p>
+  <div class="header-meta">
+    <div class="meta-item"><span class="meta-label">Data</span><span class="meta-val">5 de abril de 2026</span></div>
+    <div class="meta-item"><span class="meta-label">Texto</span><span class="meta-val">Gênesis 12.1-9</span></div>
+    <div class="meta-item"><span class="meta-label">Palavra-chave</span><span class="meta-val">🔑 Fé</span></div>
+  </div>
+</div>
+
+<!-- TEXTO ÁUREO -->
+<div class="card dourado">
+  <div class="card-label"><span style="font-size:18px">✦</span><span class="card-label-text">Texto Áureo</span></div>
+  <div class="verse">
+    "Ora, o SENHOR disse a Abrão: Sai-te da tua terra, e da tua parentela, e da casa de teu pai, para a terra que eu te mostrarei."
+    <strong>Gênesis 12.1</strong>
+  </div>
+  <div class="card-label" style="margin-top:14px"><span style="font-size:18px">🎯</span><span class="card-label-text">Verdade Prática</span></div>
+  <p style="font-size:14px;font-weight:600;color:#B8860B">O chamado de Deus exige obediência irrestrita, fé e perseverança.</p>
+</div>
+
+<!-- INTRODUÇÃO -->
+<div class="card azul">
+  <div class="card-label"><span style="font-size:18px">📖</span><span class="card-label-text">Introdução</span></div>
+  <h2>Quem era Abrão?</h2>
+  <p>Abrão vivia em <strong>Ur dos Caldeus</strong> — uma das cidades mais ricas e avançadas do mundo antigo, às margens do rio Eufrates. Sua família servia a outros deuses (Js 24.2), mas Abrão creu no Deus único e verdadeiro.</p>
+  <p style="margin-top:10px">Seu nome significava <strong>"pai exaltado"</strong>. Depois de ter seu caráter forjado por Deus, seu nome foi mudado para <strong>Abraão — "pai da multidão das nações"</strong> (Gn 17.5).</p>
+</div>
+
+<!-- TÓPICO I -->
+<div class="card verde">
+  <div class="topic-header">
+    <div class="topic-num">I</div>
+    <div class="topic-title">Deus Chama Abrão (Gn 12.1-3)</div>
+  </div>
+
+  <div class="subtopic">
+    <div class="sub-badge">Sub 1</div>
+    <div class="sub-title">A fé de Abrão diante do chamado (Gn 12.1)</div>
+    <div class="sub-text">Deus ordenou que ele saísse para um lugar desconhecido. Sem mapa, sem GPS — apenas a voz de Deus. Abrão tinha 75 anos. E foi. Isso nos ensina que <strong>Deus sabe o que faz, mesmo quando não revela o trajeto completo.</strong></div>
+  </div>
+
+  <div class="subtopic">
+    <div class="sub-badge">Sub 2</div>
+    <div class="sub-title">A promessa para Abrão</div>
+    <div class="sub-text">As promessas de Deus eram maiores do que Abrão imaginava — e marcariam a humanidade por séculos. O Senhor é fiel e cumpre o que prometeu, mas no seu tempo (Ec 3.1-3).</div>
+  </div>
+
+  <div class="subtopic">
+    <div class="sub-badge">Sub 3</div>
+    <div class="sub-title">As bênçãos de Deus para Abrão</div>
+    <div class="promises">
+      <div class="promise">
+        <div class="promise-num">1</div>
+        <div><div class="promise-text">"Farei de ti uma grande nação"</div><div class="promise-ref">Gênesis 12.2a</div></div>
+      </div>
+      <div class="promise">
+        <div class="promise-num">2</div>
+        <div><div class="promise-text">"Engrandecerei o teu nome"</div><div class="promise-ref">Gênesis 12.2b — cumprido aos 99 anos</div></div>
+      </div>
+      <div class="promise">
+        <div class="promise-num">3</div>
+        <div><div class="promise-text">"Em ti serão benditas todas as famílias da terra"</div><div class="promise-ref">Gênesis 12.3b — essa promessa incluía você!</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="sinopse">
+    <div class="sinopse-label">✦ Sinopse I ✦</div>
+    <div class="sinopse-text">Pela fé, Abrão aceitou o chamado de Deus e foi para uma terra que ele não conhecia.</div>
+  </div>
+</div>
+
+<!-- TÓPICO II -->
+<div class="card azul">
+  <div class="topic-header">
+    <div class="topic-num">II</div>
+    <div class="topic-title">A Obediência de Abrão (Gn 12.4-6)</div>
+  </div>
+
+  <div class="subtopic">
+    <div class="sub-badge">Sub 1</div>
+    <div class="sub-title">Atendendo o chamado (Gn 12.4)</div>
+    <div class="sub-text">"Assim partiu Abrão... e era da idade de 75 anos." Sem hesitar, sem negociar. Ele não conhecia a definição de fé (Hb 11.1) — mas viveu a fé em ação.</div>
+  </div>
+
+  <div class="subtopic">
+    <div class="sub-badge">Sub 2</div>
+    <div class="sub-title">Um descuido — Ló vai junto</div>
+    <div class="sub-text">Deus mandou deixar a parentela, mas Abrão levou Ló. O descuido gerou problemas depois (Gn 13.8,9). <strong>Obediência parcial não é obediência verdadeira.</strong></div>
+  </div>
+
+  <div class="subtopic">
+    <div class="sub-badge">Sub 3</div>
+    <div class="sub-title">A passagem por Harã</div>
+    <div class="sub-text">Antes de Canaã, Abrão parou em Harã. Deus queria forjar seu caráter antes do destino (Dt 8.2). <strong>O que parece atraso é preparação.</strong></div>
+  </div>
+  <div class="sinopse">
+    <div class="sinopse-label">✦ Sinopse II ✦</div>
+    <div class="sinopse-text">Abrão atendeu com fé ao chamado de Deus e obedeceu a Ele de forma irrestrita.</div>
+  </div>
+</div>
+
+<!-- TÓPICO III -->
+<div class="card dourado">
+  <div class="topic-header">
+    <div class="topic-num">III</div>
+    <div class="topic-title">As Lutas em Canaã (Gn 12.7-20)</div>
+  </div>
+
+  <div class="subtopic">
+    <div class="sub-badge">Sub 1</div>
+    <div class="sub-title">A dificuldade contra a fome (Gn 12.10)</div>
+    <div class="sub-text">"E havia fome naquela terra." A primeira fome registrada nas Escrituras. <strong>Obstáculos não significam que você saiu da vontade de Deus</strong> — às vezes a obediência nos leva para dentro da tempestade.</div>
+  </div>
+
+  <div class="subtopic">
+    <div class="sub-badge">Sub 2</div>
+    <div class="sub-title">A dificuldade de ir para o lugar certo</div>
+    <div class="sub-text">Abrão foi ao Egito — terra de idolatria, mas com provisão. <strong>Deus usa lugares improváveis para sustentar quem Ele chamou.</strong></div>
+  </div>
+
+  <div class="subtopic">
+    <div class="sub-badge">Sub 3</div>
+    <div class="sub-title">A dificuldade em falar a verdade (Gn 12.11-20)</div>
+    <div class="sub-text">Por medo, Abrão pediu que Sarai se dissesse sua irmã. Faraó a tomou, mas Deus o feriu e Sarai foi devolvida. <strong>A graça de Deus é maior que nossas falhas.</strong></div>
+  </div>
+  <div class="sinopse">
+    <div class="sinopse-label">✦ Sinopse III ✦</div>
+    <div class="sinopse-text">Abrão enfrentou lutas ao chegar a Canaã, mas sua fé em Deus fez com que vencesse os obstáculos.</div>
+  </div>
+</div>
+
+<!-- LEITURA SEMANAL -->
+<div class="card verde">
+  <div class="card-label"><span style="font-size:18px">📅</span><span class="card-label-text">Leitura Diária da Semana</span></div>
+  <div class="reading-list">
+    <div class="reading-item"><span class="r-dia">Segunda</span><span class="r-ref">Gn 12.3</span><span class="r-desc">O chamado para todas as famílias</span></div>
+    <div class="reading-item"><span class="r-dia">Terça</span><span class="r-ref">Gn 12.1</span><span class="r-desc">O chamado de Abraão</span></div>
+    <div class="reading-item"><span class="r-dia">Quarta</span><span class="r-ref">Hb 11.1</span><span class="r-desc">Abraão viveu a fé sem defini-la</span></div>
+    <div class="reading-item"><span class="r-dia">Quinta</span><span class="r-ref">Gn 12.10</span><span class="r-desc">Obstáculos no chamado divino</span></div>
+    <div class="reading-item"><span class="r-dia">Sexta</span><span class="r-ref">Gn 12.15,16</span><span class="r-desc">Desafios éticos na jornada</span></div>
+    <div class="reading-item"><span class="r-dia">Sábado</span><span class="r-ref">Gn 12.17,18</span><span class="r-desc">Deus zela pelos que Ele chama</span></div>
+  </div>
+</div>
+
+<!-- APLICAÇÃO -->
+<div class="card roxo">
+  <div class="card-label"><span style="font-size:18px">💡</span><span class="card-label-text">Aplicação para Hoje</span></div>
+  <h2>Perguntas para refletir</h2>
+  <div class="aplic-item"><div class="aplic-dot"></div><div class="aplic-text">Existe algo que Deus está pedindo e você ainda não obedeceu completamente?</div></div>
+  <div class="aplic-item"><div class="aplic-dot"></div><div class="aplic-text">Você tem esperado no tempo de Deus ou tentado antecipar as promessas?</div></div>
+  <div class="aplic-item"><div class="aplic-dot"></div><div class="aplic-text">Onde você construiu seus "altares" — adoração no meio das lutas?</div></div>
+  <div class="aplic-item" style="border-bottom:none"><div class="aplic-dot"></div><div class="aplic-text">Em qual área você precisa deixar algo para trás para obedecer plenamente?</div></div>
+  <div class="verse" style="margin-top:14px">
+    "Pela fé, Abraão aceitou o chamado de Deus e foi para uma terra que ele não conhecia."
+    <strong>Hebreus 11.8</strong>
+  </div>
+</div>
+
+<!-- QUIZ INTERATIVO -->
+<div class="card azul">
+  <div class="card-label"><span style="font-size:18px">🎮</span><span class="card-label-text">Quiz — Teste seu conhecimento</span></div>
+
+  <div class="quiz-item">
+    <div class="quiz-q">1. Com quantos anos Abrão partiu de Harã?</div>
+    <div class="quiz-options">
+      <div class="option" onclick="check(this,'wrong')">A) 50 anos</div>
+      <div class="option" onclick="check(this,'correct')">B) 75 anos</div>
+      <div class="option" onclick="check(this,'wrong')">C) 99 anos</div>
+    </div>
+  </div>
+
+  <div class="quiz-item">
+    <div class="quiz-q">2. O que significa o nome Abraão?</div>
+    <div class="quiz-options">
+      <div class="option" onclick="check(this,'wrong')">A) Pai exaltado</div>
+      <div class="option" onclick="check(this,'wrong')">B) Pai de Israel</div>
+      <div class="option" onclick="check(this,'correct')">C) Pai da multidão das nações</div>
+    </div>
+  </div>
+
+  <div class="quiz-item">
+    <div class="quiz-q">3. Qual foi o "descuido" de Abrão ao partir?</div>
+    <div class="quiz-options">
+      <div class="option" onclick="check(this,'correct')">A) Levou Ló junto, contrariando o chamado de deixar a parentela</div>
+      <div class="option" onclick="check(this,'wrong')">B) Esqueceu a Bíblia em Ur</div>
+      <div class="option" onclick="check(this,'wrong')">C) Foi para o Egito antes de Canaã</div>
+    </div>
+  </div>
+
+  <div class="quiz-item">
+    <div class="quiz-q">4. O que Abrão fez ao chegar em Siquém e perto de Betel?</div>
+    <div class="quiz-options">
+      <div class="option" onclick="check(this,'wrong')">A) Construiu uma cidade</div>
+      <div class="option" onclick="check(this,'correct')">B) Construiu altares ao SENHOR e adorou a Deus</div>
+      <div class="option" onclick="check(this,'wrong')">C) Voltou para Harã</div>
+    </div>
+  </div>
+</div>
+
+<!-- HINOS -->
+<div class="card dourado">
+  <div class="card-label"><span style="font-size:18px">🎵</span><span class="card-label-text">Hinos Sugeridos</span></div>
+  <p style="font-size:15px;font-weight:700;color:#B8860B">Harpa Cristã: Hino 84 · Hino 126 · Hino 186</p>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <p><strong>LIÇÕES BÍBLICAS CPAD · ADULTOS</strong></p>
+  <p>2º Trimestre 2026 · Lição 1</p>
+  <p style="margin-top:8px;font-size:11px">Próxima lição: A fé de Abraão nas promessas de Deus · 12 de abril</p>
+</div>
+
+</div><!-- page -->
+
+<script>
+function check(el, result){
+  const parent = el.parentElement;
+  const opts = parent.querySelectorAll('.option');
+  opts.forEach(o => {
+    o.style.pointerEvents = 'none';
+    if(o.getAttribute('onclick').includes('correct')) o.classList.add('correct');
+  });
+  if(result === 'wrong') el.style.background = '#FFEBEE';
+}
+</script>
+</body>
+</html>
