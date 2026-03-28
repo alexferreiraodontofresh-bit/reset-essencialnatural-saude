@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>EBD em Dia — Aluno · Lição 1</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial,sans-serif;background:#0D1B2A;color:#fff;min-height:100vh}
+.header{background:linear-gradient(135deg,#1B5E20 0%,#0a2e0f 100%);padding:40px 20px;text-align:center;border-bottom:3px solid #4CAF50}
+.badge{display:inline-block;background:rgba(76,175,80,0.2);border:1px solid rgba(76,175,80,0.5);color:#81C784;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:6px 16px;border-radius:20px;margin-bottom:16px}
+h1{font-family:Georgia,serif;font-size:clamp(22px,4vw,34px);line-height:1.2;margin-bottom:8px}
+h1 span{color:#81C784}
+.sub{font-size:14px;color:rgba(255,255,255,0.55);margin-bottom:20px}
+.meta{display:flex;justify-content:center;gap:20px;flex-wrap:wrap}
+.meta-item{text-align:center}
+.meta-label{font-size:10px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:1px}
+.meta-val{font-size:15px;font-weight:700;color:#81C784}
+
+.main{max-width:700px;margin:0 auto;padding:40px 20px}
+
+.aviso{background:rgba(76,175,80,0.1);border:1px solid rgba(76,175,80,0.3);border-radius:14px;padding:16px 20px;margin-bottom:32px;display:flex;align-items:center;gap:12px}
+.aviso span{font-size:22px}
+.aviso p{font-size:14px;color:rgba(255,255,255,0.8);line-height:1.5}
+.aviso strong{color:#81C784}
+
+/* CARD PRINCIPAL */
+.card-main{background:linear-gradient(135deg,rgba(27,94,32,0.4),rgba(10,46,15,0.6));border:1px solid rgba(76,175,80,0.3);border-radius:20px;padding:36px;text-align:center;margin-bottom:32px}
+.card-main .icon{font-size:56px;margin-bottom:16px}
+.card-main h2{font-family:Georgia,serif;font-size:22px;margin-bottom:8px}
+.card-main p{font-size:14px;color:rgba(255,255,255,0.6);line-height:1.6;max-width:420px;margin:0 auto 24px}
+.btn-main{display:inline-flex;align-items:center;gap:8px;background:#2E7D32;color:#fff;text-decoration:none;font-size:16px;font-weight:700;padding:16px 32px;border-radius:50px;transition:all 0.2s}
+.btn-main:hover{background:#388E3C;transform:translateY(-2px);box-shadow:0 8px 24px rgba(46,125,50,0.4)}
+
+/* TOPICOS */
+.topicos{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:24px;margin-bottom:28px}
+.topicos h3{font-size:14px;font-weight:700;color:#81C784;margin-bottom:14px;letter-spacing:0.5px}
+.topico{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.06)}
+.topico:last-child{border-bottom:none}
+.t-num{width:24px;height:24px;border-radius:50%;background:#1B5E20;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:1px}
+.t-title{font-size:13px;color:rgba(255,255,255,0.75);line-height:1.4}
+.t-subs{font-size:12px;color:rgba(255,255,255,0.4);margin-top:3px}
+
+/* LEITURA */
+.leitura{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:24px;margin-bottom:28px}
+.leitura h3{font-size:14px;font-weight:700;color:#81C784;margin-bottom:14px}
+.leitura-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+@media(max-width:480px){.leitura-grid{grid-template-columns:1fr 1fr}}
+.litem{background:rgba(255,255,255,0.05);border-radius:10px;padding:10px;text-align:center}
+.ldia{font-size:10px;font-weight:700;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:1px;margin-bottom:3px}
+.lref{font-size:13px;font-weight:700;color:#81C784;margin-bottom:2px}
+.ldesc{font-size:10px;color:rgba(255,255,255,0.4);line-height:1.3}
+
+/* VERSICULO */
+.versiculo{background:rgba(76,175,80,0.07);border-left:4px solid #4CAF50;border-radius:0 12px 12px 0;padding:18px 22px;margin-bottom:28px;text-align:center}
+.versiculo p{font-family:Georgia,serif;font-style:italic;font-size:15px;line-height:1.6;color:rgba(255,255,255,0.9);margin-bottom:6px}
+.versiculo small{font-size:12px;font-weight:700;color:#81C784}
+
+footer{border-top:1px solid rgba(255,255,255,0.08);padding:20px;text-align:center;font-size:12px;color:rgba(255,255,255,0.3)}
+footer strong{color:#81C784}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="badge">📱 Plano Aluno · EBD em Dia</div>
+  <h1>Lição 1 — <span>Abraão</span><br>Seu chamado e sua jornada de fé</h1>
+  <p class="sub">2º Trimestre 2026 · Estude antes do domingo</p>
+  <div class="meta">
+    <div class="meta-item"><div class="meta-label">Data</div><div class="meta-val">5 abril 2026</div></div>
+    <div class="meta-item"><div class="meta-label">Texto</div><div class="meta-val">Gn 12.1-9</div></div>
+    <div class="meta-item"><div class="meta-label">Palavra-chave</div><div class="meta-val">🔑 Fé</div></div>
+  </div>
+</div>
+
+<div class="main">
+
+  <div class="aviso">
+    <span>📱</span>
+    <p>Olá! Seu material da <strong>Lição 1</strong> está pronto. Estude o playbook abaixo antes do domingo — tem resumo visual, os tópicos da lição e um quiz interativo!</p>
+  </div>
+
+  <!-- CARD PRINCIPAL -->
+  <div class="card-main">
+    <div class="icon">📖</div>
+    <h2>Playbook da Lição</h2>
+    <p>Resumo visual com todos os tópicos, explicações claras, aplicação prática e quiz com 4 perguntas para fixar o conteúdo</p>
+    <a class="btn-main" href="PLAYBOOK-Aluno-Licao01.html" target="_blank">📲 Estudar agora →</a>
+  </div>
+
+  <!-- VERSÍCULO -->
+  <div class="versiculo">
+    <p>"Ora, o SENHOR disse a Abrão: Sai-te da tua terra, e da tua parentela, e da casa de teu pai, para a terra que eu te mostrarei."</p>
+    <small>Gênesis 12.1 · Texto Áureo</small>
+  </div>
+
+  <!-- TÓPICOS -->
+  <div class="topicos">
+    <h3>📌 O que você vai estudar</h3>
+    <div class="topico">
+      <div class="t-num">I</div>
+      <div><div class="t-title">Deus Chama Abrão (Gn 12.1-3)</div><div class="t-subs">Fé diante do chamado · A promessa · As bênçãos</div></div>
+    </div>
+    <div class="topico">
+      <div class="t-num">II</div>
+      <div><div class="t-title">A Obediência de Abrão (Gn 12.4-6)</div><div class="t-subs">Atendendo o chamado · Um descuido · A passagem por Harã</div></div>
+    </div>
+    <div class="topico">
+      <div class="t-num">III</div>
+      <div><div class="t-title">As Lutas em Canaã (Gn 12.7-20)</div><div class="t-subs">A fome · O caminho certo · A dificuldade de falar a verdade</div></div>
+    </div>
+  </div>
+
+  <!-- LEITURA -->
+  <div class="leitura">
+    <h3>📅 Leitura Diária da Semana</h3>
+    <div class="leitura-grid">
+      <div class="litem"><div class="ldia">Segunda</div><div class="lref">Gn 12.3</div><div class="ldesc">O chamado para todas as famílias</div></div>
+      <div class="litem"><div class="ldia">Terça</div><div class="lref">Gn 12.1</div><div class="ldesc">O chamado de Abraão</div></div>
+      <div class="litem"><div class="ldia">Quarta</div><div class="lref">Hb 11.1</div><div class="ldesc">Abraão viveu a fé</div></div>
+      <div class="litem"><div class="ldia">Quinta</div><div class="lref">Gn 12.10</div><div class="ldesc">Obstáculos no chamado</div></div>
+      <div class="litem"><div class="ldia">Sexta</div><div class="lref">Gn 12.15,16</div><div class="ldesc">Desafios éticos</div></div>
+      <div class="litem"><div class="ldia">Sábado</div><div class="lref">Gn 12.17,18</div><div class="ldesc">Deus zela pelos chamados</div></div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p><strong>EBD em Dia</strong> · Plano Aluno · Dr. Alex Ferreira · 2º Trimestre 2026</p>
+  <p style="margin-top:6px">Próxima lição: A fé de Abraão nas promessas de Deus · 12 de abril</p>
+</footer>
+
+</body>
+</html>
