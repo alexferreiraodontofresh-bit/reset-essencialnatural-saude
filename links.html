@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Dr. Alex Ferreira — Links</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:'Inter',sans-serif;
+  min-height:100vh;
+  background:#0A0F1E;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:30px 16px;
+}
+
+/* BG animado */
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 0%, rgba(27,58,107,0.5) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 100%, rgba(201,168,76,0.15) 0%, transparent 50%);
+  pointer-events:none;
+  z-index:0;
+}
+
+.wrap{
+  position:relative;
+  z-index:1;
+  width:100%;
+  max-width:420px;
+}
+
+/* AVATAR + NOME */
+.profile{text-align:center;margin-bottom:28px}
+.avatar{
+  width:88px;height:88px;border-radius:50%;
+  background:linear-gradient(135deg,#1B3A6B,#2E5FA3);
+  display:flex;align-items:center;justify-content:center;
+  font-size:38px;margin:0 auto 14px;
+  border:3px solid rgba(201,168,76,0.4);
+  box-shadow:0 0 32px rgba(201,168,76,0.15);
+}
+.name{font-family:'Playfair Display',serif;font-size:22px;color:#fff;margin-bottom:4px}
+.role{font-size:13px;color:rgba(255,255,255,0.45);line-height:1.5}
+.role span{color:#C9A84C;font-weight:600}
+
+/* SEÇÃO */
+.section-label{
+  font-size:10px;font-weight:700;letter-spacing:2px;
+  text-transform:uppercase;color:rgba(255,255,255,0.25);
+  text-align:center;margin:20px 0 10px;
+}
+
+/* LINKS */
+.link{
+  display:flex;align-items:center;gap:14px;
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:16px;padding:14px 18px;
+  text-decoration:none;color:#fff;
+  margin-bottom:10px;
+  transition:all 0.2s;
+  position:relative;overflow:hidden;
+}
+.link::before{
+  content:'';position:absolute;
+  left:0;top:0;bottom:0;width:3px;
+  background:var(--cor,#1B3A6B);
+  border-radius:16px 0 0 16px;
+}
+.link:hover{
+  background:rgba(255,255,255,0.09);
+  transform:translateY(-2px);
+  box-shadow:0 8px 24px rgba(0,0,0,0.3);
+  border-color:rgba(255,255,255,0.15);
+}
+.link:active{transform:translateY(0)}
+.link-icon{
+  width:40px;height:40px;border-radius:12px;
+  background:var(--cor,#1B3A6B);
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;flex-shrink:0;
+}
+.link-text{flex:1}
+.link-title{font-size:14px;font-weight:600;margin-bottom:2px}
+.link-sub{font-size:12px;color:rgba(255,255,255,0.45);line-height:1.4}
+.link-arrow{font-size:16px;color:rgba(255,255,255,0.2)}
+.link:hover .link-arrow{color:rgba(255,255,255,0.6)}
+
+/* BADGE */
+.badge{
+  position:absolute;top:10px;right:14px;
+  background:rgba(201,168,76,0.2);
+  border:1px solid rgba(201,168,76,0.4);
+  color:#C9A84C;font-size:9px;font-weight:700;
+  letter-spacing:1px;text-transform:uppercase;
+  padding:3px 8px;border-radius:20px;
+}
+
+/* SOCIAL ROW */
+.socials{
+  display:flex;justify-content:center;gap:12px;
+  margin-top:24px;
+}
+.social{
+  width:44px;height:44px;border-radius:12px;
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.1);
+  display:flex;align-items:center;justify-content:center;
+  text-decoration:none;font-size:20px;
+  transition:all 0.2s;
+}
+.social:hover{background:rgba(255,255,255,0.12);transform:translateY(-2px)}
+
+/* FOOTER */
+.footer{text-align:center;margin-top:24px;font-size:11px;color:rgba(255,255,255,0.2)}
+.footer strong{color:rgba(255,255,255,0.35)}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- PERFIL -->
+  <div class="profile">
+    <div class="avatar">👨‍⚕️</div>
+    <div class="name">Dr. Alex Ferreira</div>
+    <div class="role">Cirurgião-dentista · <span>Professor de EBD</span><br>Fundador da Reset Essencial</div>
+  </div>
+
+  <!-- EBD EM DIA -->
+  <div class="section-label">📖 EBD em Dia</div>
+
+  <a class="link" href="https://go.hotmart.com/I105113979A" target="_blank" style="--cor:#1B3A6B">
+    <div class="badge">7 dias grátis</div>
+    <div class="link-icon">👨‍🏫</div>
+    <div class="link-text">
+      <div class="link-title">Plano Professor</div>
+      <div class="link-sub">Esboço de aula + slides profissionais · R$29,90/mês</div>
+    </div>
+    <div class="link-arrow">›</div>
+  </a>
+
+  <a class="link" href="https://go.hotmart.com/Y105114406N" target="_blank" style="--cor:#1B5E20">
+    <div class="badge">7 dias grátis</div>
+    <div class="link-icon">📱</div>
+    <div class="link-text">
+      <div class="link-title">Plano Aluno</div>
+      <div class="link-sub">Playbook visual da lição · R$9,90/mês</div>
+    </div>
+    <div class="link-arrow">›</div>
+  </a>
+
+  <!-- RESET ESSENCIAL -->
+  <div class="section-label">💊 Reset Essencial</div>
+
+  <a class="link" href="https://alexferreiraodontofresh-bit.github.io/reset-essencialnatural-saude/" target="_blank" style="--cor:#6A1B9A">
+    <div class="link-icon">🌿</div>
+    <div class="link-text">
+      <div class="link-title">Reset Essencial</div>
+      <div class="link-sub">Kits de suplementação com propósito</div>
+    </div>
+    <div class="link-arrow">›</div>
+  </a>
+
+  <!-- CONTATO -->
+  <div class="section-label">💬 Contato</div>
+
+  <a class="link" href="https://wa.me/5511987206421" target="_blank" style="--cor:#25D366">
+    <div class="link-icon">💬</div>
+    <div class="link-text">
+      <div class="link-title">Grupo EBD em Dia</div>
+      <div class="link-sub">Avisos semanais · Só conteúdo, sem spam</div>
+    </div>
+    <div class="link-arrow">›</div>
+  </a>
+
+  <!-- REDES SOCIAIS -->
+  <div class="socials">
+    <a class="social" href="https://instagram.com/reset.essencial.saude" target="_blank" title="Instagram">📸</a>
+    <a class="social" href="https://youtube.com" target="_blank" title="YouTube">▶️</a>
+    <a class="social" href="https://tiktok.com" target="_blank" title="TikTok">🎵</a>
+    <a class="social" href="https://wa.me/5511987206421" target="_blank" title="WhatsApp">💬</a>
+  </div>
+
+  <div class="footer">
+    <strong>Dr. Alex Ferreira</strong> · Todos os direitos reservados
+  </div>
+
+</div>
+</body>
+</html>
