@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portal do Aluno — Lição 3 | EBD em Dia</title>
+<style>
+  :root {
+    --verde-escuro: #0a2e1a;
+    --verde-medio: #145a32;
+    --verde-claro: #1e8449;
+    --verde-brilho: #27ae60;
+    --dourado: #d4a017;
+    --dourado-claro: #f0c940;
+    --branco: #ffffff;
+    --texto-suave: #a8d5b5;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Georgia, serif; background: var(--verde-escuro); color: var(--branco); min-height: 100vh; }
+
+  .header {
+    background: linear-gradient(135deg, #0a2e1a 0%, #145a32 60%, #0a3a20 100%);
+    border-bottom: 3px solid var(--verde-brilho);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  }
+  .header-inner {
+    max-width: 800px; margin: 0 auto; padding: 16px 24px;
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+  }
+  .logo-area { display: flex; align-items: center; gap: 12px; }
+  .logo-icon { width: 48px; height: 48px; background: var(--verde-brilho); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; }
+  .logo-text h1 { font-size: 1.35rem; color: #7dcea0; letter-spacing: 1px; }
+  .logo-text p { font-size: 0.72rem; color: #5d8a6a; }
+  .badge-aluno { background: linear-gradient(135deg, #27ae60, #1a7a42); color: #fff; font-weight: 700; font-size: 0.76rem; padding: 6px 16px; border-radius: 20px; letter-spacing: 1px; text-transform: uppercase; }
+
+  .hero {
+    background: linear-gradient(180deg, #145a32 0%, #0a2e1a 100%);
+    padding: 50px 24px 44px; text-align: center;
+    border-bottom: 2px solid rgba(39,174,96,0.25);
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '✝'; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+    font-size: 300px; color: rgba(39,174,96,0.04); pointer-events: none;
+  }
+  .hero-badge { display: inline-block; background: rgba(39,174,96,0.2); border: 1px solid rgba(39,174,96,0.4); color: #7dcea0; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; padding: 5px 16px; border-radius: 20px; margin-bottom: 16px; }
+  .hero h2 { font-size: 2rem; color: var(--branco); max-width: 600px; margin: 0 auto 14px; line-height: 1.3; position: relative; }
+  .hero-data { color: var(--texto-suave); font-size: 0.88rem; margin-bottom: 24px; }
+  .versiculo-box { max-width: 580px; margin: 0 auto 32px; background: rgba(39,174,96,0.12); border: 1px solid rgba(39,174,96,0.35); border-radius: 12px; padding: 18px 24px; font-style: italic; font-size: 1.02rem; color: #c8f0d8; line-height: 1.6; position: relative; }
+  .versiculo-box span { display: block; font-style: normal; font-size: 0.76rem; color: var(--verde-brilho); margin-top: 8px; letter-spacing: 1px; }
+
+  .verdade-box { max-width: 620px; margin: 0 auto; background: rgba(212,160,23,0.12); border: 2px solid rgba(212,160,23,0.35); border-radius: 14px; padding: 20px 24px; text-align: center; }
+  .verdade-box .vp-label { font-size: 0.7rem; color: var(--dourado); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; }
+  .verdade-box p { font-size: 1.05rem; color: #fdf3dc; line-height: 1.6; font-style: italic; }
+  .verdade-box .palavra { display: inline-block; margin-top: 12px; background: var(--dourado); color: #0a2e1a; font-weight: 700; font-size: 0.8rem; padding: 4px 16px; border-radius: 20px; letter-spacing: 2px; }
+
+  .container { max-width: 800px; margin: 0 auto; padding: 36px 22px; }
+
+  .cta-principal { text-align: center; margin-bottom: 36px; }
+  .btn-playbook {
+    display: inline-flex; align-items: center; gap: 12px;
+    background: linear-gradient(135deg, var(--verde-brilho), #1a7a42);
+    color: #fff; font-size: 1.15rem; font-weight: 700;
+    padding: 18px 40px; border-radius: 14px; text-decoration: none;
+    box-shadow: 0 6px 24px rgba(39,174,96,0.45);
+    transition: all 0.2s; letter-spacing: 0.5px;
+  }
+  .btn-playbook:hover { transform: translateY(-3px); box-shadow: 0 10px 32px rgba(39,174,96,0.6); }
+  .btn-playbook .icone { font-size: 1.6rem; }
+
+  .info-rapida { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-bottom: 32px; }
+  .info-item { background: rgba(255,255,255,0.05); border: 1px solid rgba(39,174,96,0.2); border-radius: 10px; padding: 14px 16px; text-align: center; }
+  .info-item .lbl { font-size: 0.66rem; color: #5d8a6a; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 7px; }
+  .info-item .val { font-size: 0.92rem; color: #7dcea0; font-weight: 600; }
+
+  .secao { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; margin-bottom: 22px; overflow: hidden; }
+  .secao-header { background: rgba(39,174,96,0.1); border-bottom: 1px solid rgba(39,174,96,0.2); padding: 15px 20px; cursor: pointer; user-select: none; display: flex; align-items: center; gap: 10px; }
+  .secao-header:hover { background: rgba(39,174,96,0.15); }
+  .secao-icon { font-size: 1.2rem; }
+  .secao-header h3 { font-size: 1rem; color: #7dcea0; flex: 1; }
+  .secao-toggle { color: var(--verde-brilho); font-size: 1rem; transition: transform 0.3s; }
+  .secao-toggle.aberto { transform: rotate(180deg); }
+  .secao-corpo { padding: 20px; display: none; }
+  .secao-corpo.aberto { display: block; }
+
+  .topico-item { background: rgba(39,174,96,0.07); border-left: 3px solid var(--verde-brilho); border-radius: 0 10px 10px 0; padding: 14px 18px; margin-bottom: 10px; }
+  .topico-item h4 { font-size: 0.92rem; color: #7dcea0; margin-bottom: 5px; font-weight: 700; }
+  .topico-item p { font-size: 0.85rem; color: #a8d5b5; line-height: 1.6; }
+  .topico-item .ref { font-size: 0.74rem; color: var(--verde-brilho); font-style: italic; margin-top: 5px; }
+
+  .leitura-table { width: 100%; border-collapse: collapse; }
+  .leitura-table th { background: rgba(39,174,96,0.15); color: #7dcea0; font-size: 0.78rem; padding: 10px 14px; text-align: left; border: 1px solid rgba(39,174,96,0.2); letter-spacing: 1px; }
+  .leitura-table td { padding: 9px 14px; border: 1px solid rgba(255,255,255,0.06); font-size: 0.86rem; color: #a8d5b5; }
+  .leitura-table tr:nth-child(even) td { background: rgba(255,255,255,0.03); }
+  .leitura-table .dia { color: var(--verde-brilho); font-weight: 700; }
+
+  .aplicacao-box { background: rgba(212,160,23,0.08); border: 2px solid rgba(212,160,23,0.3); border-radius: 12px; padding: 18px 22px; }
+  .aplicacao-box .ap-label { font-size: 0.7rem; color: var(--dourado); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; }
+  .aplicacao-box p { font-size: 0.88rem; color: #fdf3dc; line-height: 1.7; margin-bottom: 8px; }
+
+  footer { text-align: center; padding: 28px; color: #2d5a3a; font-size: 0.78rem; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 20px; }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <div class="logo-area">
+      <div class="logo-icon">📖</div>
+      <div class="logo-text">
+        <h1>EBD em Dia</h1>
+        <p>Seu estudo da lição dominical</p>
+      </div>
+    </div>
+    <div class="badge-aluno">📚 Portal do Aluno</div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-badge">✦ 2º Trimestre 2026 — Lição 3 ✦</div>
+  <h2>A impaciência na espera do cumprimento da promessa</h2>
+  <div class="hero-data">📅 19 de abril de 2026 · Gênesis 16.1–16</div>
+  <div class="versiculo-box">
+    "Disse então Sarai a Abrão: Eis que o SENHOR me impediu de ter filhos; ora, peço-te que te chegues à minha serva; talvez que por ela eu obtenha filhos. E Abrão deu ouvidos à voz de Sarai."
+    <span>— GÊNESIS 16.2 (TEXTO ÁUREO)</span>
+  </div>
+  <div class="verdade-box">
+    <div class="vp-label">✦ Verdade Prática</div>
+    <p>"A impaciência é antagônica à fé, por isso não devemos ser dominados por ela. Deus é fiel e cumpre com suas promessas no tempo certo."</p>
+    <span class="palavra">IMPACIÊNCIA</span>
+  </div>
+</section>
+
+<div class="container">
+
+  <div class="info-rapida">
+    <div class="info-item">
+      <div class="lbl">Texto Base</div>
+      <div class="val">Gênesis 16.1–16</div>
+    </div>
+    <div class="info-item">
+      <div class="lbl">Série</div>
+      <div class="val">Abraão, Isaque e Jacó</div>
+    </div>
+    <div class="info-item">
+      <div class="lbl">Hinos</div>
+      <div class="val">8, 188 e 302</div>
+    </div>
+    <div class="info-item">
+      <div class="lbl">Data</div>
+      <div class="val">19/04/2026</div>
+    </div>
+  </div>
+
+  <div class="cta-principal">
+    <a class="btn-playbook" href="PLAYBOOK-Aluno-atual.html">
+      <span class="icone">📖</span> Acessar Playbook Interativo
+    </a>
+    <p style="color:#5d8a6a;font-size:0.8rem;margin-top:12px;">Material visual completo com resumo, quiz e aplicação pessoal</p>
+  </div>
+
+  <!-- RESUMO DOS TÓPICOS -->
+  <div class="secao">
+    <div class="secao-header" onclick="toggle(this)">
+      <span class="secao-icon">📌</span>
+      <h3>Resumo da Lição — 3 Tópicos</h3>
+      <span class="secao-toggle aberto">▼</span>
+    </div>
+    <div class="secao-corpo aberto">
+
+      <div style="margin-bottom:18px;">
+        <div style="font-size:0.72rem;color:var(--verde-brilho);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;border-left:3px solid var(--verde-brilho);padding-left:10px;">Tópico I — O Pai da Fé e a Tentativa de Ajudar a Deus</div>
+        <div class="topico-item">
+          <h4>1. O plano para "ajudar" a Deus</h4>
+          <p>Sarai, impaciente com a demora da promessa, propôs que Abrão se unisse à sua serva Agar. Culturalmente aceito na época, mas fora do plano divino.</p>
+          <div class="ref">📖 Gênesis 15.2-4; 16.1-2</div>
+        </div>
+        <div class="topico-item">
+          <h4>2. Abraão aceita o plano de Sarai</h4>
+          <p>O homem chamado de "pai da fé" cedeu à pressão. Isso nos lembra que a fé não é conquista permanente — é batalha diária.</p>
+          <div class="ref">📖 Gênesis 16.2</div>
+        </div>
+        <div class="topico-item">
+          <h4>3. Agar zomba de Sarai</h4>
+          <p>Ao engravidar, Agar passou a desprezar sua senhora. O plano humano gerou competição e amargura onde deveria haver harmonia.</p>
+          <div class="ref">📖 Gênesis 16.4-5</div>
+        </div>
+      </div>
+
+      <div style="margin-bottom:18px;">
+        <div style="font-size:0.72rem;color:var(--verde-brilho);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;border-left:3px solid var(--verde-brilho);padding-left:10px;">Tópico II — As Consequências de Agir por Conta Própria</div>
+        <div class="topico-item">
+          <h4>1. Conflito familiar</h4>
+          <p>Sarai acusa Abrão; Abrão se omite; Agar sofre. O ambiente doméstico foi destruído porque as decisões foram tomadas fora da vontade de Deus.</p>
+          <div class="ref">📖 Gênesis 16.4-6</div>
+        </div>
+        <div class="topico-item">
+          <h4>2. A fuga de Agar</h4>
+          <p>Grávida, humilhada e sozinha, Agar foge para o deserto. Às vezes sofremos as consequências das decisões dos outros — mas Deus nos encontra.</p>
+          <div class="ref">📖 Gênesis 16.6</div>
+        </div>
+        <div class="topico-item">
+          <h4>3. Deus entra em ação</h4>
+          <p>O Anjo do SENHOR encontra Agar na fonte, ouve seu clamor e promete abençoar sua descendência. Ismael = "Deus ouviu".</p>
+          <div class="ref">📖 Gênesis 16.7-12</div>
+        </div>
+      </div>
+
+      <div>
+        <div style="font-size:0.72rem;color:var(--verde-brilho);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;border-left:3px solid var(--verde-brilho);padding-left:10px;">Tópico III — O Deus que Conduz a História</div>
+        <div class="topico-item">
+          <h4>1. O Deus que ouve e vê</h4>
+          <p>Agar chama Deus de "El-Roi" — Deus que me vê. Este é o único lugar na Bíblia com esse nome. Deus vê cada dor oculta, cada espera silenciosa.</p>
+          <div class="ref">📖 Gênesis 16.7-11, 13</div>
+        </div>
+        <div class="topico-item">
+          <h4>2. Tudo conforme a sua soberana vontade</h4>
+          <p>Ismael nasceu, mas não era o filho da promessa. Deus não foi surpreendido — Isaque viria no tempo certo, 14 anos depois. Nenhum atalho humano cancela o plano divino.</p>
+          <div class="ref">📖 Gênesis 16.16; 21.1-3</div>
+        </div>
+        <div class="topico-item">
+          <h4>3. O cuidado de Deus em todo o tempo</h4>
+          <p>Deus encontrou, ouviu, orientou e enviou Agar de volta fortalecida. Quando estamos no deserto, Ele está presente — com palavra e direção.</p>
+          <div class="ref">📖 Filipenses 4.6-7; Salmo 23.4</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LEITURA DIÁRIA -->
+  <div class="secao">
+    <div class="secao-header" onclick="toggle(this)">
+      <span class="secao-icon">📅</span>
+      <h3>Leitura Diária da Semana</h3>
+      <span class="secao-toggle">▼</span>
+    </div>
+    <div class="secao-corpo">
+      <table class="leitura-table">
+        <thead>
+          <tr><th>Dia</th><th>Passagem</th><th>Tema</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="dia">Segunda</td><td>Gênesis 16.2</td><td>Sarai dá lugar à impaciência</td></tr>
+          <tr><td class="dia">Terça</td><td>1 Pedro 5.7</td><td>Lançar a ansiedade sobre Deus</td></tr>
+          <tr><td class="dia">Quarta</td><td>Salmo 40.1</td><td>Esperar com paciência no Senhor</td></tr>
+          <tr><td class="dia">Quinta</td><td>Romanos 12.12</td><td>Pacientes na tribulação</td></tr>
+          <tr><td class="dia">Sexta</td><td>2 Pedro 3.9</td><td>Deus é longânimo</td></tr>
+          <tr><td class="dia">Sábado</td><td>1 Tessalonicenses 5.14</td><td>Devemos ser pacientes para com todos</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- APLICAÇÃO PESSOAL -->
+  <div class="secao">
+    <div class="secao-header" onclick="toggle(this)">
+      <span class="secao-icon">🙏</span>
+      <h3>Aplicação Pessoal</h3>
+      <span class="secao-toggle">▼</span>
+    </div>
+    <div class="secao-corpo">
+      <div class="aplicacao-box">
+        <div class="ap-label">✦ Reflita e Aplique</div>
+        <p>🔹 <strong style="color:#f0c940;">Identifique sua área de impaciência:</strong> Em qual promessa de Deus você tem sido mais impaciente? Namoro, emprego, cura, provisão, um filho?</p>
+        <p>🔹 <strong style="color:#f0c940;">Evite o "plano Agar":</strong> Há alguma decisão que você está prestes a tomar "para ajudar a Deus"? Pare, ore e espere.</p>
+        <p>🔹 <strong style="color:#f0c940;">Confie no El-Roi:</strong> Mesmo que você esteja sofrendo consequências de erros seus ou alheios, Deus te vê, te ouve e tem um plano para a sua situação.</p>
+        <p>🔹 <strong style="color:#f0c940;">Compromisso da semana:</strong> Leia cada dia da leitura diária e escreva uma frase de gratidão ao final de cada leitura.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>EBD em Dia © 2026 — Dr. Alex Ferreira | Material para assinantes.</footer>
+
+<script>
+function toggle(header) {
+  const corpo = header.nextElementSibling;
+  const tog = header.querySelector('.secao-toggle');
+  if (corpo.classList.contains('aberto')) {
+    corpo.classList.remove('aberto');
+    tog.classList.remove('aberto');
+  } else {
+    corpo.classList.add('aberto');
+    tog.classList.add('aberto');
+  }
+}
+</script>
+</body>
+</html>

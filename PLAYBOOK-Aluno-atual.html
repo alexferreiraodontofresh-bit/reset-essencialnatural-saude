@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Playbook do Aluno — Lição 3 | EBD em Dia</title>
+<style>
+  :root {
+    --azul: #0d1b3e; --azul2: #1a3a6b;
+    --dourado: #d4a017; --dourado-claro: #f0c940;
+    --verde: #27ae60; --verde-claro: #7dcea0;
+    --roxo: #9b59b6; --roxo-claro: #d7bde2;
+    --branco: #fff; --cinza: #c0c8e0;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Segoe UI',Georgia,serif; background:var(--azul); color:var(--branco); }
+
+  .topo { background:linear-gradient(135deg,#0d1b3e,#1a3a6b); border-bottom:3px solid var(--dourado); padding:22px 28px; text-align:center; }
+  .topo .badge { display:inline-block; background:rgba(212,160,23,0.15); border:1px solid rgba(212,160,23,0.4); color:var(--dourado-claro); font-size:0.72rem; letter-spacing:3px; text-transform:uppercase; padding:5px 18px; border-radius:20px; margin-bottom:14px; }
+  .topo h1 { font-size:clamp(1.4rem,4vw,2rem); color:var(--branco); line-height:1.3; margin-bottom:10px; }
+  .topo .meta { color:#9ab0d4; font-size:0.84rem; margin-bottom:16px; }
+  .versiculo { max-width:640px; margin:0 auto; background:rgba(212,160,23,0.1); border:1px solid rgba(212,160,23,0.3); border-radius:12px; padding:16px 22px; font-style:italic; font-size:0.96rem; color:#e8d5a0; line-height:1.6; }
+  .versiculo span { display:block; font-style:normal; font-size:0.72rem; color:var(--dourado); margin-top:7px; letter-spacing:1px; }
+
+  .container { max-width:820px; margin:0 auto; padding:28px 20px; }
+
+  .verdade-card { background:rgba(212,160,23,0.1); border:2px solid rgba(212,160,23,0.4); border-radius:14px; padding:18px 22px; margin-bottom:26px; text-align:center; }
+  .verdade-card .vl { font-size:0.68rem; color:var(--dourado); letter-spacing:3px; text-transform:uppercase; margin-bottom:8px; }
+  .verdade-card p { font-size:1rem; color:#f0e6c0; line-height:1.6; font-style:italic; }
+  .verdade-card .pc { display:inline-block; margin-top:10px; background:var(--dourado); color:#0d1b3e; font-weight:700; font-size:0.78rem; padding:3px 14px; border-radius:20px; }
+
+  /* SEÇÕES */
+  .secao { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.09); border-radius:14px; margin-bottom:20px; overflow:hidden; }
+  .secao-hd { background:rgba(212,160,23,0.12); border-bottom:1px solid rgba(212,160,23,0.2); padding:14px 20px; display:flex; align-items:center; gap:10px; }
+  .secao-hd .ico { font-size:1.3rem; }
+  .secao-hd h2 { font-size:1rem; color:var(--dourado-claro); flex:1; }
+  .secao-bd { padding:20px; }
+
+  /* TÓPICOS */
+  .topico-bloco { margin-bottom:22px; }
+  .topico-label { font-size:0.7rem; color:var(--dourado); letter-spacing:2px; text-transform:uppercase; margin-bottom:12px; border-left:3px solid var(--dourado); padding-left:10px; }
+  .sub-item { display:flex; gap:14px; margin-bottom:12px; }
+  .sub-num-circle { width:32px; height:32px; border-radius:50%; background:rgba(212,160,23,0.2); border:1px solid rgba(212,160,23,0.4); display:flex; align-items:center; justify-content:center; font-size:0.8rem; color:var(--dourado-claro); font-weight:700; flex-shrink:0; margin-top:2px; }
+  .sub-content h4 { font-size:0.92rem; color:var(--dourado-claro); margin-bottom:5px; }
+  .sub-content p { font-size:0.85rem; color:var(--cinza); line-height:1.6; }
+  .sub-content .ref { font-size:0.73rem; color:var(--dourado); font-style:italic; margin-top:4px; }
+  .sinopse-tag { background:rgba(212,160,23,0.07); border:1px dashed rgba(212,160,23,0.3); border-radius:8px; padding:10px 14px; margin-top:8px; font-size:0.84rem; color:#f0e6c0; font-style:italic; line-height:1.55; }
+
+  /* QUIZ */
+  .quiz-item { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:16px 18px; margin-bottom:14px; }
+  .quiz-item .qnum { font-size:0.68rem; color:#9ab0d4; letter-spacing:2px; text-transform:uppercase; margin-bottom:8px; }
+  .quiz-item .qperg { font-size:0.94rem; color:var(--branco); font-weight:600; margin-bottom:12px; }
+  .quiz-opcoes { display:grid; gap:8px; }
+  .quiz-opcao {
+    background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1);
+    border-radius:8px; padding:9px 14px; font-size:0.85rem; color:var(--cinza);
+    cursor:pointer; transition:all 0.2s; text-align:left;
+  }
+  .quiz-opcao:hover { background:rgba(212,160,23,0.1); border-color:rgba(212,160,23,0.3); color:var(--branco); }
+  .quiz-opcao.correta { background:rgba(39,174,96,0.2) !important; border-color:#27ae60 !important; color:#7dcea0 !important; }
+  .quiz-opcao.errada  { background:rgba(192,57,43,0.15) !important; border-color:#c0392b !important; color:#f08070 !important; }
+  .quiz-feedback { display:none; margin-top:10px; font-size:0.83rem; padding:8px 14px; border-radius:8px; line-height:1.5; }
+  .quiz-feedback.show { display:block; }
+  .quiz-feedback.acertou { background:rgba(39,174,96,0.15); border:1px solid rgba(39,174,96,0.3); color:#7dcea0; }
+  .quiz-feedback.errou   { background:rgba(192,57,43,0.12); border:1px solid rgba(192,57,43,0.3); color:#f08070; }
+
+  /* LEITURA */
+  .leitura-items { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:10px; }
+  .leit-card { background:rgba(39,174,96,0.07); border:1px solid rgba(39,174,96,0.2); border-radius:10px; padding:12px 14px; }
+  .leit-card .dia { font-size:0.68rem; color:var(--verde-claro); letter-spacing:2px; text-transform:uppercase; margin-bottom:5px; }
+  .leit-card .pass { font-size:0.9rem; color:#fff; font-weight:600; margin-bottom:3px; }
+  .leit-card .tema { font-size:0.78rem; color:#9ab0d4; }
+
+  /* APLICAÇÃO */
+  .aplic-item { display:flex; gap:12px; margin-bottom:14px; align-items:flex-start; }
+  .aplic-icon { width:34px; height:34px; border-radius:50%; background:rgba(212,160,23,0.15); border:1px solid rgba(212,160,23,0.35); display:flex; align-items:center; justify-content:center; font-size:1rem; flex-shrink:0; }
+  .aplic-text { font-size:0.87rem; color:var(--cinza); line-height:1.65; }
+  .aplic-text strong { color:var(--dourado-claro); }
+
+  footer { text-align:center; padding:24px; color:#4a5a7a; font-size:0.76rem; border-top:1px solid rgba(255,255,255,0.06); margin-top:10px; }
+
+  @media(max-width:500px){ .container { padding:16px 14px; } }
+</style>
+</head>
+<body>
+
+<div class="topo">
+  <div class="badge">📖 EBD em Dia · Playbook do Aluno</div>
+  <h1>A impaciência na espera do<br>cumprimento da promessa</h1>
+  <div class="meta">Lição 3 · 19 de abril de 2026 · Gênesis 16.1–16</div>
+  <div class="versiculo">
+    "Disse então Sarai a Abrão: Eis que o SENHOR me impediu de ter filhos; ora, peço-te que te chegues à minha serva; talvez que por ela eu obtenha filhos. E Abrão deu ouvidos à voz de Sarai."
+    <span>— GÊNESIS 16.2 (Texto Áureo)</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="verdade-card">
+    <div class="vl">✦ Verdade Prática</div>
+    <p>"A impaciência é antagônica à fé, por isso não devemos ser dominados por ela. Deus é fiel e cumpre com suas promessas no tempo certo."</p>
+    <span class="pc">IMPACIÊNCIA</span>
+  </div>
+
+  <!-- TÓPICOS -->
+  <div class="secao">
+    <div class="secao-hd">
+      <span class="ico">📚</span>
+      <h2>Resumo dos 3 Tópicos da Lição</h2>
+    </div>
+    <div class="secao-bd">
+
+      <!-- TÓPICO I -->
+      <div class="topico-bloco">
+        <div class="topico-label">🔷 Tópico I — O Pai da Fé e a Tentativa de Ajudar a Deus</div>
+        <div class="sub-item">
+          <div class="sub-num-circle">1</div>
+          <div class="sub-content">
+            <h4>O plano para "ajudar" a Deus</h4>
+            <p>Sarai, impaciente após mais de 10 anos, propôs que Abrão se unisse à serva Agar. Culturalmente aceito na época (Código de Hamurabi §146), mas fora do plano divino. A fé incompleta conhece o poder de Deus, mas não aguarda o Seu tempo.</p>
+            <div class="ref">📖 Gênesis 15.2-4; 16.1-2 | Salmo 27.14</div>
+          </div>
+        </div>
+        <div class="sub-item">
+          <div class="sub-num-circle">2</div>
+          <div class="sub-content">
+            <h4>Abraão aceita o plano de Sarai</h4>
+            <p>O "pai da fé" cedeu à pressão. O verbo hebraico "deu ouvidos" tem o mesmo padrão que Adão ao pecar (Gn 3.17). A fé não é conquista permanente — é batalha diária. O mesmo Abrão que creu (Gn 15.6) aqui vacilou. Isso nos humilha e nos alerta.</p>
+            <div class="ref">📖 Gênesis 16.2 | Romanos 4.20-21</div>
+          </div>
+        </div>
+        <div class="sub-item">
+          <div class="sub-num-circle">3</div>
+          <div class="sub-content">
+            <h4>Agar zomba de Sarai</h4>
+            <p>Ao engravidar, Agar passou a desprezar Sarai. O plano produziu resultados — mas com um custo não previsto: soberba, desprezo, acusações mútuas. Sarai culpou Abrão por uma situação que ela mesma criou. Os atalhos humanos sempre têm custo oculto.</p>
+            <div class="ref">📖 Gênesis 16.4-5 | Provérbios 16.18</div>
+          </div>
+        </div>
+        <div class="sinopse-tag">📌 <strong>Sinopse I:</strong> Abraão e Sarai tentaram ajudar a Deus, pois se deixaram vencer pela ansiedade.</div>
+      </div>
+
+      <!-- TÓPICO II -->
+      <div class="topico-bloco">
+        <div class="topico-label" style="border-color:var(--verde);color:var(--verde-claro);">🔷 Tópico II — As Consequências de Agir por Conta Própria</div>
+        <div class="sub-item">
+          <div class="sub-num-circle" style="background:rgba(39,174,96,0.15);border-color:rgba(39,174,96,0.4);color:var(--verde-claro);">1</div>
+          <div class="sub-content">
+            <h4>Conflito familiar</h4>
+            <p>O lar de Abrão se tornou um campo de batalha. Sarai acusa Abrão; Abrão se omite. O pecado de um desestrutura todos ao redor. Quando saímos do plano de Deus, o custo é relacionamental — afeta cônjuge, filhos, amigos.</p>
+            <div class="ref">📖 Gênesis 16.4-6 | Efésios 4.26-27</div>
+          </div>
+        </div>
+        <div class="sub-item">
+          <div class="sub-num-circle" style="background:rgba(39,174,96,0.15);border-color:rgba(39,174,96,0.4);color:var(--verde-claro);">2</div>
+          <div class="sub-content">
+            <h4>A fuga de Agar</h4>
+            <p>Grávida, humilhada e sozinha, Agar foge para o deserto. Ela é a figura trágica — não escolheu nada disso, mas sofre as consequências de decisões alheias. O deserto, porém, é onde Deus a encontrará de forma única e inesquecível.</p>
+            <div class="ref">📖 Gênesis 16.6 | Salmo 34.18</div>
+          </div>
+        </div>
+        <div class="sub-item">
+          <div class="sub-num-circle" style="background:rgba(39,174,96,0.15);border-color:rgba(39,174,96,0.4);color:var(--verde-claro);">3</div>
+          <div class="sub-content">
+            <h4>Deus entra em ação</h4>
+            <p>O Anjo do SENHOR encontra Agar junto a uma fonte — 1ª aparição na Bíblia, a uma serva estrangeira. Deus pergunta, ouve, orienta e promete. O nome do filho: Ismael — "Deus ouviu". A graça divina não tem fronteiras de classe ou origem.</p>
+            <div class="ref">📖 Gênesis 16.7-12 | João 4.7-10</div>
+          </div>
+        </div>
+        <div class="sinopse-tag" style="border-color:rgba(39,174,96,0.3);color:#c8f0d8;">📌 <strong>Sinopse II:</strong> O agir por conta própria tem consequências ruins; por isso, espere em Deus.</div>
+      </div>
+
+      <!-- TÓPICO III -->
+      <div class="topico-bloco">
+        <div class="topico-label" style="border-color:var(--roxo);color:var(--roxo-claro);">🔷 Tópico III — O Deus que Conduz a História</div>
+        <div class="sub-item">
+          <div class="sub-num-circle" style="background:rgba(142,68,173,0.15);border-color:rgba(142,68,173,0.4);color:var(--roxo-claro);">1</div>
+          <div class="sub-content">
+            <h4>O Deus que ouve e vê — El-Roi</h4>
+            <p>Agar chamou Deus de "El-Roi" — o único lugar na Bíblia com este nome, cunhado por uma mulher estrangeira e escrava. Deus vê o que os outros ignoram: as dores ocultas, as esperas silenciosas. Ismael = "Deus ouviu". Nenhum clamor é ignorado.</p>
+            <div class="ref">📖 Gênesis 16.13 | Salmo 139.1-4</div>
+          </div>
+        </div>
+        <div class="sub-item">
+          <div class="sub-num-circle" style="background:rgba(142,68,173,0.15);border-color:rgba(142,68,173,0.4);color:var(--roxo-claro);">2</div>
+          <div class="sub-content">
+            <h4>Tudo conforme Sua soberana vontade</h4>
+            <p>Ismael nasceu, mas não era o filho prometido. Isaque viria 14 anos depois (Gn 21). Nenhum atalho humano cancela o plano eterno de Deus. O nosso "Ismael" pode existir — mas o "Isaque" prometido ainda está por vir, no tempo certo de Deus.</p>
+            <div class="ref">📖 Gênesis 16.16; 21.1-5 | Isaías 46.10</div>
+          </div>
+        </div>
+        <div class="sub-item">
+          <div class="sub-num-circle" style="background:rgba(142,68,173,0.15);border-color:rgba(142,68,173,0.4);color:var(--roxo-claro);">3</div>
+          <div class="sub-content">
+            <h4>O cuidado de Deus em todo o tempo</h4>
+            <p>Deus encontrou Agar (presença), ouviu (misericórdia), orientou (sabedoria), prometeu (fidelidade) e a enviou fortalecida (poder). Este é o padrão do cuidado divino conosco hoje. Quando estamos no deserto, Filipenses 4.6-7 é a nossa âncora: oração → paz que excede o entendimento.</p>
+            <div class="ref">📖 Filipenses 4.6-7; Efésios 3.16; Salmo 23.4</div>
+          </div>
+        </div>
+        <div class="sinopse-tag" style="border-color:rgba(142,68,173,0.3);color:var(--roxo-claro);">📌 <strong>Sinopse III:</strong> Deus é soberano e conduz a história.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="secao">
+    <div class="secao-hd">
+      <span class="ico">🧠</span>
+      <h2>Quiz Interativo — Teste seu Conhecimento</h2>
+    </div>
+    <div class="secao-bd">
+
+      <!-- Q1 -->
+      <div class="quiz-item">
+        <div class="qnum">Pergunta 1 de 4</div>
+        <div class="qperg">Quantos anos Abrão esperou pela promessa antes do nascimento de Ismael?</div>
+        <div class="quiz-opcoes">
+          <button class="quiz-opcao" onclick="responder(this,false,'Q1','Não exatamente. Abrão tinha 75 anos quando recebeu a promessa (Gn 12.4) e 86 quando Ismael nasceu (Gn 16.16) — isso dá 11 anos.')">A) 5 anos</button>
+          <button class="quiz-opcao" onclick="responder(this,true,'Q1','Correto! Abrão tinha 75 anos na chamada (Gn 12.4) e 86 quando Ismael nasceu (Gn 16.16) — mais de 10 anos de espera.')">B) Mais de 10 anos</button>
+          <button class="quiz-opcao" onclick="responder(this,false,'Q1','Não. Foram 11 anos de espera entre a promessa inicial e o nascimento de Ismael.')">C) 25 anos</button>
+          <button class="quiz-opcao" onclick="responder(this,false,'Q1','Não há registro de 3 anos neste contexto. A espera foi de mais de uma década.')">D) 3 anos</button>
+        </div>
+        <div class="quiz-feedback" id="fb-Q1"></div>
+      </div>
+
+      <!-- Q2 -->
+      <div class="quiz-item">
+        <div class="qnum">Pergunta 2 de 4</div>
+        <div class="qperg">O nome Ismael significa:</div>
+        <div class="quiz-opcoes">
+          <button class="quiz-opcao" onclick="responder(this,false,'Q2','Não. "Deus promete" não é o significado de Ismael.')">A) Deus promete</button>
+          <button class="quiz-opcao" onclick="responder(this,false,'Q2','Não. "Deus vê" é o significado de El-Roi, o nome que Agar deu a Deus, não ao filho.')">B) Deus vê</button>
+          <button class="quiz-opcao" onclick="responder(this,true,'Q2','Exato! Ismael significa "Deus ouviu" — testemunho de que Deus escutou o clamor de Agar no deserto (Gn 16.11).')">C) Deus ouviu</button>
+          <button class="quiz-opcao" onclick="responder(this,false,'Q2','Não. "Deus cuida" não é o significado hebraico de Ismael.')">D) Deus cuida</button>
+        </div>
+        <div class="quiz-feedback" id="fb-Q2"></div>
+      </div>
+
+      <!-- Q3 -->
+      <div class="quiz-item">
+        <div class="qnum">Pergunta 3 de 4</div>
+        <div class="qperg">Que nome único Agar deu a Deus após o encontro no deserto?</div>
+        <div class="quiz-opcoes">
+          <button class="quiz-opcao" onclick="responder(this,false,'Q3','El-Shaddai é "Deus Todo-Poderoso", revelado a Abrão em Gênesis 17.1, não por Agar.')">A) El-Shaddai</button>
+          <button class="quiz-opcao" onclick="responder(this,true,'Q3','Perfeito! El-Roi = "O Deus que me vê" (Gn 16.13). Único lugar na Bíblia com este nome, cunhado por uma serva estrangeira.')">B) El-Roi</button>
+          <button class="quiz-opcao" onclick="responder(this,false,'Q3','Elohim é o nome genérico de Deus em hebraico, não o nome específico dado por Agar.')">C) Elohim</button>
+          <button class="quiz-opcao" onclick="responder(this,false,'Q3','Adonai significa "Senhor/Meu Senhor", não foi o nome dado por Agar no deserto.')">D) Adonai</button>
+        </div>
+        <div class="quiz-feedback" id="fb-Q3"></div>
+      </div>
+
+      <!-- Q4 -->
+      <div class="quiz-item">
+        <div class="qnum">Pergunta 4 de 4</div>
+        <div class="qperg">Qual é a orientação de Deus para Agar no deserto?</div>
+        <div class="quiz-opcoes">
+          <button class="quiz-opcao" onclick="responder(this,false,'Q4','Não. Deus não a mandou seguir para o Egito — ao contrário, a chamou a voltar.')">A) Continue para o Egito e recomece sua vida</button>
+          <button class="quiz-opcao" onclick="responder(this,false,'Q4','Não. Deus não a mandou esperar no deserto. A instrução foi específica: voltar e se humilhar.')">B) Fique no deserto e espere</button>
+          <button class="quiz-opcao" onclick="responder(this,true,'Q4','Correto! Deus a orientou: "Volta para tua senhora e humilha-te debaixo de suas mãos" (Gn 16.9), acompanhado de uma promessa de multiplicação da descendência.')">C) Volte para Sarai e humilha-te</button>
+          <button class="quiz-opcao" onclick="responder(this,false,'Q4','Não. A instrução foi de retorno, não de buscar outro lar.')">D) Busque uma nova família</button>
+        </div>
+        <div class="quiz-feedback" id="fb-Q4"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- LEITURA DIÁRIA -->
+  <div class="secao">
+    <div class="secao-hd">
+      <span class="ico">📅</span>
+      <h2>Leitura Diária da Semana</h2>
+    </div>
+    <div class="secao-bd">
+      <div class="leitura-items">
+        <div class="leit-card">
+          <div class="dia">Segunda</div>
+          <div class="pass">Gênesis 16.2</div>
+          <div class="tema">Sarai dá lugar à impaciência</div>
+        </div>
+        <div class="leit-card">
+          <div class="dia">Terça</div>
+          <div class="pass">1 Pedro 5.7</div>
+          <div class="tema">Lançar a ansiedade sobre Deus</div>
+        </div>
+        <div class="leit-card">
+          <div class="dia">Quarta</div>
+          <div class="pass">Salmo 40.1</div>
+          <div class="tema">Esperar com paciência no Senhor</div>
+        </div>
+        <div class="leit-card">
+          <div class="dia">Quinta</div>
+          <div class="pass">Romanos 12.12</div>
+          <div class="tema">Pacientes na tribulação</div>
+        </div>
+        <div class="leit-card">
+          <div class="dia">Sexta</div>
+          <div class="pass">2 Pedro 3.9</div>
+          <div class="tema">Deus é longânimo</div>
+        </div>
+        <div class="leit-card">
+          <div class="dia">Sábado</div>
+          <div class="pass">1 Tessalonicenses 5.14</div>
+          <div class="tema">Pacientes para com todos</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- APLICAÇÃO PESSOAL -->
+  <div class="secao">
+    <div class="secao-hd">
+      <span class="ico">🙏</span>
+      <h2>Aplicação Pessoal — Esta Lição na Sua Vida</h2>
+    </div>
+    <div class="secao-bd">
+      <div class="aplic-item">
+        <div class="aplic-icon">🔍</div>
+        <div class="aplic-text"><strong>Identifique seu "Ismael":</strong> Em qual promessa de Deus você tem sido mais impaciente? Namoro, emprego, cura, um filho, uma restauração? Nomeie essa área em oração.</div>
+      </div>
+      <div class="aplic-item">
+        <div class="aplic-icon">✋</div>
+        <div class="aplic-text"><strong>Evite o "plano Agar":</strong> Há alguma decisão que você está prestes a tomar "para ajudar a Deus"? Pause, ore, busque conselho de alguém maduro na fé e espere pela confirmação divina.</div>
+      </div>
+      <div class="aplic-item">
+        <div class="aplic-icon">👁️</div>
+        <div class="aplic-text"><strong>Confie no El-Roi:</strong> Mesmo que você esteja num "deserto" — por seus erros ou por erros alheios —, Deus te vê (El-Roi) e te ouve (Ismael). Ele não te ignorou. Clame a Ele com confiança (Fp 4.6-7).</div>
+      </div>
+      <div class="aplic-item">
+        <div class="aplic-icon">📖</div>
+        <div class="aplic-text"><strong>Compromisso desta semana:</strong> Leia cada passagem da leitura diária e escreva ao final: "O que aprendi sobre a paciência cristã hoje?" Uma frase é suficiente — mas seja honesto.</div>
+      </div>
+      <div class="aplic-item">
+        <div class="aplic-icon">💬</div>
+        <div class="aplic-text"><strong>Memorize Filipenses 4.7:</strong> "E a paz de Deus, que excede todo o entendimento, guardará os vossos corações e os vossos sentimentos em Cristo Jesus." Repita 3 vezes por dia esta semana.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>EBD em Dia © 2026 — Dr. Alex Ferreira | Playbook do Aluno — Lição 3</footer>
+
+<script>
+const respondidas = {};
+
+function responder(btn, correta, qid, feedback) {
+  if (respondidas[qid]) return;
+  respondidas[qid] = true;
+
+  const opcoes = btn.closest('.quiz-opcoes').querySelectorAll('.quiz-opcao');
+  opcoes.forEach(op => op.style.pointerEvents = 'none');
+
+  if (correta) {
+    btn.classList.add('correta');
+  } else {
+    btn.classList.add('errada');
+    // Destacar a correta
+    opcoes.forEach(op => {
+      if (op.getAttribute('onclick').includes('true')) {
+        op.classList.add('correta');
+      }
+    });
+  }
+
+  const fb = document.getElementById('fb-' + qid);
+  fb.textContent = (correta ? '✅ ' : '❌ ') + feedback;
+  fb.className = 'quiz-feedback show ' + (correta ? 'acertou' : 'errou');
+}
+</script>
+</body>
+</html>

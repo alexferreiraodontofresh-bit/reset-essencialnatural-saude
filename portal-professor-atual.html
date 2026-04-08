@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portal do Professor — Lição 3 | EBD em Dia</title>
+<style>
+  :root {
+    --azul-escuro: #0d1b3e;
+    --azul-medio: #1a3a6b;
+    --azul-claro: #2a5298;
+    --dourado: #d4a017;
+    --dourado-claro: #f0c940;
+    --dourado-suave: #fdf3dc;
+    --branco: #ffffff;
+    --cinza-claro: #f4f6fb;
+    --cinza-texto: #4a4a6a;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Georgia, serif; background: var(--azul-escuro); color: var(--branco); min-height: 100vh; }
+
+  .header {
+    background: linear-gradient(135deg, #0d1b3e 0%, #1a3a6b 60%, #0d2a50 100%);
+    border-bottom: 3px solid var(--dourado);
+    position: sticky; top: 0; z-index: 100;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  }
+  .header-inner {
+    max-width: 1100px; margin: 0 auto; padding: 16px 28px;
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+  }
+  .logo-area { display: flex; align-items: center; gap: 14px; }
+  .logo-icon { width: 50px; height: 50px; background: var(--dourado); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; }
+  .logo-text h1 { font-size: 1.4rem; color: var(--dourado-claro); letter-spacing: 1px; }
+  .logo-text p { font-size: 0.75rem; color: #9ab0d4; }
+  .badge-professor { background: linear-gradient(135deg, var(--dourado), #b8860b); color: #fff; font-weight: 700; font-size: 0.78rem; padding: 6px 16px; border-radius: 20px; letter-spacing: 1px; text-transform: uppercase; }
+
+  .aviso-banner {
+    background: linear-gradient(135deg, #7b1a1a, #a02020);
+    border-left: 5px solid var(--dourado-claro); border-bottom: 2px solid rgba(212,160,23,0.3);
+    padding: 13px 28px; text-align: center; font-size: 0.87rem; color: #fdf3dc;
+  }
+  .aviso-banner strong { color: var(--dourado-claro); }
+
+  .hero {
+    background: linear-gradient(180deg, #1a3a6b 0%, #0d1b3e 100%);
+    padding: 46px 28px 36px; text-align: center; border-bottom: 2px solid rgba(212,160,23,0.2);
+  }
+  .hero-serie { font-size: 0.78rem; color: #9ab0d4; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
+  .hero-numero { font-size: 0.82rem; color: var(--dourado); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 8px; }
+  .hero h2 { font-size: 2.1rem; color: var(--branco); max-width: 700px; margin: 0 auto 14px; line-height: 1.3; }
+  .hero-data { display: inline-flex; align-items: center; gap: 8px; background: rgba(212,160,23,0.14); border: 1px solid rgba(212,160,23,0.38); padding: 7px 18px; border-radius: 20px; font-size: 0.88rem; color: var(--dourado-claro); margin-bottom: 20px; }
+  .versiculo-box { max-width: 620px; margin: 0 auto; background: rgba(212,160,23,0.1); border: 1px solid rgba(212,160,23,0.35); border-radius: 12px; padding: 18px 26px; font-style: italic; font-size: 1.05rem; color: #e8d5a0; line-height: 1.6; }
+  .versiculo-box span { display: block; font-style: normal; font-size: 0.78rem; color: var(--dourado); margin-top: 8px; letter-spacing: 1px; }
+
+  .container { max-width: 1100px; margin: 0 auto; padding: 36px 22px; }
+
+  .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(185px, 1fr)); gap: 14px; margin-bottom: 34px; }
+  .info-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(212,160,23,0.25); border-radius: 12px; padding: 16px 18px; text-align: center; }
+  .info-card .label { font-size: 0.68rem; color: #9ab0d4; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 7px; }
+  .info-card .valor { font-size: 0.95rem; color: var(--dourado-claro); font-weight: 600; }
+
+  .verdade-box { background: linear-gradient(135deg, rgba(212,160,23,0.15), rgba(212,160,23,0.05)); border: 2px solid rgba(212,160,23,0.4); border-radius: 14px; padding: 22px 26px; text-align: center; margin-bottom: 26px; }
+  .verdade-box .vp-label { font-size: 0.72rem; color: var(--dourado); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; }
+  .verdade-box p { font-size: 1.1rem; color: #f0e6c0; line-height: 1.6; font-style: italic; font-weight: 500; }
+  .verdade-box .palavra-chave { display: inline-block; margin-top: 12px; background: var(--dourado); color: #0d1b3e; font-weight: 700; font-size: 0.82rem; padding: 4px 16px; border-radius: 20px; letter-spacing: 1px; }
+
+  .secao { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; margin-bottom: 26px; overflow: hidden; }
+  .secao-header { background: linear-gradient(135deg, rgba(212,160,23,0.2), rgba(212,160,23,0.05)); border-bottom: 1px solid rgba(212,160,23,0.3); padding: 16px 22px; display: flex; align-items: center; gap: 12px; cursor: pointer; user-select: none; }
+  .secao-header:hover { background: linear-gradient(135deg, rgba(212,160,23,0.28), rgba(212,160,23,0.1)); }
+  .secao-icone { width: 40px; height: 40px; background: var(--dourado); border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 19px; flex-shrink: 0; }
+  .secao-titulo { flex: 1; }
+  .secao-titulo h3 { font-size: 1.1rem; color: var(--dourado-claro); }
+  .secao-titulo p { font-size: 0.75rem; color: #9ab0d4; margin-top: 3px; }
+  .secao-toggle { font-size: 1.1rem; color: var(--dourado); transition: transform 0.3s; }
+  .secao-toggle.aberto { transform: rotate(180deg); }
+  .secao-corpo { padding: 22px; display: none; }
+  .secao-corpo.aberto { display: block; }
+
+  .topico { margin-bottom: 26px; }
+  .topico-titulo { font-size: 1.05rem; color: var(--dourado-claro); border-left: 4px solid var(--dourado); padding-left: 14px; margin-bottom: 14px; font-weight: 700; }
+  .subtopico { background: rgba(255,255,255,0.04); border-left: 3px solid rgba(212,160,23,0.5); border-radius: 0 10px 10px 0; padding: 14px 18px; margin-bottom: 10px; }
+  .subtopico h4 { font-size: 0.95rem; color: #e0d0a0; margin-bottom: 6px; }
+  .subtopico p { font-size: 0.86rem; color: #c0c8d8; line-height: 1.65; }
+  .subtopico .ref { font-size: 0.75rem; color: var(--dourado); font-style: italic; margin-top: 5px; }
+  .sinopse { background: rgba(212,160,23,0.08); border: 1px solid rgba(212,160,23,0.25); border-radius: 10px; padding: 14px 18px; margin-top: 14px; font-size: 0.88rem; color: #f0e6c0; font-style: italic; line-height: 1.6; }
+  .sinopse strong { color: var(--dourado); font-style: normal; font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase; display: block; margin-bottom: 6px; }
+
+  .links-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media(max-width:600px){ .links-grid { grid-template-columns: 1fr; } }
+  .link-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(212,160,23,0.3); border-radius: 12px; padding: 18px 20px; text-align: center; }
+  .link-card .lc-label { font-size: 0.7rem; color: #9ab0d4; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
+  .link-card a { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, var(--dourado), #b8860b); color: #fff; padding: 10px 22px; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 0.88rem; transition: all 0.2s; }
+  .link-card a:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(212,160,23,0.4); }
+
+  .hinos-lista { display: flex; flex-wrap: wrap; gap: 10px; }
+  .hino-badge { background: rgba(212,160,23,0.15); border: 1px solid rgba(212,160,23,0.35); border-radius: 8px; padding: 8px 16px; font-size: 0.9rem; color: var(--dourado-claro); font-weight: 600; }
+
+  .leitura-table { width: 100%; border-collapse: collapse; }
+  .leitura-table th { background: rgba(212,160,23,0.15); color: var(--dourado-claro); font-size: 0.78rem; padding: 10px 14px; text-align: left; border: 1px solid rgba(212,160,23,0.2); letter-spacing: 1px; }
+  .leitura-table td { padding: 9px 14px; border: 1px solid rgba(255,255,255,0.07); font-size: 0.86rem; color: #c0c8d8; }
+  .leitura-table tr:nth-child(even) td { background: rgba(255,255,255,0.03); }
+  .leitura-table .dia { color: var(--dourado); font-weight: 700; }
+
+  .dinamica-box { background: rgba(39,174,96,0.08); border: 1px solid rgba(39,174,96,0.3); border-radius: 10px; padding: 14px 18px; margin-top: 12px; }
+  .dinamica-box .din-label { font-size: 0.68rem; color: #7dcea0; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 7px; }
+  .dinamica-box p { font-size: 0.86rem; color: #b8e0c8; line-height: 1.6; }
+
+  .pergunta-box { background: rgba(142,68,173,0.1); border-left: 3px solid #9b59b6; border-radius: 0 10px 10px 0; padding: 12px 16px; margin-top: 10px; font-size: 0.86rem; color: #d7bde2; font-style: italic; }
+  .pergunta-box strong { color: #c39bd3; font-style: normal; display: block; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px; }
+
+  footer { text-align: center; padding: 28px; color: #4a5a7a; font-size: 0.78rem; border-top: 1px solid rgba(255,255,255,0.06); margin-top: 20px; }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <div class="logo-area">
+      <div class="logo-icon">📖</div>
+      <div class="logo-text">
+        <h1>EBD em Dia</h1>
+        <p>Material exclusivo para professores</p>
+      </div>
+    </div>
+    <div class="badge-professor">🎓 Portal do Professor</div>
+  </div>
+</header>
+
+<div class="aviso-banner">
+  ⚠️ <strong>Material restrito ao professor.</strong> Não compartilhe este link com os alunos. A próxima lição (Lição 4) estará disponível em breve — fique atento ao seu e-mail!
+</div>
+
+<section class="hero">
+  <div class="hero-serie">2º Trimestre 2026 — Homens dos quais o mundo não era digno</div>
+  <div class="hero-numero">✦ Lição 3 ✦</div>
+  <h2>A impaciência na espera do cumprimento da promessa</h2>
+  <div class="hero-data">📅 19 de abril de 2026</div>
+  <div class="versiculo-box">
+    "Disse então Sarai a Abrão: Eis que o SENHOR me impediu de ter filhos; ora, peço-te que te chegues à minha serva; talvez que por ela eu obtenha filhos. E Abrão deu ouvidos à voz de Sarai."
+    <span>— GÊNESIS 16.2 (TEXTO ÁUREO)</span>
+  </div>
+</section>
+
+<div class="container">
+
+  <div class="info-grid">
+    <div class="info-card">
+      <div class="label">Texto Base</div>
+      <div class="valor">Gênesis 16.1–16</div>
+    </div>
+    <div class="info-card">
+      <div class="label">Palavra-Chave</div>
+      <div class="valor">IMPACIÊNCIA</div>
+    </div>
+    <div class="info-card">
+      <div class="label">Hinos</div>
+      <div class="valor">8, 188 e 302 — Harpa</div>
+    </div>
+    <div class="info-card">
+      <div class="label">Comentarista</div>
+      <div class="valor">Elinaldo Renovato</div>
+    </div>
+    <div class="info-card">
+      <div class="label">Duração da Aula</div>
+      <div class="valor">50 minutos</div>
+    </div>
+  </div>
+
+  <div class="verdade-box">
+    <div class="vp-label">✦ Verdade Prática</div>
+    <p>"A impaciência é antagônica à fé, por isso não devemos ser dominados por ela. Deus é fiel e cumpre com suas promessas no tempo certo."</p>
+    <span class="palavra-chave">IMPACIÊNCIA</span>
+  </div>
+
+  <!-- PLANO DE AULA -->
+  <div class="secao">
+    <div class="secao-header" onclick="toggle(this)">
+      <div class="secao-icone">🗓️</div>
+      <div class="secao-titulo">
+        <h3>Cronograma da Aula (50 min)</h3>
+        <p>Distribuição de tempo recomendada</p>
+      </div>
+      <div class="secao-toggle aberto">▼</div>
+    </div>
+    <div class="secao-corpo aberto">
+      <table style="width:100%;border-collapse:collapse;">
+        <thead>
+          <tr>
+            <th style="background:rgba(212,160,23,0.2);color:#f0c940;padding:10px 14px;text-align:left;border:1px solid rgba(212,160,23,0.2);font-size:0.8rem;">Tempo</th>
+            <th style="background:rgba(212,160,23,0.2);color:#f0c940;padding:10px 14px;text-align:left;border:1px solid rgba(212,160,23,0.2);font-size:0.8rem;">Atividade</th>
+            <th style="background:rgba(212,160,23,0.2);color:#f0c940;padding:10px 14px;text-align:left;border:1px solid rgba(212,160,23,0.2);font-size:0.8rem;">Orientação</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding:9px 14px;border:1px solid rgba(255,255,255,0.07);color:#f0c940;font-weight:700;font-size:0.85rem;">0–5 min</td>
+            <td style="padding:9px 14px;border:1px solid rgba(255,255,255,0.07);color:#fff;font-weight:600;font-size:0.85rem;">Abertura e oração</td>
+            <td style="padding:9px 14px;border:1px solid rgba(255,255,255,0.07);color:#c0c8d8;font-size:0.84rem;">Cantar hino 8 da Harpa. Oração de abertura focada em paciência.</td>
+          </tr>
+          <tr style="background:rgba(255,255,255,0.03);">
+            <td style="padding:9px 14px;border:1px solid rgba(255,255,255,0.07);color:#f0c940;font-weight:700;font-size:0.85rem;">5–10 min</td>
+            <td style="padding:9px 14px;border:1px solid rgba(255,255,255,0.07);color:#fff;font-weight:600;font-size:0.85rem;">Dinâmica de abertura</td>
+            <td style="padding:9px 14px;border:1px solid rgba(255,255,255,0.07);color:#c0c8d8;font-size:0.84rem;">Pergunta para a turma: "Você já tomou uma decisão precipitada e se arrependeu?" Breve debate (2 min).</td>
+          </tr>
+          <tr>
+            <td style="padding:9px 14px;border:1px solid rgba(255,255,255,0.07);color:#f0c940;font-weight:700;font-size:0.85rem;">10–12 min</td>
+            <td style="padding:9px 14px;border:1px solid rgba(255,255,255,0.07);color:#fff;font-weight:600;font-size:0.85rem;">Introdução e contexto</td>
+            <td style="padding:9px 14px;border:1px solid rgba(255,255,255,0.07);color:#c0c8d8;font-size:0.84rem;">Situar a lição no contexto da série e da história de Abrão.</td>
+          </tr>
+          <tr style="background:rgba(255,255,255,0.03);">
+            <td style="padding:9px 14px;border:1px solid rgba(255,255,255,0.07);color:#f0c940;font-weight:700;font-size:0.85rem;">12–23 min</td>
+            <td style="padding:9px 14px;border:1px solid rgba(255,255,255,0.07);color:#fff;font-weight:600;font-size:0.85rem;">Tópico I — O pai da fé e a tentativa de ajudar a Deus</td>
+            <td style="padding:9px 14px;border:1px solid rgba(255,255,255,0.07);color:#c0c8d8;font-size:0.84rem;">Expor os 3 subtópicos. Incluir pergunta para a classe.</td>
+          </tr>
+          <tr>
+            <td style="padding:9px 14px;border:1px solid rgba(255,255,255,0.07);color:#f0c940;font-weight:700;font-size:0.85rem;">23–34 min</td>
+            <td style="padding:9px 14px;border:1px solid rgba(255,255,255,0.07);color:#fff;font-weight:600;font-size:0.85rem;">Tópico II — As consequências de agir por conta própria</td>
+            <td style="padding:9px 14px;border:1px solid rgba(255,255,255,0.07);color:#c0c8d8;font-size:0.84rem;">Explorar o conflito familiar e o cuidado de Deus com Agar.</td>
+          </tr>
+          <tr style="background:rgba(255,255,255,0.03);">
+            <td style="padding:9px 14px;border:1px solid rgba(255,255,255,0.07);color:#f0c940;font-weight:700;font-size:0.85rem;">34–44 min</td>
+            <td style="padding:9px 14px;border:1px solid rgba(255,255,255,0.07);color:#fff;font-weight:600;font-size:0.85rem;">Tópico III — O Deus que conduz a história</td>
+            <td style="padding:9px 14px;border:1px solid rgba(255,255,255,0.07);color:#c0c8d8;font-size:0.84rem;">Soberania de Deus mesmo diante dos erros humanos.</td>
+          </tr>
+          <tr>
+            <td style="padding:9px 14px;border:1px solid rgba(255,255,255,0.07);color:#f0c940;font-weight:700;font-size:0.85rem;">44–48 min</td>
+            <td style="padding:9px 14px;border:1px solid rgba(255,255,255,0.07);color:#fff;font-weight:600;font-size:0.85rem;">Revisão e perguntas</td>
+            <td style="padding:9px 14px;border:1px solid rgba(255,255,255,0.07);color:#c0c8d8;font-size:0.84rem;">5 perguntas de revisão. Convidar a classe a responder.</td>
+          </tr>
+          <tr style="background:rgba(255,255,255,0.03);">
+            <td style="padding:9px 14px;border:1px solid rgba(255,255,255,0.07);color:#f0c940;font-weight:700;font-size:0.85rem;">48–50 min</td>
+            <td style="padding:9px 14px;border:1px solid rgba(255,255,255,0.07);color:#fff;font-weight:600;font-size:0.85rem;">Encerramento</td>
+            <td style="padding:9px 14px;border:1px solid rgba(255,255,255,0.07);color:#c0c8d8;font-size:0.84rem;">Hino 302. Oração final. Lembrar leitura diária da semana.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- TÓPICOS -->
+  <div class="secao">
+    <div class="secao-header" onclick="toggle(this)">
+      <div class="secao-icone">📚</div>
+      <div class="secao-titulo">
+        <h3>Conteúdo da Lição — Tópicos e Subtópicos</h3>
+        <p>Comentários aprofundados para o professor</p>
+      </div>
+      <div class="secao-toggle aberto">▼</div>
+    </div>
+    <div class="secao-corpo aberto">
+
+      <!-- TÓPICO I -->
+      <div class="topico">
+        <div class="topico-titulo">🔷 TÓPICO I — O PAI DA FÉ E A TENTATIVA DE AJUDAR A DEUS</div>
+
+        <div class="subtopico">
+          <h4>1. O plano para "ajudar" a Deus <span style="font-size:0.78rem;color:#d4a017;">(Gênesis 15.2-4; 16.1-2)</span></h4>
+          <p>A espera de Abrão já durava anos desde as primeiras promessas divinas (Gn 12). A esterilidade de Sarai era um fato biológico incontestável, e diante da demora de Deus, a impaciência começou a trabalhar no coração humano. Sarai, em vez de renovar a esperança na promessa, decidiu tomar o controle da situação. O costume de usar servas como maternidade substituta era culturalmente aceito no Oriente Antigo (código de Hamurabi, §146), o que tornava a proposta de Sarai "razoável" aos olhos humanos — mas não conforme ao plano de Deus.</p>
+          <p>É importante notar que Sarai atribui sua esterilidade ao próprio SENHOR ("o SENHOR me impediu"). Ela reconhecia a soberania divina, mas, em vez de esperar, tentou antecipar a solução. Isso revela a tragédia da fé incompleta: conhece o poder de Deus, mas não aguarda o tempo de Deus.</p>
+          <div class="ref">📖 Gênesis 15.2-4; 16.1-2 | Comparar: Salmo 27.14; Isaías 40.31</div>
+        </div>
+
+        <div class="pergunta-box">
+          <strong>❓ Pergunta para a classe</strong>
+          Em que área da sua vida você tem tentado "ajudar a Deus" a cumprir uma promessa, em vez de simplesmente esperar por Ele?
+        </div>
+
+        <div class="subtopico">
+          <h4>2. Abraão aceita o plano de Sarai <span style="font-size:0.78rem;color:#d4a017;">(Gênesis 16.2)</span></h4>
+          <p>Abrão, o pai da fé — o mesmo que "creu a Deus e lhe foi imputado como justiça" (Gn 15.6) —, aqui cede à pressão conjugal e abandona temporariamente a postura de fé. Isso nos ensina algo vital: a fé não é uma conquista permanente, mas uma batalha diária. Até os maiores exemplos bíblicos de fé tiveram momentos de vacilação.</p>
+          <p>O verbo hebraico "deu ouvidos" (shama) sugere uma obediência ativa. Abrão não foi passivo — ele escolheu ativamente obedecer à voz de Sarai em vez da voz de Deus. Existe aqui um paralelo perturbador com Adão, que também "deu ouvidos à voz" de sua esposa (Gn 3.17) e transgrediu o mandato divino. O pecado não precisa ser grandioso para ter consequências devastadoras.</p>
+          <div class="ref">📖 Gênesis 16.2 | Comparar: Gênesis 3.17; Romanos 4.20-21</div>
+        </div>
+
+        <div class="subtopico">
+          <h4>3. Agar zomba de Sarai <span style="font-size:0.78rem;color:#d4a017;">(Gênesis 16.4-5)</span></h4>
+          <p>O plano humano produziu resultados imediatos — Agar engravidou — mas trouxe consequências que não foram previstas. Ao ver-se grávida, Agar "olhou para sua senhora com desprezo". O sucesso biológico gerou soberba. Sarai, que havia concebido o plano, agora sofria as consequências dele e culpava Abrão.</p>
+          <p>Este é um padrão recorrente na vida humana: quando agimos por conta própria e os resultados saem do controle, tendemos a responsabilizar outras pessoas. A impaciência não apenas gera erros — ela gera conflitos, divisões e dores que se prolongam por gerações. Ismael e Isaque ainda hoje simbolizam conflitos não resolvidos no Oriente Médio.</p>
+          <div class="ref">📖 Gênesis 16.4-5 | Comparar: Provérbios 13.12; Gálatas 4.22-31</div>
+        </div>
+
+        <div class="dinamica-box">
+          <div class="din-label">⚡ Dinâmica</div>
+          <p>Peça para alguém da classe citar um provérbio ou ditado popular sobre paciência. Depois compare com a sabedoria bíblica do Salmo 40.1. Qual é a diferença entre a paciência humana e a paciência cristã?</p>
+        </div>
+
+        <div class="sinopse">
+          <strong>Sinopse I</strong>
+          Abraão e Sarai tentaram ajudar a Deus, pois se deixaram vencer pela ansiedade. A fé vacilante abre espaço para decisões precipitadas que, embora culturalmente aceitáveis, fogem do plano soberano de Deus.
+        </div>
+      </div>
+
+      <!-- TÓPICO II -->
+      <div class="topico">
+        <div class="topico-titulo">🔷 TÓPICO II — AS CONSEQUÊNCIAS DE AGIR POR CONTA PRÓPRIA</div>
+
+        <div class="subtopico">
+          <h4>1. Conflito familiar <span style="font-size:0.78rem;color:#d4a017;">(Gênesis 16.4-6)</span></h4>
+          <p>O ambiente doméstico de Abrão se transformou em campo de batalha. Sarai passa de autora do plano a vítima do plano. Ela acusa Abrão: "A injustiça feita a mim recaia sobre ti!" — uma declaração carregada de amargura. Abrão, por sua vez, entrega Agar de volta à autoridade de Sarai com uma passividade desconcertante ("está em tuas mãos").</p>
+          <p>O professor pode explorar a psicologia deste triângulo: há culpa mútua, transferência de responsabilidade e ausência de arrependimento genuíno. Nenhum dos três personagens nesta cena age com maturidade espiritual. O pecado de um desestrutura a todos ao redor.</p>
+          <div class="ref">📖 Gênesis 16.4-6 | Comparar: Provérbios 14.1; Efésios 4.26-27</div>
+        </div>
+
+        <div class="pergunta-box">
+          <strong>❓ Pergunta para a classe</strong>
+          Como a impaciência pessoal pode afetar negativamente as pessoas ao nosso redor, especialmente no ambiente familiar e na igreja?
+        </div>
+
+        <div class="subtopico">
+          <h4>2. A fuga de Agar <span style="font-size:0.78rem;color:#d4a017;">(Gênesis 16.6)</span></h4>
+          <p>Agar é a grande figura trágica desta narrativa. Ela não escolheu ser a segunda esposa de Abrão — foi dada. Ela não escolheu engravidar — foi consequência. Quando Sarai a humilha, ela foge grávida para o deserto, completamente vulnerável. Este é um dos momentos mais humanos de todo o livro de Gênesis: uma mulher sozinha, grávida, sem destino, no meio do nada.</p>
+          <p>Agar foge "para o deserto no caminho de Sur" — a rota que vai do Egito à Palestina, possivelmente o caminho de volta à sua terra natal. A impaciência de Sarai não apenas destruiu a harmonia do lar, mas colocou em risco a vida de uma pessoa inocente e de seu filho ainda não nascido.</p>
+          <div class="ref">📖 Gênesis 16.6 | Comparar: Salmo 55.6-8; Lamentações 3.1-3</div>
+        </div>
+
+        <div class="subtopico">
+          <h4>3. Deus entra em ação <span style="font-size:0.78rem;color:#d4a017;">(Gênesis 16.7-12)</span></h4>
+          <p>A graça de Deus surge no lugar mais improvável: o deserto. O "Anjo do SENHOR" (malak YHWH) — que muitos teólogos identificam como uma teofania pré-encarnada do Filho de Deus — encontra Agar junto a uma fonte. O encontro é notável: esta é a primeira vez na Bíblia que o Anjo do SENHOR aparece a alguém, e esse "alguém" não é um patriarca, mas uma serva estrangeira egípcia.</p>
+          <p>Deus pergunta: "De onde vens e para onde vais?" — não porque não saiba, mas porque quer que Agar verbalize sua situação. Este é o padrão do ministério de Deus: Ele encontra as pessoas onde elas estão (Gn 3.9; João 4.7). A orientação divina é clara: retorne, humilhe-se, e eu cuidarei de você. O nome Ismael ("Deus ouviu") é a garantia viva de que Deus atende o clamor de quem sofre.</p>
+          <div class="ref">📖 Gênesis 16.7-12 | Comparar: João 4.1-26; Salmo 34.18</div>
+        </div>
+
+        <div class="dinamica-box">
+          <div class="din-label">⚡ Dinâmica</div>
+          <p>Peça para a classe identificar o personagem com quem mais se identifica nesta história: Sarai (impaciente e controladora), Abrão (omisso e passivo), ou Agar (sofrendo as consequências das decisões dos outros). Discuta brevemente como Deus age especificamente em cada situação.</p>
+        </div>
+
+        <div class="sinopse">
+          <strong>Sinopse II</strong>
+          O agir por conta própria tem consequências ruins; por isso, espere em Deus. O conflito, a fuga e o sofrimento de Agar são resultados diretos da impaciência humana — mas Deus, em sua graça soberana, intervém mesmo no meio das consequências dos nossos erros.
+        </div>
+      </div>
+
+      <!-- TÓPICO III -->
+      <div class="topico">
+        <div class="topico-titulo">🔷 TÓPICO III — O DEUS QUE CONDUZ A HISTÓRIA</div>
+
+        <div class="subtopico">
+          <h4>1. O Deus que ouve e vê <span style="font-size:0.78rem;color:#d4a017;">(Gênesis 16.7-11)</span></h4>
+          <p>O nome que Agar dá a Deus é único e precioso: "El-Roi" — "Deus que me vê" (Gn 16.13). Este é o único lugar na Bíblia onde este nome divino aparece, e foi cunhado por uma mulher, estrangeira e escrava. Não é acidental. Deus se revela como o Deus que enxerga os invisíveis da sociedade — aqueles que o sistema ignora, que os poderosos descartam.</p>
+          <p>O nome Ismael (Deus ouviu) é um testemunho permanente de que Deus não ignora o sofrimento de ninguém, mesmo quando esse sofrimento é resultado de erros alheios. Para o professor: enfatize que Deus vê e ouve cada membro daquela classe dominical — suas dores ocultas, suas esperas silenciosas, seus desertos pessoais.</p>
+          <div class="ref">📖 Gênesis 16.7-11, 13 | Comparar: Salmo 139.1-4; Lucas 12.6-7</div>
+        </div>
+
+        <div class="pergunta-box">
+          <strong>❓ Pergunta para a classe</strong>
+          Há alguém aqui que passou por um momento em que sentiu que Deus havia "abandonado" no deserto, mas depois percebeu que Ele estava presente o tempo todo?
+        </div>
+
+        <div class="subtopico">
+          <h4>2. Tudo conforme a sua soberana vontade <span style="font-size:0.78rem;color:#d4a017;">(Gênesis 16.16; 12.2)</span></h4>
+          <p>Abrão tinha 86 anos quando Ismael nasceu. Mas Ismael não era o filho da promessa. O nascimento de Ismael não cancelou a promessa — apenas demonstrou que Deus não é pressionado pelos nossos atalhos. Isaque viria no tempo certo (Gn 21), 14 anos depois. Deus esperou pacientemente que Abrão reconhecesse a insuficiência dos planos humanos antes de cumprir a promessa original.</p>
+          <p>A soberania de Deus não é passividade — é direção. Deus permite que os planos humanos se desenvolvam e, ao mesmo tempo, trabalha soberanamente para cumprir o que prometeu. Nenhum erro humano é grande o suficiente para desfazer o plano eterno de Deus (Isaías 46.10; Efésios 1.11).</p>
+          <div class="ref">📖 Gênesis 16.16; 21.1-3 | Comparar: Isaías 46.10; Efésios 1.11</div>
+        </div>
+
+        <div class="subtopico">
+          <h4>3. O cuidado de Deus em todo o tempo <span style="font-size:0.78rem;color:#d4a017;">(Filipenses 4.6-7; Efésios 3.16; Filipenses 4.13)</span></h4>
+          <p>A narrativa de Agar no deserto é um paradigma do cuidado pastoral de Deus. Ele a encontra (v.7), a ouve (v.11), a orienta (v.9), a promete (v.10) e a envia de volta fortalecida (v.15). Cada ação divina revela um aspecto do caráter de Deus: onisciência, misericórdia, sabedoria, fidelidade e poder.</p>
+          <p>Para a aplicação prática contemporânea: quando estamos em nosso "deserto" — seja por causa dos nossos próprios erros ou por causas alheias —, a resposta de Deus é sempre a mesma: presença, palavra e direção. Filipenses 4.6-7 nos convida a substituir a ansiedade pela oração, e a promessa é que "a paz de Deus, que excede todo entendimento, guardará vosso coração e o vosso pensamento".</p>
+          <div class="ref">📖 Filipenses 4.6-7; Efésios 3.16; Filipenses 4.13 | Comparar: Isaías 43.2; Salmo 23.4</div>
+        </div>
+
+        <div class="dinamica-box">
+          <div class="din-label">⚡ Dinâmica</div>
+          <p>Encerre este tópico com um momento de oração silenciosa de 1 minuto. Peça para cada pessoa nomear mentalmente uma área onde tem sido impaciente com Deus. Depois, ore coletivamente entregando essas áreas ao cuidado soberano do Senhor.</p>
+        </div>
+
+        <div class="sinopse">
+          <strong>Sinopse III</strong>
+          Deus é soberano e conduz a história. Mesmo quando falhamos, Deus não abandona nem o plano original nem as pessoas afetadas pelos nossos erros. Sua soberania é nossa maior razão para cultivar a paciência.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- REVISÃO -->
+  <div class="secao">
+    <div class="secao-header" onclick="toggle(this)">
+      <div class="secao-icone">✅</div>
+      <div class="secao-titulo">
+        <h3>Perguntas de Revisão</h3>
+        <p>5 questões com respostas para fechar a aula</p>
+      </div>
+      <div class="secao-toggle">▼</div>
+    </div>
+    <div class="secao-corpo">
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(212,160,23,0.2);border-radius:10px;padding:14px 18px;">
+          <div style="font-size:0.72rem;color:#f0c940;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">Pergunta 1</div>
+          <p style="color:#fff;font-weight:600;margin-bottom:8px;font-size:0.92rem;">Que recurso Deus usa para forjar o caráter do crente?</p>
+          <p style="color:#9ab0d4;font-size:0.86rem;">✔ Resposta: O tempo e a espera. Deus usa a demora para desenvolver a fé, a humildade e a dependência do crente.</p>
+        </div>
+        <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(212,160,23,0.2);border-radius:10px;padding:14px 18px;">
+          <div style="font-size:0.72rem;color:#f0c940;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">Pergunta 2</div>
+          <p style="color:#fff;font-weight:600;margin-bottom:8px;font-size:0.92rem;">O que ocorre quando a impaciência domina o coração do crente?</p>
+          <p style="color:#9ab0d4;font-size:0.86rem;">✔ Resposta: A fé sucumbe e cometemos erros, tomando decisões precipitadas que fogem do plano de Deus e geram consequências dolorosas.</p>
+        </div>
+        <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(212,160,23,0.2);border-radius:10px;padding:14px 18px;">
+          <div style="font-size:0.72rem;color:#f0c940;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">Pergunta 3</div>
+          <p style="color:#fff;font-weight:600;margin-bottom:8px;font-size:0.92rem;">Como devemos esperar conforme o ensinamento do Salmo 40.1?</p>
+          <p style="color:#9ab0d4;font-size:0.86rem;">✔ Resposta: Com paciência no Senhor — "esperando confiantemente no Senhor". A espera bíblica não é passividade ansiosa, mas confiança ativa.</p>
+        </div>
+        <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(212,160,23,0.2);border-radius:10px;padding:14px 18px;">
+          <div style="font-size:0.72rem;color:#f0c940;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">Pergunta 4</div>
+          <p style="color:#fff;font-weight:600;margin-bottom:8px;font-size:0.92rem;">Quais foram as primeiras consequências do erro de Sarai ao dar Agar a Abrão?</p>
+          <p style="color:#9ab0d4;font-size:0.86rem;">✔ Resposta: Competição e soberba. Agar passou a desprezar Sarai ao engravidar, gerando conflito doméstico, acusações mútuas e sofrimento para todos.</p>
+        </div>
+        <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(212,160,23,0.2);border-radius:10px;padding:14px 18px;">
+          <div style="font-size:0.72rem;color:#f0c940;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">Pergunta 5</div>
+          <p style="color:#fff;font-weight:600;margin-bottom:8px;font-size:0.92rem;">Como se chamaria o filho de Abrão com Agar e qual o significado desse nome?</p>
+          <p style="color:#9ab0d4;font-size:0.86rem;">✔ Resposta: Ismael, que significa "Deus ouviu". O nome é um testemunho de que Deus escutou o clamor de Agar no deserto e respondeu com misericórdia.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HINOS -->
+  <div class="secao">
+    <div class="secao-header" onclick="toggle(this)">
+      <div class="secao-icone">🎵</div>
+      <div class="secao-titulo">
+        <h3>Hinos Sugeridos — Harpa Cristã</h3>
+        <p>Para abertura, transições e encerramento</p>
+      </div>
+      <div class="secao-toggle">▼</div>
+    </div>
+    <div class="secao-corpo">
+      <div class="hinos-lista">
+        <div class="hino-badge">🎶 Hino 8</div>
+        <div class="hino-badge">🎶 Hino 188</div>
+        <div class="hino-badge">🎶 Hino 302</div>
+      </div>
+      <p style="color:#9ab0d4;font-size:0.84rem;margin-top:14px;">Sugestão: Hino 8 na abertura (louvor geral), Hino 188 antes do Tópico II (espera em Deus) e Hino 302 no encerramento (confiança e paz).</p>
+    </div>
+  </div>
+
+  <!-- LEITURA DIÁRIA -->
+  <div class="secao">
+    <div class="secao-header" onclick="toggle(this)">
+      <div class="secao-icone">📅</div>
+      <div class="secao-titulo">
+        <h3>Leitura Diária da Semana</h3>
+        <p>Segunda a Sábado — para orientar a turma</p>
+      </div>
+      <div class="secao-toggle">▼</div>
+    </div>
+    <div class="secao-corpo">
+      <table class="leitura-table">
+        <thead>
+          <tr><th>Dia</th><th>Passagem</th><th>Tema</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="dia">Segunda</td><td>Gênesis 16.2</td><td>Sarai dá lugar à impaciência</td></tr>
+          <tr><td class="dia">Terça</td><td>1 Pedro 5.7</td><td>Lançar a ansiedade sobre Deus</td></tr>
+          <tr><td class="dia">Quarta</td><td>Salmo 40.1</td><td>Esperar com paciência no Senhor</td></tr>
+          <tr><td class="dia">Quinta</td><td>Romanos 12.12</td><td>Pacientes na tribulação</td></tr>
+          <tr><td class="dia">Sexta</td><td>2 Pedro 3.9</td><td>Deus é longânimo</td></tr>
+          <tr><td class="dia">Sábado</td><td>1 Tessalonicenses 5.14</td><td>Devemos ser pacientes para com todos</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- LINKS -->
+  <div class="secao">
+    <div class="secao-header" onclick="toggle(this)">
+      <div class="secao-icone">🔗</div>
+      <div class="secao-titulo">
+        <h3>Links para Compartilhar</h3>
+        <p>Portais desta lição (GitHub Pages)</p>
+      </div>
+      <div class="secao-toggle">▼</div>
+    </div>
+    <div class="secao-corpo">
+      <div class="links-grid">
+        <div class="link-card">
+          <div class="lc-label">🎓 Portal do Professor</div>
+          <a href="https://alexferreiraodontofresh-bit.github.io/reset-essencialnatural-saude/portal-professor-atual.html" target="_blank">🔗 Abrir Portal Professor</a>
+        </div>
+        <div class="link-card">
+          <div class="lc-label">📖 Portal do Aluno</div>
+          <a href="https://alexferreiraodontofresh-bit.github.io/reset-essencialnatural-saude/portal-aluno-atual.html" target="_blank">🔗 Abrir Portal Aluno</a>
+        </div>
+      </div>
+      <p style="color:#9ab0d4;font-size:0.8rem;margin-top:14px;text-align:center;">⚠️ Compartilhe apenas o link do Aluno com a turma. O link do Professor é de uso exclusivo seu.</p>
+    </div>
+  </div>
+
+</div>
+
+<footer>EBD em Dia © 2026 — Dr. Alex Ferreira | Material de uso exclusivo dos assinantes.</footer>
+
+<script>
+function toggle(header) {
+  const corpo = header.nextElementSibling;
+  const toggle = header.querySelector('.secao-toggle');
+  if (corpo.classList.contains('aberto')) {
+    corpo.classList.remove('aberto');
+    toggle.classList.remove('aberto');
+  } else {
+    corpo.classList.add('aberto');
+    toggle.classList.add('aberto');
+  }
+}
+</script>
+</body>
+</html>

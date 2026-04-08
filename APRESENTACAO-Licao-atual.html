@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apresentação — Lição 3 | EBD em Dia</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#0d1b3e; font-family:'Segoe UI',Georgia,serif; overflow:hidden; user-select:none; }
+  .slideshow { width:100vw; height:100vh; position:relative; }
+
+  .slide {
+    position:absolute; top:0; left:0; width:100%; height:100%;
+    display:none; flex-direction:column; align-items:center; justify-content:center;
+    padding:40px 60px; text-align:center; overflow:hidden;
+  }
+  .slide.active { display:flex; }
+
+  /* ── FUNDOS ── */
+  .s-capa    { background:radial-gradient(ellipse at 30% 50%,#0f2d5e 0%,#060d1e 70%); }
+  .s-aureo   { background:linear-gradient(160deg,#12100a 0%,#2a2000 50%,#0d1020 100%); }
+  .s-verdade { background:linear-gradient(160deg,#091a0d 0%,#0f3318 50%,#0a1020 100%); }
+  .s-intro   { background:linear-gradient(160deg,#0d1b3e 0%,#132050 60%,#080d20 100%); }
+  .s-t1a     { background:linear-gradient(160deg,#0a1530 0%,#0e2050 60%,#08101e 100%); }
+  .s-t1b     { background:linear-gradient(160deg,#080d20 0%,#101835 100%); }
+  .s-t2a     { background:linear-gradient(160deg,#0a1a0d 0%,#102014 60%,#080d1a 100%); }
+  .s-t2b     { background:linear-gradient(160deg,#050f08 0%,#0a1a10 100%); }
+  .s-t3a     { background:linear-gradient(160deg,#10091a 0%,#1e1030 60%,#080812 100%); }
+  .s-t3b     { background:linear-gradient(160deg,#08081a 0%,#120f28 100%); }
+  .s-revisao { background:linear-gradient(160deg,#1a0a06 0%,#2e1208 60%,#0d0a10 100%); }
+  .s-conclusao { background:linear-gradient(160deg,#060f06 0%,#0a1e0a 60%,#070d10 100%); }
+  .s-aplicacao { background:linear-gradient(160deg,#120612 0%,#1e0a1e 60%,#080810 100%); }
+  .s-leitura { background:linear-gradient(160deg,#06101a 0%,#0a1828 60%,#060810 100%); }
+
+  /* ── TIPOGRAFIA ── */
+  .badge {
+    display:inline-flex; align-items:center; gap:6px;
+    background:rgba(212,160,23,0.15); border:1px solid rgba(212,160,23,0.45);
+    color:#f0c940; font-size:clamp(0.58rem,1.3vw,0.76rem);
+    letter-spacing:3px; text-transform:uppercase;
+    padding:6px 20px; border-radius:30px; margin-bottom:18px; z-index:2;
+  }
+  .badge-v { background:rgba(39,174,96,0.15); border-color:rgba(39,174,96,0.45); color:#7dcea0; }
+  .badge-p { background:rgba(142,68,173,0.15); border-color:rgba(142,68,173,0.45); color:#c39bd3; }
+  .badge-r { background:rgba(192,57,43,0.15); border-color:rgba(192,57,43,0.45); color:#f08070; }
+  .badge-a { background:rgba(52,152,219,0.15); border-color:rgba(52,152,219,0.45); color:#85c1e9; }
+
+  h1.big   { font-size:clamp(1.5rem,4vw,3rem); color:#fff; line-height:1.2; max-width:800px; font-weight:700; margin-bottom:14px; z-index:2; }
+  h2.med   { font-size:clamp(1.1rem,2.8vw,1.9rem); color:#fff; line-height:1.3; max-width:760px; font-weight:600; margin-bottom:12px; z-index:2; }
+  h3.sec   { font-size:clamp(0.9rem,1.8vw,1.35rem); color:#f0c940; margin-bottom:12px; font-weight:700; z-index:2; }
+  p.txt    { font-size:clamp(0.82rem,1.6vw,1.1rem); color:#c0c8e0; line-height:1.68; max-width:760px; z-index:2; }
+  p.italic { font-size:clamp(0.9rem,2vw,1.3rem); color:#e0e8f8; line-height:1.6; max-width:720px; font-style:italic; z-index:2; }
+
+  /* ── CARTÃO VERSÍCULO ── */
+  .vcard {
+    background:rgba(212,160,23,0.1); border:1px solid rgba(212,160,23,0.4);
+    border-radius:16px; padding:24px 36px; max-width:780px; margin-bottom:14px; z-index:2;
+  }
+  .vcard p { font-size:clamp(0.95rem,2.2vw,1.4rem); color:#f0e6c0; line-height:1.68; font-style:italic; }
+  .vcard span { display:block; margin-top:10px; font-size:clamp(0.65rem,1.2vw,0.82rem); color:#d4a017; letter-spacing:2px; text-transform:uppercase; font-style:normal; }
+
+  /* ── GRID 3 COLUNAS ── */
+  .grid3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; max-width:920px; width:100%; z-index:2; }
+  .card {
+    background:rgba(255,255,255,0.06); border:1px solid rgba(212,160,23,0.22);
+    border-radius:14px; padding:18px 16px; text-align:left;
+  }
+  .card .cn  { font-size:0.65rem; color:#d4a017; letter-spacing:2px; text-transform:uppercase; margin-bottom:7px; }
+  .card h4   { font-size:clamp(0.78rem,1.4vw,0.96rem); color:#f0c940; margin-bottom:7px; line-height:1.3; }
+  .card p    { font-size:clamp(0.7rem,1.2vw,0.82rem); color:#a8b8d0; line-height:1.55; }
+  .card .ref { font-size:0.66rem; color:#d4a017; font-style:italic; margin-top:6px; }
+  .card-v { border-color:rgba(39,174,96,0.28); }
+  .card-v .cn { color:#7dcea0; }
+  .card-v h4  { color:#a8f0c0; }
+  .card-p { border-color:rgba(142,68,173,0.28); }
+  .card-p .cn { color:#c39bd3; }
+  .card-p h4  { color:#d7bde2; }
+
+  /* ── DESTAQUE ── */
+  .hl {
+    background:rgba(212,160,23,0.1); border-left:4px solid #d4a017;
+    border-radius:0 14px 14px 0; padding:14px 22px;
+    max-width:740px; margin-top:14px; z-index:2;
+  }
+  .hl p { font-size:clamp(0.82rem,1.6vw,1.05rem); color:#f0e6c0; line-height:1.6; font-style:italic; }
+
+  /* ── REVISÃO ── */
+  .rev-list { display:grid; gap:9px; max-width:740px; width:100%; text-align:left; z-index:2; }
+  .rev { background:rgba(255,255,255,0.05); border:1px solid rgba(212,160,23,0.2); border-radius:10px; padding:10px 16px; }
+  .rev .rn { font-size:0.62rem; color:#f0c940; letter-spacing:2px; text-transform:uppercase; margin-bottom:3px; }
+  .rev p   { font-size:clamp(0.75rem,1.4vw,0.88rem); color:#c0c8e0; line-height:1.5; }
+
+  /* ── LEITURA ── */
+  .leit-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; max-width:860px; width:100%; z-index:2; }
+  .lc { background:rgba(255,255,255,0.05); border:1px solid rgba(39,174,96,0.22); border-radius:10px; padding:12px 14px; text-align:left; }
+  .lc .dia  { font-size:0.62rem; color:#7dcea0; letter-spacing:2px; text-transform:uppercase; margin-bottom:4px; }
+  .lc .pas  { font-size:clamp(0.75rem,1.3vw,0.88rem); color:#fff; font-weight:600; margin-bottom:3px; }
+  .lc .tem  { font-size:clamp(0.62rem,1.1vw,0.75rem); color:#9ab0d4; }
+
+  /* ── APLICAÇÃO ── */
+  .aplist { text-align:left; max-width:740px; width:100%; z-index:2; }
+  .api { display:flex; gap:12px; margin-bottom:13px; align-items:flex-start; }
+  .apic { width:34px; height:34px; border-radius:50%; background:rgba(212,160,23,0.18); border:1px solid rgba(212,160,23,0.38); display:flex; align-items:center; justify-content:center; font-size:1rem; flex-shrink:0; }
+  .apit { font-size:clamp(0.8rem,1.5vw,0.96rem); color:#c0c8e0; line-height:1.6; }
+  .apit strong { color:#f0c940; }
+
+  /* ── CONCLUSÃO ── */
+  .concl {
+    background:rgba(39,174,96,0.1); border:2px solid rgba(39,174,96,0.32);
+    border-radius:16px; padding:24px 34px; max-width:750px; z-index:2;
+  }
+  .concl p    { font-size:clamp(0.9rem,1.9vw,1.2rem); color:#c8f0d8; line-height:1.65; font-style:italic; }
+  .concl span { display:block; margin-top:9px; font-size:clamp(0.65rem,1.2vw,0.8rem); color:#7dcea0; letter-spacing:2px; text-transform:uppercase; font-style:normal; }
+
+  /* ── NÚMERO DECORATIVO ── */
+  .deco-num {
+    position:absolute; font-size:clamp(120px,28vw,220px);
+    font-weight:900; line-height:1; pointer-events:none; z-index:0;
+    opacity:0.04; color:#d4a017;
+  }
+
+  /* ── BADGE DE SLIDE ── */
+  .slide-id { position:absolute; top:18px; left:38px; font-size:0.65rem; color:rgba(212,160,23,0.4); letter-spacing:2px; text-transform:uppercase; z-index:5; }
+
+  /* ═══════════════════════════════════════
+     ILUSTRAÇÕES SVG POR SLIDE
+  ═══════════════════════════════════════ */
+
+  /* CAPA — ampulheta + estrelas */
+  .il-capa {
+    position:absolute; right:0; top:0; width:50%; height:100%;
+    pointer-events:none; z-index:1; opacity:0.18;
+  }
+
+  /* ÁUREO — rolo de pergaminho */
+  .il-scroll {
+    position:absolute; right:5%; top:50%; transform:translateY(-50%);
+    pointer-events:none; z-index:1; opacity:0.12;
+  }
+
+  /* INTRO — tenda + deserto */
+  .il-tent {
+    position:absolute; bottom:0; right:0; width:55%; height:70%;
+    pointer-events:none; z-index:1; opacity:0.14;
+  }
+
+  /* T1 — figura humana correndo/impaciente */
+  .il-run {
+    position:absolute; right:4%; bottom:10%;
+    pointer-events:none; z-index:1; opacity:0.16;
+  }
+
+  /* T2 — deserto + poço */
+  .il-desert {
+    position:absolute; bottom:0; left:0; width:60%; height:60%;
+    pointer-events:none; z-index:1; opacity:0.13;
+  }
+
+  /* T3 — olho/visão de Deus */
+  .il-eye {
+    position:absolute; right:4%; top:50%; transform:translateY(-50%);
+    pointer-events:none; z-index:1; opacity:0.12;
+  }
+
+  /* CONCLUSÃO — pomba */
+  .il-dove {
+    position:absolute; top:12%; right:8%;
+    pointer-events:none; z-index:1; opacity:0.14;
+  }
+
+  /* ESTRELAS DE FUNDO (vários slides) */
+  .stars {
+    position:absolute; inset:0; z-index:0; pointer-events:none; overflow:hidden;
+  }
+
+  /* ── NAVEGAÇÃO ── */
+  .nav {
+    position:fixed; bottom:22px; left:50%; transform:translateX(-50%);
+    display:flex; align-items:center; gap:12px; z-index:200;
+    background:rgba(8,13,30,0.88); border:1px solid rgba(212,160,23,0.28);
+    padding:9px 18px; border-radius:50px; backdrop-filter:blur(12px);
+  }
+  .nav button {
+    background:rgba(212,160,23,0.18); border:1px solid rgba(212,160,23,0.38);
+    color:#f0c940; padding:7px 18px; border-radius:30px; cursor:pointer;
+    font-size:0.88rem; font-family:inherit; transition:all 0.2s; font-weight:600;
+  }
+  .nav button:hover { background:rgba(212,160,23,0.38); }
+  .nav button:disabled { opacity:0.28; cursor:default; }
+  .nav .cnt { font-size:0.8rem; color:#9ab0d4; min-width:58px; text-align:center; }
+
+  .fs-btn {
+    position:fixed; top:16px; right:16px; z-index:200;
+    background:rgba(8,13,30,0.88); border:1px solid rgba(212,160,23,0.28);
+    color:#f0c940; padding:7px 15px; border-radius:30px; cursor:pointer;
+    font-size:0.76rem; font-family:inherit; backdrop-filter:blur(12px); transition:all 0.2s;
+  }
+  .fs-btn:hover { background:rgba(212,160,23,0.18); }
+
+  @media(max-width:700px){
+    .grid3 { grid-template-columns:1fr; }
+    .leit-grid { grid-template-columns:1fr 1fr; }
+    .slide { padding:22px 18px; }
+  }
+</style>
+</head>
+<body>
+<div class="slideshow" id="ss">
+
+<!-- ════════════ SLIDE 1 — CAPA ════════════ -->
+<div class="slide s-capa active" data-n="1">
+  <div class="slide-id">EBD em Dia · Lição 3 · 19/04/2026</div>
+
+  <!-- Estrelas -->
+  <div class="stars">
+    <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+      <defs><radialGradient id="sg"><stop offset="0%" stop-color="#fff" stop-opacity="0.9"/><stop offset="100%" stop-color="#fff" stop-opacity="0"/></radialGradient></defs>
+      <circle cx="10%" cy="15%" r="1.5" fill="url(#sg)"/><circle cx="25%" cy="8%"  r="1"   fill="url(#sg)"/>
+      <circle cx="40%" cy="20%" r="2"   fill="url(#sg)"/><circle cx="55%" cy="5%"  r="1.5" fill="url(#sg)"/>
+      <circle cx="70%" cy="12%" r="1"   fill="url(#sg)"/><circle cx="85%" cy="18%" r="2"   fill="url(#sg)"/>
+      <circle cx="15%" cy="35%" r="1"   fill="url(#sg)"/><circle cx="30%" cy="28%" r="1.5" fill="url(#sg)"/>
+      <circle cx="90%" cy="30%" r="1"   fill="url(#sg)"/><circle cx="60%" cy="25%" r="1"   fill="url(#sg)"/>
+      <circle cx="5%"  cy="50%" r="1.5" fill="url(#sg)"/><circle cx="45%" cy="40%" r="1"   fill="url(#sg)"/>
+      <circle cx="78%" cy="45%" r="2"   fill="url(#sg)"/><circle cx="92%" cy="55%" r="1"   fill="url(#sg)"/>
+    </svg>
+  </div>
+
+  <!-- Ilustração: ampulheta grande à direita -->
+  <div class="il-capa">
+    <svg viewBox="0 0 340 600" xmlns="http://www.w3.org/2000/svg" width="340" height="600">
+      <!-- Ampulheta -->
+      <path d="M60 40 L280 40 L180 220 L180 380 L280 560 L60 560 L160 380 L160 220 Z"
+            fill="none" stroke="#d4a017" stroke-width="5" stroke-linejoin="round"/>
+      <!-- Areia de cima (cheia) -->
+      <path d="M80 60 L260 60 L175 215 L165 215 Z" fill="#d4a017" opacity="0.3"/>
+      <!-- Areia de baixo (acumulando) -->
+      <path d="M130 440 Q170 430 210 440 L230 560 L110 560 Z" fill="#d4a017" opacity="0.25"/>
+      <!-- Fio de areia caindo -->
+      <line x1="170" y1="220" x2="170" y2="430" stroke="#f0c940" stroke-width="2" stroke-dasharray="4 3" opacity="0.6"/>
+      <!-- Suportes -->
+      <rect x="50" y="32" width="240" height="16" rx="8" fill="#d4a017" opacity="0.4"/>
+      <rect x="50" y="552" width="240" height="16" rx="8" fill="#d4a017" opacity="0.4"/>
+    </svg>
+  </div>
+
+  <div class="badge">✦ 2º Trimestre 2026 · EBD em Dia ✦</div>
+  <h1 class="big">A impaciência na espera<br>do cumprimento<br>da promessa</h1>
+  <p class="txt" style="color:#7a9bbf;margin-top:8px;">Gênesis 16.1–16 &nbsp;·&nbsp; Série: Homens dos quais o mundo não era digno</p>
+  <p style="margin-top:20px;font-size:clamp(0.62rem,1.2vw,0.76rem);color:rgba(212,160,23,0.5);letter-spacing:3px;z-index:2;">EBD EM DIA</p>
+</div>
+
+<!-- ════════════ SLIDE 2 — TEXTO ÁUREO ════════════ -->
+<div class="slide s-aureo" data-n="2">
+  <div class="slide-id">Texto Áureo</div>
+
+  <!-- Pergaminho decorativo -->
+  <div class="il-scroll">
+    <svg viewBox="0 0 260 340" width="260" height="340" xmlns="http://www.w3.org/2000/svg">
+      <rect x="20" y="20" width="220" height="300" rx="14" fill="none" stroke="#d4a017" stroke-width="3"/>
+      <rect x="10" y="30" width="240" height="10" rx="5" fill="#d4a017" opacity="0.3"/>
+      <rect x="10" y="300" width="240" height="10" rx="5" fill="#d4a017" opacity="0.3"/>
+      <line x1="50" y1="80"  x2="210" y2="80"  stroke="#d4a017" stroke-width="1.5" opacity="0.4"/>
+      <line x1="50" y1="110" x2="210" y2="110" stroke="#d4a017" stroke-width="1.5" opacity="0.4"/>
+      <line x1="50" y1="140" x2="210" y2="140" stroke="#d4a017" stroke-width="1.5" opacity="0.4"/>
+      <line x1="50" y1="170" x2="170" y2="170" stroke="#d4a017" stroke-width="1.5" opacity="0.4"/>
+      <text x="130" y="235" text-anchor="middle" font-size="48" fill="#d4a017" opacity="0.5">✝</text>
+    </svg>
+  </div>
+
+  <div class="badge">📖 Texto Áureo · Gênesis 16.2</div>
+  <div class="vcard" style="max-width:680px;">
+    <p>"Disse então Sarai a Abrão: Eis que o SENHOR me impediu de ter filhos; ora, peço-te que te chegues à minha serva; talvez que por ela eu obtenha filhos. E Abrão deu ouvidos à voz de Sarai."</p>
+    <span>— GÊNESIS 16.2</span>
+  </div>
+  <p class="txt" style="color:#9a9070;max-width:620px;margin-top:10px;">Uma frase que revela o conflito eterno entre a fé e a impaciência — reconhecer a soberania de Deus, mas recusar-se a aguardar o Seu tempo.</p>
+</div>
+
+<!-- ════════════ SLIDE 3 — VERDADE PRÁTICA ════════════ -->
+<div class="slide s-verdade" data-n="3">
+  <div class="slide-id">Verdade Prática</div>
+
+  <!-- Árvore da fé / raízes -->
+  <svg style="position:absolute;right:4%;bottom:0;opacity:0.12;z-index:1;" viewBox="0 0 220 380" width="220" height="380" xmlns="http://www.w3.org/2000/svg">
+    <!-- Tronco -->
+    <rect x="98" y="160" width="24" height="220" rx="10" fill="#27ae60"/>
+    <!-- Copa -->
+    <ellipse cx="110" cy="130" rx="80" ry="90" fill="#27ae60"/>
+    <ellipse cx="60"  cy="170" rx="55" ry="65" fill="#1e8449"/>
+    <ellipse cx="160" cy="170" rx="55" ry="65" fill="#1e8449"/>
+    <!-- Raízes -->
+    <path d="M100 380 Q80 340 50 360" fill="none" stroke="#27ae60" stroke-width="6" stroke-linecap="round"/>
+    <path d="M110 380 Q110 350 110 380" fill="none" stroke="#27ae60" stroke-width="6" stroke-linecap="round"/>
+    <path d="M120 380 Q140 340 170 360" fill="none" stroke="#27ae60" stroke-width="6" stroke-linecap="round"/>
+  </svg>
+
+  <div class="badge badge-v">✦ Verdade Prática</div>
+  <div class="concl" style="background:rgba(212,160,23,0.1);border-color:rgba(212,160,23,0.35);max-width:760px;">
+    <p style="color:#f0e6c0;">"A impaciência é antagônica à fé, por isso não devemos ser dominados por ela. Deus é fiel e cumpre com suas promessas no tempo certo."</p>
+    <span style="color:#d4a017;">Palavra-chave: IMPACIÊNCIA</span>
+  </div>
+  <p class="txt" style="margin-top:16px;color:#7a9a7a;max-width:640px;">A impaciência não é apenas uma fraqueza emocional — é uma questão de fé. Quem espera em Deus declara: <em style="color:#a8d5b5;">"Eu confio no Seu caráter, mesmo sem ver o resultado."</em></p>
+</div>
+
+<!-- ════════════ SLIDE 4 — INTRODUÇÃO ════════════ -->
+<div class="slide s-intro" data-n="4">
+  <div class="slide-id">Introdução</div>
+
+  <!-- Calendário / Tempo decorativo -->
+  <svg style="position:absolute;left:3%;top:50%;transform:translateY(-50%);opacity:0.1;z-index:1;" viewBox="0 0 200 220" width="200" height="220" xmlns="http://www.w3.org/2000/svg">
+    <rect x="10" y="30" width="180" height="180" rx="14" fill="none" stroke="#6a9fd8" stroke-width="4"/>
+    <rect x="10" y="30" width="180" height="52" rx="14" fill="#1a3a6b"/>
+    <rect x="10" y="62" width="180" height="20" rx="0" fill="#1a3a6b"/>
+    <circle cx="60"  cy="22" r="10" fill="none" stroke="#6a9fd8" stroke-width="4"/>
+    <circle cx="140" cy="22" r="10" fill="none" stroke="#6a9fd8" stroke-width="4"/>
+    <line x1="60" y1="22" x2="60" y2="14" stroke="#6a9fd8" stroke-width="4" stroke-linecap="round"/>
+    <line x1="140" y1="22" x2="140" y2="14" stroke="#6a9fd8" stroke-width="4" stroke-linecap="round"/>
+    <!-- Grade de dias -->
+    <text x="30"  y="115" font-size="16" fill="#6a9fd8" opacity="0.6">1</text>
+    <text x="60"  y="115" font-size="16" fill="#6a9fd8" opacity="0.6">2</text>
+    <text x="90"  y="115" font-size="16" fill="#6a9fd8" opacity="0.6">3</text>
+    <text x="120" y="115" font-size="16" fill="#6a9fd8" opacity="0.6">4</text>
+    <text x="150" y="115" font-size="16" fill="#6a9fd8" opacity="0.6">5</text>
+    <text x="30"  y="150" font-size="16" fill="#6a9fd8" opacity="0.6">7</text>
+    <text x="60"  y="150" font-size="16" fill="#6a9fd8" opacity="0.6">8</text>
+    <!-- Destaque no 10 -->
+    <rect x="80" y="133" width="30" height="28" rx="7" fill="#d4a017" opacity="0.4"/>
+    <text x="90"  y="152" font-size="18" fill="#f0c940" font-weight="bold">10</text>
+    <text x="120" y="150" font-size="16" fill="#6a9fd8" opacity="0.6">11</text>
+    <text x="150" y="150" font-size="16" fill="#6a9fd8" opacity="0.6">12</text>
+    <text x="30"  y="185" font-size="16" fill="#6a9fd8" opacity="0.6">14</text>
+    <text x="60"  y="185" font-size="16" fill="#6a9fd8" opacity="0.6">15</text>
+    <text x="90"  y="185" font-size="16" fill="#6a9fd8" opacity="0.6">…</text>
+  </svg>
+
+  <div class="badge badge-a">📜 Contexto Histórico</div>
+  <h2 class="med">Mais de <span style="color:#f0c940;">10 anos</span> de espera</h2>
+  <p class="italic" style="max-width:680px;color:#c0d0e8;">Abrão recebeu as promessas com 75 anos (Gn 12.4). Ismael nasceu quando ele tinha 86 anos (Gn 16.16). Foram mais de uma década esperando o que parecia impossível.</p>
+  <div class="hl" style="margin-top:18px;">
+    <p>Pergunta desta lição: <strong style="color:#f0c940;">quando a promessa demora, como reagimos — com fé renovada ou com soluções improvisadas?</strong></p>
+  </div>
+</div>
+
+<!-- ════════════ SLIDE 5 — TÓPICO I (a) ════════════ -->
+<div class="slide s-t1a" data-n="5">
+  <div class="slide-id">Tópico I</div>
+  <div class="deco-num" style="right:-2%;bottom:-8%;">I</div>
+
+  <!-- Figura: dois personagens (Sarai entregando Agar a Abrão) -->
+  <div class="il-run">
+    <svg viewBox="0 0 280 320" width="280" height="320" xmlns="http://www.w3.org/2000/svg">
+      <!-- Personagem 1 (Sarai) -->
+      <circle cx="70" cy="60" r="24" fill="none" stroke="#d4a017" stroke-width="3"/>
+      <line x1="70" y1="84"  x2="70" y2="180" stroke="#d4a017" stroke-width="3"/>
+      <line x1="70" y1="120" x2="30" y2="150" stroke="#d4a017" stroke-width="3" stroke-linecap="round"/>
+      <line x1="70" y1="120" x2="110" y2="140" stroke="#d4a017" stroke-width="3" stroke-linecap="round"/>
+      <line x1="70" y1="180" x2="50"  y2="240" stroke="#d4a017" stroke-width="3" stroke-linecap="round"/>
+      <line x1="70" y1="180" x2="90"  y2="240" stroke="#d4a017" stroke-width="3" stroke-linecap="round"/>
+      <!-- Seta de direcionamento -->
+      <line x1="115" y1="140" x2="160" y2="130" stroke="#f0c940" stroke-width="2.5" stroke-dasharray="5 3"/>
+      <polygon points="160,130 148,120 148,140" fill="#f0c940" opacity="0.7"/>
+      <!-- Personagem 2 (Agar) -->
+      <circle cx="200" cy="70" r="22" fill="none" stroke="#9ab0d4" stroke-width="3"/>
+      <line x1="200" y1="92"  x2="200" y2="180" stroke="#9ab0d4" stroke-width="3"/>
+      <line x1="200" y1="130" x2="165" y2="155" stroke="#9ab0d4" stroke-width="3" stroke-linecap="round"/>
+      <line x1="200" y1="130" x2="235" y2="155" stroke="#9ab0d4" stroke-width="3" stroke-linecap="round"/>
+      <line x1="200" y1="180" x2="183" y2="238" stroke="#9ab0d4" stroke-width="3" stroke-linecap="round"/>
+      <line x1="200" y1="180" x2="217" y2="238" stroke="#9ab0d4" stroke-width="3" stroke-linecap="round"/>
+      <!-- Interrogação humana -->
+      <text x="55" y="290" font-size="14" fill="#d4a017" opacity="0.6">Sarai</text>
+      <text x="178" y="290" font-size="14" fill="#9ab0d4" opacity="0.6">Agar</text>
+    </svg>
+  </div>
+
+  <div class="badge">🔷 Tópico I</div>
+  <h2 class="med">O Pai da Fé e a Tentativa<br>de <span style="color:#f0c940;">Ajudar a Deus</span></h2>
+  <p class="txt" style="max-width:660px;">Sarai propôs que Abrão se unisse à serva Agar — culturalmente aceito no séc. XVIII a.C. (Código de Hamurabi §146), mas <em style="color:#f0c940;">fora do plano divino</em>. Abrão, o mesmo que "creu a Deus" (Gn 15.6), cedeu à pressão. Até os maiores exemplos de fé têm momentos de vacilação.</p>
+  <div class="hl">
+    <p>"A fé não é uma armadura permanente — é uma batalha diária que exige renovação constante." <span style="color:#d4a017;font-style:normal;">(Ef 6.11-18)</span></p>
+  </div>
+</div>
+
+<!-- ════════════ SLIDE 6 — TÓPICO I (b) subtópicos ════════════ -->
+<div class="slide s-t1b" data-n="6">
+  <div class="slide-id">Tópico I — Subtópicos</div>
+  <h3 class="sec" style="margin-bottom:16px;">Tópico I · Os Três Movimentos da Impaciência</h3>
+  <div class="grid3">
+    <div class="card">
+      <div class="cn">Subtópico 1</div>
+      <h4>O plano para "ajudar" a Deus</h4>
+      <p>Sarai reconhece a soberania divina, mas decide contorná-la. A fé incompleta conhece o poder de Deus, mas não confia no Seu tempo.</p>
+      <div class="ref">📖 Gn 15.2-4; 16.1-2</div>
+    </div>
+    <div class="card">
+      <div class="cn">Subtópico 2</div>
+      <h4>Abraão aceita o plano</h4>
+      <p>"Deu ouvidos à voz de Sarai" — mesmo padrão de Adão (Gn 3.17). A liderança espiritual implica responsabilidade nas decisões do lar.</p>
+      <div class="ref">📖 Gn 16.2</div>
+    </div>
+    <div class="card">
+      <div class="cn">Subtópico 3</div>
+      <h4>Agar zomba de Sarai</h4>
+      <p>O sucesso imediato gerou soberba. Sarai criou o problema e culpou Abrão. Os atalhos humanos sempre têm custo oculto.</p>
+      <div class="ref">📖 Gn 16.4-5</div>
+    </div>
+  </div>
+  <p style="margin-top:12px;font-size:clamp(0.68rem,1.2vw,0.8rem);color:rgba(212,160,23,0.65);font-style:italic;z-index:2;">Sinopse: Abraão e Sarai tentaram ajudar a Deus, pois se deixaram vencer pela ansiedade.</p>
+</div>
+
+<!-- ════════════ SLIDE 7 — TÓPICO II (a) ════════════ -->
+<div class="slide s-t2a" data-n="7">
+  <div class="slide-id">Tópico II</div>
+  <div class="deco-num" style="right:-2%;bottom:-8%;color:#27ae60;">II</div>
+
+  <!-- Ilustração: figura solitária no deserto -->
+  <div class="il-desert">
+    <svg viewBox="0 0 400 280" width="400" height="280" xmlns="http://www.w3.org/2000/svg">
+      <!-- Dunas do deserto -->
+      <path d="M0 280 Q80 180 160 220 Q240 260 320 180 Q360 140 400 160 L400 280 Z" fill="#27ae60" opacity="0.15"/>
+      <path d="M0 280 Q100 200 200 240 Q280 270 360 220 L400 230 L400 280 Z" fill="#27ae60" opacity="0.2"/>
+      <!-- Poço/fonte de água -->
+      <circle cx="310" cy="175" r="28" fill="none" stroke="#27ae60" stroke-width="3" opacity="0.6"/>
+      <circle cx="310" cy="175" r="18" fill="rgba(39,174,96,0.2)" stroke="none"/>
+      <path d="M290 155 L310 145 L330 155" fill="none" stroke="#27ae60" stroke-width="3" opacity="0.6"/>
+      <line x1="310" y1="145" x2="310" y2="132" stroke="#27ae60" stroke-width="3" opacity="0.6"/>
+      <!-- Pessoa solitária (Agar) -->
+      <circle cx="110" cy="165" r="16" fill="none" stroke="#7dcea0" stroke-width="2.5"/>
+      <line x1="110" y1="181" x2="110" y2="230" stroke="#7dcea0" stroke-width="2.5"/>
+      <line x1="110" y1="200" x2="85"  y2="215" stroke="#7dcea0" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="110" y1="200" x2="132" y2="215" stroke="#7dcea0" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="110" y1="230" x2="96"  y2="265" stroke="#7dcea0" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="110" y1="230" x2="124" y2="265" stroke="#7dcea0" stroke-width="2.5" stroke-linecap="round"/>
+      <!-- Gravidez (barriga arredondada) -->
+      <ellipse cx="116" cy="208" rx="14" ry="10" fill="none" stroke="#7dcea0" stroke-width="2" opacity="0.5"/>
+      <!-- Seta de direção perdida -->
+      <text x="60" y="140" font-size="24" fill="#7dcea0" opacity="0.5">?</text>
+    </svg>
+  </div>
+
+  <div class="badge badge-v">🔷 Tópico II</div>
+  <h2 class="med">As Consequências de Agir<br>por <span style="color:#7dcea0;">Conta Própria</span></h2>
+  <p class="txt" style="max-width:640px;">O lar de Abrão virou campo de batalha. Sarai aflinge Agar, que foge <em style="color:#7dcea0;">grávida para o deserto</em> — sozinha, sem provisão, rumo ao nada. As decisões impacientes frequentemente recaem sobre os mais vulneráveis.</p>
+  <div class="hl" style="border-color:#27ae60;background:rgba(39,174,96,0.08);">
+    <p style="color:#c8f0d8;">Mas no deserto, Deus a encontrou. O <strong style="color:#7dcea0;">Anjo do SENHOR</strong> aparece pela <strong style="color:#7dcea0;">1ª vez na Bíblia</strong> — a uma serva estrangeira.</p>
+  </div>
+</div>
+
+<!-- ════════════ SLIDE 8 — TÓPICO II (b) subtópicos ════════════ -->
+<div class="slide s-t2b" data-n="8">
+  <div class="slide-id">Tópico II — Subtópicos</div>
+  <h3 class="sec" style="color:#7dcea0;margin-bottom:16px;">Tópico II · Conflito, Fuga e Graça no Deserto</h3>
+  <div class="grid3">
+    <div class="card card-v">
+      <div class="cn">Subtópico 1</div>
+      <h4>Conflito familiar</h4>
+      <p>Sarai culpa Abrão; Abrão se omite. O pecado de um desestrutura todos. Impaciência → conflito → transferência de culpa.</p>
+      <div class="ref">📖 Gn 16.4-6</div>
+    </div>
+    <div class="card card-v">
+      <div class="cn">Subtópico 2</div>
+      <h4>A fuga de Agar</h4>
+      <p>Grávida, humilhada e solitária no deserto. Inocente no conflito — mas não invisível a Deus. Ele a encontrará onde os homens a abandonaram.</p>
+      <div class="ref">📖 Gn 16.6</div>
+    </div>
+    <div class="card card-v">
+      <div class="cn">Subtópico 3</div>
+      <h4>Deus entra em ação</h4>
+      <p>1ª aparição do Anjo do SENHOR na Bíblia: a uma serva egípcia. Ismael = "Deus ouviu". A graça divina não conhece fronteiras.</p>
+      <div class="ref">📖 Gn 16.7-12</div>
+    </div>
+  </div>
+  <p style="margin-top:12px;font-size:clamp(0.68rem,1.2vw,0.8rem);color:rgba(39,174,96,0.65);font-style:italic;z-index:2;">Sinopse: O agir por conta própria tem consequências ruins; por isso, espere em Deus.</p>
+</div>
+
+<!-- ════════════ SLIDE 9 — TÓPICO III (a) ════════════ -->
+<div class="slide s-t3a" data-n="9">
+  <div class="slide-id">Tópico III</div>
+  <div class="deco-num" style="right:-2%;bottom:-8%;color:#9b59b6;">III</div>
+
+  <!-- Ilustração: olho / El-Roi -->
+  <div class="il-eye">
+    <svg viewBox="0 0 260 200" width="260" height="200" xmlns="http://www.w3.org/2000/svg">
+      <!-- Olho -->
+      <path d="M20 100 Q130 20 240 100 Q130 180 20 100 Z" fill="none" stroke="#9b59b6" stroke-width="4" opacity="0.8"/>
+      <!-- Íris -->
+      <circle cx="130" cy="100" r="42" fill="none" stroke="#9b59b6" stroke-width="3" opacity="0.7"/>
+      <!-- Pupila -->
+      <circle cx="130" cy="100" r="22" fill="rgba(142,68,173,0.3)" stroke="#c39bd3" stroke-width="2"/>
+      <!-- Brilho -->
+      <circle cx="118" cy="90" r="8" fill="rgba(255,255,255,0.2)"/>
+      <!-- Raios de luz saindo -->
+      <line x1="130" y1="48"  x2="130" y2="22"  stroke="#9b59b6" stroke-width="2" stroke-dasharray="3 3" opacity="0.5"/>
+      <line x1="172" y1="62"  x2="188" y2="44"  stroke="#9b59b6" stroke-width="2" stroke-dasharray="3 3" opacity="0.5"/>
+      <line x1="192" y1="100" x2="220" y2="100" stroke="#9b59b6" stroke-width="2" stroke-dasharray="3 3" opacity="0.5"/>
+      <line x1="172" y1="138" x2="188" y2="156" stroke="#9b59b6" stroke-width="2" stroke-dasharray="3 3" opacity="0.5"/>
+      <line x1="88"  y1="62"  x2="72"  y2="44"  stroke="#9b59b6" stroke-width="2" stroke-dasharray="3 3" opacity="0.5"/>
+      <line x1="68"  y1="100" x2="40"  y2="100" stroke="#9b59b6" stroke-width="2" stroke-dasharray="3 3" opacity="0.5"/>
+      <!-- Texto EL-ROI abaixo -->
+      <text x="130" y="188" text-anchor="middle" font-size="16" fill="#c39bd3" letter-spacing="4" opacity="0.7">EL-ROI</text>
+    </svg>
+  </div>
+
+  <div class="badge badge-p">🔷 Tópico III</div>
+  <h2 class="med">O Deus que <span style="color:#c39bd3;">Conduz a História</span></h2>
+  <p class="italic" style="color:#d7bde2;max-width:660px;">El-Roi — "O Deus que me vê." O único lugar em toda a Bíblia com este nome, cunhado por uma mulher estrangeira e escrava no meio do deserto.</p>
+  <div class="hl" style="border-color:#9b59b6;background:rgba(142,68,173,0.08);margin-top:16px;">
+    <p style="color:#d7bde2;">Deus vê o que os outros ignoram: as lágrimas em segredo, as esperanças que morrem em silêncio, os desertos que ninguém testemunha. <strong style="color:#c39bd3;">Ele te vê.</strong></p>
+  </div>
+</div>
+
+<!-- ════════════ SLIDE 10 — TÓPICO III (b) subtópicos ════════════ -->
+<div class="slide s-t3b" data-n="10">
+  <div class="slide-id">Tópico III — Subtópicos</div>
+  <h3 class="sec" style="color:#c39bd3;margin-bottom:16px;">Tópico III · El-Roi, Soberania e Cuidado Eterno</h3>
+  <div class="grid3">
+    <div class="card card-p">
+      <div class="cn">Subtópico 1</div>
+      <h4>O Deus que ouve e vê</h4>
+      <p>El-Roi: único nome divino cunhado por uma mulher, estrangeira, escrava. Deus vê cada dor oculta. Ismael = "Deus ouviu" (Gn 16.13).</p>
+      <div class="ref">📖 Gn 16.7-11, 13</div>
+    </div>
+    <div class="card card-p">
+      <div class="cn">Subtópico 2</div>
+      <h4>Tudo conforme Sua vontade</h4>
+      <p>Ismael nasceu, mas não era o filho prometido. Isaque viria 14 anos depois. Nenhum atalho humano cancela o plano eterno de Deus.</p>
+      <div class="ref">📖 Gn 16.16; Is 46.10</div>
+    </div>
+    <div class="card card-p">
+      <div class="cn">Subtópico 3</div>
+      <h4>O cuidado em todo o tempo</h4>
+      <p>Deus encontrou, ouviu, orientou e enviou Agar fortalecida. Em nosso deserto, Ele está presente — com palavra, direção e paz (Fp 4.6-7).</p>
+      <div class="ref">📖 Fp 4.6-7; Ef 3.16</div>
+    </div>
+  </div>
+  <p style="margin-top:12px;font-size:clamp(0.68rem,1.2vw,0.8rem);color:rgba(142,68,173,0.65);font-style:italic;z-index:2;">Sinopse: Deus é soberano e conduz a história.</p>
+</div>
+
+<!-- ════════════ SLIDE 11 — REVISÃO ════════════ -->
+<div class="slide s-revisao" data-n="11">
+  <div class="slide-id">Revisão</div>
+
+  <!-- Checkmark decorativo -->
+  <svg style="position:absolute;right:4%;top:50%;transform:translateY(-50%);opacity:0.08;z-index:1;" viewBox="0 0 180 180" width="180" height="180" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="90" cy="90" r="80" fill="none" stroke="#f08070" stroke-width="6"/>
+    <polyline points="40,95 75,130 145,55" fill="none" stroke="#f08070" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+
+  <div class="badge badge-r">✅ Revisão — 5 Perguntas</div>
+  <div class="rev-list">
+    <div class="rev"><div class="rn">1</div><p><strong style="color:#f0c940;">Que recurso Deus usa para forjar o caráter?</strong> → O tempo e a espera.</p></div>
+    <div class="rev"><div class="rn">2</div><p><strong style="color:#f0c940;">O que ocorre quando a impaciência domina o coração?</strong> → A fé sucumbe e cometemos erros.</p></div>
+    <div class="rev"><div class="rn">3</div><p><strong style="color:#f0c940;">Como devemos esperar conforme o Salmo 40.1?</strong> → Com paciência — confiança ativa no Senhor.</p></div>
+    <div class="rev"><div class="rn">4</div><p><strong style="color:#f0c940;">Primeiras consequências do erro de Sarai?</strong> → Competição, soberba e conflito doméstico.</p></div>
+    <div class="rev"><div class="rn">5</div><p><strong style="color:#f0c940;">Nome do filho de Abrão com Agar e seu significado?</strong> → Ismael — "Deus ouviu".</p></div>
+  </div>
+</div>
+
+<!-- ════════════ SLIDE 12 — CONCLUSÃO ════════════ -->
+<div class="slide s-conclusao" data-n="12">
+  <div class="slide-id">Conclusão</div>
+
+  <!-- Pomba da paz -->
+  <div class="il-dove">
+    <svg viewBox="0 0 200 180" width="200" height="180" xmlns="http://www.w3.org/2000/svg">
+      <!-- Corpo da pomba -->
+      <ellipse cx="100" cy="100" rx="55" ry="32" fill="none" stroke="#27ae60" stroke-width="3" opacity="0.7"/>
+      <!-- Cabeça -->
+      <circle cx="152" cy="82" r="22" fill="none" stroke="#27ae60" stroke-width="3" opacity="0.7"/>
+      <!-- Bico -->
+      <path d="M172 78 L188 74 L178 85 Z" fill="#27ae60" opacity="0.5"/>
+      <!-- Asa esquerda -->
+      <path d="M55 95 Q20 55 10 80 Q30 110 55 105" fill="none" stroke="#27ae60" stroke-width="3" opacity="0.7"/>
+      <!-- Asa direita -->
+      <path d="M100 68 Q90 30 110 20 Q140 40 130 70" fill="none" stroke="#27ae60" stroke-width="3" opacity="0.7"/>
+      <!-- Ramo de oliveira -->
+      <path d="M60 125 Q70 140 90 135" fill="none" stroke="#27ae60" stroke-width="2.5" opacity="0.6"/>
+      <ellipse cx="72" cy="130" rx="7" ry="4" fill="#27ae60" opacity="0.4" transform="rotate(-20,72,130)"/>
+      <ellipse cx="84" cy="134" rx="6" ry="4" fill="#27ae60" opacity="0.4" transform="rotate(10,84,134)"/>
+    </svg>
+  </div>
+
+  <div class="badge badge-v">🌿 Conclusão</div>
+  <h2 class="med" style="color:#7dcea0;">Deus não é pressionado<br>pelos nossos atalhos</h2>
+  <p class="italic" style="color:#c8f0d8;max-width:660px;">Ismael nasceu, mas Isaque veio. O plano humano pode atrasar a experiência da promessa — mas não pode cancelá-la. O Deus que prometeu é fiel.</p>
+  <div class="concl" style="margin-top:18px;">
+    <p>"Não abandoneis a vossa confiança, que tem grande galardão. Porque necessitais de paciência, para que, depois de haverdes feito a vontade de Deus, alcanceis a promessa."</p>
+    <span>Hebreus 10.35-36</span>
+  </div>
+</div>
+
+<!-- ════════════ SLIDE 13 — APLICAÇÃO ════════════ -->
+<div class="slide s-aplicacao" data-n="13">
+  <div class="slide-id">Aplicação Pessoal</div>
+
+  <!-- Coração decorativo -->
+  <svg style="position:absolute;left:4%;bottom:8%;opacity:0.08;z-index:1;" viewBox="0 0 160 150" width="160" height="150" xmlns="http://www.w3.org/2000/svg">
+    <path d="M80 130 Q20 90 20 50 A30 30 0 0 1 80 42 A30 30 0 0 1 140 50 Q140 90 80 130 Z" fill="#9b59b6" stroke="none"/>
+  </svg>
+
+  <div class="badge badge-p">🙏 Aplicação Pessoal</div>
+  <h2 class="med" style="color:#c39bd3;margin-bottom:16px;">Como esta lição muda a minha vida?</h2>
+  <div class="aplist">
+    <div class="api"><div class="apic">🔍</div><p class="apit"><strong>Identifique seu "Ismael":</strong> Em qual área você tem tentado "ajudar a Deus"? Namoro, emprego, cura, provisão?</p></div>
+    <div class="api"><div class="apic">✋</div><p class="apit"><strong>Evite decisões precipitadas:</strong> Antes de agir, pergunte: "Estou esperando o tempo de Deus ou antecipando o meu plano?"</p></div>
+    <div class="api"><div class="apic">👁️</div><p class="apit"><strong>Confie no El-Roi:</strong> Mesmo no deserto, Deus te vê, te ouve e tem um plano para a sua situação. (Fp 4.6-7)</p></div>
+    <div class="api"><div class="apic">📅</div><p class="apit"><strong>Compromisso semanal:</strong> Leia cada passagem da leitura diária e escreva uma frase de gratidão ao final.</p></div>
+  </div>
+</div>
+
+<!-- ════════════ SLIDE 14 — LEITURA SEMANAL ════════════ -->
+<div class="slide s-leitura" data-n="14">
+  <div class="slide-id">Leitura Semanal</div>
+
+  <!-- Bíblia aberta decorativa -->
+  <svg style="position:absolute;right:4%;top:50%;transform:translateY(-50%);opacity:0.1;z-index:1;" viewBox="0 0 240 200" width="240" height="200" xmlns="http://www.w3.org/2000/svg">
+    <path d="M20 30 L120 20 L220 30 L220 180 L120 170 L20 180 Z" fill="none" stroke="#85c1e9" stroke-width="3"/>
+    <line x1="120" y1="20" x2="120" y2="170" stroke="#85c1e9" stroke-width="3"/>
+    <line x1="40" y1="60"  x2="110" y2="60"  stroke="#85c1e9" stroke-width="1.5" opacity="0.5"/>
+    <line x1="40" y1="80"  x2="110" y2="80"  stroke="#85c1e9" stroke-width="1.5" opacity="0.5"/>
+    <line x1="40" y1="100" x2="110" y2="100" stroke="#85c1e9" stroke-width="1.5" opacity="0.5"/>
+    <line x1="40" y1="120" x2="90"  y2="120" stroke="#85c1e9" stroke-width="1.5" opacity="0.5"/>
+    <line x1="130" y1="60"  x2="200" y2="60"  stroke="#85c1e9" stroke-width="1.5" opacity="0.5"/>
+    <line x1="130" y1="80"  x2="200" y2="80"  stroke="#85c1e9" stroke-width="1.5" opacity="0.5"/>
+    <line x1="130" y1="100" x2="200" y2="100" stroke="#85c1e9" stroke-width="1.5" opacity="0.5"/>
+    <line x1="130" y1="120" x2="185" y2="120" stroke="#85c1e9" stroke-width="1.5" opacity="0.5"/>
+  </svg>
+
+  <div class="badge badge-a">📅 Leitura Diária da Semana</div>
+  <h3 class="sec" style="color:#85c1e9;margin-bottom:16px;">De Segunda a Sábado — Aprofunde o Estudo</h3>
+  <div class="leit-grid">
+    <div class="lc"><div class="dia">Segunda</div><div class="pas">Gênesis 16.2</div><div class="tem">Sarai dá lugar à impaciência</div></div>
+    <div class="lc"><div class="dia">Terça</div><div class="pas">1 Pedro 5.7</div><div class="tem">Lançar a ansiedade sobre Deus</div></div>
+    <div class="lc"><div class="dia">Quarta</div><div class="pas">Salmo 40.1</div><div class="tem">Esperar com paciência no Senhor</div></div>
+    <div class="lc"><div class="dia">Quinta</div><div class="pas">Romanos 12.12</div><div class="tem">Pacientes na tribulação</div></div>
+    <div class="lc"><div class="dia">Sexta</div><div class="pas">2 Pedro 3.9</div><div class="tem">Deus é longânimo</div></div>
+    <div class="lc"><div class="dia">Sábado</div><div class="pas">1 Ts 5.14</div><div class="tem">Pacientes para com todos</div></div>
+  </div>
+  <p style="margin-top:16px;font-size:clamp(0.62rem,1.2vw,0.76rem);color:rgba(133,193,233,0.5);letter-spacing:2px;z-index:2;">EBD EM DIA · LIÇÃO 3 · 19/04/2026</p>
+</div>
+
+</div><!-- fim slideshow -->
+
+<!-- NAVEGAÇÃO -->
+<div class="nav">
+  <button id="bp" onclick="go(-1)" disabled>◀ Anterior</button>
+  <span class="cnt" id="ct">1 / 14</span>
+  <button id="bn" onclick="go(1)">Próximo ▶</button>
+</div>
+<button class="fs-btn" onclick="fs()">⛶ Tela cheia (F)</button>
+
+<script>
+  const sl=document.querySelectorAll('.slide'), N=sl.length; let c=0;
+  function show(n){
+    sl[c].classList.remove('active'); c=Math.max(0,Math.min(n,N-1));
+    sl[c].classList.add('active');
+    document.getElementById('ct').textContent=(c+1)+' / '+N;
+    document.getElementById('bp').disabled=(c===0);
+    document.getElementById('bn').disabled=(c===N-1);
+  }
+  function go(d){show(c+d);}
+  document.addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='ArrowDown'||e.key===' '){e.preventDefault();go(1);}
+    if(e.key==='ArrowLeft'||e.key==='ArrowUp'){e.preventDefault();go(-1);}
+    if(e.key==='f'||e.key==='F') fs();
+    if(e.key==='Home') show(0); if(e.key==='End') show(N-1);
+  });
+  function fs(){
+    if(!document.fullscreenElement) document.documentElement.requestFullscreen().catch(()=>{});
+    else document.exitFullscreen();
+  }
+  let tx=null;
+  document.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;});
+  document.addEventListener('touchend',e=>{
+    if(tx===null)return; const d=e.changedTouches[0].clientX-tx;
+    if(Math.abs(d)>50)go(d<0?1:-1); tx=null;
+  });
+</script>
+</body>
+</html>

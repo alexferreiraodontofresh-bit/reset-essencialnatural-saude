@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plano de Aula — Lição 3 | EBD em Dia</title>
+<style>
+  :root {
+    --azul: #0d1b3e; --azul2: #1a3a6b; --dourado: #d4a017; --dourado-claro: #f0c940;
+    --branco: #fff; --cinza: #c0c8e0; --verde: #1e8449; --vermelho: #c0392b;
+    --roxo: #8e44ad;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Segoe UI',Georgia,serif; background:var(--azul); color:var(--branco); }
+
+  .topo { background:linear-gradient(135deg,#0d1b3e,#1a3a6b); border-bottom:3px solid var(--dourado); padding:22px 32px; }
+  .topo h1 { font-size:1.6rem; color:var(--dourado-claro); }
+  .topo p { font-size:0.82rem; color:#9ab0d4; margin-top:5px; }
+  .topo .meta { display:flex; flex-wrap:wrap; gap:12px; margin-top:14px; }
+  .topo .meta span { background:rgba(212,160,23,0.15); border:1px solid rgba(212,160,23,0.3); padding:5px 14px; border-radius:20px; font-size:0.8rem; color:var(--dourado-claro); }
+
+  .container { max-width:960px; margin:0 auto; padding:32px 24px; }
+
+  h2 { font-size:1.15rem; color:var(--dourado-claro); border-left:4px solid var(--dourado); padding-left:14px; margin:32px 0 14px; }
+
+  .verdade-box { background:rgba(212,160,23,0.1); border:2px solid rgba(212,160,23,0.4); border-radius:12px; padding:20px 24px; margin-bottom:24px; text-align:center; }
+  .verdade-box .label { font-size:0.7rem; color:var(--dourado); letter-spacing:3px; text-transform:uppercase; margin-bottom:8px; }
+  .verdade-box p { font-size:1.1rem; color:#f0e6c0; font-style:italic; line-height:1.6; }
+  .palavra-chave { display:inline-block; background:var(--dourado); color:#0d1b3e; font-weight:700; font-size:0.8rem; padding:3px 14px; border-radius:20px; margin-top:10px; }
+
+  /* CRONOGRAMA */
+  table { width:100%; border-collapse:collapse; margin-bottom:14px; }
+  table th { background:rgba(212,160,23,0.2); color:var(--dourado-claro); font-size:0.8rem; padding:10px 12px; text-align:left; border:1px solid rgba(212,160,23,0.25); }
+  table td { padding:9px 12px; border:1px solid rgba(255,255,255,0.08); font-size:0.87rem; color:var(--cinza); vertical-align:top; }
+  table tr:nth-child(even) td { background:rgba(255,255,255,0.03); }
+  .col-tempo { color:var(--dourado); font-weight:700; white-space:nowrap; }
+  .col-ativ { color:var(--branco); font-weight:600; }
+
+  /* BLOCOS */
+  .bloco { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:14px; margin-bottom:24px; overflow:hidden; }
+  .bloco-header { background:linear-gradient(135deg,rgba(212,160,23,0.18),rgba(212,160,23,0.04)); border-bottom:1px solid rgba(212,160,23,0.25); padding:14px 20px; display:flex; align-items:center; gap:12px; }
+  .bloco-num { width:36px; height:36px; background:var(--dourado); border-radius:8px; display:flex; align-items:center; justify-content:center; font-weight:700; color:#0d1b3e; font-size:0.9rem; flex-shrink:0; }
+  .bloco-titulo h3 { font-size:1.05rem; color:var(--dourado-claro); margin:0; }
+  .bloco-titulo p { font-size:0.75rem; color:#9ab0d4; margin-top:3px; }
+  .bloco-corpo { padding:20px; }
+
+  .subtopico-box { background:rgba(255,255,255,0.05); border-left:3px solid var(--dourado); border-radius:0 10px 10px 0; padding:14px 18px; margin-bottom:12px; }
+  .subtopico-box h4 { font-size:0.95rem; color:var(--dourado-claro); margin-bottom:8px; }
+  .subtopico-box p { font-size:0.87rem; color:var(--cinza); line-height:1.65; margin-bottom:8px; }
+  .subtopico-box .ref-biblica { font-size:0.76rem; color:var(--dourado); font-style:italic; }
+
+  .destaque-box { background:rgba(212,160,23,0.08); border:1px solid rgba(212,160,23,0.3); border-radius:10px; padding:14px 18px; margin:10px 0; }
+  .destaque-box .dl { font-size:0.68rem; color:var(--dourado); letter-spacing:2px; text-transform:uppercase; margin-bottom:6px; }
+  .destaque-box p { font-size:0.86rem; color:#f0e0b0; line-height:1.65; font-style:italic; }
+
+  .pergunta-classe { background:rgba(142,68,173,0.1); border-left:3px solid #9b59b6; border-radius:0 10px 10px 0; padding:12px 16px; margin:10px 0; }
+  .pergunta-classe .pl { font-size:0.68rem; color:#c39bd3; letter-spacing:2px; text-transform:uppercase; margin-bottom:5px; }
+  .pergunta-classe p { font-size:0.87rem; color:#d7bde2; font-style:italic; }
+
+  .dinamica-box { background:rgba(30,132,73,0.1); border:1px solid rgba(30,132,73,0.3); border-radius:10px; padding:14px 18px; margin:10px 0; }
+  .dinamica-box .dil { font-size:0.68rem; color:#7dcea0; letter-spacing:2px; text-transform:uppercase; margin-bottom:6px; }
+  .dinamica-box p { font-size:0.86rem; color:#a8d5b5; line-height:1.65; }
+
+  .sinopse-box { background:rgba(212,160,23,0.06); border:1px dashed rgba(212,160,23,0.35); border-radius:10px; padding:14px 18px; margin-top:14px; }
+  .sinopse-box .sl { font-size:0.68rem; color:var(--dourado); letter-spacing:2px; text-transform:uppercase; margin-bottom:6px; }
+  .sinopse-box p { font-size:0.86rem; color:#e8d5a0; line-height:1.65; font-style:italic; }
+
+  .revisao-item { background:rgba(255,255,255,0.04); border:1px solid rgba(212,160,23,0.2); border-radius:10px; padding:14px 18px; margin-bottom:10px; }
+  .revisao-item .num { font-size:0.7rem; color:var(--dourado-claro); letter-spacing:2px; text-transform:uppercase; margin-bottom:6px; }
+  .revisao-item .pergunta { font-size:0.92rem; color:var(--branco); font-weight:600; margin-bottom:8px; }
+  .revisao-item .resposta { font-size:0.86rem; color:#9ab0d4; }
+
+  .hinos-row { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:14px; }
+  .hino-pill { background:rgba(212,160,23,0.15); border:1px solid rgba(212,160,23,0.35); border-radius:8px; padding:8px 18px; font-size:0.9rem; color:var(--dourado-claro); font-weight:600; }
+
+  footer { text-align:center; padding:24px; color:#4a5a7a; font-size:0.78rem; border-top:1px solid rgba(255,255,255,0.06); margin-top:20px; }
+
+  .intro-box { background:rgba(255,255,255,0.04); border-radius:12px; padding:18px 22px; margin-bottom:20px; border:1px solid rgba(255,255,255,0.09); }
+  .intro-box p { font-size:0.9rem; color:var(--cinza); line-height:1.7; margin-bottom:10px; }
+  .intro-box p:last-child { margin-bottom:0; }
+
+  @media(max-width:600px){ .topo { padding:16px; } .container { padding:16px; } }
+</style>
+</head>
+<body>
+
+<div class="topo">
+  <h1>📋 Plano de Aula — Lição 3</h1>
+  <p>A impaciência na espera do cumprimento da promessa — 2º Trimestre 2026</p>
+  <div class="meta">
+    <span>📅 19 de abril de 2026</span>
+    <span>📖 Gênesis 16.1–16</span>
+    <span>🔑 Palavra-chave: IMPACIÊNCIA</span>
+    <span>🎵 Hinos: 8, 188, 302 — Harpa</span>
+    <span>⏱ 50 minutos</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- VERDADE PRÁTICA -->
+  <div class="verdade-box">
+    <div class="label">✦ Verdade Prática</div>
+    <p>"A impaciência é antagônica à fé, por isso não devemos ser dominados por ela. Deus é fiel e cumpre com suas promessas no tempo certo."</p>
+    <span class="palavra-chave">IMPACIÊNCIA</span>
+  </div>
+
+  <!-- CRONOGRAMA -->
+  <h2>⏱ Cronograma da Aula (50 minutos)</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Tempo</th>
+        <th>Atividade</th>
+        <th>Orientação ao Professor</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="col-tempo">0–5 min</td>
+        <td class="col-ativ">Abertura e louvor</td>
+        <td>Cantar hino 8 da Harpa Cristã. Oração de abertura com foco em pedir a Deus paciência e fé para aguardar Suas promessas.</td>
+      </tr>
+      <tr>
+        <td class="col-tempo">5–10 min</td>
+        <td class="col-ativ">Dinâmica de abertura</td>
+        <td>Pergunte: "Quem aqui já tomou uma decisão com pressa e se arrependeu?" Deixe 2 ou 3 pessoas comentarem. Conecte com o tema da lição.</td>
+      </tr>
+      <tr>
+        <td class="col-tempo">10–12 min</td>
+        <td class="col-ativ">Introdução e contextualização</td>
+        <td>Situe a lição no contexto da série (Abraão, Isaque e Jacó). Lembre que na lição anterior vimos a fé de Abraão; hoje veremos seu maior tropeço.</td>
+      </tr>
+      <tr>
+        <td class="col-tempo">12–23 min</td>
+        <td class="col-ativ">Tópico I — O pai da fé e a tentativa de ajudar a Deus</td>
+        <td>Apresente os 3 subtópicos. Lance a pergunta para a classe. Use o destaque teológico sobre o costume cultural da época.</td>
+      </tr>
+      <tr>
+        <td class="col-tempo">23–34 min</td>
+        <td class="col-ativ">Tópico II — As consequências de agir por conta própria</td>
+        <td>Explore o conflito doméstico. Aplique à realidade contemporânea: impaciência nas redes sociais, finanças, relacionamentos.</td>
+      </tr>
+      <tr>
+        <td class="col-tempo">34–44 min</td>
+        <td class="col-ativ">Tópico III — O Deus que conduz a história</td>
+        <td>Enfatize o nome El-Roi e o nome Ismael. Dinâmica de oração ao final deste tópico.</td>
+      </tr>
+      <tr>
+        <td class="col-tempo">44–48 min</td>
+        <td class="col-ativ">Revisão com perguntas</td>
+        <td>Faça as 5 perguntas de revisão à classe. Incentive respostas voluntárias. Corrija gentilmente se necessário.</td>
+      </tr>
+      <tr>
+        <td class="col-tempo">48–50 min</td>
+        <td class="col-ativ">Encerramento</td>
+        <td>Cantar hino 302. Oração final. Lembrar a leitura diária da semana. Convidar para o culto de encerramento.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- INTRODUÇÃO -->
+  <h2>📖 Introdução — Contextualizando a Lição</h2>
+  <div class="intro-box">
+    <p>Chegamos à terceira lição da série "Homens dos quais o mundo não era digno". Nas lições anteriores, contemplamos a chamada de Abrão e a sua fé diante das promessas de Deus. Hoje, porém, a narrativa nos apresenta a face mais humana do patriarca: a impaciência.</p>
+    <p>Gênesis 16 acontece após anos de espera pela promessa de um herdeiro. A cronologia interna do texto indica que Abrão já estava com seus 75 anos quando recebeu as primeiras promessas (Gn 12.4) e que Ismael nasceu quando ele tinha 86 anos (Gn 16.16). Foram mais de dez anos de espera — e a espera custou caro. A impaciência de Sarai e a condescendência de Abrão produziram um conflito cujas ondas de choque ainda reverberam no Oriente Médio até hoje.</p>
+    <p>Esta lição nos confronta com uma pergunta inadiável: <em>quando a promessa demora, como reagimos — com fé renovada ou com soluções improvisadas?</em></p>
+  </div>
+
+  <!-- TÓPICO I -->
+  <h2>🔷 TÓPICO I — O PAI DA FÉ E A TENTATIVA DE AJUDAR A DEUS</h2>
+  <div class="bloco">
+    <div class="bloco-header">
+      <div class="bloco-num">1</div>
+      <div class="bloco-titulo">
+        <h3>O plano para "ajudar" a Deus</h3>
+        <p>Gênesis 15.2-4; 16.1-2</p>
+      </div>
+    </div>
+    <div class="bloco-corpo">
+      <div class="subtopico-box">
+        <h4>Comentário Aprofundado</h4>
+        <p>A promessa de um herdeiro natural havia sido reafirmada por Deus em Gênesis 15, mas os anos passavam e Sarai permanecia estéril. O texto de Gn 16.1 começa com "Ora, Sarai, mulher de Abrão, não lhe tinha dado filhos" — uma frase que carrega o peso de mais de uma década de espera.</p>
+        <p>A proposta de Sarai — dar sua serva Agar a Abrão como esposa substituta — não era culturalmente escandalosa para o século XVIII a.C. O Código de Hamurabi (§146) e os contratos matrimoniais de Nuzi previam exatamente esse arranjo: se a esposa principal fosse estéril, ela deveria providenciar uma serva para gerar filhos que seriam legalmente reconhecidos como dela. Sarai agiu "dentro do sistema" — mas fora do plano divino.</p>
+        <p>O grande problema não foi o método, mas o motivo: Sarai atribui sua esterilidade ao SENHOR ("o SENHOR me impediu de ter filhos"), reconhece a soberania divina — mas então decide contorná-la. Este é o padrão clássico da fé vacilante: conhece o poder de Deus, mas não confia no tempo de Deus.</p>
+        <div class="ref-biblica">📖 Gênesis 15.2-4; 16.1-2 | Comparar: Salmo 27.14; Isaías 40.31; Habacuque 2.3</div>
+      </div>
+      <div class="destaque-box">
+        <div class="dl">💡 Destaque Teológico</div>
+        <p>"A diferença entre a fé de Abrão em Gênesis 15.6 e sua capitulação em 16.2 é de apenas um capítulo na Bíblia — mas pode representar anos de erosão espiritual causada pela espera prolongada. A fé não é estática; ela precisa ser alimentada pela Palavra e pela oração."</p>
+      </div>
+      <div class="pergunta-classe">
+        <div class="pl">❓ Pergunta para a Classe</div>
+        <p>Em que área da sua vida você tem tentado "ajudar a Deus" a cumprir uma promessa, em vez de simplesmente aguardar pelo tempo Dele?</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="bloco">
+    <div class="bloco-header">
+      <div class="bloco-num">2</div>
+      <div class="bloco-titulo">
+        <h3>Abraão aceita o plano de Sarai</h3>
+        <p>Gênesis 16.2</p>
+      </div>
+    </div>
+    <div class="bloco-corpo">
+      <div class="subtopico-box">
+        <h4>Comentário Aprofundado</h4>
+        <p>O texto hebraico diz que Abrão "shama bequol" (ouviu/obedeceu à voz) de Sarai — a mesma construção usada em Gênesis 3.17 para descrever Adão que "ouviu a voz de sua mulher" e pecou. O paralelo é intencional: dois grandes homens escolheram a voz humana em detrimento da orientação divina, com consequências devastadoras.</p>
+        <p>É importante notar que Abrão não foi simplesmente passivo. Ele fez uma escolha ativa. O mesmo homem que em Gênesis 15.6 foi contado como justo por sua fé, aqui deixa a fé sucumbir à pressão relacional. Isso revela que a fé não é uma armadura permanente — é uma batalha diária que exige renovação constante (Rm 12.2; Ef 6.11-18).</p>
+        <p>Para o professor: explore a dimensão da liderança espiritual do homem no lar. Abrão tinha a responsabilidade de ser o guardião espiritual da família. Ao ceder, abdicou dessa responsabilidade. Isso não é crítica machista — é reconhecimento bíblico de que a liderança espiritual implica responsabilidade nas decisões tomadas.</p>
+        <div class="ref-biblica">📖 Gênesis 16.2 | Comparar: Gênesis 3.17; Romanos 4.20-21; Efésios 6.11-18</div>
+      </div>
+      <div class="destaque-box">
+        <div class="dl">💡 Destaque para Reflexão</div>
+        <p>"O maior perigo da impaciência não é a imprudência — é a plausibilidade. O plano de Sarai parecia razoável, legal e até generoso. Nossas piores decisões quase sempre se fantasiam de sabedoria."</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="bloco">
+    <div class="bloco-header">
+      <div class="bloco-num">3</div>
+      <div class="bloco-titulo">
+        <h3>Agar zomba de Sarai</h3>
+        <p>Gênesis 16.4-5</p>
+      </div>
+    </div>
+    <div class="bloco-corpo">
+      <div class="subtopico-box">
+        <h4>Comentário Aprofundado</h4>
+        <p>Agar engravidou rapidamente — o plano funcionou biologicamente. Mas o sucesso imediato trouxe uma consequência que Sarai não previu: ao ver-se grávida, Agar começou a "olhar para sua senhora com menosprezo". O termo hebraico "qalal" (tornar leve, desprezar) indica uma mudança de postura — Agar passou a se ver como superior àquela que antes era sua senhora.</p>
+        <p>A reação de Sarai é reveladora: "Seja sobre ti a injustiça que me fazes!" Ela culpa Abrão pela situação que ela mesma criou. Este é um padrão dolorosamente humano: quando nossos planos improvisados geram consequências inesperadas, tendemos a transferir a responsabilidade para outros.</p>
+        <p>Há também uma ironia trágica aqui: Sarai concebeu o plano para ter filhos "por meio de" Agar, mas perdeu o respeito de Agar no processo. Ela queria autoridade sobre a criança, mas perdeu a autoridade sobre a serva. Os atalhos humanos quase sempre nos custam mais do que imaginamos.</p>
+        <div class="ref-biblica">📖 Gênesis 16.4-5 | Comparar: Provérbios 13.12; Provérbios 16.18; Gálatas 4.22-31</div>
+      </div>
+      <div class="dinamica-box">
+        <div class="dil">⚡ Dinâmica — Tópico I</div>
+        <p>Peça para alguém citar um ditado popular sobre paciência ("Devagar se vai ao longe", "A pressa é inimiga da perfeição", etc.). Depois pergunte: qual é a diferença entre a paciência filosófica e a paciência cristã? A cristã tem uma fundação diferente — não é resignação, mas confiança ativa no caráter de Deus (Fp 4.6-7).</p>
+      </div>
+      <div class="sinopse-box">
+        <div class="sl">📌 Sinopse do Tópico I</div>
+        <p>Abraão e Sarai tentaram ajudar a Deus, pois se deixaram vencer pela ansiedade. A fé vacilante abre espaço para decisões aparentemente razoáveis que, na realidade, contradizem o plano soberano de Deus — e seus frutos são sempre conflito, amargura e sofrimento.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- TÓPICO II -->
+  <h2>🔷 TÓPICO II — AS CONSEQUÊNCIAS DE AGIR POR CONTA PRÓPRIA</h2>
+
+  <div class="bloco">
+    <div class="bloco-header">
+      <div class="bloco-num">4</div>
+      <div class="bloco-titulo">
+        <h3>Conflito familiar</h3>
+        <p>Gênesis 16.4-6</p>
+      </div>
+    </div>
+    <div class="bloco-corpo">
+      <div class="subtopico-box">
+        <h4>Comentário Aprofundado</h4>
+        <p>O lar de Abrão era um lar de fé — o mesmo lar onde Deus havia se revelado, onde havia altares e promessas. Mas em Gênesis 16.4-6, esse mesmo lar se transforma em campo de batalha entre Sarai e Agar, com Abrão no meio, passivo e sem liderança espiritual.</p>
+        <p>A passividade de Abrão é chocante: "Eis que tua serva está em tuas mãos; faze-lhe o que bem te parecer." Ele entrega Agar de volta à autoridade de Sarai sem qualquer tentativa de reconciliação, mediação ou arrependimento. A impaciência não apenas gera erros — ela gera uma cadeia de omissões e abusos.</p>
+        <p>Para o professor: explore como os conflitos domésticos quase sempre têm raízes em decisões tomadas fora da vontade de Deus. Isso não é determinismo — é reconhecimento de que quando saímos do plano de Deus, o custo é relacionamental.</p>
+        <div class="ref-biblica">📖 Gênesis 16.4-6 | Comparar: Provérbios 14.1; Efésios 4.26-27; Colossenses 3.12-14</div>
+      </div>
+      <div class="pergunta-classe">
+        <div class="pl">❓ Pergunta para a Classe</div>
+        <p>Como a impaciência pessoal pode afetar negativamente as pessoas ao nosso redor — na família, no trabalho, na igreja? Cite um exemplo sem mencionar nomes.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="bloco">
+    <div class="bloco-header">
+      <div class="bloco-num">5</div>
+      <div class="bloco-titulo">
+        <h3>A fuga de Agar</h3>
+        <p>Gênesis 16.6</p>
+      </div>
+    </div>
+    <div class="bloco-corpo">
+      <div class="subtopico-box">
+        <h4>Comentário Aprofundado</h4>
+        <p>Agar é a grande figura trágica desta narrativa. Ela é uma mulher egípcia — provavelmente adquirida durante a estadia de Abrão no Egito (Gn 12.16). Ela não escolheu ser dada a Abrão, não escolheu engravidar como instrumento do plano de Sarai, e não escolheu a arrogância que a tomou. Agora, humilhada por Sarai, ela foge grávida para o deserto — sozinha, sem provisão, rumo ao caminho de "Sur" (a rota do Egito).</p>
+        <p>Este é um dos momentos mais emocionalmente ricos do Gênesis: uma mulher vulnerável, grávida, estrangeira, buscando no deserto aquilo que deveria ter encontrado no lar — segurança, dignidade, pertencimento. A impaciência de Sarai não apenas destruiu a harmonia doméstica; colocou em risco a vida de uma pessoa inocente e de seu filho ainda não nascido.</p>
+        <p>Lição para hoje: as consequências das nossas decisões impacientes frequentemente recaem sobre os mais vulneráveis ao nosso redor — filhos, cônjuges, empregados, subordinados.</p>
+        <div class="ref-biblica">📖 Gênesis 16.6 | Comparar: Salmo 55.6-8; Lamentações 3.1-3; Mateus 5.4</div>
+      </div>
+      <div class="destaque-box">
+        <div class="dl">💡 Conexão Contemporânea</div>
+        <p>"Quantas Agares existem hoje — pessoas que sofrem as consequências das decisões impacientes de outros? O deserto de Agar pode ser uma família destruída pela pressa de alguém, um emprego perdido por uma decisão precipitada, uma amizade rompida por palavras ditas no calor do momento."</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="bloco">
+    <div class="bloco-header">
+      <div class="bloco-num">6</div>
+      <div class="bloco-titulo">
+        <h3>Deus entra em ação</h3>
+        <p>Gênesis 16.7-12</p>
+      </div>
+    </div>
+    <div class="bloco-corpo">
+      <div class="subtopico-box">
+        <h4>Comentário Aprofundado</h4>
+        <p>No deserto, acontece algo extraordinário: "O Anjo do SENHOR a encontrou junto a uma fonte de água" (v.7). Esta é a primeira aparição do "Anjo do SENHOR" (malak YHWH) na Bíblia — e ela ocorre não a um patriarca, não a um sacerdote, mas a uma serva egípcia foragida. A graça de Deus rompe todas as fronteiras humanas.</p>
+        <p>A pergunta divina — "Agar, serva de Sarai, donde vens e para onde vais?" — não é interrogatória, mas pastoral. Deus já sabia a resposta. A pergunta convida Agar a verbalizar sua situação, a reconhecer sua condição. Este é o padrão do ministério de Deus ao longo de toda a Escritura: Ele encontra as pessoas onde elas estão, sem esperar que elas encontrem o caminho de volta por conta própria (Gn 3.9; Jo 4.7; Lc 15.20).</p>
+        <p>A orientação de Deus para Agar parece dura: "Volta para tua senhora e humilha-te debaixo de suas mãos." Mas é acompanhada de uma promessa generosa: a multiplicação da descendência. O filho se chamará Ismael — "Deus ouviu" — porque "o SENHOR ouviu a tua aflição" (v.11). Mesmo no resultado de um erro humano, Deus ancora Sua graça.</p>
+        <div class="ref-biblica">📖 Gênesis 16.7-12 | Comparar: João 4.1-26; Lucas 15.20; Salmo 34.18</div>
+      </div>
+      <div class="dinamica-box">
+        <div class="dil">⚡ Dinâmica — Tópico II</div>
+        <p>Peça para a classe identificar com qual personagem desta história se identifica mais: Sarai (impaciente e controladora), Abrão (omisso e passivo) ou Agar (sofrendo consequências alheias). Breve debate: como Deus agiria especificamente em cada uma dessas situações hoje?</p>
+      </div>
+      <div class="sinopse-box">
+        <div class="sl">📌 Sinopse do Tópico II</div>
+        <p>O agir por conta própria tem consequências ruins; por isso, espere em Deus. O conflito, a fuga e o sofrimento de Agar são resultados diretos da impaciência humana — mas Deus, em Sua graça soberana, intervém mesmo no meio das consequências dos nossos erros.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- TÓPICO III -->
+  <h2>🔷 TÓPICO III — O DEUS QUE CONDUZ A HISTÓRIA</h2>
+
+  <div class="bloco">
+    <div class="bloco-header">
+      <div class="bloco-num">7</div>
+      <div class="bloco-titulo">
+        <h3>O Deus que ouve e vê</h3>
+        <p>Gênesis 16.7-11, 13</p>
+      </div>
+    </div>
+    <div class="bloco-corpo">
+      <div class="subtopico-box">
+        <h4>Comentário Aprofundado</h4>
+        <p>O versículo 13 contém uma joia teológica frequentemente ignorada: "E ela chamou o nome do SENHOR que lhe falara: Tu és El-Roi (o Deus que me vê)." Este é o único lugar em toda a Bíblia onde esse nome divino aparece — e foi cunhado por uma mulher estrangeira e escrava. Deus permitiu que uma mulher marginalizada ampliasse o vocabulário teológico da humanidade.</p>
+        <p>El-Roi não significa apenas que Deus viu Agar naquele momento. Significa que Deus vê o que os outros ignoram — as lágrimas que caem em particular, as esperanças que morrem em silêncio, os sofrimentos que ninguém testemunha. Esta revelação é para cada membro da sua classe: Deus te vê, especialmente quando você está no deserto.</p>
+        <p>O nome Ismael ("Deus ouviu") reforça esse caráter divino: o clamor de Agar, no deserto, chegou aos ouvidos de Deus. Não existe oração sem endereço — toda oração genuína chega ao Pai.</p>
+        <div class="ref-biblica">📖 Gênesis 16.7-11, 13 | Comparar: Salmo 139.1-4; Lucas 12.6-7; Mateus 6.6</div>
+      </div>
+      <div class="pergunta-classe">
+        <div class="pl">❓ Pergunta para a Classe</div>
+        <p>Você já passou por um momento de "deserto" — um período em que sentiu que Deus havia se afastado — e depois percebeu que Ele estava presente o tempo todo? Como foi esse processo de reconhecimento?</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="bloco">
+    <div class="bloco-header">
+      <div class="bloco-num">8</div>
+      <div class="bloco-titulo">
+        <h3>Tudo conforme a Sua soberana vontade</h3>
+        <p>Gênesis 16.16; 12.2</p>
+      </div>
+    </div>
+    <div class="bloco-corpo">
+      <div class="subtopico-box">
+        <h4>Comentário Aprofundado</h4>
+        <p>Gênesis 16.16 registra com precisão: "Abrão era da idade de oitenta e seis anos quando Agar deu à luz Ismael a Abrão." Ismael nasceu. O plano humano "funcionou" — mas Ismael não era o filho da promessa. Isaque viria 14 anos depois (Gn 21.5), quando Abrão tivesse 100 anos e Sarai 90.</p>
+        <p>Deus não foi surpreendido pelo nascimento de Ismael. Ele não precisou "ajustar" Seu plano. A soberania divina não é reativa — é proativa e eterna. Isaías 46.10 declara: "Desde o princípio anuncio o fim, e desde os tempos antigos o que ainda não aconteceu." O atalho de Abrão não encurtou o caminho de Deus — apenas gerou 14 anos adicionais de espera e de complexidade relacional.</p>
+        <p>Para o professor: explore a diferença entre os filhos segundo a carne e os filhos segundo a promessa, que Paulo desenvolve magnificamente em Gálatas 4.22-31. Ismael representa o que produzimos por nossas próprias forças; Isaque representa o que só Deus pode produzir.</p>
+        <div class="ref-biblica">📖 Gênesis 16.16; 21.1-5 | Comparar: Isaías 46.10; Efésios 1.11; Gálatas 4.22-31</div>
+      </div>
+      <div class="destaque-box">
+        <div class="dl">💡 Aplicação Contemporânea</div>
+        <p>"Existe um 'Ismael' na sua vida — algo que você construiu com suas próprias forças enquanto esperava a promessa de Deus? Deus não necessariamente vai destruí-lo, mas certamente vai lembrá-lo de que o 'Isaque' ainda está por vir — e será muito melhor."</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="bloco">
+    <div class="bloco-header">
+      <div class="bloco-num">9</div>
+      <div class="bloco-titulo">
+        <h3>O cuidado de Deus em todo o tempo</h3>
+        <p>Filipenses 4.6-7; Efésios 3.16; Filipenses 4.13</p>
+      </div>
+    </div>
+    <div class="bloco-corpo">
+      <div class="subtopico-box">
+        <h4>Comentário Aprofundado</h4>
+        <p>O encontro de Deus com Agar no deserto é um paradigma perfeito do cuidado pastoral divino. Analise cada ação de Deus no texto: (1) Ele a encontrou — presença; (2) Ele perguntou — atenção; (3) Ele ouviu — misericórdia; (4) Ele orientou — sabedoria; (5) Ele prometeu — fidelidade; (6) Ele a enviou de volta fortalecida — poder.</p>
+        <p>Este padrão é o mesmo que Deus usa conosco hoje. Filipenses 4.6-7 captura a essência: em vez de ansiedade, oração — e o resultado é a paz de Deus que excede todo entendimento. Esta paz não é ausência de problemas; é a presença de Deus em meio a eles.</p>
+        <p>Encerre este tópico chamando a atenção para o contraste: Agar entrou no deserto em fuga e saiu com um nome para o filho, uma promessa para o futuro e um nome novo para Deus. O deserto de Deus não é o fim — é um encontro.</p>
+        <div class="ref-biblica">📖 Filipenses 4.6-7; Efésios 3.16; Filipenses 4.13 | Comparar: Isaías 43.2; Salmo 23.4; João 14.27</div>
+      </div>
+      <div class="dinamica-box">
+        <div class="dil">⚡ Dinâmica Final — Tópico III</div>
+        <p>Peça 1 minuto de silêncio. Cada pessoa deve nomear mentalmente (sem falar em voz alta) uma área em que tem sido impaciente com Deus. Depois, ore coletivamente entregando essas áreas ao El-Roi — o Deus que vê. Encerre com Filipenses 4.6-7 lido em voz alta por toda a classe.</p>
+      </div>
+      <div class="sinopse-box">
+        <div class="sl">📌 Sinopse do Tópico III</div>
+        <p>Deus é soberano e conduz a história. Mesmo quando falhamos, Deus não abandona nem o Seu plano original, nem as pessoas afetadas pelos nossos erros. O Deus que vê (El-Roi) é também o Deus que age — com presença, palavra, direção e promessa.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- REVISÃO -->
+  <h2>✅ Revisão — 5 Perguntas com Respostas</h2>
+  <div class="revisao-item">
+    <div class="num">Pergunta 1</div>
+    <div class="pergunta">Que recurso Deus usa para forjar o caráter do crente?</div>
+    <div class="resposta">✔ O tempo e a espera. Deus usa a demora para desenvolver a fé, a humildade e a dependência do crente em Sua provisão.</div>
+  </div>
+  <div class="revisao-item">
+    <div class="num">Pergunta 2</div>
+    <div class="pergunta">O que ocorre quando a impaciência domina o coração do crente?</div>
+    <div class="resposta">✔ A fé sucumbe e cometemos erros, tomando decisões precipitadas que fogem do plano de Deus e geram consequências dolorosas para nós e para os outros.</div>
+  </div>
+  <div class="revisao-item">
+    <div class="num">Pergunta 3</div>
+    <div class="pergunta">Como devemos esperar conforme o Salmo 40.1?</div>
+    <div class="resposta">✔ "Esperando confiantemente no Senhor" — com paciência ativa, não resignação passiva. A espera bíblica é confiança sustentada no caráter fiel de Deus.</div>
+  </div>
+  <div class="revisao-item">
+    <div class="num">Pergunta 4</div>
+    <div class="pergunta">Quais foram as primeiras consequências do erro de Sarai ao dar Agar a Abrão?</div>
+    <div class="resposta">✔ Competição e soberba: Agar desprezou Sarai após engravidar, gerando conflito doméstico, acusações mútuas, humilhação e a fuga de Agar grávida para o deserto.</div>
+  </div>
+  <div class="revisao-item">
+    <div class="num">Pergunta 5</div>
+    <div class="pergunta">Como se chamaria o filho de Abrão com Agar e qual o significado desse nome?</div>
+    <div class="resposta">✔ Ismael, que significa "Deus ouviu". O nome é o testemunho de que Deus escutou o clamor de Agar no deserto e respondeu com presença, palavra e promessa.</div>
+  </div>
+
+  <!-- HINOS -->
+  <h2>🎵 Hinos Sugeridos — Harpa Cristã</h2>
+  <div class="hinos-row">
+    <div class="hino-pill">🎶 Hino 8 — Abertura</div>
+    <div class="hino-pill">🎶 Hino 188 — Transição (Tópico II)</div>
+    <div class="hino-pill">🎶 Hino 302 — Encerramento</div>
+  </div>
+  <p style="font-size:0.84rem;color:#9ab0d4;">Sugestão: Use o Hino 8 no início para estabelecer o tom de louvor, o Hino 188 antes do Tópico II para preparar o coração para ouvir sobre espera e confiança, e o Hino 302 no encerramento para enviar a classe com ânimo e paz.</p>
+
+  <!-- LEITURA DIÁRIA -->
+  <h2>📅 Leitura Diária da Semana</h2>
+  <table>
+    <thead>
+      <tr><th>Dia</th><th>Passagem</th><th>Tema</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="col-tempo">Segunda</td><td>Gênesis 16.2</td><td>Sarai dá lugar à impaciência</td></tr>
+      <tr><td class="col-tempo">Terça</td><td>1 Pedro 5.7</td><td>Lançar a ansiedade sobre Deus</td></tr>
+      <tr><td class="col-tempo">Quarta</td><td>Salmo 40.1</td><td>Esperar com paciência no Senhor</td></tr>
+      <tr><td class="col-tempo">Quinta</td><td>Romanos 12.12</td><td>Pacientes na tribulação</td></tr>
+      <tr><td class="col-tempo">Sexta</td><td>2 Pedro 3.9</td><td>Deus é longânimo</td></tr>
+      <tr><td class="col-tempo">Sábado</td><td>1 Tessalonicenses 5.14</td><td>Devemos ser pacientes para com todos</td></tr>
+    </tbody>
+  </table>
+
+</div>
+
+<footer>EBD em Dia © 2026 — Dr. Alex Ferreira · Plano de Aula Lição 3 · Uso exclusivo do professor.</footer>
+</body>
+</html>
